@@ -1,0 +1,147 @@
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+repositories {
+    maven {
+        url "$projectDir/../node_modules/react-native/android"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compile(name:'sdk-release', ext:'aar')
+
+    compile 'com.facebook.react:react-native:+'
+    compile 'com.android.support:cardview-v7:27.1.1'
+    compile 'com.plotprojects:plot-android:2.5.1'
+    compile 'com.google.code.gson:gson:2.8.4'
+}
+
+def configureReactNativePom(def pom) {
+    def packageJson = new groovy.json.JsonSlurper().parseText(file('../package.json').text)
+
+    pom.project {
+        name packageJson.title
+        artifactId packageJson.name
+        version = packageJson.version
+        group = "com.selligent"
+        description packageJson.description
+        url packageJson.repository.baseUrl
+
+        licenses {
+            license {
+                name packageJson.license
+                url packageJson.repository.baseUrl + '/blob/master/' + packageJson.licenseFilename
+                distribution 'repo'
+            }
+        }
+
+        developers {
+            developer {
+                id packageJson.author.username
+                name packageJson.author.name
+            }
+        }
+    }
+}
+
+afterEvaluate { project ->
+
+    task androidJavadoc(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += files(android.bootClasspath)
+        classpath += files(project.getConfigurations().getByName('compile').asList())
+        include '**/*.java'
+    }
+
+    task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {
+        classifier = 'javadoc'
+        from androidJavadoc.destinationDir
+    }
+
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+        include '**/*.java'
+    }
+
+    android.libraryVariants.all { variant ->
+        def name = variant.name.capitalize()
+        task "jar${name}"(type: Jar, dependsOn: variant.javaCompile) {
+            from variant.javaCompile.destinationDir
+        }
+    }
+
+    artifacts {
+        archives androidSourcesJar
+        archives androidJavadocJar
+    }
+
+    task installArchives(type: Upload) {
+        configuration = configurations.archives
+        repositories.mavenDeployer {
+            repository url: "file://${projectDir}/../android/maven"
+
+            configureReactNativePom pom
+        }
+    }
+}
+
+def loadSelligentSettings() {
+    def selligentFileName = "selligent.json"
+    println("Reading Selligent settings from: $selligentFileName")
+
+    File f = new File("$project.rootDir/../$selligentFileName");
+
+    def resultingSettings = null
+    if (f.exists()) {
+        resultingSettings = ""
+        f.eachLine { String line ->
+            resultingSettings += line.replace("\"", "\\\"").replaceAll("\\s", "")
+        }
+    } else {
+        throw new InvalidUserDataException("The selligent.json file could not be found. Please make sure you provide this file in the root of this project.")
+    }
+
+    return resultingSettings
+}
+
+tasks.whenTaskAdded { task ->
+    task.doFirst() {
+        android.libraryVariants.all { variant ->
+            if (task.name.toLowerCase() == "pre${variant.name}build") {
+                def selligentSettings = loadSelligentSettings()
+                if (selligentSettings != null) {
+                    variant.buildConfigField "String", "SELLIGENT_SETTINGS", "\"$selligentSettings\""
+                }
+            }
+
+        }
+    }
+}
