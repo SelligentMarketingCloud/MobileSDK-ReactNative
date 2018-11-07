@@ -1,7 +1,7 @@
 {
   "name": "@selligent-marketing-cloud/selligent-react-native",
   "title": "Selligent React Native",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Native bridge for Selligent SDK",
   "main": "index.js",
   "scripts": {
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SelligentMarketingCloud/MobileSDK-React-Native.git"
+    "url": "git+https://github.com/SelligentMarketingCloud/MobileSDK-ReactNative.git"
   },
   "bugs": {
-    "url": "https://github.com/SelligentMarketingCloud/MobileSDK-React-Native/issues"
+    "url": "https://github.com/SelligentMarketingCloud/MobileSDK-ReactNative/issues"
   },
-  "homepage": "https://github.com/SelligentMarketingCloud/MobileSDK-React-Native#readme",
+  "homepage": "https://github.com/SelligentMarketingCloud/MobileSDK-ReactNative#readme",
   "keywords": [
     "react-native"
   ],
