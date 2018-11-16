@@ -1286,11 +1286,11 @@ Defines the type of an event.
 
 | Name            | Type   | Value | Description       |
 | --------------- | ------ | ----- | ----------------- |
-| USER_REGISTER   | number | 91    | User registered   |
-| USER_UNREGISTER | number | 92    | User unregistered |
-| USER_LOGIN      | number | 93    | User logged in    |
-| USER_LOGOUT     | number | 94    | User logged out   |
-| CUSTOM          | number | 95    | Custom event      |
+| USER_REGISTER   | number | 90    | User registered   |
+| USER_UNREGISTER | number | 91    | User unregistered |
+| USER_LOGIN      | number | 92    | User logged in    |
+| USER_LOGOUT     | number | 93    | User logged out   |
+| CUSTOM          | number | 94    | Custom event      |
 
 <div align="right">
     <b><a href="#api-reference">back to API ToC</a></b>
