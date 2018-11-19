@@ -1273,8 +1273,8 @@ Defines the level of request for the authorisation of usage of location services
 
 | Name   | Type   | Value | Description                                               |
 | ------ | ------ | ----- | --------------------------------------------------------- |
-| IN_USE | number | 81    | Request authorisation when location services are in use   |
-| ALWAYS | number | 82    | Always request the authorisation of the location services |
+| IN_USE | number | 80    | Request authorisation when location services are in use   |
+| ALWAYS | number | 81    | Always request the authorisation of the location services |
 
 <div align="right">
     <b><a href="#api-reference">back to API ToC</a></b>

@@ -1,7 +1,7 @@
 {
   "name": "@selligent-marketing-cloud/selligent-react-native",
   "title": "Selligent React Native",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Native bridge for Selligent SDK",
   "main": "index.js",
   "scripts": {
