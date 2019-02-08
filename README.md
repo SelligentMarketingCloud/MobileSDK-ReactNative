@@ -242,9 +242,9 @@ You can catch the deeplinks 2 ways:
   NSLog(@"%@", [url absoluteString]);
   return YES;
 }
-
 ```
 
+2. In your React Native codebase, https://facebook.github.io/react-native/docs/linking
 
 ## Using the API
 
