@@ -1,8 +1,8 @@
-import {NativeModules, Platform} from 'react-native'
+import { NativeModules, Platform } from 'react-native'
 import SelligentConstants from './constants'
 import SelligentHelpers from './helpers'
 
-const {RNSelligent} = NativeModules
+const { RNSelligent } = NativeModules
 
 // Check if Native version of Selligent found
 SelligentHelpers.isNativeSelligentFound(RNSelligent)
@@ -120,5 +120,5 @@ export default Object.assign(
 			return
 		}
 	},
-	{...platformSpecificMethods}
+	{ ...platformSpecificMethods }
 )

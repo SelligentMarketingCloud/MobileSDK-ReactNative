@@ -6,6 +6,9 @@
 //  Copyright © 2015 Selligent. All rights reserved.
 //
 
+/**
+ *  Location authorisation type.
+ */
 typedef NS_ENUM(NSInteger, SMLocationAuthorisationType) {
     /**
      *  This value asks user permission to monitor their position
@@ -24,7 +27,9 @@ typedef NS_ENUM(NSInteger, SMLocationAuthorisationType) {
 
 
 
-
+/**
+ *  Location authorisation status.
+ */
 typedef NS_ENUM(NSInteger, SMLocationAuthorisationStatus) {
     /**
      *  The authorisation satus is unknown.

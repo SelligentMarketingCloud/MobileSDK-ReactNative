@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B3E7B58A1CC2AC0600A0062D /* RNSelligent.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNSelligent.m */; };
+		BAC622C0220886FB00C274A6 /* libSelligentMobile2.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC622BF220886FB00C274A6 /* libSelligentMobile2.0.1.a */; };
 		E5002D3320F5002A00F68509 /* ClientSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3120F5002A00F68509 /* ClientSettings.m */; };
 		E5002D3620F5004200F68509 /* SMManagerSetting+ClientSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3520F5004200F68509 /* SMManagerSetting+ClientSettings.m */; };
 		E5002D3920F500C200F68509 /* SelligentLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3820F500C200F68509 /* SelligentLogger.m */; };
@@ -15,7 +16,6 @@
 		E5002D4120F5015A00F68509 /* EnumMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D4020F5015A00F68509 /* EnumMapper.m */; };
 		E51D949D20FE17F100069B07 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = E51D949B20FE17F000069B07 /* Event.m */; };
 		E51D949E20FE17F100069B07 /* Event+SMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E51D949C20FE17F000069B07 /* Event+SMEvent.m */; };
-		E58A8CDB20F32CB4005EA433 /* libSelligentMobile1.7.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E58A8CDA20F32CB4005EA433 /* libSelligentMobile1.7.3.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,9 +31,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libSelligentReactNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSelligentReactNative.a; path = libRNSelligent.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		134814201AA4EA6300B7C361 /* libRNSelligent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSelligent.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5881CC2AC0600A0062D /* RNSelligent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSelligent.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNSelligent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSelligent.m; sourceTree = "<group>"; };
+		BAC622BF220886FB00C274A6 /* libSelligentMobile2.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSelligentMobile2.0.1.a; sourceTree = "<group>"; };
 		E5002D3120F5002A00F68509 /* ClientSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSettings.m; sourceTree = "<group>"; };
 		E5002D3220F5002A00F68509 /* ClientSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSettings.h; sourceTree = "<group>"; };
 		E5002D3420F5004200F68509 /* SMManagerSetting+ClientSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMManagerSetting+ClientSettings.h"; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		E58A8CD720F32CB4005EA433 /* SMInAppContentImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInAppContentImageViewController.h; sourceTree = "<group>"; };
 		E58A8CD820F32CB4005EA433 /* SMManager+Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMManager+Location.h"; sourceTree = "<group>"; };
 		E58A8CD920F32CB4005EA433 /* SMEventUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEventUser.h; sourceTree = "<group>"; };
-		E58A8CDA20F32CB4005EA433 /* libSelligentMobile1.7.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSelligentMobile1.7.3.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E58A8CDB20F32CB4005EA433 /* libSelligentMobile1.7.3.a in Frameworks */,
+				BAC622C0220886FB00C274A6 /* libSelligentMobile2.0.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +120,7 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libSelligentReactNative.a */,
+				134814201AA4EA6300B7C361 /* libRNSelligent.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,8 +128,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				BAC622BF220886FB00C274A6 /* libSelligentMobile2.0.1.a */,
 				E58A8CAC20F32CB4005EA433 /* include */,
-				E58A8CDA20F32CB4005EA433 /* libSelligentMobile1.7.3.a */,
 				E5002D3720F500C200F68509 /* SelligentLogger.h */,
 				E5002D3820F500C200F68509 /* SelligentLogger.m */,
 				B3E7B5881CC2AC0600A0062D /* RNSelligent.h */,
@@ -228,7 +228,7 @@
 			);
 			name = RNSelligent;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libSelligentReactNative.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libRNSelligent.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -390,6 +390,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/include",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNSelligent;
@@ -414,6 +415,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/include",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNSelligent;

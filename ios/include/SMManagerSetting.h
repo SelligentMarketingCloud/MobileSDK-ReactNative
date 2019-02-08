@@ -108,10 +108,7 @@
  *
  *  @return SMManagerSetting new instance. SMFailure in case of error
  */
-+ (id)settingWithUrl:(NSString*)urlName ClientID:(NSString*)clientID PrivateKey:(NSString*)privateKey;
-
-
-
++ (instancetype)settingWithUrl:(NSString*)urlName ClientID:(NSString*)clientID PrivateKey:(NSString*)privateKey;
 
 /**
  *  @discussion This call is optional. It is not needed to successfully start the SDK.

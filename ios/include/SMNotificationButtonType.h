@@ -80,11 +80,14 @@ typedef NS_ENUM(NSInteger, SMNotificationButtonType) {
     kSMNotificationButtonType_Return_TextAndPhoto        = 10,
     
     /**
-     *  Button-type which will allow user to add
+     *  Button-type which will allow user to add pkpass file inside wallet app
      */
-    kSMNotificationButtonType_Passbook                    = 11
-    
-
+    kSMNotificationButtonType_Passbook                    = 11,
+   
+    /**
+     *  Button-type which will allow user depplink inside specific page in the app
+     */
+    kSMNotificationButtonType_DeepLink                    = 13
 };
 
 

@@ -1,9 +1,9 @@
 // iOS specific methods
-import {NativeEventEmitter, NativeModules} from 'react-native'
+import { NativeEventEmitter, NativeModules } from 'react-native'
 import SelligentConstants from './constants'
 import SelligentHelpers from './helpers'
 
-const {RNSelligent} = NativeModules
+const { RNSelligent } = NativeModules
 const RNSEventEmitter = new NativeEventEmitter(RNSelligent)
 
 export default {

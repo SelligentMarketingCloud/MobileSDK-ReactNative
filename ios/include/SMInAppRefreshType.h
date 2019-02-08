@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, SMInAppRefreshType) {
      */
     kSMIA_RefreshType_None,
     /*!
-     * Allow to fetch In App Minutely
+     * Allow to fetch In App Minutely (to be used only in development)
      */
     kSMIA_RefreshType_Minutely,
     /*!
