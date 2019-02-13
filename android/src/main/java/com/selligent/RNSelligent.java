@@ -68,7 +68,21 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
             SMManager.NOTIFICATION_ACTIVITY = Class.forName(notificationActivityName);
 
-            SMManager.getInstance().start(smSettings, application);
+            final SMManager smManager = SMManager.getInstance();
+            smManager.start(smSettings, application);
+
+            final Resources resources = application.getResources();
+
+            final int smallIconResourceId = resources.getIdentifier(settings.getNotificationSmallIcon(), "drawable", application.getPackageName());
+            if(smallIconResourceId != 0) {
+                smManager.setNotificationSmallIcon(smallIconResourceId);
+            }
+
+            final int largeIconResourceId = resources.getIdentifier(settings.getNotificationLargeIcon(), "drawable", application.getPackageName());
+            if(largeIconResourceId  != 0) {
+                smManager.setNotificationLargeIcon(largeIconResourceId);
+            }
+
         } catch (ClassNotFoundException e) {
             Log.e("RNSelligent", "SMManager start failed: an error occurred while setting the NotificationActivity", e);
         }

@@ -127,6 +127,18 @@ This module provides an API for the usage of the Selligent SDK in React Native.
    }
    ```
 
+#### Change default push notification icons
+
+Add the following properties to the `selligent.json` file:
+
+```
+    "notificationSmallIcon": "ic_notification",
+    "notificationLargeIcon": "ic_notification"
+```
+
+> _Note: only parse the name of the icon, without the path. The icon should reside in the res/drawable folder of the Android project, as explained in [Android's official guide](https://developer.android.com/guide/topics/resources/drawable-resource#BitmapFile)._
+
+
 ### iOS Specific installation
 
 1. Copy the `node_modules/@selligent-marketing-cloud/selligent-react-native/ios/SelligentReactNative.xcodeproj` file to the **Xcode project**. Drop it under the `Libraries` Folder. This will link the module to the iOS project. (See the image in the next step)
@@ -232,7 +244,7 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 
 For geolocation services, follow section 6.5 **Geolocation**, of the **IOS - Using the SDK** pdf. You also need to configure several permissions described in 5.3.3 **Permission for geo location**.
 
-## Deeplinking (iOS only)
+#### Deeplinking
 You can catch the deeplinks 2 ways:
 
 1. Native in AppDelegate.m, add the following (example code that logs the URL)
@@ -940,7 +952,7 @@ Selligent.areNotificationsEnabled(
 
 Set the small icon of a notification on Android.
 
-The method accepts an `iconName` parameter which is a string containing the name of the small icon.
+The method accepts an `iconName` parameter which is a string containing the name of the small icon. When the application is closed it will default back to the icons specified in `selligent.json`.
 > _Note: only parse the name of the icon, without the path. The icon should reside in the res/drawable folder of the Android project, as explained in [Android's official guide](https://developer.android.com/guide/topics/resources/drawable-resource#BitmapFile)._
 
 ##### setNotificationSmallIcon example
@@ -965,7 +977,7 @@ Selligent.setNotificationSmallIcon(
 
 Set the large icon of a notification on Android.
 
-The method accepts an `iconName` parameter which is a string containing the name of the large icon.
+The method accepts an `iconName` parameter which is a string containing the name of the large icon. When the application is closed it will default back to the icons specified in `selligent.json`.
 > _Note: only parse the name of the icon, without the path. The icon should reside in the res/drawable folder of the Android project, as explained in [Android's official guide](https://developer.android.com/guide/topics/resources/drawable-resource#BitmapFile)._
 
 ##### setNotificationLargeIcon example

@@ -10,6 +10,8 @@ class Settings {
     private String privateKey;
     private String googleApplicationId;
     private String activityName;
+    private String notificationSmallIcon;
+    private String notificationLargeIcon;
     private Boolean configureLocationServices;
     private ClearCacheIntervalValue clearCacheIntervalValue;
     private InAppMessageRefreshType inAppMessageRefreshType;
@@ -36,6 +38,10 @@ class Settings {
     public String getActivityName() {
         return activityName;
     }
+
+    public String getNotificationSmallIcon() { return notificationSmallIcon; }
+
+    public String getNotificationLargeIcon() { return notificationLargeIcon; }
 
     public Boolean getConfigureLocationServices() {
         return configureLocationServices;
@@ -67,6 +73,8 @@ class Settings {
 
         }
         settings.activityName = (String) settingsHashMap.get("fullyQualifiedNotificationActivityClassName");
+        settings.notificationSmallIcon = (String) settingsHashMap.get("notificationSmallIcon");
+        settings.notificationLargeIcon = (String) settingsHashMap.get("notificationLargeIcon");
 
         final Double clearCacheIndex = (Double) settingsHashMap.get("clearCacheIntervalValue");
         if (clearCacheIndex != null) {
