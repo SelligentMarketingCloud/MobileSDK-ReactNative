@@ -73,8 +73,14 @@ class Settings {
 
         }
         settings.activityName = (String) settingsHashMap.get("fullyQualifiedNotificationActivityClassName");
-        settings.notificationSmallIcon = (String) settingsHashMap.get("notificationSmallIcon");
-        settings.notificationLargeIcon = (String) settingsHashMap.get("notificationLargeIcon");
+
+        if (settingsHashMap.containsKey("notificationSmallIcon")) {
+            settings.notificationSmallIcon = (String) settingsHashMap.get("notificationSmallIcon");
+        }
+
+        if (settingsHashMap.containsKey("notificationLargeIcon")) {
+            settings.notificationLargeIcon = (String) settingsHashMap.get("notificationLargeIcon");
+        }
 
         final Double clearCacheIndex = (Double) settingsHashMap.get("clearCacheIntervalValue");
         if (clearCacheIndex != null) {

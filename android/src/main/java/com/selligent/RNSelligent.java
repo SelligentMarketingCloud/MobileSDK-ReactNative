@@ -73,14 +73,18 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
             final Resources resources = application.getResources();
 
-            final int smallIconResourceId = resources.getIdentifier(settings.getNotificationSmallIcon(), "drawable", application.getPackageName());
-            if(smallIconResourceId != 0) {
-                smManager.setNotificationSmallIcon(smallIconResourceId);
+            if (settings.getNotificationSmallIcon() != null && !settings.getNotificationSmallIcon().isEmpty()) {
+                final int smallIconResourceId = resources.getIdentifier(settings.getNotificationSmallIcon(), "drawable", application.getPackageName());
+                if(smallIconResourceId != 0) {
+                    smManager.setNotificationSmallIcon(smallIconResourceId);
+                }
             }
 
-            final int largeIconResourceId = resources.getIdentifier(settings.getNotificationLargeIcon(), "drawable", application.getPackageName());
-            if(largeIconResourceId  != 0) {
-                smManager.setNotificationLargeIcon(largeIconResourceId);
+            if (settings.getNotificationLargeIcon() != null && !settings.getNotificationLargeIcon().isEmpty()) {
+                final int largeIconResourceId = resources.getIdentifier(settings.getNotificationLargeIcon(), "drawable", application.getPackageName());
+                if (largeIconResourceId != 0) {
+                    smManager.setNotificationLargeIcon(largeIconResourceId);
+                }
             }
 
         } catch (ClassNotFoundException e) {
