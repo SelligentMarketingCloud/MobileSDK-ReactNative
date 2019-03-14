@@ -12,6 +12,9 @@ class Settings {
     private String activityName;
     private String notificationSmallIcon;
     private String notificationLargeIcon;
+    private Boolean doNotFetchTheToken = false;
+    private Boolean doNotListenToThePush = false;
+    private Boolean loadCacheAsynchronously = false;
     private Boolean configureLocationServices;
     private ClearCacheIntervalValue clearCacheIntervalValue;
     private InAppMessageRefreshType inAppMessageRefreshType;
@@ -39,13 +42,23 @@ class Settings {
         return activityName;
     }
 
-    public String getNotificationSmallIcon() { return notificationSmallIcon; }
+    public String getNotificationSmallIcon() {
+        return notificationSmallIcon;
+    }
 
-    public String getNotificationLargeIcon() { return notificationLargeIcon; }
+    public String getNotificationLargeIcon() {
+        return notificationLargeIcon;
+    }
 
     public Boolean getConfigureLocationServices() {
         return configureLocationServices;
     }
+
+    public Boolean getDoNotListenToThePush() { return doNotListenToThePush; }
+
+    public Boolean getDoNotFetchTheToken() { return doNotFetchTheToken; }
+
+    public Boolean getLoadCacheAsynchronously() { return loadCacheAsynchronously; }
 
     public ClearCacheIntervalValue getClearCacheIntervalValue() {
         return clearCacheIntervalValue;
@@ -80,6 +93,18 @@ class Settings {
 
         if (settingsHashMap.containsKey("notificationLargeIcon")) {
             settings.notificationLargeIcon = (String) settingsHashMap.get("notificationLargeIcon");
+        }
+
+        if (settingsHashMap.containsKey("doNotFetchTheToken")) {
+            settings.doNotFetchTheToken = (Boolean) settingsHashMap.get("doNotFetchTheToken");
+        }
+
+        if (settingsHashMap.containsKey("doNotListenToThePush")) {
+            settings.doNotListenToThePush = (Boolean) settingsHashMap.get("doNotListenToThePush");
+        }
+
+        if (settingsHashMap.containsKey("loadCacheAsynchronously")) {
+            settings.loadCacheAsynchronously = (Boolean) settingsHashMap.get("loadCacheAsynchronously");
         }
 
         final Double clearCacheIndex = (Double) settingsHashMap.get("clearCacheIntervalValue");

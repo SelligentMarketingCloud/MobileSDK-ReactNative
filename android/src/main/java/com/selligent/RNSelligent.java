@@ -306,6 +306,11 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
         }
     }
 
+    @ReactMethod
+    public void setFirebaseToken(String token) {
+        smManager.setFirebaseToken(token);
+    }
+
     @Override
     public void onHostResume() {
         final Activity currentActivity = getCurrentActivity();

@@ -41,6 +41,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:27.1.1'
     compile 'com.plotprojects:plot-android:2.5.1'
     compile 'com.google.code.gson:gson:2.8.4'
+    compile 'com.firebase:firebase-jobdispatcher:0.8.5'
 }
 
 def configureReactNativePom(def pom) {

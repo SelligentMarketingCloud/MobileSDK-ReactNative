@@ -1,9 +1,9 @@
 // Android specific methods
-import {NativeEventEmitter, NativeModules} from 'react-native'
+import { NativeEventEmitter, NativeModules } from 'react-native'
 import SelligentConstants from './constants'
 import SelligentHelpers from './helpers'
 
-const {RNSelligent} = NativeModules
+const { RNSelligent } = NativeModules
 const RNSEventEmitter = new NativeEventEmitter(RNSelligent)
 
 export default {
@@ -56,7 +56,7 @@ export default {
 		}
 
 		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.enableInAppMessages({enabled})
+		RNSelligent.enableInAppMessages({ enabled })
 		return
 	},
 	areInAppMessagesEnabled: function (successCallback) {
@@ -148,5 +148,15 @@ export default {
 	subscribeToEvent: function (eventCallback, eventName) {
 		RNSEventEmitter.addListener(eventName, eventCallback);
 		return
-	}
+	},
+	setFirebaseToken: function (successCallback, errorCallback, token) {
+		if (!SelligentHelpers.typeMatches(token, 'string') || token.length === 0) {
+			errorCallback(SelligentHelpers.wrongArgumentError('Expected a string (not empty).'))
+			return
+		}
+
+		successCallback(SelligentHelpers.SUCCESS)
+		RNSelligent.setFirebaseToken(token)
+		return
+	},
 }
