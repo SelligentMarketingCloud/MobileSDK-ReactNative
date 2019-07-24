@@ -153,18 +153,24 @@ Add the following properties to the `selligent.json` file:
 
    ![Add 'libSelligentReactNative.a' file to your 'Linked Frameworks and Libraries'](/documentation/add_lib_file.png)
 
-4. Create a podfile (if there isn't one already) in the `/ios` folder and add the following:
+4. Add Selligent to `Header Search Paths` in `Build Settings` of your target:
+
+    ```
+    $(SRCROOT)/../node_modules/@selligent-marketing-cloud/selligent-react-native/ios/
+    ```
+
+5. Create a `Podfile` (if there isn't one already) in the `/ios` folder and add the following:
 
    ```ruby
    target 'REPLACEWITHYOURTARGETNAME'
    pod 'PlotPlugin', '2.1.0'
    ```
 
-5. Execute `pod install` in the `/ios` folder to install the `Podplugin` dependency
+6. Execute `pod install` in the `/ios` folder to install the `Podplugin` dependency
 
-6. From now on open the `.xcworkspace` file to make changes in Xcode
+7. From now on open the `.xcworkspace` file to make changes in Xcode
 
-7. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.m`
+8. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.m`
 
    ```objective-c
    #import <RNSelligent.h>
@@ -271,7 +277,7 @@ You can catch the deeplinks 2 ways:
    2. Add the `Selligent` import statement:
 
       ```javascript
-      import Selligent from 'selligent-react-native' // Add Selligent import
+      import Selligent from '@selligent-marketing-cloud/selligent-react-native' // Add Selligent import
       ```
 
    3. Add a function to call the `Selligent.getVersionLib` function:
@@ -484,7 +490,7 @@ The `settings` parameter is an object containing the web service URL, the Sellig
 | shouldPerformBackgroundFetch                | boolean                                                                                       | No       | iOS Only     |
 | doNotListenToThePush                        | boolean                                                                                       | No       | Android Only |
 | doNotFetchTheToken                          | boolean                                                                                       | No       | Android Only |
-|  loadCacheAsynchronously                    | boolean                                                                                       | No       | Android Only |
+| loadCacheAsynchronously                     | boolean                                                                                       | No       | Android Only |
 | fullyQualifiedNotificationActivityClassName | string                                                                                        | No       | Android Only |
 | remoteMessageDisplayType                    | enum [Selligent.AndroidRemoteMessagesDisplayType](#selligentAndroidRemoteMessagesDisplayType) | No       | Android Only |
 
