@@ -166,6 +166,7 @@ RCT_EXPORT_METHOD(enableGeolocation:(BOOL)enable) {
     if (enable) {
         [[SMManager sharedInstance] enableGeoLocation];
     } else {
+
         [[SMManager sharedInstance] disableGeoLocation];
     }
 }

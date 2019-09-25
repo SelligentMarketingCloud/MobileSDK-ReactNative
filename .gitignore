@@ -48,3 +48,4 @@ buck-out/
 # vs code
 .vscode/
 ios/SelligentReactNative.xcworkspace/contents.xcworkspacedata
+ios/SelligentReactNative.xcworkspace/
