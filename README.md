@@ -271,7 +271,7 @@ You can catch the deeplinks 2 ways:
    2. Add the `Selligent` import statement:
 
       ```javascript
-      import Selligent from 'selligent-react-native' // Add Selligent import
+      import Selligent from '@selligent-marketing-cloud/selligent-react-native' // Add Selligent import
       ```
 
    3. Add a function to call the `Selligent.getVersionLib` function:
@@ -311,7 +311,7 @@ You can catch the deeplinks 2 ways:
       ```javascript
       import React, {Component} from 'react';
       import {Platform, StyleSheet, Text, View, Button} from 'react-native'; // Add Button import
-      import Selligent from 'selligent-react-native' // Add Selligent import
+      import Selligent from '@selligent-marketing-cloud/selligent-react-native' // Add Selligent import
 
       const instructions = Platform.select({
           ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -429,16 +429,16 @@ You can catch the deeplinks 2 ways:
     * [forceRemoteNotificationBackgroundFetchResult example](#forceremotenotificationbackgroundfetchresult-example)
 
 * [Constants](#constants)
-  * [Selligent.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)
-  * [Selligent.InAppMessageRefreshType](#selligentinappmessagerefreshtype)
-  * [Selligent.AndroidRemoteMessagesDisplayType](#selligentandroidremotemessagesdisplaytype)
-  * [Selligent.iOSLogLevel](#selligentiosloglevel)
-  * [Selligent.iOSBackgroundFetchResult](#selligentiosbackgroundfetchresult)
-  * [Selligent.iOSLocationAuthorisationStatus](#selligentioslocationauthorisationstatus)
-  * [Selligent.iOSLocationAuthorisationType](#selligentioslocationauthorisationtype)
-  * [Selligent.EventType](#selligenteventtype)
-  * [Selligent.iOSNotificationButtonType](#selligentiosnotificationbuttontype)
-  * [Selligent.BroadcastEventType](#selligentbroadcasteventtype)
+  * [SelligentConstants.ClearCacheIntervalValue](#selligentconstantsclearcacheintervalvalue)
+  * [SelligentConstants.InAppMessageRefreshType](#selligentconstantsinappmessagerefreshtype)
+  * [SelligentConstants.AndroidRemoteMessagesDisplayType](#selligentconstantsandroidremotemessagesdisplaytype)
+  * [SelligentConstants.iOSLogLevel](#selligentconstantsiosloglevel)
+  * [SelligentConstants.iOSBackgroundFetchResult](#selligentconstantsiosbackgroundfetchresult)
+  * [SelligentConstants.iOSLocationAuthorisationStatus](#selligentconstantsioslocationauthorisationstatus)
+  * [SelligentConstants.iOSLocationAuthorisationType](#selligentconstantsioslocationauthorisationtype)
+  * [SelligentConstants.EventType](#selligentconstantseventtype)
+  * [SelligentConstants.iOSNotificationButtonType](#selligentconstantsiosnotificationbuttontype)
+  * [SelligentConstants.BroadcastEventType](#selligentconstantsbroadcasteventtype)
 
 ### Methods
 
@@ -706,7 +706,7 @@ The method accepts an `event` object which requires certain properties, dependin
 
 The `type` property is used to define the event as *custom* or *specific* event, using the [EventType](#selligenteventtype) constants.
 
-To define it as a custom event, one should use the `Selligent.EventType.CUSTOM` constant. All other event types can be used to define the event as something specific.
+To define it as a custom event, one should use the `SelligentConstants.EventType.CUSTOM` constant. All other event types can be used to define the event as something specific.
 
 When an event is a *specific* event type, the `event` object requires an `email` property containing a string, and has an optional property `data` which is an object that can contain other information.
 When an event is a *custom* event type, the `event` object requires a `data` property containing an object which contains other information, and ignores the `email` property.
@@ -729,7 +729,7 @@ Selligent.sendEvent(
         ...
     },
     {
-        type: Selligent.EventType.BUTTON_CLICKED // specific event
+        type: SelligentConstants.EventType.BUTTON_CLICKED // specific event
         data: { // optional
             id: 1337,
             randomFlag: true,
@@ -748,7 +748,7 @@ Selligent.sendEvent(
         ...
     },
     {
-        type: Selligent.EventType.CUSTOM  // custom event
+        type: SelligentConstants.EventType.CUSTOM  // custom event
         data: { // required
             id: 1337,
             someFlag: true,
@@ -1219,7 +1219,7 @@ Selligent.forceRemoteNotificationBackgroundFetchResult(
 
 ### Constants
 
-#### Selligent.ClearCacheIntervalValue
+#### SelligentConstants.ClearCacheIntervalValue
 
 Defines the interval value to clear the cache.
 
@@ -1238,7 +1238,7 @@ _Note: `ClearCacheIntervalValue.Android.DAY` is only used on Android and can not
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.InAppMessageRefreshType
+#### SelligentConstants.InAppMessageRefreshType
 
 Defines how often the SDK must retrieve the in-app messages.
 
@@ -1255,7 +1255,7 @@ _Note: `InAppMessageRefreshType.Android.MINUTE` is only used on Android and can 
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.AndroidRemoteMessagesDisplayType
+#### SelligentConstants.AndroidRemoteMessagesDisplayType
 
 Defines if and how remote messages can be displayed on Android.
 
@@ -1269,7 +1269,7 @@ Defines if and how remote messages can be displayed on Android.
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.iOSLogLevel
+#### SelligentConstants.iOSLogLevel
 
 Defines the level of output of logging messages on iOS.
 
@@ -1287,7 +1287,7 @@ Defines the level of output of logging messages on iOS.
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.iOSBackgroundFetchResult
+#### SelligentConstants.iOSBackgroundFetchResult
 
 Description of the possible results of a background fetch on iOS.
 
@@ -1301,7 +1301,7 @@ Description of the possible results of a background fetch on iOS.
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.iOSLocationAuthorisationStatus
+#### SelligentConstants.iOSLocationAuthorisationStatus
 
 Description of the possible status of use of location services on a device.
 
@@ -1316,7 +1316,7 @@ Description of the possible status of use of location services on a device.
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.iOSLocationAuthorisationType
+#### SelligentConstants.iOSLocationAuthorisationType
 
 Defines the level of request for the authorisation of usage of location services on a device.
 
@@ -1329,7 +1329,7 @@ Defines the level of request for the authorisation of usage of location services
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.EventType
+#### SelligentConstants.EventType
 
 Defines the type of an event.
 
@@ -1345,7 +1345,7 @@ Defines the type of an event.
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.iOSNotificationButtonType
+#### SelligentConstants.iOSNotificationButtonType
 
 Defines the type of button for notifications on iOS.
 
@@ -1368,7 +1368,7 @@ Defines the type of button for notifications on iOS.
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.BroadcastEventType
+#### SelligentConstants.BroadcastEventType
 
 Defines the type of a broadcast event.
 
