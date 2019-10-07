@@ -475,18 +475,18 @@ The `settings` parameter is an object containing the web service URL, the Sellig
 | url                                         | string                                                                                        | Yes      | Both         |
 | clientId                                    | string                                                                                        | Yes      | Both         |
 | privateKey                                  | string                                                                                        | Yes      | Both         |
-| googleApplicationId                         | string                                                                                        | No       | Both         |
-| clearCacheIntervalValue                     | enum [Selligent.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)                   | No       | Both         |
-| configureLocationServices                   | boolean                                                                                       | No       | Both         |
-| inAppMessageRefreshType                     | enum [Selligent.InAppMessageRefreshType](#selligentinappmessagerefreshtype)                   | No       | Both         |
-| shouldClearBadge                            | boolean                                                                                       | No       | iOS Only     |
-| shouldDisplayRemoteNotification             | boolean                                                                                       | No       | iOS Only     |
-| shouldPerformBackgroundFetch                | boolean                                                                                       | No       | iOS Only     |
-| doNotListenToThePush                        | boolean                                                                                       | No       | Android Only |
-| doNotFetchTheToken                          | boolean                                                                                       | No       | Android Only |
-|  loadCacheAsynchronously                    | boolean                                                                                       | No       | Android Only |
-| fullyQualifiedNotificationActivityClassName | string                                                                                        | No       | Android Only |
-| remoteMessageDisplayType                    | enum [Selligent.AndroidRemoteMessagesDisplayType](#selligentAndroidRemoteMessagesDisplayType) | No       | Android Only |
+| googleApplicationId                         | string                                                                                        | Yes       | Both         |
+| clearCacheIntervalValue                     | enum [SelligentConstants.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)                   | Yes       | Both         |
+| configureLocationServices                   | boolean                                                                                       | Yes       | Both         |
+| inAppMessageRefreshType                     | enum [SelligentConstants.InAppMessageRefreshType](#selligentinappmessagerefreshtype)                   | Yes       | Both         |
+| shouldClearBadge                            | boolean                                                                                       | Yes       | iOS Only     |
+| shouldDisplayRemoteNotification             | boolean                                                                                       | Yes       | iOS Only     |
+| shouldPerformBackgroundFetch                | boolean                                                                                       | Yes       | iOS Only     |
+| doNotListenToThePush                        | boolean                                                                                       | Yes       | Android Only |
+| doNotFetchTheToken                          | boolean                                                                                       | Yes       | Android Only |
+|  loadCacheAsynchronously                    | boolean                                                                                       | Yes      | Android Only |
+| fullyQualifiedNotificationActivityClassName | string                                                                                        | Yes       | Android Only |
+| remoteMessageDisplayType                    | enum [Selligent.AndroidRemoteMessagesDisplayType](#selligentAndroidRemoteMessagesDisplayType) | Yes       | Android Only |
 
 ##### reloadSettings example
 
