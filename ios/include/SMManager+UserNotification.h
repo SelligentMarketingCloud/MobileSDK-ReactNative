@@ -57,7 +57,7 @@
  *
  *  @param response A UNNotificationResponse that contains information about the notification and the interaction the user has done with it. Provided by the delegate call
  */
-- (void)didReceiveNotificationResponse:(UNNotificationResponse *)response;
+- (void)didReceiveNotificationResponse:(UNNotificationResponse*_Nonnull)response;
 
 
 /*!
@@ -67,7 +67,7 @@
  *  @param response A UNNotificationResponse that contains information about the notification and the interaction the user has done with it. Provided by the delegate call
  *  @param completionHandler A completion that will be called.
  */
-- (void)didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler;
+- (void)didReceiveNotificationResponse:(UNNotificationResponse *_Nonnull)response withCompletionHandler:(void (^_Nullable)(void))completionHandler;
 
 /*!
  *  Mandatory API, when building against iOS 10+ and using UserNotifications framework, to be included in userNotificationCenter:willPresentNotification:withCompletionHandler
@@ -82,7 +82,7 @@
  *
  *  @param notification A UNNotification that contains information about the notification.
  */
-- (void)willPresentNotification:(UNNotification *)notification;
+- (void)willPresentNotification:(UNNotification*_Nonnull)notification;
 
 /*!
  *  Mandatory API, when building against iOS 10+ and using UserNotifications framework, to be included in userNotificationCenter:willPresentNotification:withCompletionHandler
@@ -95,7 +95,7 @@
  *  @param notification A UNNotification that contains information about the notification.
  *  @param completionHandler A Completion handler that will be called with UNNotificationPresentationOptionAlert by default.
  */
-- (void)willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler;
+- (void)willPresentNotification:(UNNotification*_Nonnull)notification withCompletionHandler:(void (^_Nullable)(UNNotificationPresentationOptions options))completionHandler;
 
 
 /*!
@@ -106,7 +106,7 @@
  *  @see  SMManagerSetting
  *  @discussion This method is mandatory in order to start / initialise the library and should be called in in didReceiveNotification: when implementing Notification content extension and/or in didReceiveNotificationRequest:withContentHandler: when implementing Notification service extension
  */
-- (void)startExtensionWithSetting:(SMManagerSetting*)setting;
+- (void)startExtensionWithSetting:(SMManagerSetting*_Nonnull)setting;
 
 /*!
  *  Optional API, when building against iOS 10+ and using a Notification Content Extension target, to be included in NotificationViewController didReceiveNotification:
@@ -118,7 +118,7 @@
  *
  *  @param notification A UNNotification that contains information about the notification.
  */
-- (void)didReceiveNotification:(UNNotification *)notification;
+- (void)didReceiveNotification:(UNNotification*_Nonnull)notification;
 
 
 /*!
@@ -131,7 +131,7 @@
  *  @return UNMutableNotificationContent the updated content of the payload.
  *  @discussion you can use this method if you have decided to trigger the block to execute with the modified content by yourself otherwise if you want the sdk to manage all steps please use SMManager didReceiveNotificationRequest:withContentHandler:
  */
-- (UNMutableNotificationContent *)didReceiveNotificationRequest:(UNNotificationRequest *)request;
+- (UNMutableNotificationContent*_Nullable)didReceiveNotificationRequest:(UNNotificationRequest*_Nonnull)request;
 
 /*!
  *  Optional API, when building against iOS 10+ and using a Notification Service Extension target, to be included in NotificationService didReceiveNotificationRequest:withContentHandler:
@@ -143,7 +143,7 @@
  *  @param contentHandler The block to execute with the modified content
  *  @discussion you can use this method if you want the sdk to manage the display of the notification after teh decryption has been processed
  */
-- (void)didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent *))contentHandler;
+- (void)didReceiveNotificationRequest:(UNNotificationRequest*_Nonnull)request withContentHandler:(void (^_Nullable)(UNNotificationContent*_Nonnull))contentHandler;
 
 /*!
  *  Optional API, when building against iOS 10+ and using a Notification Service Extension target, to be included in NotificationService serviceExtensionTimeWillExpire

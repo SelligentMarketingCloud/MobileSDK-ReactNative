@@ -22,7 +22,7 @@
  *  @param mail the e-mail of the user
  *  @return a SMEventUserUnregistration object
  */
-+ (instancetype)eventWithEmail:(NSString*)mail;
++ (instancetype _Nonnull)eventWithEmail:(NSString* _Null_unspecified)mail;
 
 /*!
  *  Create a UserUnregistration event object that will be sent to selligent platform when user unregistered
@@ -31,7 +31,7 @@
  *  @param dict a Dictionary containing a String that must be stored and managed by platform
  *  @return a SMEventUserUnregistration object
  */
-+ (instancetype)eventWithEmail:(NSString*)mail Dictionary:(NSDictionary<NSString*,NSString*>*)dict;
++ (instancetype _Nonnull)eventWithEmail:(NSString* _Null_unspecified)mail Dictionary:(NSDictionary<NSString*,NSString*>* _Nullable)dict;
 
 
 @end

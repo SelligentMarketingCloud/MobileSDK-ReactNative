@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C2A3788236AF00000034BAF /* libSelligentMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C2A3787236AEFFF00034BAF /* libSelligentMobile.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNSelligent.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNSelligent.m */; };
-		BA436ABF2334FFD0005881D4 /* libSelligentMobile2.0.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAAAD35C232B800B002046A2 /* libSelligentMobile2.0.3.a */; };
 		E5002D3320F5002A00F68509 /* ClientSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3120F5002A00F68509 /* ClientSettings.m */; };
 		E5002D3620F5004200F68509 /* SMManagerSetting+ClientSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3520F5004200F68509 /* SMManagerSetting+ClientSettings.m */; };
 		E5002D3920F500C200F68509 /* SelligentLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3820F500C200F68509 /* SelligentLogger.m */; };
@@ -32,9 +32,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNSelligent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSelligent.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C2A3787236AEFFF00034BAF /* libSelligentMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSelligentMobile.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNSelligent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSelligent.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNSelligent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSelligent.m; sourceTree = "<group>"; };
-		BAAAD35C232B800B002046A2 /* libSelligentMobile2.0.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSelligentMobile2.0.3.a; sourceTree = "<group>"; };
 		E5002D3120F5002A00F68509 /* ClientSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSettings.m; sourceTree = "<group>"; };
 		E5002D3220F5002A00F68509 /* ClientSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSettings.h; sourceTree = "<group>"; };
 		E5002D3420F5004200F68509 /* SMManagerSetting+ClientSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMManagerSetting+ClientSettings.h"; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA436ABF2334FFD0005881D4 /* libSelligentMobile2.0.3.a in Frameworks */,
+				6C2A3788236AF00000034BAF /* libSelligentMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +128,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				BAAAD35C232B800B002046A2 /* libSelligentMobile2.0.3.a */,
+				6C2A3787236AEFFF00034BAF /* libSelligentMobile.a */,
 				E58A8CAC20F32CB4005EA433 /* include */,
 				E5002D3720F500C200F68509 /* SelligentLogger.h */,
 				E5002D3820F500C200F68509 /* SelligentLogger.m */,

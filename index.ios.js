@@ -113,6 +113,11 @@ export default {
 		RNSelligent.displayNotification(notificationId)
 		return
 	},
+	registerForRemoteNotification: function (successCallback) {
+		successCallback(SelligentHelpers.SUCCESS)
+			RNSelligent.registerForRemoteNotification()
+			return
+	},
 	registerRemoteNotificationFetchCompletionHandler: function (successCallback, eventCallback) {
 		RNSEventEmitter.addListener(SelligentConstants.RemoteNotification.FETCHED_REMOTE_NOTIFICATION, eventCallback);
 		successCallback(SelligentHelpers.SUCCESS)

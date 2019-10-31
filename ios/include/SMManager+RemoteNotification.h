@@ -64,9 +64,21 @@
  *  @warning This does NOT call unregisterForRemoteNotifications on the sharedApplication instance.
  *  Therefore, the application can still receive third-party remote-notifications.
  */
-- (void)unregisterForRemoteNotification;
+- (void)unregisterForRemoteNotification __deprecated __deprecated_msg("Use disableRemoteNotification instead.");
 
 
+/**
+ *  Use this API to enable the selligent notification on current device. In other words, the device will receive any remote-notification from selligent backend server.
+ *  @warning This is independent from [SMManager registerForRemoteNotification] and from notification settings for the app on device level.
+ */
+- (void)enableRemoteNotification;
+
+/**
+ *  Use this API to disable the selligent notification on current device. In other words, the device will not receive any remote-notification from selligent backend server anymore.
+ *  @warning This does NOT call unregisterForRemoteNotifications on the sharedApplication instance.
+ *  Therefore, the application can still receive third-party remote-notifications.
+ */
+- (void)disableRemoteNotification;
 
 /*!
  *  Mandatory API to be included in application:didRegisterForRemoteNotificationsWithDeviceToken:

@@ -37,14 +37,14 @@
 /**
  *  The current version of the library
  */
-@property (nonatomic) NSString *versionLib;
+@property (nonatomic) NSString *_Nonnull versionLib ;
 
 /*!
  * Singleton for SellMobileSDK Class which allow to access public SellMobileSDK methods and properties
  *
  * @return SMManager : singleton instance of SMManager class
  */
-+ (instancetype) sharedInstance;
++ (instancetype _Nonnull) sharedInstance ;
 
 
 
@@ -59,7 +59,7 @@
  *  @see  SMManagerSetting
  *  @discussion This method is mandatory in order to start / initialise the library and should be called in application:didFinishLaunchingWithOptions:
  */
-- (void)startWithLaunchOptions:(NSDictionary*)launchOptions Setting:(SMManagerSetting*)setting;
+- (void)startWithLaunchOptions:(NSDictionary* _Nullable)launchOptions Setting:(SMManagerSetting* _Null_unspecified)setting;
 
 
 
@@ -71,7 +71,7 @@
  *  @warning This API is provided for testing purposes only. Never use it in production.
  *  Make sure to re-enable any service after calling this API.
  */
-- (void)reloadSetting:(SMManagerSetting*)setting;
+- (void)reloadSetting:(SMManagerSetting* _Null_unspecified)setting;
 
 
 

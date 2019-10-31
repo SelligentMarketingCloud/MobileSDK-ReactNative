@@ -162,13 +162,16 @@ RCT_EXPORT_METHOD(sendEvent:(NSDictionary *)data successCallback:(RCTResponseSen
     [[SMManager sharedInstance] sendSMEvent:smEvent];
 }
 
-RCT_EXPORT_METHOD(enableGeolocation:(BOOL)enable) {
+RCT_EXPORT_METHOD(enableNotifications:(BOOL)enable) {
     if (enable) {
-        [[SMManager sharedInstance] enableGeoLocation];
+        [[SMManager sharedInstance] enableRemoteNotification];
     } else {
-
-        [[SMManager sharedInstance] disableGeoLocation];
+        [[SMManager sharedInstance] disableRemoteNotification];
     }
+}
+
+RCT_EXPORT_METHOD(registerForRemoteNotification) {
+    [[SMManager sharedInstance] registerForRemoteNotification];
 }
 
 RCT_EXPORT_METHOD(forceRemoteNotificationBackgroundFetchResult:(nonnull NSNumber *)remoteNotificationBackgroundFetchResult) {
