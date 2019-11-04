@@ -240,6 +240,10 @@ Add the following properties to the `selligent.json` file:
 
 2. Follow section 4 **Configure the APNS (Apple Push Notification Service)**, of the **IOS - Using the SDK** pdf.
 
+#### Notification Extensions
+
+For notification extensions, follow section 6.9 **Notification Extensions**, of the **IOS - Using the SDK** pdf.
+
 #### Geolocation
 
 For geolocation services, follow section 6.5 **Geolocation**, of the **IOS - Using the SDK** pdf. You also need to configure several permissions described in 5.3.3 **Permission for geo location**.
