@@ -436,16 +436,16 @@ You can catch the deeplinks 2 ways:
     * [forceRemoteNotificationBackgroundFetchResult example](#forceremotenotificationbackgroundfetchresult-example)
 
 * [Constants](#constants)
-  * [SelligentConstants.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)
-  * [SelligentConstants.InAppMessageRefreshType](#selligentinappmessagerefreshtype)
-  * [SelligentConstants.AndroidRemoteMessagesDisplayType](#selligentandroidremotemessagesdisplaytype)
-  * [SelligentConstants.iOSLogLevel](#selligentiosloglevel)
-  * [SelligentConstants.iOSBackgroundFetchResult](#selligentiosbackgroundfetchresult)
-  * [SelligentConstants.iOSLocationAuthorisationStatus](#selligentioslocationauthorisationstatus)
-  * [SelligentConstants.iOSLocationAuthorisationType](#selligentioslocationauthorisationtype)
-  * [SelligentConstants.EventType](#selligenteventtype)
-  * [SelligentConstants.iOSNotificationButtonType](#selligentiosnotificationbuttontype)
-  * [SelligentConstants.BroadcastEventType](#selligentbroadcasteventtype)
+  * [SelligentConstants.ClearCacheIntervalValue](#selligentconstantsclearcacheintervalvalue)
+  * [SelligentConstants.InAppMessageRefreshType](#selligentconstantsinappmessagerefreshtype)
+  * [SelligentConstants.AndroidRemoteMessagesDisplayType](#selligentconstantsandroidremotemessagesdisplaytype)
+  * [SelligentConstants.iOSLogLevel](#selligentconstantsiosloglevel)
+  * [SelligentConstants.iOSBackgroundFetchResult](#selligentconstantsiosbackgroundfetchresult)
+  * [SelligentConstants.iOSLocationAuthorisationStatus](#selligentconstantsioslocationauthorisationstatus)
+  * [SelligentConstants.iOSLocationAuthorisationType](#selligentconstantsioslocationauthorisationtype)
+  * [SelligentConstants.EventType](#selligentconstantseventtype)
+  * [SelligentConstants.iOSNotificationButtonType](#selligentconstantsiosnotificationbuttontype)
+  * [SelligentConstants.BroadcastEventType](#selligentconstantsbroadcasteventtype)
 
 ### Methods
 
