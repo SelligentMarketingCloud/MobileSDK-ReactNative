@@ -134,7 +134,7 @@ export default {
 		return
 	},
 	// Broadcasts Events
-	subscribeToEvents: function (successCallback, eventCallback) {
+	subscribeToEvents: function (successCallback, errorCallback, eventCallback) {
 		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_IN_APP_MESSAGE, eventCallback);
 		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISPLAY_NOTIFICATION, eventCallback);
 		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISMISS_NOTIFICATION, eventCallback);

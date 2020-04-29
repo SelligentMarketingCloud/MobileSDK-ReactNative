@@ -117,7 +117,7 @@ export default {
 		return
 	},
 	// Broadcasts Events
-	subscribeToEvents: function (successCallback, errorCallback, eventCallback, customEvents = null) {
+	subscribeToEvents: function (successCallback, errorCallback, eventCallback, customEvents = []) {
 
 		if (customEvents !== undefined) {
 			if (!SelligentHelpers.typeMatches(customEvents, 'array')) {
