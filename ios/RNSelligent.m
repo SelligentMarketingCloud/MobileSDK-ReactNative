@@ -261,7 +261,7 @@ RCT_EXPORT_METHOD(subscribeToEvents) {
 }
 
 - (void)_sendBroadcastEventResultWithData:(NSDictionary *)data andType:(NSString *)type {
-    [self sendEventWithName:type body:data ?: [NSNull null]];
+    [self sendEventWithName:type body:@{@"data": data ?: [NSNull null], @"broadcastEventType": type}];
 }
 
 -(NSArray<NSString *> *)supportedEvents {
