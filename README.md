@@ -64,7 +64,7 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 ### Android Specific Installation
 
 <details>
-<summary>Without autolinking (RN <= 0.59)</summary>
+<summary>Without autolinking (RN 0.59 and below)</summary>
 
 1. Create a Google application following the section **Creating a Google application** of the **Android - Using the SDK** pdf, and place the `google-services.json` file in the `./android/app` folder.
 
@@ -152,7 +152,7 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 </details>
 <br>
 <details open>
-<summary>With autolinking (RN > 0.60)</summary>
+<summary>With autolinking (RN 0.60 and above)</summary>
 
 1. Create a Google application following the section **Creating a Google application** of the **Android - Using the SDK** pdf, and place the `google-services.json` file in the `./android/app` folder.
 
@@ -236,7 +236,7 @@ Add the following properties to the `selligent.json` file:
 ### iOS Specific installation
 
 <details>
-<summary>Without autolinking (RN <= 0.59)</summary>
+<summary>Without autolinking (RN 0.59 and below)</summary>
 
 1. Copy the `node_modules/@selligent-marketing-cloud/selligent-react-native/ios/SelligentReactNative.xcodeproj` file to the **Xcode project**. Drop it under the `Libraries` Folder. This will link the module to the iOS project. (See the image in the next step)
 
@@ -279,7 +279,7 @@ Add the following properties to the `selligent.json` file:
 </details>
 <br>
 <details open>
-<summary>With autolinking (RN > 0.60)</summary>
+<summary>With autolinking (RN 0.60 and above)</summary>
 
 1. Drag and drop the `selligent.json` you created from the root folder to the Xcode project inside the `Copy Bundle Resources` in `Build phases` of your target:
 
