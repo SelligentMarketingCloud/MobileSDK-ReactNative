@@ -63,6 +63,9 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 
 ### Android Specific Installation
 
+<details>
+<summary>Without autolinking (RN <= 0.59)</summary>
+
 1. Create a Google application following the section **Creating a Google application** of the **Android - Using the SDK** pdf, and place the `google-services.json` file in the `./android/app` folder.
 
 2. Add the following lines at the end of the `android/settings.gradle` file:
@@ -146,6 +149,78 @@ This module provides an API for the usage of the Selligent SDK in React Native.
    }
    ```
 
+</details>
+<br>
+<details open>
+<summary>With autolinking (RN > 0.60)</summary>
+
+1. Create a Google application following the section **Creating a Google application** of the **Android - Using the SDK** pdf, and place the `google-services.json` file in the `./android/app` folder.
+
+2. Add the following lines at the end of the `android/settings.gradle` file:
+
+   ```groovy
+   include ':selligent-react-native'
+   project(':selligent-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@selligent-marketing-cloud/selligent-react-native/android')
+   ```
+
+3. Add the following in the `android/build.gradle` file:
+
+   ```groovy
+   buildscript {
+       ...
+       dependencies {
+           ...
+           // Add the following:
+           classpath 'com.google.gms:google-services:4.3.3'
+       }
+   }
+
+   allprojects {
+       repositories {
+           ...
+           // Add the following:
+           flatDir {
+               dirs "$rootDir/../node_modules/@selligent-marketing-cloud/selligent-react-native/android/libs"
+           }
+
+           // Add the following:
+           maven {
+               url 'https://maven-repo.plotprojects.com'
+           }
+       }
+   }
+   ```
+
+4. Add the following in the `android/app/build.gradle` file:
+
+   ```groovy
+   // Add the following:
+   apply plugin: 'com.google.gms.google-services'
+   ```
+
+5. Add the following in the `android/app/src/../MainApplication.java` file:
+
+   ```java
+   // Add the following import statements:
+   import com.selligent.RNSelligent;
+   import com.selligent.RNSelligentPackage;
+   ...
+
+   public class MainApplication extends Application implements ReactApplication {
+       ...
+       @Override
+       public void onCreate() {
+           super.onCreate();
+           ...
+           // Add the following:
+           RNSelligent.configure(this);
+       }
+   }
+   ```
+
+</details>
+
+
 #### Change default push notification icons
 
 Add the following properties to the `selligent.json` file:
@@ -160,6 +235,9 @@ Add the following properties to the `selligent.json` file:
 
 ### iOS Specific installation
 
+<details>
+<summary>Without autolinking (RN <= 0.59)</summary>
+
 1. Copy the `node_modules/@selligent-marketing-cloud/selligent-react-native/ios/SelligentReactNative.xcodeproj` file to the **Xcode project**. Drop it under the `Libraries` Folder. This will link the module to the iOS project. (See the image in the next step)
 
 2. Drag and drop the `selligent.json` you created from the root folder to the Xcode project inside the `Copy Bundle Resources` in `Build phases` of your target:
@@ -168,9 +246,9 @@ Add the following properties to the `selligent.json` file:
 
    ![Add 'SelligentReactNative.xcodeproj' and 'selligent.json' file to 'Copy Bundle Resources'](/documentation/add_json_file.png)
 
-3. Drag and drop the `libSelligentReactNative.a` to your `Linked Frameworks and Libraries`:
+3. Drag and drop the `libRNSelligent.a` to your `Linked Frameworks and Libraries`:
 
-   ![Add 'libSelligentReactNative.a' file to your 'Linked Frameworks and Libraries'](/documentation/add_lib_file.png)
+   ![Add 'libRNSelligent.a' file to your 'Linked Frameworks and Libraries'](/documentation/add_lib_file.png)
 
 4. Add Selligent to `Header Search Paths` in `Build Settings` of your target:
 
@@ -187,7 +265,7 @@ Add the following properties to the `selligent.json` file:
    pod 'PlotPlugin', '3.2.0'
    ```
 
-6. Execute `pod install` in the `/ios` folder to install the `Podplugin` dependency
+6. Execute `pod install` in the `/ios` folder
 
 7. From now on open the `.xcworkspace` file to make changes in Xcode
 
@@ -197,6 +275,28 @@ Add the following properties to the `selligent.json` file:
    #import <RNSelligent.h>
    [RNSelligent configureWithLaunchOptions:launchOptions];
    ```
+
+</details>
+<br>
+<details open>
+<summary>With autolinking (RN > 0.60)</summary>
+
+1. Drag and drop the `selligent.json` you created from the root folder to the Xcode project inside the `Copy Bundle Resources` in `Build phases` of your target:
+
+   > _Note: do not check the "copy if needed" option to make sure you only have to manage one selligent.json file_
+
+2. Execute `pod install` in the `/ios` folder
+
+3. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.m`
+
+   ```objective-c
+   #import <RNSelligent.h>
+   [RNSelligent configureWithLaunchOptions:launchOptions];
+   ```
+
+</details>
+
+
 
 #### Push notifications
 
