@@ -52,10 +52,11 @@
 @interface SMManager (UserNotification)
 
 /*!
- *  Mandatory API, when building against iOS 10+ and using UserNotifications framework, to be included in userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler.
+ *  Mandatory API when used inside App in AppDelegate (but is optional for Notification Content Extension), when building against iOS 10+ and using UserNotifications framework, to be included in userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler.
  *  Handle and display remote notification.
  *
  *  @param response A UNNotificationResponse that contains information about the notification and the interaction the user has done with it. Provided by the delegate call
+ *  @discussion This method is mandatory when used in AppDelegate but is optional when implementing Notification content extension. When used in Notification Content Extension it  provides to the sdk the ability to process the action that should be triggered without opening the app (in this case don't forget to call the completionhandler with the desired UNNotificationContentExtensionResponseOption
  */
 - (void)didReceiveNotificationResponse:(UNNotificationResponse*_Nonnull)response;
 

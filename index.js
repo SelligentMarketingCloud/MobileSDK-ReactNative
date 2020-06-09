@@ -30,18 +30,7 @@ export default Object.assign(
 			return
 		},
 		// DataTransaction
-		sendDeviceInfo: function (successCallback, errorCallback, deviceInfo) {
-			// check if required options are valid
-			if (!SelligentHelpers.typeMatches(deviceInfo, 'string')) {
-				errorCallback(SelligentHelpers.wrongArgumentError('Expected a string.'))
-				return
-			}
 
-			// continue if options are valid
-			successCallback(SelligentHelpers.SUCCESS)
-			RNSelligent.sendDeviceInfo(deviceInfo)
-			return
-		},
 		// InAppMessage --> OS specific
 		// Location
 		enableGeolocation: function (successCallback, errorCallback, enabled) {

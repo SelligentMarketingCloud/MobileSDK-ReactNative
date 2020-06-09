@@ -48,6 +48,11 @@ RCT_EXPORT_MODULE(RNSelligent)
     return self;
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 + (void)configureWithLaunchOptions:(NSDictionary *)launchOptions {
     NSArray *selligentSettingsJSONPathComponents = @[[[NSBundle mainBundle] bundlePath], @"selligent.json"];
     NSString *selligentSettingsJSONPath = [NSString pathWithComponents:selligentSettingsJSONPathComponents];
@@ -111,17 +116,6 @@ RCT_EXPORT_METHOD(getVersionLib:(RCTResponseSenderBlock)callback) {
     callback(@[libraryVersion, [NSNull null]]);
 }
 
-RCT_EXPORT_METHOD(reloadSettings:(NSDictionary *)settings) {
-    ClientSettings *clientSettings = [ClientSettings fromDictionary:settings];
-    SMManagerSetting *managerSettings = [SMManagerSetting smManagerSettingsFrom:clientSettings];
-    [[SMManager sharedInstance] reloadSetting:managerSettings];
-}
-
-RCT_EXPORT_METHOD(sendDeviceInfo:(NSString *)externalId) {
-    SMDeviceInfos *deviceInfos = [SMDeviceInfos deviceInfosWithExternalId:externalId];
-    [[SMManager sharedInstance] sendDeviceInfo:deviceInfos];
-}
-
 RCT_EXPORT_METHOD(enableInAppMessages:(BOOL)enabled) {
     [[SMManager sharedInstance] enableInAppMessage:enabled];
 }
@@ -170,19 +164,15 @@ RCT_EXPORT_METHOD(enableGeolocation:(BOOL)enable) {
     }
 }
 
-RCT_EXPORT_METHOD(registerForRemoteNotification) {
-    [[SMManager sharedInstance] registerForRemoteNotification];
-}
-
 RCT_EXPORT_METHOD(forceRemoteNotificationBackgroundFetchResult:(nonnull NSNumber *)remoteNotificationBackgroundFetchResult) {
     self.requestedForcedRemoteNotificationBackgroundFetchResult = @([[EnumMapper sharedEnumMapper] uiBackgroundFetchResultForBackgroundFetchResult:remoteNotificationBackgroundFetchResult.integerValue]);
 }
 
 RCT_EXPORT_METHOD(enableNotifications:(BOOL)enable) {
     if (enable) {
-        [[SMManager sharedInstance] enableRemoteNotification];
+        [[SMManager sharedInstance] registerForRemoteNotification];
     } else {
-        [[SMManager sharedInstance] disableRemoteNotification];
+        [[SMManager sharedInstance] unregisterForRemoteNotification];
     }
 }
 
@@ -261,7 +251,7 @@ RCT_EXPORT_METHOD(subscribeToEvents) {
 }
 
 - (void)_sendBroadcastEventResultWithData:(NSDictionary *)data andType:(NSString *)type {
-    [self sendEventWithName:type body:data ?: [NSNull null]];
+    [self sendEventWithName:type body:@{@"data": data ?: [NSNull null], @"broadcastEventType": type}];
 }
 
 -(NSArray<NSString *> *)supportedEvents {

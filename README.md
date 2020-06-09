@@ -38,7 +38,26 @@ This module provides an API for the usage of the Selligent SDK in React Native.
    }
    ```
 
-   > _Note: The values should be relevant to your configuration. For a detailed overview of the settings see [Selligent.reloadSettings(successCallback, errorCallback, settings)](#selligentreloadsettingssuccesscallback-errorcallback-settings)._
+   Note: The values should be relevant to your configuration. There are parameters that can only be used on a specific platform, but can be passed to either and will be ignored when possible.
+
+**Detailed overview:**
+
+| Property                                    | Type                                                                                          | Required | Platform     |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------- | -------- | ------------ |
+| url                                         | string                                                                                        | Yes      | Both         |
+| clientId                                    | string                                                                                        | Yes      | Both         |
+| privateKey                                  | string                                                                                        | Yes      | Both         |
+| clearCacheIntervalValue                     | enum [Selligent.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)                   | No       | Both         |
+| configureLocationServices                   | boolean                                                                                       | No       | Both         |
+| inAppMessageRefreshType                     | enum [Selligent.InAppMessageRefreshType](#selligentinappmessagerefreshtype)                   | No       | Both         |
+| shouldClearBadge                            | boolean                                                                                       | No       | iOS Only     |
+| shouldDisplayRemoteNotification             | boolean                                                                                       | No       | iOS Only     |
+| shouldPerformBackgroundFetch                | boolean                                                                                       | No       | iOS Only     |
+| doNotListenToThePush                        | boolean                                                                                       | No       | Android Only |
+| doNotFetchTheToken                          | boolean                                                                                       | No       | Android Only |
+| loadCacheAsynchronously                     | boolean                                                                                       | No       | Android Only |
+| fullyQualifiedNotificationActivityClassName | string                                                                                        | No       | Android Only |
+| remoteMessageDisplayType                    | enum [Selligent.AndroidRemoteMessagesDisplayType](#selligentAndroidRemoteMessagesDisplayType) | No       | Android Only |
 
    ​
 
@@ -61,7 +80,7 @@ This module provides an API for the usage of the Selligent SDK in React Native.
        dependencies {
            ...
            // Add the following:
-           classpath 'com.google.gms:google-services:3.2.0'
+           classpath 'com.google.gms:google-services:4.3.3'
        }
    }
 
@@ -105,16 +124,16 @@ This module provides an API for the usage of the Selligent SDK in React Native.
    public class MainApplication extends Application implements ReactApplication {
 
        private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-           ...
-           @Override
-           protected List<ReactPackage> getPackages() {
-               return Arrays.<ReactPackage>asList(
-                       new MainReactPackage(),
-                       // Add the following:
-                       new RNSelligentPackage()
-               );
-           }
-           ...
+            ...
+            @Override
+            protected List<ReactPackage> getPackages() {
+          
+                List<ReactPackage> packages = new PackageList(this).getPackages();
+                // Add the following:
+                packages.add(new RNSelligentPackage());
+                return packages;
+            }
+            ...
        };
        ...
        @Override
@@ -153,18 +172,26 @@ Add the following properties to the `selligent.json` file:
 
    ![Add 'libSelligentReactNative.a' file to your 'Linked Frameworks and Libraries'](/documentation/add_lib_file.png)
 
-4. Create a podfile (if there isn't one already) in the `/ios` folder and add the following:
+4. Add Selligent to `Header Search Paths` in `Build Settings` of your target:
+
+    ```
+    $(SRCROOT)/../node_modules/@selligent-marketing-cloud/selligent-react-native/ios/
+    ```
+
+
+
+5. Create a podfile (if there isn't one already) in the `/ios` folder and add the following:
 
    ```ruby
    target 'REPLACEWITHYOURTARGETNAME'
-   pod 'PlotPlugin', '2.1.0'
+   pod 'PlotPlugin', '3.2.0'
    ```
 
-5. Execute `pod install` in the `/ios` folder to install the `Podplugin` dependency
+6. Execute `pod install` in the `/ios` folder to install the `Podplugin` dependency
 
-6. From now on open the `.xcworkspace` file to make changes in Xcode
+7. From now on open the `.xcworkspace` file to make changes in Xcode
 
-7. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.m`
+8. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.m`
 
    ```objective-c
    #import <RNSelligent.h>
@@ -240,10 +267,6 @@ Add the following properties to the `selligent.json` file:
 
 2. Follow section 4 **Configure the APNS (Apple Push Notification Service)**, of the **IOS - Using the SDK** pdf.
 
-#### Notification Extensions
-
-For notification extensions, follow section 6.9 **Notification Extensions**, of the **IOS - Using the SDK** pdf.
-
 #### Geolocation
 
 For geolocation services, follow section 6.5 **Geolocation**, of the **IOS - Using the SDK** pdf. You also need to configure several permissions described in 5.3.3 **Permission for geo location**.
@@ -275,7 +298,7 @@ You can catch the deeplinks 2 ways:
    2. Add the `Selligent` import statement:
 
       ```javascript
-      import Selligent from '@selligent-react-native' // Add Selligent import
+      import Selligent from '@selligent-marketing-cloud/selligent-react-native' // Add Selligent import
       ```
 
    3. Add a function to call the `Selligent.getVersionLib` function:
@@ -315,7 +338,7 @@ You can catch the deeplinks 2 ways:
       ```javascript
       import React, {Component} from 'react';
       import {Platform, StyleSheet, Text, View, Button} from 'react-native'; // Add Button import
-      import Selligent from '@selligent-react-native' // Add Selligent import
+      import Selligent from '@selligent-marketing-cloud/selligent-react-native' // Add Selligent import
 
       const instructions = Platform.select({
           ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -375,19 +398,12 @@ You can catch the deeplinks 2 ways:
 * [Methods](#methods)
   * [Selligent.getVersionLib(successCallback)](#selligentgetversionlibsuccesscallback)
     * [getVersionLib example](#getversionlib-example)
-  * [Selligent.reloadSettings(successCallback, errorCallback, settings)](#selligentreloadsettingssuccesscallback-errorcallback-settings)
-    * [reloadSettings example](#reloadsettings-example)
-  * [Selligent.sendDeviceInfo(successCallback, errorCallback, deviceInfo)](#selligentsenddeviceinfosuccesscallback-errorcallback-deviceinfo)
-    * [sendDeviceInfo example](#senddeviceinfo-example)
   * [Selligent.enableGeolocation(successCallback, errorCallback, enabled)](#selligentenablegeolocationsuccesscallback-errorcallback-enabled)
     * [enableGeolocation example](#enablegeolocation-example)
   * [Selligent.isGeolocationEnabled(successCallback)](#selligentisgeolocationenabledsuccesscallback)
     * [isGeolocationEnabled example](#isgeolocationenabled-example)
   * [Selligent.enableNotifications(successCallback, errorCallback, enabled)](#selligentenablenotificationssuccesscallback-errorcallback-enabled)
     * [enableNotifications example](#enablenotifications-example)
-    * [disableNotifications example](#disablenotifications-example)
-  * [Selligent.registerForRemoteNotification(successCallback)](#selligentregisterforremotenotificationsuccesscallback)
-    * [registerForRemoteNotification example](#registerforremotenotification-example)
   * [Selligent.displayLastReceivedRemotePushNotification(successCallback)](#selligentdisplaylastreceivedremotepushnotificationsuccesscallback)
     * [displayLastReceivedRemotePushNotification example](#displaylastreceivedremotepushnotification-example)
   * [Selligent.getLastRemotePushNotification(successCallback)](#selligentgetlastremotepushnotificationsuccesscallback)
@@ -469,81 +485,6 @@ Selligent.getVersionLib(
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### Selligent.reloadSettings(successCallback, errorCallback, settings)
-
-Can be used to reload and/or change the settings of the Selligent instance.
-
-The `settings` parameter is an object containing the web service URL, the Selligent client id and private key, the Google application id and any other optional parameters (see the table below for a detailed overview). There are parameters that can only be used on a specific platform, but can be passed to either and will be ignored when possible.
-
-**Detailed overview:**
-
-| Property                                    | Type                                                                                          | Required | Platform     |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------- | -------- | ------------ |
-| url                                         | string                                                                                        | Yes      | Both         |
-| clientId                                    | string                                                                                        | Yes      | Both         |
-| privateKey                                  | string                                                                                        | Yes      | Both         |
-| googleApplicationId                         | string                                                                                        | No       | Both         |
-| clearCacheIntervalValue                     | enum [SelligentConstants.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)                   | No       | Both         |
-| configureLocationServices                   | boolean                                                                                       | No       | Both         |
-| inAppMessageRefreshType                     | enum [SelligentConstants.InAppMessageRefreshType](#selligentinappmessagerefreshtype)                   | No       | Both         |
-| shouldClearBadge                            | boolean                                                                                       | No       | iOS Only     |
-| shouldDisplayRemoteNotification             | boolean                                                                                       | No       | iOS Only     |
-| shouldPerformBackgroundFetch                | boolean                                                                                       | No       | iOS Only     |
-| doNotListenToThePush                        | boolean                                                                                       | No       | Android Only |
-| doNotFetchTheToken                          | boolean                                                                                       | No       | Android Only |
-|  loadCacheAsynchronously                    | boolean                                                                                       | No       | Android Only |
-| fullyQualifiedNotificationActivityClassName | string                                                                                        | No       | Android Only |
-| remoteMessageDisplayType                    | enum [SelligentConstants.AndroidRemoteMessagesDisplayType](#selligentAndroidRemoteMessagesDisplayType) | No       | Android Only |
-
-##### reloadSettings example
-
-```javascript
-Selligent.reloadSettings(
-  (response) => { // success callback
-      ...
-  },
-  (error) => { // error callback
-      ...
-  },
-  {
-      url: "...",
-      clientId: "...",
-      privateKey: "...",
-      configureLocationServices: true,
-      shouldDisplayRemoteNotification: true, // will only be used on the iOS platform
-      remoteMessageDisplayType: Selligent.AndroidRemoteMessagesDisplayType.NOTIFICATION // will only be used on the Android platform
-  }
-);
-```
-
-<div align="right">
-    <b><a href="#api-reference">back to API ToC</a></b>
-</div>
-
-#### Selligent.sendDeviceInfo(successCallback, errorCallback, deviceInfo)
-
-Sends the device's information.
-
-The `deviceInfo` parameter is a string where the device's info should be placed.
-
-##### sendDeviceInfo example
-
-```javascript
-Selligent.sendDeviceInfo(
-    (response) => { // success callback
-        ...
-    },
-    (error) => { // error callback
-        ...
-    },
-    "device info here"
-);
-```
-
-<div align="right">
-    <b><a href="#api-reference">back to API ToC</a></b>
-</div>
-
 #### Selligent.enableGeolocation(successCallback, errorCallback, enabled)
 
 Enable or disable geolocation services.
@@ -590,7 +531,7 @@ Selligent.isGeolocationEnabled(
 
 #### Selligent.enableNotifications(successCallback, errorCallback, enabled)
 
-Enable or disable the usage of notifications with this method.
+Enable or disable the usage of notifications.
 
 The `enabled` parameter is a required boolean to enable or disable notifications.
 
@@ -605,39 +546,6 @@ Selligent.enableNotifications(
         ...
     },
     true
-);
-```
-
-##### disableNotifications example
-
-```javascript
-//also use the method 'enableNotifications' to disable notifications
-Selligent.enableNotifications(
-    (response) => { // success callback
-        ...
-    },
-    (error) => { // error callback
-        ...
-    },
-    false
-);
-```
-
-<div align="right">
-    <b><a href="#api-reference">back to API ToC</a></b>
-</div>
-
-#### Selligent.registerForRemoteNotification(successCallback)
-
-Register the device to receive notifications.
-
-##### registerForRemoteNotification example
-
-```javascript
-Selligent.registerForRemoteNotification(
-    (response) => { // success callback
-        ...
-    }
 );
 ```
 
@@ -695,6 +603,8 @@ Selligent.getLastRemotePushNotification(
 This method enables or disables the management of in-app messages.
 
 The `enabled` parameter can be a boolean or a constant of the [InAppMessageRefreshType](#selligentinappmessagerefreshtype) enum.
+
+_Note: on iOS the `enabled` parameter must be a boolean._
 
 In the case of a boolean set to `false`, the in-app messages will be disabled.
 When the passed `enabled` parameter is an [InAppMessageRefreshType](#selligentinappmessagerefreshtype) constant, the in-app messages will be enabled and the refresh frequency will be set to the provided value.

@@ -6,7 +6,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.facebook.react.bridge.ActivityEventListener;
@@ -95,28 +95,9 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     /* Our methods: */
 
     @ReactMethod
-    public void reloadSettings(ReadableMap settingsMap) {
-        final Settings settings = Settings.fromHashMap(settingsMap.toHashMap());
-        final SMSettings smSettings = SMSettingsFactory.getSMSettings(settings);
-        final Activity currentActivity = getCurrentActivity();
-
-        if (currentActivity != null) {
-            smManager.reload(smSettings, currentActivity);
-        }
-    }
-
-    @ReactMethod
     public void getVersionLib(Callback successCallback) {
         final String versionLib = SMManager.VERSION_LIB;
         successCallback.invoke(versionLib);
-    }
-
-    @ReactMethod
-    public void sendDeviceInfo(String externalId) {
-        final SMDeviceInfos smDeviceInfos = new SMDeviceInfos();
-        smDeviceInfos.ExternalId = externalId;
-
-        smManager.sendDeviceInfos(smDeviceInfos);
     }
 
     @ReactMethod

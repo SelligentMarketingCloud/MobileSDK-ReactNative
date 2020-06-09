@@ -94,6 +94,12 @@
  */
 @property (nonatomic) SMClearCache clearCacheIntervalValue;
 
+/**
+*  This value provides to the sdk  the app group id that you have previously defined in your apple developer portal.
+*  @discussion it is used to allow the sdk to share data between the main app and the notifications extensions (service and/or content)
+*  The deviceid provided by selligent mobile platform is stored encrypted in this container
+*/
+@property (nonatomic, strong) NSString *appGroupId;
 
 
 /*!

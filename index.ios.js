@@ -8,48 +8,7 @@ const RNSEventEmitter = new NativeEventEmitter(RNSelligent)
 
 export default {
 	// Basic SMManager
-	reloadSettings: function (successCallback, errorCallback, settings) {
-		// check if required options are valid
-		if (!SelligentHelpers.hasRequiredParameterAndMatchesType(settings, 'url', 'string') ||
-			!SelligentHelpers.hasRequiredParameterAndMatchesType(settings, 'clientId', 'string') ||
-			!SelligentHelpers.hasRequiredParameterAndMatchesType(settings, 'privateKey', 'string')) {
-			errorCallback(SelligentHelpers.wrongArgumentError('Expected an object with keys "url", "clientId" and "privateKey", and strings for values.'))
-			return
-		}
-		// check if optional options are valid
-		if (!SelligentHelpers.hasOptionalParameterAndMatchesType(settings, 'googleApplicationId', 'string')) {
-			errorCallback(SelligentHelpers.createTypeErrorMessage('googleApplicationId', settings.googleApplicationId, 'string'))
-			return
-		}
-		if (!SelligentHelpers.hasOptionalParameterAndMatchesType(settings, 'clearCacheIntervalValue', 'number', SelligentConstants.ClearCacheIntervalValue)) {
-			errorCallback(SelligentHelpers.createTypeErrorMessage('clearCacheIntervalValue', settings.clearCacheIntervalValue, 'number'))
-			return
-		}
-		if (!SelligentHelpers.hasOptionalParameterAndMatchesType(settings, 'configureLocationServices', 'boolean')) {
-			errorCallback(SelligentHelpers.createTypeErrorMessage('configureLocationServices', settings.configureLocationServices, 'boolean'))
-			return
-		}
-		if (!SelligentHelpers.hasOptionalParameterAndMatchesType(settings, 'inAppMessageRefreshType', 'number', SelligentConstants.InAppMessageRefreshType)) {
-			errorCallback(SelligentHelpers.createTypeErrorMessage('inAppMessageRefreshType', settings.inAppMessageRefreshType, 'number'))
-			return
-		}
-		if (!SelligentHelpers.hasOptionalParameterAndMatchesType(settings, 'shouldClearBadge', 'boolean')) {
-			errorCallback(SelligentHelpers.createTypeErrorMessage('shouldClearBadge', settings.shouldClearBadge, 'boolean'))
-			return
-		}
-		if (!SelligentHelpers.hasOptionalParameterAndMatchesType(settings, 'shouldDisplayRemoteNotification', 'boolean')) {
-			errorCallback(SelligentHelpers.createTypeErrorMessage('shouldDisplayRemoteNotification', settings.shouldDisplayRemoteNotification, 'boolean'))
-			return
-		}
-		if (!SelligentHelpers.hasOptionalParameterAndMatchesType(settings, 'shouldPerformBackgroundFetch', 'boolean')) {
-			errorCallback(SelligentHelpers.createTypeErrorMessage('shouldPerformBackgroundFetch', settings.shouldPerformBackgroundFetch, 'boolean'))
-			return
-		}
-		// continue if options are valid
-		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.reloadSettings(settings)
-		return
-	},
+
 	// InAppMessage
 	enableInAppMessages: function (successCallback, errorCallback, enabled) {
 		if (!SelligentHelpers.typeMatches(enabled, 'boolean')) {
@@ -113,11 +72,6 @@ export default {
 		RNSelligent.displayNotification(notificationId)
 		return
 	},
-	registerForRemoteNotification: function (successCallback) {
-		successCallback(SelligentHelpers.SUCCESS)
-			RNSelligent.registerForRemoteNotification()
-			return
-	},
 	registerRemoteNotificationFetchCompletionHandler: function (successCallback, eventCallback) {
 		RNSEventEmitter.addListener(SelligentConstants.RemoteNotification.FETCHED_REMOTE_NOTIFICATION, eventCallback);
 		successCallback(SelligentHelpers.SUCCESS)
@@ -134,7 +88,7 @@ export default {
 		return
 	},
 	// Broadcasts Events
-	subscribeToEvents: function (successCallback, eventCallback) {
+	subscribeToEvents: function (successCallback, errorCallback, eventCallback) {
 		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_IN_APP_MESSAGE, eventCallback);
 		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISPLAY_NOTIFICATION, eventCallback);
 		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISMISS_NOTIFICATION, eventCallback);
