@@ -365,7 +365,9 @@ Add the following properties to the `selligent.json` file:
    @end
    ````
 
-2. Follow section 4 **Configure the APNS (Apple Push Notification Service)**, of the **IOS - Using the SDK** pdf.
+2. Follow section 4 **Configure the APNS (Apple Push Notification Service)**, of the **IOS - Using the SDK** pdf.  
+
+3. If you want rich push notifications, follow section 6.9 **Notification Extensions** as well.
 
 #### Geolocation
 

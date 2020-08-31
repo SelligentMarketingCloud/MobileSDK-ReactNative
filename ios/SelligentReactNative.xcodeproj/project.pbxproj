@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60AA63AF2488F7250039A407 /* libSelligentMobile2.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AA63AE2488F7250039A407 /* libSelligentMobile2.3.1.a */; };
+		60AC04B324F69153007FB665 /* libSelligentMobile2.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AC04B224F69153007FB665 /* libSelligentMobile2.4.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNSelligent.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNSelligent.m */; };
 		E5002D3320F5002A00F68509 /* ClientSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3120F5002A00F68509 /* ClientSettings.m */; };
 		E5002D3620F5004200F68509 /* SMManagerSetting+ClientSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3520F5004200F68509 /* SMManagerSetting+ClientSettings.m */; };
@@ -32,7 +32,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNSelligent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSelligent.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		60AA63AE2488F7250039A407 /* libSelligentMobile2.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSelligentMobile2.3.1.a; sourceTree = "<group>"; };
+		60AC04B224F69153007FB665 /* libSelligentMobile2.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSelligentMobile2.4.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNSelligent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSelligent.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNSelligent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSelligent.m; sourceTree = "<group>"; };
 		E5002D3120F5002A00F68509 /* ClientSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSettings.m; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60AA63AF2488F7250039A407 /* libSelligentMobile2.3.1.a in Frameworks */,
+				60AC04B324F69153007FB665 /* libSelligentMobile2.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +128,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				60AA63AE2488F7250039A407 /* libSelligentMobile2.3.1.a */,
+				60AC04B224F69153007FB665 /* libSelligentMobile2.4.a */,
 				E58A8CAC20F32CB4005EA433 /* include */,
 				E5002D3720F500C200F68509 /* SelligentLogger.h */,
 				E5002D3820F500C200F68509 /* SelligentLogger.m */,
