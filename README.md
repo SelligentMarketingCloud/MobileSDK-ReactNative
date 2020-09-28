@@ -262,7 +262,7 @@ Add the following properties to the `selligent.json` file:
 
    ```ruby
    target 'REPLACEWITHYOURTARGETNAME'
-   pod 'PlotPlugin', '3.2.0'
+   pod 'PlotPlugin', '3.3.2'
    ```
 
 6. Execute `pod install` in the `/ios` folder
