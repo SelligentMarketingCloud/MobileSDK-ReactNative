@@ -50,6 +50,7 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 | clearCacheIntervalValue                     | enum [Selligent.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)                   | No       | Both         |
 | configureLocationServices                   | boolean                                                                                       | No       | Both         |
 | inAppMessageRefreshType                     | enum [Selligent.InAppMessageRefreshType](#selligentinappmessagerefreshtype)                   | No       | Both         |
+| appGroupId                                  | string                                                                                        | No       | iOS Only     |
 | shouldClearBadge                            | boolean                                                                                       | No       | iOS Only     |
 | shouldDisplayRemoteNotification             | boolean                                                                                       | No       | iOS Only     |
 | shouldPerformBackgroundFetch                | boolean                                                                                       | No       | iOS Only     |
@@ -367,7 +368,8 @@ Add the following properties to the `selligent.json` file:
 
 2. Follow section 4 **Configure the APNS (Apple Push Notification Service)**, of the **IOS - Using the SDK** pdf.  
 
-3. If you want rich push notifications, follow section 6.9 **Notification Extensions** as well.
+3. If you want rich push notifications, follow section 6.9 **Notification Extensions** as well.  
+Make sure you add your `appGroupId` to the `selligent.json`.
 
 #### Geolocation
 
