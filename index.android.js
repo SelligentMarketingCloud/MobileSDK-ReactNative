@@ -33,6 +33,7 @@ export default {
 		RNSelligent.displayMessage(messageId)
 		return
 	},
+
 	// Log
 	enableAndroidLogging: function (successCallback, errorCallback, enabled) {
 		if (!SelligentHelpers.typeMatches(enabled, 'boolean')) {

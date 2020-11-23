@@ -95,6 +95,7 @@
  *
  *  @param notificationSettings The user notification settings that are available to your app.
  *  @discussion This method confirms the type of notification the user would like to receive.
+ *  @deprecated Deprecated method - replaced by  didRegisterUserNotificationSettings;
  */
 - (void)didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings __deprecated;
 

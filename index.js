@@ -31,7 +31,44 @@ export default Object.assign(
 		},
 		// DataTransaction
 
-		// InAppMessage --> OS specific
+		// InAppMessage
+		getInAppMessages: function (successCallback) {
+			RNSelligent.getInAppMessages(successCallback)
+			return
+		},
+		setInAppMessageAsSeen: function (successCallback, errorCallback, messageId) {
+			// check if required options are valid
+			if (!SelligentHelpers.typeMatches(messageId, 'string')) {
+				errorCallback(SelligentHelpers.wrongArgumentError('Expected a string.'))
+				return
+			}
+			
+			// continue if options are valid
+			const _successCallback = () => {
+				successCallback(SelligentHelpers.SUCCESS)
+			}
+
+			RNSelligent.setInAppMessageAsSeen(messageId, _successCallback, errorCallback)
+			return
+		},
+		executeButtonAction: function (successCallback, errorCallback, buttonId, messageId) {
+			if (!SelligentHelpers.typeMatches(buttonId, 'string')) {
+				errorCallback(SelligentHelpers.wrongArgumentError('Expected buttonId to be a string.'))
+				return
+			}
+			if (!SelligentHelpers.typeMatches(messageId, 'string')) {
+				errorCallback(SelligentHelpers.wrongArgumentError('Expected messageId to be a string.'))
+				return
+			}
+
+			const _successCallback = () => {
+				successCallback(SelligentHelpers.SUCCESS)
+			}
+			
+			RNSelligent.executeButtonAction(buttonId, messageId, _successCallback, errorCallback)
+			return
+		},
+
 		// Location
 		enableGeolocation: function (successCallback, errorCallback, enabled) {
 			// check if required options are valid

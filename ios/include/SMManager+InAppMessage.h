@@ -7,6 +7,8 @@
 //
 
 #import "SMManager.h"
+#import "SMInAppMessage.h"
+#import "SMLink.h"
 
 @class SMManagerSettingIAM;
 
@@ -40,6 +42,11 @@
  *
  *  As IAM and remote-notification share the same format, they are both displayed using the same APIs.
  *  Please read the documentation in SMManager(RemoteNotification) to know how to display any kind of notification.
+ *
+ *  Since sdk v 2.5 you have the possibility to store the In App Message on your side and process them the way you want
+ *  In order to do that, once you are notified that In App Messages are available you can call getInAppMessages to receive a NSArray of SMInAppMessage
+ *  Once a SMInAppMessage has been displayed and has been seen by the user you need to call setInAppMessageAsSeen: to inform Selligent that the In App message has been opened
+ *  In case there is links in the In App Message and in case one of the link is triggered by user please call executeLinkAction:: to process teh action related to the link and inform Selligent that the link has been clicked
  *
  *  #Fetching modes :#
  *  IAM may be retrieved from two different modes corresponding to the application's state:
@@ -103,13 +110,26 @@
  */
 - (void)performIAMFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
+/*!
+  * @abstract This will return an array of In App Messages
+  * @discussion All the valid IAM will be retrieved even if they were already provided to the device
+  * @return returns an NSArray of SMInAppMessage
+  */
+- (NSArray*) getInAppMessages;
 
+/*!
+  * @abstract This method will mark an IAM as viewed, send the Open event to the server and update  SMInAppMessage object in cache with isViewed property set to  true
+  * @discussion The message will be provided again to the device if not expired with the isViewed property set to true
+  * @param inAppMessage an SMInAppMessage object
+  */
+- (void) setInAppMessageAsSeen:(SMInAppMessage*)inAppMessage;
 
-
-
-
-
-
-
+/*!
+  * @abstract This method must be called whenever a user has clicked on a link that you  manage to display
+  * @discussion This will allow the sdk to inform the services that a link has been clicked and to process the action associated with the link
+  * @param link a SMLink object
+  * @param inAppMessage  a SMInAppMessage object
+  */
+- (void) executeLinkAction:(SMLink*)link InAppMessage:(SMInAppMessage*)inAppMessage;
 
 @end

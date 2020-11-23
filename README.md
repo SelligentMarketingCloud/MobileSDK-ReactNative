@@ -514,6 +514,12 @@ You can catch the deeplinks 2 ways:
     * [getLastRemotePushNotification Example](#getlastremotepushnotification-example)
   * [Selligent.enableInAppMessages(successCallback, errorCallback, enabled)](#selligentenableinappmessagessuccesscallback-errorcallback-enabled)
     * [enableInAppMessages example](#enableinappmessages-example)
+  * [Selligent.getInAppMessages(successCallback)](#selligentgetinappmessagessuccesscallback)
+    * [getInAppMessages example](#getinappmessages-example)
+  * [Selligent.setInAppMessageAsSeen(successCallback, errorCallback, messageId)](#selligentsetinappmessageasseensuccesscallback-errorcallback-messageid)
+    * [setInAppMessageAsSeen example](#setinappmessageasseen-example)
+  * [Selligent.executeButtonAction(successCallback, errorCallback, buttonId, messageId)](#selligentexecutebuttonactionsuccesscallback-errorcallback-buttonid-messageid)
+    * [executeButtonAction example](#executeButtonAction-example)
   * [Selligent.sendEvent(successCallback, errorCallback, event)](#selligentsendeventsuccesscallback-errorcallback-event)
     * [sendEvent example](#sendevent-example)
   * [Selligent.subscribeToEvents(successCallback, errorCallback, eventCallback)](#selligentsubscribetoeventssuccesscallback-errorcallback-eventcallback)
@@ -736,6 +742,105 @@ Selligent.enableInAppMessages(
         ...
     },
     false
+);
+```
+
+<div align="right">
+    <b><a href="#api-reference">back to API ToC</a></b>
+</div>
+
+#### Selligent.getInAppMessages(successCallback)
+
+This method returns all the in app messages send to you.
+
+The response of the success callback is an array of objects which contain the in app message(s) information.
+
+**Detailed overview:**
+
+| Property           | Type                                                    | Description                                                       | Platform     |
+| ------------------ | ------------------------------------------------------- | ----------------------------------------------------------------- | ------------ |
+| id                 | string                                                  | Id of the in app message                                          | Both         |
+| title              | string                                                  | Title of the in app message                                       | Both         |
+| body               | string                                                  | Body of the in app message                                        | Both         |
+| creationDate       | number                                                  | Creation date of the in app message in unix time                  | Both         |
+| expirationDate     | number                                                  | Expiration date of the in app message in unix time                | Both         |
+| receptionDate      | number                                                  | Reception date of the in app message in unix time                 | Both         |
+| hasBeenSeen        | boolean                                                 | Indication if the in app message is seen                          | Both         | 
+| buttons            | array of objects                                        | Contains the buttons that are linked to the in app message        | Both         |
+
+<br />
+
+The `buttons` property is an array of button-objects which contain the information of a button linked to the in app message:
+
+<br />
+
+| Property           | Type                                                    | Description                                                       | Platform     |
+| ------------------ | ------------------------------------------------------- | ----------------------------------------------------------------- | ------------ |
+| id                 | string                                                  | Id of the button of the in app message                            | Both         |
+| label              | string                                                  | Label of the button of the in app message                         | Both         |
+| value              | string                                                  | Value of the button of the in app message                         | Both         |
+| type               | number                                                  | Type of the button of the in app message                          | Both         |
+| action             | number                                                  | Action of the button of the in app message                        | Android only |
+
+<br />
+
+##### getInAppMessages example
+
+```javascript
+// Get all in app messages
+Selligent.getInAppMessages(
+    (response) => { // success callback
+      ...
+    }
+);
+```
+
+<div align="right">
+    <b><a href="#api-reference">back to API ToC</a></b>
+</div>
+
+#### Selligent.setInAppMessageAsSeen(successCallback, errorCallback, messageId)
+
+Possibility to mark an in app message as seen.
+
+This method requires beside the callbacks another property to indicate the current in app message. To accomplish this behavior,&nbsp; `messageId` is required.
+
+##### setInAppMessageAsSeen example
+
+```javascript
+Selligent.setInAppMessageAsSeen(
+    (response) => { // success callback
+      ...
+    },
+    (error) => { // error callback
+      ...
+    },
+    "id-of-message"
+);
+```
+
+<div align="right">
+    <b><a href="#api-reference">back to API ToC</a></b>
+</div>
+
+#### Selligent.executeButtonAction(successCallback, errorCallback, buttonId, messageId)
+
+Execute the action linked to the button.
+
+This method requires beside the callbacks another property to execute the action behind the button of the in app message. To accomplish this behavior,&nbsp; `buttonId` and `messageId` are required.
+
+##### executeButtonAction example
+
+```javascript
+Selligent.executeButtonAction(
+    (response) => { // success callback
+      ...
+    },
+    (error) => { // error callback
+      ...
+    },
+    "id-of-button",
+    "id-of-message"
 );
 ```
 

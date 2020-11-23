@@ -6,9 +6,6 @@
 //  Copyright (c) 2015 Selligent. All rights reserved.
 //
 
-
-
-
 /*!
  *  Enumeration type for the log granularity
  */

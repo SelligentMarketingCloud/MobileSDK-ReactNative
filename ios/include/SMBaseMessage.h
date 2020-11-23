@@ -17,12 +17,32 @@
 /*!
  *  NSString instance providing the id of the message
  */
-@property (nonatomic) NSString     * idMessage;
+@property (nonatomic) NSString *idMessage;
+
+/*!
+ *  NSDate instance providing the creation date of the message
+ *  @deprecated Deprecated use receptionDate  instead
+ */
+@property (nonatomic) NSDate *dateCreation __deprecated __deprecated_msg("Use receptionDate instead");
+
+/*!
+ *  NSDate instance providing the reception date on sdk side of the message
+*/
+@property (nonatomic) NSDate *receptionDate;
+
+/*!
+ *  NSDate instance providing the expiration date of the message
+ */
+@property (nonatomic) NSDate   *expirationDate;
 
 /*!
  *  NSDate instance providing the creation date of the message
  */
-@property (nonatomic) NSDate       * dateCreation;
+@property (nonatomic) NSDate   *creationDate;
 
+/*!
+ *  bool instance infiorming if the message has already been displayed and viewed by user
+ */
+@property (nonatomic) bool    isViewed;
 
 @end

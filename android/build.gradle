@@ -15,7 +15,7 @@ apply plugin: 'maven'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "28.0.3"
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         minSdkVersion 16
@@ -43,9 +43,10 @@ dependencies {
     implementation 'com.plotprojects:plot-android:3.12.1'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
-    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+    implementation 'com.google.firebase:firebase-messaging:21.0.0'
     implementation 'androidx.work:work-runtime:2.4.0'
     implementation 'androidx.concurrent:concurrent-futures:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
 
 def configureReactNativePom(def pom) {
