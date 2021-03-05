@@ -259,7 +259,13 @@ Add the following properties to the `selligent.json` file:
 
 
 
-5. Create a podfile (if there isn't one already) in the `/ios` folder and add the following:
+4. Add Selligent to `Header Search Paths` in `Build Settings` of your target:
+
+    ```
+    $(SRCROOT)/../node_modules/@selligent-marketing-cloud/selligent-react-native/ios/
+    ```
+
+5. Create a `Podfile` (if there isn't one already) in the `/ios` folder and add the following:
 
    ```ruby
    target 'REPLACEWITHYOURTARGETNAME'
@@ -594,6 +600,7 @@ Selligent.getVersionLib(
 <div align="right">
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
+
 
 #### Selligent.enableGeolocation(successCallback, errorCallback, enabled)
 
