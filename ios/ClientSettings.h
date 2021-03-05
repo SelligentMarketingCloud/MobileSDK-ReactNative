@@ -7,6 +7,7 @@
 @property (nonatomic, strong, readonly) NSString *url;
 @property (nonatomic, strong, readonly) NSString *clientId;
 @property (nonatomic, strong, readonly) NSString *privateKey;
+@property (nonatomic, strong, readonly) NSString *appGroupId;
 @property (nonatomic, strong, readonly) NSNumber *shouldClearBadge;
 @property (nonatomic, strong, readonly) NSNumber *shouldDisplayRemoteNotification;
 @property (nonatomic, strong, readonly) NSNumber *configureLocationServices;

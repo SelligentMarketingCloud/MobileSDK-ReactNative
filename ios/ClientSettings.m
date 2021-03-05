@@ -7,6 +7,7 @@
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *privateKey;
+@property (nonatomic, strong) NSString *appGroupId;
 @property (nonatomic, strong) NSNumber *shouldClearBadge;
 @property (nonatomic, strong) NSNumber *shouldDisplayRemoteNotification;
 @property (nonatomic, strong) NSNumber *configureLocationServices;
@@ -22,6 +23,7 @@
     clientSettings.url = dictionary[@"url"];
     clientSettings.clientId = dictionary[@"clientId"];
     clientSettings.privateKey = dictionary[@"privateKey"];
+    clientSettings.appGroupId = dictionary[@"appGroupId"];
     clientSettings.shouldClearBadge = dictionary[@"shouldClearBadge"];
     clientSettings.shouldDisplayRemoteNotification = dictionary[@"shouldDisplayRemoteNotification"];
     clientSettings.configureLocationServices = dictionary[@"configureLocationServices"];

@@ -15,7 +15,7 @@ class Settings {
     private Boolean doNotFetchTheToken = false;
     private Boolean doNotListenToThePush = false;
     private Boolean loadCacheAsynchronously = false;
-    private Boolean configureLocationServices;
+    private Boolean configureLocationServices = false;
     private ClearCacheIntervalValue clearCacheIntervalValue;
     private InAppMessageRefreshType inAppMessageRefreshType;
     private RemoteMessageDisplayType remoteMessageDisplayType;

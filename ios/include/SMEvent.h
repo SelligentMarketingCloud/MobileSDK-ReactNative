@@ -36,7 +36,7 @@
  *  @param dict a Dictionary containing any kind of custom datas that must be stored and managed by platform
  *  @return a SMEvent object
  */
-+ (instancetype)eventWithDictionary:(NSDictionary*)dict;
++ (instancetype _Nonnull)eventWithDictionary:(NSDictionary* _Nullable)dict;
 
 /*!
  *  Allow to initialise a success block and/or a failure block that will be triggered after an event is sent to the platform
@@ -58,7 +58,7 @@
  *  @warning It is developer's responsability to make sure no strong retrain cycles are added to the completion-blocks.
  *  Make sure to read the following [Apple documentation.](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16)
  */
-- (void)applyBlockSuccess:(SMCompletionBlockSuccess)blockSuccess BlockFailure:(SMCompletionBlockFailure)blockFailure;
+- (void)applyBlockSuccess:(SMCompletionBlockSuccess _Nullable)blockSuccess BlockFailure:(SMCompletionBlockFailure _Nullable)blockFailure;
 
 @end
 

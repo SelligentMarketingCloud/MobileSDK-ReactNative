@@ -23,7 +23,7 @@
  *  @param mail the e-mail of the user
  *  @return a SMEventUserLogin object
  */
-+ (instancetype)eventWithEmail:(NSString*)mail;
++ (instancetype _Nonnull)eventWithEmail:(NSString*_Null_unspecified)mail;
 
 /*!
  *  Create a UserLogin event object that will be sent to selligent platform when user logged in
@@ -34,7 +34,14 @@
  *     example: [SMEventUserLogin eventWithEmail @"" Dictionary: @{@"userID": @"1234"}];
  *  @return a SMEventUserLogin object
  */
-+ (instancetype)eventWithEmail:(NSString*)mail Dictionary:(NSDictionary<NSString*,NSString*>*)dict;
++ (instancetype _Nonnull)eventWithEmail:(NSString*_Null_unspecified)mail Dictionary:(NSDictionary<NSString*,NSString*>*_Nullable)dict;
 
+/*!
+ *  Create a UserLogin event object that will be sent to platform
+ *  @param dict a Dictionary containing an alternate key/value field to search for the user
+ *     example: [SMEventUserLogin eventWithDictionary: @{@"userID": @"1234"}];
+ *  @return a SMEventUserLogin object
+ */
++ (instancetype _Nonnull)eventWithDictionary:(NSDictionary* _Nullable)dict;
 
 @end

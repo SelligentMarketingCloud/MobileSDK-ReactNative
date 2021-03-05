@@ -6,7 +6,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.facebook.react.bridge.ActivityEventListener;
@@ -18,7 +18,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableType;
+import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.google.gson.Gson;
@@ -27,11 +29,15 @@ import com.selligent.sdk.SMCallback;
 import com.selligent.sdk.SMDeviceInfos;
 import com.selligent.sdk.SMEvent;
 import com.selligent.sdk.SMForegroundGcmBroadcastReceiver;
+import com.selligent.sdk.SMInAppMessage;
+import com.selligent.sdk.SMInAppMessageReturn;
 import com.selligent.sdk.SMInAppRefreshType;
 import com.selligent.sdk.SMManager;
+import com.selligent.sdk.SMNotificationButton;
 import com.selligent.sdk.SMRemoteMessageDisplayType;
 import com.selligent.sdk.SMSettings;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RNSelligent extends ReactContextBaseJavaModule implements LifecycleEventListener, ActivityEventListener {
@@ -95,28 +101,9 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     /* Our methods: */
 
     @ReactMethod
-    public void reloadSettings(ReadableMap settingsMap) {
-        final Settings settings = Settings.fromHashMap(settingsMap.toHashMap());
-        final SMSettings smSettings = SMSettingsFactory.getSMSettings(settings);
-        final Activity currentActivity = getCurrentActivity();
-
-        if (currentActivity != null) {
-            smManager.reload(smSettings, currentActivity);
-        }
-    }
-
-    @ReactMethod
     public void getVersionLib(Callback successCallback) {
         final String versionLib = SMManager.VERSION_LIB;
         successCallback.invoke(versionLib);
-    }
-
-    @ReactMethod
-    public void sendDeviceInfo(String externalId) {
-        final SMDeviceInfos smDeviceInfos = new SMDeviceInfos();
-        smDeviceInfos.ExternalId = externalId;
-
-        smManager.sendDeviceInfos(smDeviceInfos);
     }
 
     @ReactMethod
@@ -157,6 +144,87 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
         if (currentActivity != null) {
             smManager.displayMessage(messageId, currentActivity);
         }
+    }
+
+    @ReactMethod
+    public void getInAppMessages(final Callback successCallback) {
+        smManager.getInAppMessages(new SMInAppMessageReturn() {
+            @Override
+            public void onRetrieve(ArrayList<SMInAppMessage> inAppMessages) {
+                WritableArray resultingMessagesArray = new WritableNativeArray();
+
+                for (SMInAppMessage message : inAppMessages) {
+                    WritableMap messageMap = new WritableNativeMap();
+
+                    messageMap.putString("id", message.id);
+                    messageMap.putString("title", message.title);
+                    messageMap.putString("body", message.getBody());
+                    messageMap.putDouble("creationDate", message.getCreationDate());
+                    messageMap.putDouble("expirationDate", message.getExpirationDate());
+                    messageMap.putDouble("receptionDate", message.getReceptionDate());
+                    messageMap.putBoolean("hasBeenSeen", message.hasBeenSeen());
+
+                    WritableArray buttonsArray = new WritableNativeArray();
+
+                    for(SMNotificationButton button : message.getButtons()) {
+                        WritableMap buttonMap = new WritableNativeMap();
+
+                        buttonMap.putString("id", button.id);
+                        buttonMap.putString("value", button.value);
+                        buttonMap.putString("label", button.label);
+                        buttonMap.putInt("action", button.action);
+                        buttonMap.putInt("type", button.type);
+
+                        buttonsArray.pushMap(buttonMap);
+                    }
+                    messageMap.putArray("buttons", buttonsArray);
+
+                    resultingMessagesArray.pushMap(messageMap);
+                }
+
+                successCallback.invoke(resultingMessagesArray);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void setInAppMessageAsSeen(final String messageId, final Callback successCallback, final Callback errorCallback) {
+        smManager.getInAppMessages(new SMInAppMessageReturn() {
+            @Override
+            public void onRetrieve(ArrayList<SMInAppMessage> inAppMessages) {
+                for(SMInAppMessage message : inAppMessages) {
+                    if(message.id.equals(messageId)) {
+                        smManager.setInAppMessageAsSeen(message);
+                        successCallback.invoke();
+                        return;
+                    }
+                }
+                errorCallback.invoke(String.format("No message with id %s found", messageId));
+            }
+        });
+    }
+
+    @ReactMethod
+    public void executeButtonAction(final String buttonId, final String messageId, final Callback successCallback, final Callback errorCallback) {
+        smManager.getInAppMessages(new SMInAppMessageReturn() {
+            @Override
+            public void onRetrieve(ArrayList<SMInAppMessage> inAppMessages) {
+                for(SMInAppMessage message : inAppMessages) {
+                    if(message.id.equals(messageId)) {
+                        for(SMNotificationButton button : message.getButtons()) {
+                            if(button.id.equals(buttonId)) {
+                                smManager.executeButtonAction(reactContext, button, message);
+                                successCallback.invoke();
+                                return;
+                            }
+                        }
+                        errorCallback.invoke("buttonId does not exist in message.");
+                        return;
+                    }
+                }
+                errorCallback.invoke(String.format("No message with id %s found", messageId));
+            }
+        });
     }
 
     @ReactMethod

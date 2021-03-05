@@ -48,6 +48,11 @@ RCT_EXPORT_MODULE(RNSelligent)
     return self;
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 + (void)configureWithLaunchOptions:(NSDictionary *)launchOptions {
     NSArray *selligentSettingsJSONPathComponents = @[[[NSBundle mainBundle] bundlePath], @"selligent.json"];
     NSString *selligentSettingsJSONPath = [NSString pathWithComponents:selligentSettingsJSONPathComponents];
@@ -111,19 +116,65 @@ RCT_EXPORT_METHOD(getVersionLib:(RCTResponseSenderBlock)callback) {
     callback(@[libraryVersion, [NSNull null]]);
 }
 
-RCT_EXPORT_METHOD(reloadSettings:(NSDictionary *)settings) {
-    ClientSettings *clientSettings = [ClientSettings fromDictionary:settings];
-    SMManagerSetting *managerSettings = [SMManagerSetting smManagerSettingsFrom:clientSettings];
-    [[SMManager sharedInstance] reloadSetting:managerSettings];
-}
-
-RCT_EXPORT_METHOD(sendDeviceInfo:(NSString *)externalId) {
-    SMDeviceInfos *deviceInfos = [SMDeviceInfos deviceInfosWithExternalId:externalId];
-    [[SMManager sharedInstance] sendDeviceInfo:deviceInfos];
-}
-
 RCT_EXPORT_METHOD(enableInAppMessages:(BOOL)enabled) {
     [[SMManager sharedInstance] enableInAppMessage:enabled];
+}
+
+RCT_EXPORT_METHOD(getInAppMessages:(RCTResponseSenderBlock)callback) {
+    NSArray *inAppMessages = [[SMManager sharedInstance] getInAppMessages];
+    NSMutableArray *mappedMessages = [NSMutableArray new];
+    for (SMInAppMessage *inAppMessage in inAppMessages) {
+        NSMutableArray *mappedLinks = [NSMutableArray new];
+        for (SMLink *link in [inAppMessage arrayIAMLinks]) {
+            [mappedLinks addObject: @{
+                @"id" : [link idButtonData],
+                @"label" : [link label],
+                @"value" : [link value],
+                @"type" : @([link type]),
+            }];
+        }
+        [mappedMessages addObject: @{
+            @"id" : [inAppMessage idMessage],
+            @"title" : [inAppMessage title],
+            @"body" : [inAppMessage body],
+            @"receptionDate" : [inAppMessage receptionDate] ? @([[inAppMessage receptionDate] timeIntervalSince1970]) : [NSNull null],
+            @"creationDate" : @([[inAppMessage creationDate] timeIntervalSince1970]),
+            @"expirationDate" : [inAppMessage expirationDate] ? @([[inAppMessage expirationDate] timeIntervalSince1970]) : [NSNull null],
+            @"hasBeenSeen" : @([inAppMessage isViewed]),
+            @"buttons" : mappedLinks
+        }];
+    }
+    callback(@[mappedMessages ?: [NSNull null], [NSNull null]]);
+}
+
+RCT_EXPORT_METHOD(setInAppMessageAsSeen:(NSString *) messageId successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+    NSArray *inAppMessages = [[SMManager sharedInstance] getInAppMessages];
+    for (SMInAppMessage *inAppMessage in inAppMessages) {
+        if ([[inAppMessage idMessage] isEqualToString: messageId]) {
+            [[SMManager sharedInstance] setInAppMessageAsSeen: inAppMessage];
+            successCallback(@[[NSNull null]]);
+            return;
+        }
+    }
+    errorCallback(@[[NSString stringWithFormat:@"No message with id %@ found", messageId]]);
+}
+
+RCT_EXPORT_METHOD(executeButtonAction: (NSString *)buttonId messageId:(NSString *) messageId successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock) errorCallback) {
+    NSArray *inAppMessages = [[SMManager sharedInstance] getInAppMessages];
+    for (SMInAppMessage *inAppMessage in inAppMessages) {
+        if ([[inAppMessage idMessage] isEqualToString: messageId]) {
+            for (SMLink *link in [inAppMessage arrayIAMLinks]) {
+                if ([[link idButtonData] isEqualToString: buttonId]) {
+                    [[SMManager sharedInstance] executeLinkAction: link InAppMessage:inAppMessage];
+                    successCallback(@[[NSNull null]]);
+                    return;
+                }
+            }
+            errorCallback(@[@"buttonId does not exist in message."]);
+            return;
+        }
+    }
+    errorCallback(@[[NSString stringWithFormat:@"No message with id %@ found", messageId]]);
 }
 
 RCT_EXPORT_METHOD(applyLogLevel:(NSArray<NSNumber *> *)logLevels) {
@@ -257,7 +308,7 @@ RCT_EXPORT_METHOD(subscribeToEvents) {
 }
 
 - (void)_sendBroadcastEventResultWithData:(NSDictionary *)data andType:(NSString *)type {
-    [self sendEventWithName:type body:data ?: [NSNull null]];
+    [self sendEventWithName:type body:@{@"data": data ?: [NSNull null], @"broadcastEventType": type}];
 }
 
 -(NSArray<NSString *> *)supportedEvents {
