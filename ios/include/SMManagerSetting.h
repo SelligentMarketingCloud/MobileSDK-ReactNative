@@ -76,7 +76,7 @@
  *  This value tells how often the SDK's cache mechanism should clear itself.
  *  @discussion Internally, each notification-messages has a life-span.
  *  Clearing the cache stands for deleting notification-messages with an expired life-span.
- *  In other words, only old notification-messages are deletes from the cache. 
+ *  In other words, only old notification-messages are deletesd from the cache.
  *  More recent ones are kept in memory until their life-span expires and a new clearCache is called.
  *  By default, this value is set to kSMClearCache_Auto.
  *  Configuring this value highly depends of how frequently the application will query specific notification-messages.
@@ -91,6 +91,7 @@
  *
  *  @warning As soon as IAM-service is enabled, the SDK will consider kSMClearCache_Weekly as being the default value. Except if you explicitly overide the property.
  *  In 99% of the cases, you should not overide this property as the SDK is smart enough to handle the cache mechanism by itself.
+ *  Keep also in mind that this behavior  is only applicable for notification and IAM that doesn't have a n expiration date set
  */
 @property (nonatomic) SMClearCache clearCacheIntervalValue;
 

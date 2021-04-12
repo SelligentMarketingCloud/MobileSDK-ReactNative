@@ -25,6 +25,12 @@ export default Object.assign(
 		// Check if the Selligent Module is loaded
 		_selligentLoaded: Boolean(RNSelligent),
 		// Basic SMManager
+
+		/**
+		 * Returns the version of the underlying Selligent SDK.
+		 * 
+		 * @param {function} successCallback Callback function on success.
+		 */
 		getVersionLib: function (successCallback) {
 			RNSelligent.getVersionLib(successCallback)
 			return
@@ -32,17 +38,31 @@ export default Object.assign(
 		// DataTransaction
 
 		// InAppMessage
+
+		/**
+		 * Get in app messages.
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 */
 		getInAppMessages: function (successCallback) {
 			RNSelligent.getInAppMessages(successCallback)
 			return
 		},
+
+		/**
+		 * Set in app message as seen
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {string} messageId Message id to identify the message which has been seen.
+		 */
 		setInAppMessageAsSeen: function (successCallback, errorCallback, messageId) {
 			// check if required options are valid
 			if (!SelligentHelpers.typeMatches(messageId, 'string')) {
 				errorCallback(SelligentHelpers.wrongArgumentError('Expected a string.'))
 				return
 			}
-			
+
 			// continue if options are valid
 			const _successCallback = () => {
 				successCallback(SelligentHelpers.SUCCESS)
@@ -51,6 +71,15 @@ export default Object.assign(
 			RNSelligent.setInAppMessageAsSeen(messageId, _successCallback, errorCallback)
 			return
 		},
+
+		/**
+		 * Execute action on button
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {string} buttonId Button id to identify the message.
+		 * @param {string} messageId Message id to identify the message.
+		 */
 		executeButtonAction: function (successCallback, errorCallback, buttonId, messageId) {
 			if (!SelligentHelpers.typeMatches(buttonId, 'string')) {
 				errorCallback(SelligentHelpers.wrongArgumentError('Expected buttonId to be a string.'))
@@ -64,12 +93,20 @@ export default Object.assign(
 			const _successCallback = () => {
 				successCallback(SelligentHelpers.SUCCESS)
 			}
-			
+
 			RNSelligent.executeButtonAction(buttonId, messageId, _successCallback, errorCallback)
 			return
 		},
 
 		// Location
+
+		/**
+		 * Enable/disable geolocation.
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {boolean} enabled Boolean to enable or disable geolocation.
+		 */
 		enableGeolocation: function (successCallback, errorCallback, enabled) {
 			// check if required options are valid
 			if (!SelligentHelpers.typeMatches(enabled, 'boolean')) {
@@ -82,11 +119,25 @@ export default Object.assign(
 			RNSelligent.enableGeolocation(enabled)
 			return
 		},
+
+		/**
+		 * Check if geolocation is enabled or disabled.
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 */
 		isGeolocationEnabled: function (successCallback) {
 			RNSelligent.isGeolocationEnabled(successCallback)
 			return
 		},
 		// Event
+
+		/**
+		 * Send event.
+		 *
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {object} event Event to send.
+		 */
 		sendEvent: function (successCallback, errorCallback, event) {
 			// check if required options are valid
 			if (!SelligentHelpers.hasRequiredParameterAndMatchesType(event, 'type', 'number')) {
@@ -124,6 +175,14 @@ export default Object.assign(
 			return
 		},
 		// Remote Notifications
+
+		/**
+		 * Enable/disable notification.
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {boolean} enabled Boolean to enable or disable notifications.
+		 */
 		enableNotifications: function (successCallback, errorCallback, enabled) {
 			// check if required options are valid
 			if (!SelligentHelpers.typeMatches(enabled, 'boolean')) {
@@ -136,11 +195,23 @@ export default Object.assign(
 			RNSelligent.enableNotifications(enabled)
 			return
 		},
+
+		/**
+		 * Display the last received remote push notification
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 */
 		displayLastReceivedRemotePushNotification: function (successCallback) {
 			successCallback(SelligentHelpers.SUCCESS)
 			RNSelligent.displayLastReceivedRemotePushNotification()
 			return
 		},
+
+		/**
+		 * Get last remote push notification
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 */
 		getLastRemotePushNotification: function (successCallback) {
 			RNSelligent.getLastRemotePushNotification(successCallback)
 			return

@@ -18,7 +18,11 @@
 + (void)_configureManagerSettings:(SMManagerSetting *)settings withClientSettings:(ClientSettings *)clientSettings {
     NSString *appGroupId = clientSettings.appGroupId;
     if(appGroupId) {
-        settings.appGroupId = [NSString stringWithFormat:@"group.%@", appGroupId];
+        if([appGroupId hasPrefix:@"group."]) {
+            settings.appGroupId = appGroupId;
+        } else {
+            settings.appGroupId = [NSString stringWithFormat:@"group.%@", appGroupId];
+        }
     }
     
     NSNumber *shouldClearBadgeAsNumber = clientSettings.shouldClearBadge;

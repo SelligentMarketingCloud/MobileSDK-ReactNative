@@ -119,10 +119,24 @@
 
 /*!
   * @abstract This method will mark an IAM as viewed, send the Open event to the server and update  SMInAppMessage object in cache with isViewed property set to  true
-  * @discussion The message will be provided again to the device if not expired with the isViewed property set to true
+  * @discussion The message will  still be provided to the device with the flag isViewed set to true
   * @param inAppMessage an SMInAppMessage object
   */
 - (void) setInAppMessageAsSeen:(SMInAppMessage*)inAppMessage;
+
+/*!
+  * @abstract This method will mark an IAM as unseen
+  * @discussion The message will be  provided to the device with the flag isViewed set to false
+  * @param inAppMessage an SMInAppMessage object
+  */
+- (void) setInAppMessageAsUnseen:(SMInAppMessage*)inAppMessage;
+
+/*!
+  * @abstract This method will mark an IAM as deleted
+  * @discussion The message will be not be provided again to the device once deleted
+  * @param inAppMessage an SMInAppMessage object
+  */
+- (void) setInAppMessageAsDeleted:(SMInAppMessage*)inAppMessage;
 
 /*!
   * @abstract This method must be called whenever a user has clicked on a link that you  manage to display

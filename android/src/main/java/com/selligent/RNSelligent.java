@@ -166,17 +166,22 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
                     WritableArray buttonsArray = new WritableNativeArray();
 
-                    for(SMNotificationButton button : message.getButtons()) {
-                        WritableMap buttonMap = new WritableNativeMap();
+                    SMNotificationButton buttons[] = message.getButtons();
 
-                        buttonMap.putString("id", button.id);
-                        buttonMap.putString("value", button.value);
-                        buttonMap.putString("label", button.label);
-                        buttonMap.putInt("action", button.action);
-                        buttonMap.putInt("type", button.type);
+                    if(buttons != null) {
+                        for(SMNotificationButton button : buttons) {
+                            WritableMap buttonMap = new WritableNativeMap();
 
-                        buttonsArray.pushMap(buttonMap);
+                            buttonMap.putString("id", button.id);
+                            buttonMap.putString("value", button.value);
+                            buttonMap.putString("label", button.label);
+                            buttonMap.putInt("action", button.action);
+                            buttonMap.putInt("type", button.type);
+
+                            buttonsArray.pushMap(buttonMap);
+                        }
                     }
+
                     messageMap.putArray("buttons", buttonsArray);
 
                     resultingMessagesArray.pushMap(messageMap);

@@ -45,4 +45,8 @@
  */
 @property (nonatomic) bool    isViewed;
 
+/*!
+ *  bool instance infiorming if the message has  been deleted
+ */
+@property (nonatomic) bool    isDeleted;
 @end

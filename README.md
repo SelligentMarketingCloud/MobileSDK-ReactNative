@@ -375,7 +375,8 @@ Add the following properties to the `selligent.json` file:
 2. Follow section 4 **Configure the APNS (Apple Push Notification Service)**, of the **IOS - Using the SDK** pdf.  
 
 3. If you want rich push notifications, follow section 6.9 **Notification Extensions** as well.  
-Make sure you add your `appGroupId` to the `selligent.json`.
+   Make sure you add your `appGroupId` to the `selligent.json`.
+   > **IMPORTANT!** make sure your `appGroupId` has the following structure or it will not work: `group.{MAIN_APP_BUNDLE_ID}`
 
 #### Geolocation
 
