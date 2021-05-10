@@ -7,6 +7,8 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 * Android
 * iOS
 
+> _**Important:** Since version 2.4.0 of this module we require your app to use the Android Gradle Plugin version 4.1.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native._
+
 ## ToC
 
 * [Installation](#installation)

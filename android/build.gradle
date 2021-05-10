@@ -23,8 +23,20 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     lintOptions {
         abortOnError false
+    }
+
+    onVariantProperties { variant ->
+        def selligentSettings = loadSelligentSettings()
+        if (selligentSettings != null) {
+            try {
+                variant.addBuildConfigField("SELLIGENT_SETTINGS", "\"" + selligentSettings + "\"", "Selligent settings")
+            } catch (MissingMethodException ignored) {
+                throw new Exception("Selligent requires Android Gradle plugin version 4.1.0 or higher.")
+            }
+        }
     }
 }
 
@@ -129,18 +141,4 @@ def loadSelligentSettings() {
     }
 
     return resultingSettings
-}
-
-tasks.whenTaskAdded { task ->
-    task.doFirst() {
-        android.libraryVariants.all { variant ->
-            if (task.name.toLowerCase() == "pre${variant.name}build") {
-                def selligentSettings = loadSelligentSettings()
-                if (selligentSettings != null) {
-                    variant.buildConfigField "String", "SELLIGENT_SETTINGS", "\"$selligentSettings\""
-                }
-            }
-
-        }
-    }
 }
