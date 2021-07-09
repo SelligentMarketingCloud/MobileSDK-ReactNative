@@ -36,15 +36,23 @@ extern NSString* kSMNotification_Event_DidReceiveRemoteNotification;
 /**
  *  NSString representing a notification name you can listen to.
  *  An NSNotification with this name is broadcasted shortly after receiving InApp messages
- *  Primary-application may use this notification to manage the received InApp messages */
+ *  Primary-application may use this notification to manage the received InApp messages
+ */
 extern NSString* kSMNotification_Event_DidReceiveInAppMessage;
 
 /**
  *  NSString representing a notification name you can listen to.
  *  An NSNotification with this name is broadcasted shortly after receiving InApp content
- *  Primary-application may use this notification to manage the received InApp content */
+ *  Primary-application may use this notification to manage the received InApp content
+ */
 extern NSString* kSMNotification_Event_DidReceiveInAppContent;
 
+/**
+ *  NSString representing a notification name you can listen to.
+ *  An NSNotification with this name is broadcasted shortly after receiving device id from mobile platform
+ *  Primary-application may use this notification to manage the received device id
+ */
+extern NSString* kSMNotification_Event_DidReceiveDeviceId;
 
 
 /**
@@ -71,3 +79,9 @@ extern NSString* kSMNotification_Data_InAppMessage;
  *  Use the key kSMNotification_Data_InAppContent to retrieve an NSDictionary instance with an array of  in app contents categories as key and number of in app contents for the category as value
  */
 extern NSString* kSMNotification_Data_InAppContent;
+
+/**
+ *  NSString representing a key to retrieve a string  inside NSNotification
+ *  Use the key kSMNotification_Data_DeviceId to retrieve an NString instance with device id value
+ */
+extern NSString* kSMNotification_Data_DeviceId;

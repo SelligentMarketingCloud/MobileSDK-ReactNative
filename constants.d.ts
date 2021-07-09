@@ -14,6 +14,17 @@ export namespace InAppMessageRefreshType {
   const DAY = 13;
 }
 
+export namespace InAppMessageType {
+  const UNKNOWN: -2;
+  const HIDDEN: -1;
+  const ALERT: 0;
+  const HTML: 1;
+  const URL: 2;
+  const IMAGE: 3;
+  const MAP: 4;
+  const PASSBOOK: 5;
+}
+
 export namespace AndroidRemoteMessagesDisplayType {
   const AUTOMATIC = 20;
   const NONE = 21;
@@ -77,6 +88,7 @@ export namespace BroadcastEventType {
   const WILL_DISPLAY_NOTIFICATION = "WillDisplayNotification";
   const WILL_DISMISS_NOTIFICATION = "WillDismissNotification";
   const RECEIVED_GCM_TOKEN = "ReceivedGCMToken";
+  const RECEIVED_DEVICE_ID = "ReceivedDeviceId";
   const RECEIVED_REMOTE_NOTIFICATION = "ReceivedRemoteNotification";
 }
 

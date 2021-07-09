@@ -22,6 +22,7 @@ export function sendEvent(
   errorCallback: Function,
   event: any
 ): void;
+export function getDeviceId(successCallback: Function): void;
 export function enableNotifications(
   successCallback: Function,
   errorCallback: Function,
@@ -42,12 +43,6 @@ export function enableiOSLogging(
   successCallback: Function,
   errorCallback: Function,
   logLevels: any[]
-): void;
-export function currentAuthorisationStatus(successCallback: Function): void;
-export function requestLocationAuthorisation(
-  successCallback: Function,
-  errorCallback: Function,
-  iOSLocationAuthorisationType: any
 ): void;
 export function displayNotification(
   successCallback: Function,
@@ -96,6 +91,16 @@ export function setNotificationLargeIcon(
   successCallback: Function,
   errorCallback: Function,
   iconName: string
+): void;
+export function setNotificationIconColor(
+  successCallback: Function,
+  errorCallback: Function,
+  color: string
+): void;
+export function setNotificationActivity(
+  successCallback: Function,
+  errorCallback: Function,
+  activityName: string
 ): void;
 export function getGCMToken(successCallback: Function): void;
 export function getRemoteMessagesDisplayType(successCallback: Function): void;

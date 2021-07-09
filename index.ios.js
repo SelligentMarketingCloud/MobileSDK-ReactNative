@@ -62,35 +62,6 @@ export default {
 		RNSelligent.applyLogLevel(logLevels)
 		return
 	},
-	// Location
-
-	/**
-	 * Get Current AuthorisationStatus.
-	 *  
-	 * @param {function} successCallback Callback passing iOSLocationAuthorisationStatus.
-	 */
-	currentAuthorisationStatus: function (successCallback) {
-		RNSelligent.currentAuthorisationStatus(successCallback)
-		return
-	},
-
-	/**
-	 * Request Location Authorisation.
-	 *  
-	 * @param {function} successCallback Callback function on success.
-	 * @param {function} errorCallback Callback function on error.
-	 * @param {iOSLocationAuthorisationType} iOSLocationAuthorisationType Requested authorisation type.
-	 */
-	requestLocationAuthorisation: function (successCallback, errorCallback, iOSLocationAuthorisationType) {
-		if (!SelligentHelpers.constantIsValid(SelligentConstants.iOSLocationAuthorisationType, iOSLocationAuthorisationType)) {
-			errorCallback(SelligentHelpers.createTypeErrorMessage('iOSLocationAuthorisationType', iOSLocationAuthorisationType, 'number'))
-			return
-		}
-
-		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.requestLocationAuthorisation(iOSLocationAuthorisationType)
-		return
-	},
 	// Remote Notification
 
 	/**

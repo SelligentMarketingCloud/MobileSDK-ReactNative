@@ -25,6 +25,11 @@
         }
     }
     
+    NSNumber *shouldAddInAppMessageFromPushToInAppMessageList = clientSettings.shouldAddInAppMessageFromPushToInAppMessageList;
+    if(shouldAddInAppMessageFromPushToInAppMessageList) {
+        settings.shouldAddInAppMessageFromPushToInAppMessageList = shouldAddInAppMessageFromPushToInAppMessageList.boolValue;
+    }
+    
     NSNumber *shouldClearBadgeAsNumber = clientSettings.shouldClearBadge;
     if(shouldClearBadgeAsNumber) {
         settings.shouldClearBadge = shouldClearBadgeAsNumber.boolValue;

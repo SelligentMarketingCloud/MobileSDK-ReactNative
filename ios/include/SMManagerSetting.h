@@ -12,7 +12,6 @@
 
 @class SMManagerSettingIAM;
 @class SMManagerSettingIAC;
-@class SMManagerSettingLocation;
 
 
 /**
@@ -68,9 +67,19 @@
  *  Should you want to prevent that behaviour, you can set this property to FALSE before starting the library.
  *  Default value is set to TRUE.
  *  @warning This property does not have an impact when app is open from a notification selected by user in the notification center or when [SMManager(RemoteNotification) displayNotificationID:] or  [SMManager(RemoteNotification) displayLastReceivedRemotePushNotification] are called.
- *   Once you set this value to TRUE, the application becomes responsable about displaying the remote-notification. (Make sure to read the header file of SMManagerSetting before doing so).
+ *  Once you set this value to TRUE, the application becomes responsable about displaying the remote-notification. (Make sure to read the header file of SMManagerSetting before doing so).
  */
 @property (nonatomic) BOOL shouldDisplayRemoteNotification;
+
+
+/**
+ *  Used to add the inapp message associated to a remote notification to the inapp message list
+ *  @discussion Once a new remote-notification is received, if it contains in the payload  datas for an inapp message, this setting will add the inapp message to the in app messages list . You will need to listen to  kSMNotification_Event_DidReceiveInAppMessage NSNotification  to be informed  that an inapp message is available and you can then retrieve it with [SMManager(InAppMessages) getInAppMessages]  helper method and use in an inbox for example
+ *  by default the in app message will be displayed if you wish to display it by yourself you will need to provide a class by calling [SMManager(InAppMessage) inAppMessageDelegate:] . This class will conform to SMManagerInAppMessageDelegate protocol and implement [SMManagerInAppMessageDelegate displayInAppMessage:] method
+ *  Default value is set to FALSE
+ */
+@property (nonatomic) BOOL shouldAddInAppMessageFromPushToInAppMessageList;
+
 
 /**
  *  This value tells how often the SDK's cache mechanism should clear itself.
@@ -142,10 +151,11 @@
 
 /**
  *  @discussion This call is optional. It is not needed to successfully start the SDK.
- *  However, it is the first step to enable Location service.
- *  It is the first step to inform the sdk that geo location services are going to be used by the 
+ *  This call is useless if the sdk version is not the one associated to the plotproject framework
+ *  However in teh case you are using the sdk version associated to plotproject framework, it is the first step to enable Location service.
+ *  It is the first step to inform the sdk that geo location services are going to be used by the
  *
- *  @warning To use location service you will need to have PlotProject.framework in your app.
+ *  @warning To use location service you will mandatory need to have PlotProject.framework in your app and the correct version of the selligent sdk library
  */
 - (void)configureLocationService;
 

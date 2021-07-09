@@ -37,7 +37,8 @@
 /**
  *  The current version of the library
  */
-@property (nonatomic) NSString *_Nonnull versionLib ;
+@property (strong, nonatomic) NSString *_Nonnull versionLib ;
+
 
 /*!
  * Singleton for SellMobileSDK Class which allow to access public SellMobileSDK methods and properties
@@ -74,5 +75,10 @@
 - (void)reloadSetting:(SMManagerSetting* _Null_unspecified)setting;
 
 
+/*!
+ *  Device id  used by the sdk
+ *  @discussion NSString
+ */
+- (NSString*_Nullable)deviceID;
 
  @end

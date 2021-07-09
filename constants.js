@@ -34,6 +34,20 @@ var SelligentConstants = {
 	},
 	/**
 	 * @description
+	 * Defines the in-app messages type.
+	 */
+	 InAppMessageType: {
+		UNKNOWN: -2,
+		HIDDEN: -1,
+		ALERT: 0,
+		HTML: 1,
+		URL: 2,
+		IMAGE: 3,
+		MAP: 4,
+		PASSBOOK: 5,
+	},
+	/**
+	 * @description
 	 * Defines if and how remote messages can be displayed on Android.
 	 */
 	AndroidRemoteMessagesDisplayType: {
@@ -159,6 +173,8 @@ var SelligentConstants = {
 		WILL_DISPLAY_NOTIFICATION: "WillDisplayNotification",
 		/** A notification will be dismissed */
 		WILL_DISMISS_NOTIFICATION: "WillDismissNotification",
+		/** A device id has been received */
+		RECEIVED_DEVICE_ID: "ReceivedDeviceId"
 	},
 	/**
 	 * @description

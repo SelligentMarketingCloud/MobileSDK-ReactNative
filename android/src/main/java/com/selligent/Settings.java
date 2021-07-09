@@ -12,6 +12,8 @@ class Settings {
     private String activityName;
     private String notificationSmallIcon;
     private String notificationLargeIcon;
+    private String notificationIconColor;
+    private boolean addInAppMessageFromPushToInAppMessageList = false;
     private Boolean doNotFetchTheToken = false;
     private Boolean doNotListenToThePush = false;
     private Boolean loadCacheAsynchronously = false;
@@ -50,11 +52,17 @@ class Settings {
         return notificationLargeIcon;
     }
 
+    public String getNotificationIconColor() {
+        return notificationIconColor;
+    }
+
     public Boolean getConfigureLocationServices() {
         return configureLocationServices;
     }
 
     public Boolean getDoNotListenToThePush() { return doNotListenToThePush; }
+
+    public Boolean getAddInAppMessageFromPushToInAppMessageList() { return addInAppMessageFromPushToInAppMessageList; }
 
     public Boolean getDoNotFetchTheToken() { return doNotFetchTheToken; }
 
@@ -93,6 +101,14 @@ class Settings {
 
         if (settingsHashMap.containsKey("notificationLargeIcon")) {
             settings.notificationLargeIcon = (String) settingsHashMap.get("notificationLargeIcon");
+        }
+
+        if(settingsHashMap.containsKey("notificationIconColor")) {
+            settings.notificationIconColor = (String) settingsHashMap.get("notificationIconColor");
+        }
+
+        if (settingsHashMap.containsKey("addInAppMessageFromPushToInAppMessageList")) {
+            settings.addInAppMessageFromPushToInAppMessageList = (Boolean) settingsHashMap.get("addInAppMessageFromPushToInAppMessageList");
         }
 
         if (settingsHashMap.containsKey("doNotFetchTheToken")) {

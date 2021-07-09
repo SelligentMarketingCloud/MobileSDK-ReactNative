@@ -125,6 +125,48 @@ export default {
 	},
 
 	/**
+	 * Set the color for the icon for notifications on Android.
+	 *
+	 * @param {function} successCallback Callback function on success.
+	 * @param {function} errorCallback Callback function on error.
+	 * @param {string} color The color for the notification.
+	 */
+	setNotificationIconColor: function (successCallback, errorCallback, color) {
+		if (!SelligentHelpers.typeMatches(color, 'string') || color.length === 0) {
+			errorCallback(SelligentHelpers.wrongArgumentError('Expected a string (not empty).'))
+			return
+		}
+
+		const _successCallback = () => {
+			successCallback(SelligentHelpers.SUCCESS)
+		}
+
+		RNSelligent.setNotificationIconColor(color, _successCallback, errorCallback)
+		return
+	},
+
+	/**
+	 * Set the notification activity on Android.
+	 *
+	 * @param {function} successCallback Callback function on success.
+	 * @param {function} errorCallback Callback function on error.
+	 * @param {string} activityName The name of the activity.
+	 */
+	 setNotificationActivity: function (successCallback, errorCallback, activityName) {
+		if (!SelligentHelpers.typeMatches(activityName, 'string') || activityName.length === 0) {
+			errorCallback(SelligentHelpers.wrongArgumentError('Expected a string (not empty).'))
+			return
+		}
+
+		const _successCallback = () => {
+			successCallback(SelligentHelpers.SUCCESS)
+		}
+
+		RNSelligent.setNotificationActivity(activityName, _successCallback, errorCallback)
+		return
+	},
+
+	/**
 	 * Get GCM Token
 	 *
 	 * @param {function} successCallback Callback function on success.

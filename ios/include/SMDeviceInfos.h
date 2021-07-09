@@ -18,19 +18,19 @@
  *  @discussion NSString
  *  By default, it is an empty string
  */
-@property (nonatomic) NSString *externalId;
+@property (nonatomic) NSString* _Nullable externalId;
 
 /*!
  *  Create a generic deviceinfos object
  *  @return a SMDeviceInfos object
  */
-+ (instancetype)defaultDeviceInfos;
++ (instancetype _Nullable )defaultDeviceInfos;
 
 /*!
  *  Create a deviceinfos object with an external id property already set with the value provided
  *  @param externalId a string containing the id you want to provide to the back-end
  *  @return a SMDeviceInfos object
  */
-+ (instancetype)deviceInfosWithExternalId:(NSString*) externalId;
++ (instancetype _Nullable )deviceInfosWithExternalId:(NSString*_Nullable) externalId;
 
 @end

@@ -12,10 +12,13 @@
 #import "SMNSNotification.h"
 #import "SMLink.h"
 #import "SMNotificationButtonData.h"
+#import "SMNotificationAnnotationData.h"
 
 #import "SMManagerSetting.h"
 #import "SMManagerSettingIAM.h"
 #import "SMManagerSettingIAC.h"
+
+#import "SMManager+Location.h"
 
 #import "SMManager+DataTransaction.h"
 #import "SMManager+RemoteNotification.h"
@@ -25,8 +28,9 @@
 #import "SMManager+SilentPush.h"
 #import "SMManager+SMEvent.h"
 #import "SMManager+Log.h"
-#import "SMManager+Location.h"
 #import "SMManager+StyleOptions.h"
+
+#import "SMManagerInAppMessageDelegate.h"
 
 #import "SMInAppContentImageViewController.h"
 #import "SMInAppContentURLViewController.h"

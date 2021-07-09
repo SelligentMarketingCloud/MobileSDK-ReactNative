@@ -25,6 +25,7 @@ static NSString * const BROADCAST_BUTTON_CLICKED = @"ButtonClicked";
 static NSString * const BROADCAST_RECEIVED_IN_APP_MSG = @"ReceivedInAppMessage";
 static NSString * const BROADCAST_WILL_DISPLAY_NOTIFICATION = @"WillDisplayNotification";
 static NSString * const BROADCAST_WILL_DISMISS_NOTIFICATION = @"WillDismissNotification";
+static NSString * const BROADCAST_RECEIVED_DEVICE_ID = @"ReceivedDeviceId";
 static NSString * const BROADCAST_RECEIVED_REMOTENOTIFICATION = @"ReceivedRemoteNotification";
 static NSString * const FETCHED_REMOTE_NOTIFICATION = @"FetchedRemoteNotification";
 
@@ -141,7 +142,8 @@ RCT_EXPORT_METHOD(getInAppMessages:(RCTResponseSenderBlock)callback) {
             @"creationDate" : @([[inAppMessage creationDate] timeIntervalSince1970]),
             @"expirationDate" : [inAppMessage expirationDate] ? @([[inAppMessage expirationDate] timeIntervalSince1970]) : [NSNull null],
             @"hasBeenSeen" : @([inAppMessage isViewed]),
-            @"buttons" : mappedLinks
+            @"buttons" : mappedLinks,
+            @"type" : @([inAppMessage iamType])
         }];
     }
     callback(@[mappedMessages ?: [NSNull null], [NSNull null]]);
@@ -187,17 +189,6 @@ RCT_EXPORT_METHOD(applyLogLevel:(NSArray<NSNumber *> *)logLevels) {
     [[SMManager sharedInstance] applyLogLevel:(SMLogLevel) requestedBitShiftedLogLevel];
 }
 
-RCT_EXPORT_METHOD(currentAuthorisationStatus:(RCTResponseSenderBlock)callback) {
-    SMLocationAuthorisationStatus smLocationAuthStatus = [[SMManager sharedInstance] currentAuthorisationStatus];
-    LocationAuthorisationStatus status = [[EnumMapper sharedEnumMapper] locationAuthorisationStatusForSMLocationAuthorisationStatus:smLocationAuthStatus];
-    callback(@[@(status), [NSNull null]]);
-}
-
-RCT_EXPORT_METHOD(requestLocationAuthorisation:(NSInteger)authorisationType) {
-    SMLocationAuthorisationType smAuthType = [[EnumMapper sharedEnumMapper] smLocationAuthorisationTypeForLocationAuthorisationType:authorisationType];
-    [[SMManager sharedInstance] requestLocationAuthorisation:smAuthType];
-}
-
 RCT_EXPORT_METHOD(isGeolocationEnabled:(RCTResponseSenderBlock)callback) {
     BOOL enabled = [[SMManager sharedInstance] isGeoLocationEnabled];
     callback(@[@(enabled), [NSNull null]]);
@@ -223,6 +214,11 @@ RCT_EXPORT_METHOD(enableGeolocation:(BOOL)enable) {
 
 RCT_EXPORT_METHOD(forceRemoteNotificationBackgroundFetchResult:(nonnull NSNumber *)remoteNotificationBackgroundFetchResult) {
     self.requestedForcedRemoteNotificationBackgroundFetchResult = @([[EnumMapper sharedEnumMapper] uiBackgroundFetchResultForBackgroundFetchResult:remoteNotificationBackgroundFetchResult.integerValue]);
+}
+
+RCT_EXPORT_METHOD(getDeviceId:(RCTResponseSenderBlock)callback) {
+    NSString *deviceId = [[SMManager sharedInstance] deviceID];
+    callback(@[deviceId, [NSNull null]]);
 }
 
 RCT_EXPORT_METHOD(enableNotifications:(BOOL)enable) {
@@ -258,6 +254,7 @@ RCT_EXPORT_METHOD(subscribeToEvents) {
     [self _addOrReplaceObserverForSelector:@selector(_handleButtonClicked:) forName:kSMNotification_Event_ButtonClicked];
     [self _addOrReplaceObserverForSelector:@selector(_handleWillDisplayNotification:) forName:kSMNotification_Event_WillDisplayNotification];
     [self _addOrReplaceObserverForSelector:@selector(_handleWillDismissNotification:) forName:kSMNotification_Event_WillDismissNotification];
+    [self _addOrReplaceObserverForSelector:@selector(_handleReceivedDeviceId:) forName:kSMNotification_Data_DeviceId];
     [self _addOrReplaceObserverForSelector:@selector(_handleDidReceiveRemoteNotification:) forName:kSMNotification_Event_DidReceiveRemoteNotification];
 }
 
@@ -305,6 +302,15 @@ RCT_EXPORT_METHOD(subscribeToEvents) {
 
 - (void)_handleWillDismissNotification:(NSNotification*)notification {
     [self _sendBroadcastEventResultWithData:nil andType:BROADCAST_WILL_DISMISS_NOTIFICATION];
+}
+
+- (void)_handleReceivedDeviceId:(NSNotification*)notification {
+    NSDictionary *dict = [notification userInfo];
+    NSString *deviceId = [dict objectForKey:kSMNotification_Data_DeviceId];
+    NSDictionary *data = @{
+        @"deviceId": deviceId
+    };
+    [self _sendBroadcastEventResultWithData:data andType:BROADCAST_RECEIVED_DEVICE_ID];
 }
 
 - (void)_sendBroadcastEventResultWithData:(NSDictionary *)data andType:(NSString *)type {

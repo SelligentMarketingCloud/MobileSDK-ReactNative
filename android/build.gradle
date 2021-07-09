@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:4.1.3'
     }
 }
 
@@ -29,7 +29,7 @@ android {
     }
 
     onVariantProperties { variant ->
-        def selligentSettings = loadSelligentSettings()
+        def selligentSettings = loadSelligentSettings(variant)
         if (selligentSettings != null) {
             try {
                 variant.addBuildConfigField("SELLIGENT_SETTINGS", "\"" + selligentSettings + "\"", "Selligent settings")
@@ -124,16 +124,26 @@ afterEvaluate { project ->
     }
 }
 
-def loadSelligentSettings() {
-    def selligentFileName = "selligent.json"
-    println("Reading Selligent settings from: $selligentFileName")
+def loadSelligentSettings(variant) {
+    println(variant.flavorName)
 
-    File f = new File("$project.rootDir/../$selligentFileName");
+    def defaultSelligentFileName = "selligent.json"
+    File defaultFile = new File("$project.rootDir/../$defaultSelligentFileName")
+
+    def variantSelligentFileName = "selligent.${variant.getName()}.json"
+    File variantFile = new File("$project.rootDir/../$variantSelligentFileName");
 
     def resultingSettings = null
-    if (f.exists()) {
+    if (variantFile.exists()) {
+        println("Reading Selligent properties for variant ${variant.getName()} using $variantSelligentFileName")
         resultingSettings = ""
-        f.eachLine { String line ->
+        variantFile.eachLine { String line ->
+            resultingSettings += line.replace("\"", "\\\"").replaceAll("\\s", "")
+        }
+    } else if (defaultFile.exists()) {
+        println("Reading Selligent properties from default $defaultSelligentFileName (no variant specific $variantSelligentFileName was found)")
+        resultingSettings = ""
+        defaultFile.eachLine { String line ->
             resultingSettings += line.replace("\"", "\\\"").replaceAll("\\s", "")
         }
     } else {

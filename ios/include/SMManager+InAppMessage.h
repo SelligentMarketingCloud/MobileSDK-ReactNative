@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 Selligent. All rights reserved.
 //
 
+#import <WebKit/WebKit.h>
+
 #import "SMManager.h"
 #import "SMInAppMessage.h"
 #import "SMLink.h"
+#import "SMManagerInAppMessageDelegate.h"
 
 @class SMManagerSettingIAM;
-
+@class WKNavigationDelegate;
 
 /*!
  *  #Introduction :#
@@ -85,8 +88,6 @@
  */
 @interface SMManager (InAppMessage)
 
-
-
 /**
  *  Call this API in order to enable / disable the IAM-service according to your application's need.
  *  @param shouldEnable TRUE will enable IAM. FALSE will disable it.
@@ -111,39 +112,60 @@
 - (void)performIAMFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 /*!
-  * @abstract This will return an array of In App Messages
-  * @discussion All the valid IAM will be retrieved even if they were already provided to the device
-  * @return returns an NSArray of SMInAppMessage
-  */
+ * @abstract This will return an array of In App Messages
+ * @discussion All the valid IAM will be retrieved even if they were already provided to the device
+ * @return returns an NSArray of SMInAppMessage
+ */
 - (NSArray*) getInAppMessages;
 
 /*!
-  * @abstract This method will mark an IAM as viewed, send the Open event to the server and update  SMInAppMessage object in cache with isViewed property set to  true
-  * @discussion The message will  still be provided to the device with the flag isViewed set to true
-  * @param inAppMessage an SMInAppMessage object
-  */
+ * @abstract This method will mark an IAM as viewed, send the Open event to the server and update  SMInAppMessage object in cache with isViewed property set to  true
+ * @discussion The message will  still be provided to the device with the flag isViewed set to true
+ * @param inAppMessage an SMInAppMessage object
+ */
 - (void) setInAppMessageAsSeen:(SMInAppMessage*)inAppMessage;
 
 /*!
-  * @abstract This method will mark an IAM as unseen
-  * @discussion The message will be  provided to the device with the flag isViewed set to false
-  * @param inAppMessage an SMInAppMessage object
-  */
+ * @abstract This method will mark an IAM as unseen
+ * @discussion The message will be  provided to the device with the flag isViewed set to false
+ * @param inAppMessage an SMInAppMessage object
+ */
 - (void) setInAppMessageAsUnseen:(SMInAppMessage*)inAppMessage;
 
 /*!
-  * @abstract This method will mark an IAM as deleted
-  * @discussion The message will be not be provided again to the device once deleted
-  * @param inAppMessage an SMInAppMessage object
-  */
+ * @abstract This method will mark an IAM as deleted
+ * @discussion The message will be not be provided again to the device once deleted
+ * @param inAppMessage an SMInAppMessage object
+ */
 - (void) setInAppMessageAsDeleted:(SMInAppMessage*)inAppMessage;
 
 /*!
-  * @abstract This method must be called whenever a user has clicked on a link that you  manage to display
-  * @discussion This will allow the sdk to inform the services that a link has been clicked and to process the action associated with the link
-  * @param link a SMLink object
-  * @param inAppMessage  a SMInAppMessage object
-  */
+ * @abstract This method must be called whenever a user has clicked on a link that you  manage to display
+ * @discussion This will allow the sdk to inform the services that a link has been clicked and to process the action associated with the link
+ * @param link a SMLink object
+ * @param inAppMessage  a SMInAppMessage object
+ */
 - (void) executeLinkAction:(SMLink*)link InAppMessage:(SMInAppMessage*)inAppMessage;
 
+/**
+ *  @abstract This method will allow you to provide an instance of a class to the sdk . This class will implement the WKNavigationDelegate methods
+ *  In this case when the sdk displays an In App Message in a WKWebView you will  for example be able to process the linked click on the app side by implementing  decidePolicyForNavigationAction on the provided class
+ *  @param delegate  an object implementing WKNavigationDelegate methods
+ */
+- (void) inAppMessageWKNavigationDelegate:(id <WKNavigationDelegate>) delegate;
+
+
+/*!
+ * @abstract This method must be called whenever a user has clicked on a link that you  manage to display
+ * @discussion This will allow the sdk to inform the services that a link has been clicked and to process the action associated with the link
+ */
+- (void)removeViewController;
+
+/**
+ *  Used to let the app display the inapp message linked to a remote notification
+ *  @abstract this setting will allow you to  manage on app side the display of the inapp message linked to a push remote notification
+ *  In order to display it in your side the delegate object should implement [SMManagerInAppMessageDelegate displayInAppMessage:] method it will provide tha app with a SMInAppMessage object
+ *  @param delegate  an object implementing SMManagerInAppMessageDelegate  methods
+ */
+- (void) inAppMessageDelegate:(id <SMManagerInAppMessageDelegate>) delegate;
 @end

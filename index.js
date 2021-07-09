@@ -174,6 +174,17 @@ export default Object.assign(
 			RNSelligent.sendEvent(event, successCallback, errorCallback)
 			return
 		},
+		// Device Id
+		/**
+		 * Returns the device id.
+		 * 
+		 * @param {function} successCallback Callback function on success.
+		 */
+		 getDeviceId: function (successCallback) {
+			RNSelligent.getDeviceId(successCallback)
+			return
+		},
+
 		// Remote Notifications
 
 		/**
