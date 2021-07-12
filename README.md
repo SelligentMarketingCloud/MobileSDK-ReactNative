@@ -376,7 +376,7 @@ Add the following properties to the `selligent.json` file:
    @end
    ````
 
-2. Follow section 4 **Configure the APNS (Apple Push Notification Service)**, of the **IOS - Using the SDK** pdf.  
+2. Follow section [**Create an APNS Key**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#apns_key), of the native documentation.  
 
 3. If you want rich push notifications, follow section 6.9 **Notification Extensions** as well.  
    Make sure you add your `appGroupId` to the `selligent.json`.
@@ -384,7 +384,7 @@ Add the following properties to the `selligent.json` file:
 
 #### Geolocation
 
-For geolocation services, follow section 6.5 **Geolocation**, of the **IOS - Using the SDK** pdf. You also need to configure several permissions described in 5.3.3 **Permission for geo location**.
+For geolocation services, follow section [**Geolocation**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#geolocation), of the native documentation. You also need to configure several permissions described [**here**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#permission-for-geolocation).
 
 #### Deeplinking
 You can catch the deeplinks 2 ways:
