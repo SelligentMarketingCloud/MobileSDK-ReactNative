@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SMInAppMessage.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
+/**
+ *  This protocol will help you intercept the inapp messages and allow you to display them your own way or store them somewhere to be shown later.
+ */
 @protocol SMManagerInAppMessageDelegate <NSObject>
 @optional
 
@@ -18,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @abstract Invoked when an inapp message linked to a remote notification is received by sdk.
  * @param inAppMessage The inAppMessage object containing all necessary datas for you to display content of the message
  */
-- (void)displayInAppMessage:(SMInAppMessage*)inAppMessage;
+- (void) displayInAppMessage:(SMInAppMessage*_Nonnull)inAppMessage;
 
 @end
-
-NS_ASSUME_NONNULL_END

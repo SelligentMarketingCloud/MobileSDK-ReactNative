@@ -6,9 +6,8 @@
 //  Copyright © 2016 Selligent. All rights reserved.
 //
 
-
 /*!
- *  #SMDisplayMode :#
+ *
  */
 typedef NS_ENUM(NSInteger, SMDisplayMode) {
     /*!

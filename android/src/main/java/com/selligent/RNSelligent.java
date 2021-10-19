@@ -67,7 +67,6 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     public static void configure(Application application) {
         try {
-            SMManager.DEBUG = true;
             final HashMap<String, Object> settingsHashMap = new Gson().fromJson(
                     BuildConfig.SELLIGENT_SETTINGS, new TypeToken<HashMap<String, Object>>() {}.getType()
             );

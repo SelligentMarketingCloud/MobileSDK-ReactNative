@@ -11,46 +11,46 @@
 #import "SMInAppContentType.h"
 #import "SMDisplayMode.h"
 
-/*!
- *  #SMInAppContentMessage :#
- */
 @interface SMInAppContentMessage : SMBaseMessage
 
 /*!
  *  NSString instance providing the title of the message
  */
-@property (nonatomic) NSString * title;
+@property (readonly, nonatomic) NSString *_Nullable title;
 
 /*!
  *  NSString instance providing the content of the message
  */
-@property (nonatomic) NSString * body;
+@property (readonly, nonatomic) NSString *_Nullable body;
 
 /*!
  *  NSString instance providing the category of the message
  */
-@property (nonatomic) NSString * category;
+@property (readonly, nonatomic) NSString *_Nullable category;
 
 /*!
  *  SMInAppContentType instance providing the in app content type of the message
+ *  @see SMInAppContentType
  */
-@property (nonatomic) SMInAppContentType  iacType;
+@property (readonly, nonatomic) SMInAppContentType iacType;
 
 /*!
  *  NSDate instance providing the expiration date of the message
- *  @deprecated Deprecated use expirationDate on SMBaseMessage instead
+ *  
+ *  @warning Deprecated - use expirationDate on SMBaseMessage instead
  */
-@property (nonatomic) NSDate   * contentExpiration __deprecated __deprecated_msg("Use expirationDate instead.");
+@property (readonly, nonatomic) NSDate *_Nullable contentExpiration __deprecated __deprecated_msg("Use expirationDate instead.");
 
 /*!
  *  NSDate instance providing the creation date of the message
- *  @deprecated Deprecated use creationDate on SMBaseMessage instead
+ *
+ *  @warning Deprecated - use creationDate on SMBaseMessage instead
  */
-@property (nonatomic) NSDate   * contentCreation __deprecated __deprecated_msg("Use creationDate instead.");
+@property (readonly, nonatomic) NSDate *_Nullable contentCreation __deprecated __deprecated_msg("Use creationDate instead.");
 
 /*!
  *  NSArray of SMLink objects
  */
-@property (nonatomic) NSArray  * arrayIACLinks;
+@property (readonly, nonatomic) NSArray *_Nullable arrayIACLinks;
 
 @end

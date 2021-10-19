@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 /**
  *  This Class is provided as a root Class and should not be used.
  */
@@ -17,7 +16,6 @@
 /*!
  *  NSString instance providing a brief description of the message
  */
-@property(nonatomic, strong) NSString *messageSM;
-
+@property(readonly, nonatomic) NSString *_Nullable messageSM;
 
 @end

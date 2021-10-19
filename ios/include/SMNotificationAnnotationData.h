@@ -8,30 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
-/*!
- *
- *  #SMNotificationAnnotationData :#
- */
 @interface SMNotificationAnnotationData : NSObject
 
 /*!
  *  NSString instance providing the title of the annotation
  */
-@property (nonatomic, strong) NSString *titleAnnotation;
+@property (readonly, nonatomic) NSString *_Nullable titleAnnotation;
 
 /*!
  *  NSString instance providing the description of the annotation
  */
-@property (nonatomic, strong) NSString *descriptionAnnotation;
+@property (readonly, nonatomic) NSString *_Nullable descriptionAnnotation;
 
 /*!
  *  NSString instance providing the latitude of the annotation
  */
-@property (nonatomic) float latitude;
+@property (readonly, nonatomic) float latitude;
 
 /*!
  *  NSString instance providing the longitude of the message
  */
-@property (nonatomic) float longitude;
+@property (readonly, nonatomic) float longitude;
 
 @end

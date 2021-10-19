@@ -1,12 +1,14 @@
 #import <UIKit/UIKit.h>
 #import "LogLevel.h"
 #import "InAppMessageRefreshType.h"
+#import "RemoteMessageDisplayType.h"
 #import "LocationAuthorisationStatus.h"
 #import "LocationAuthorisationType.h"
 #import "ClearCacheInterval.h"
 #import "SMLog.h"
 #import "SMClearCache.h"
 #import "SMInAppRefreshType.h"
+#import "SMRemoteMessageDisplayType.h"
 #import "BackgroundFetchResult.h"
 #import "SMNotificationButtonType.h"
 #import "NotificationButtonType.h"
@@ -22,6 +24,8 @@
 
 - (SMInAppRefreshType)smInAppRefreshTypeForInAppMessageRefreshType:(InAppMessageRefreshType)inAppMessageRefreshType;
 - (InAppMessageRefreshType)inAppMessageRefreshTypeForSMInAppRefreshType:(SMInAppRefreshType)smInAppRefreshType;
+
+- (SMRemoteMessageDisplayType)smRemoteMessageDisplayTypeForRemoteMessageDisplayType: (RemoteMessageDisplayType)remoteMessageDisplayType;
 
 - (UIBackgroundFetchResult)uiBackgroundFetchResultForBackgroundFetchResult:(BackgroundFetchResult)backgroundFetchResult;
 - (BackgroundFetchResult)backgroundFetchResultForUIBackgroundFetchResult:(UIBackgroundFetchResult)uiBackgroundFetchResult;

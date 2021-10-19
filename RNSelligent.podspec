@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m}"
   s.requires_arc = true
 
-  s.vendored_libraries = "ios/libSelligentMobile2.6.1.a"
-  s.libraries = "SelligentMobile2.6.1"
+  s.vendored_libraries = "ios/libSelligentMobile2.7.a"
+  s.libraries = "SelligentMobile2.7"
 
   s.dependency "React"
   s.dependency 'PlotPlugin'

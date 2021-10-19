@@ -1,4 +1,5 @@
 #import "SMManagerSetting+ClientSettings.h"
+#import "SMManagerSetting+Location.h"
 #import "SMManagerSettingIAM.h"
 #import "ClientSettings.h"
 #import "EnumMapper.h"
@@ -35,18 +36,23 @@
         settings.shouldClearBadge = shouldClearBadgeAsNumber.boolValue;
     }
     
+    if(clientSettings.configureLocationServices.boolValue) {
+        [settings configureLocationService];
+    }
+    
     NSNumber *shouldDisplayRemoteNotificationAsNumber = clientSettings.shouldDisplayRemoteNotification;
     if(shouldDisplayRemoteNotificationAsNumber) {
         settings.shouldDisplayRemoteNotification = shouldDisplayRemoteNotificationAsNumber.boolValue;
     }
     
-    if(clientSettings.configureLocationServices.boolValue) {
-        [settings configureLocationService];
-    }
-    
     NSNumber *clearCacheIntervalValueAsNumber = clientSettings.clearCacheIntervalValue;
     if(clearCacheIntervalValueAsNumber) {
         settings.clearCacheIntervalValue = [[EnumMapper sharedEnumMapper] smClearCacheForClearCacheInterval:clearCacheIntervalValueAsNumber.integerValue]; //((SMClearCache) );
+    }
+    
+    NSNumber *remoteMessageDisplayType = clientSettings.remoteMessageDisplayType;
+    if(remoteMessageDisplayType) {
+        settings.remoteMessageDisplayType = [[EnumMapper sharedEnumMapper] smRemoteMessageDisplayTypeForRemoteMessageDisplayType:remoteMessageDisplayType.integerValue];
     }
 }
 

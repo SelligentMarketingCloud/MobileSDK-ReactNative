@@ -111,6 +111,18 @@ export default {
 		RNSelligent.forceRemoteNotificationBackgroundFetchResult(iOSBackgroundFetchResult)
 		return
 	},
+
+	/**
+	 * Register for Provisional Push Notifications.
+	 *  
+	 * @param {function} successCallback Callback function on success.
+	 */
+	registerForProvisionalRemoteNotification: function (successCallback) {
+		successCallback(SelligentHelpers.SUCCESS)
+		RNSelligent.registerForProvisionalRemoteNotification()
+		return
+	},
+
 	// Broadcasts Events
 
 	/**

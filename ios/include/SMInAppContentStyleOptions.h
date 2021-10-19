@@ -9,65 +9,62 @@
 #import <Foundation/Foundation.h>
 #import "SMContentAlignment.h"
 
-
-
 /*!
- *  #SMInAppContentStyleOptions :#
+ *
  */
 @interface SMInAppContentStyleOptions : NSObject
 
-
 /*!
  *  inform the sdk if the main container view  of your in app content must be scrollable
+ *
  *  @discussion bool
  *  By default, it is set to true
  */
-@property (nonatomic) bool  mainViewIsScrollable;
+@property (nonatomic) bool mainViewIsScrollable;
 
 /*!
  *  Set the main container view of your in app contents background color
+ *
  *  @discussion UIColor
  *  By default, it is clearColor
  */
-@property (nonatomic) UIColor  *mainViewBackgroundColor;
-
+@property (nonatomic) UIColor *_Nullable mainViewBackgroundColor;
 
 /*!
  *  Set the UIActivityIndicator style
+ *
  *  @discussion UIActivityIndicatorViewStyle
  *  By default, it is UIActivityIndicatorViewStyleGray
  */
 @property (nonatomic) UIActivityIndicatorViewStyle activityIndicatorStyle;
 
-
 /*!
  *  Set the boolean to determine if status bar must be hidden or not
+ *
  *  @discussion bool
  *  By default, it is NO
  */
-@property (nonatomic) bool  isStatusBarHidden;
-
+@property (nonatomic) bool isStatusBarHidden;
 
 /*!
- *  #Syling options for Box :#
+ *  Set the leading constant between edge of view and every in app content box
+ *
+ *  @discussion CGFloat must be a positive value
+ *  By default, it is set to 10
  */
-
-/*!
-*  Set the leading constant between edge of view and every in app content box
-*  @discussion CGFloat must be a positive value
-*  By default, it is set to 10
-*/
 @property (nonatomic) CGFloat boxLeading;
 
 /*!
  *  Set the trailing constant between edge of view and every in app content box
+ *
  *  @discussion CGFloat must be a positive value
  *  By default, it is set to 10
  */
 @property (nonatomic) CGFloat boxTrailing;
 
 /*!
- *  Set the Margin between bottom of a box and top of next one 
+ *  Set the Margin between bottom of a box and top of next one
+ *
  *  @discussion CGFloat must be a positive value
  *  By default, it is set to 20
  */
@@ -75,6 +72,7 @@
 
 /*!
  *  Set the Margin between top of first box and top of view
+ *
  *  @discussion CGFloat must be a positive value
  *  By default, it is set to 20
  */
@@ -82,6 +80,7 @@
 
 /*!
  *  Set the Margin between bottom of last box and bottom of view
+ *
  *  @discussion CGFloat must be a positive value
  *  By default, it is set to 20
  */
@@ -89,6 +88,7 @@
 
 /*!
  *  Set the border width for all boxes
+ *
  *  @discussion CGFloat must be a positive value
  *  By default, it is set to 1
  */
@@ -96,13 +96,15 @@
 
 /*!
  *  Set the color of box Border
+ *
  *  @discussion UIColor
  *  By default, it is set to [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.8]
  */
-@property (nonatomic) UIColor *boxBorderColor;
+@property (nonatomic) UIColor *_Nullable boxBorderColor;
 
 /*!
  *  Set the radius of the corner for all boxes
+ *
  *  @discussion CGFloat must be a positive value
  *  By default, it is set not set
  */
@@ -110,22 +112,23 @@
 
 /*!
  *  Set the background color of all boxes
+ *
  *  @discussion UIColor
  *  By default, it is clearColor
  */
-@property (nonatomic) UIColor *boxBackgroundColor;
-
+@property (nonatomic) UIColor *_Nullable boxBackgroundColor;
 
 /*!
  *  Set the shadow color of all boxes
+ *
  *  @discussion UIColor
  *  By default, it is not set
  */
-@property (nonatomic) UIColor *boxShadowColor;
-
+@property (nonatomic) UIColor *_Nullable boxShadowColor;
 
 /*!
  *  Set the shadow opacity of all boxes
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -133,6 +136,7 @@
 
 /*!
  *  Set the shadow radius of all boxes
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -140,33 +144,31 @@
 
 /*!
  *  Set the shadow offset of all boxes
+ *
  *  @discussion CGSize
  *  By default, it is not set
  */
 @property (nonatomic) CGSize boxShadowOffset;
 
-
-/*!
- *  #Syling options for Title :#
- */
-
 /*!
  *  Set the border width for title
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
 @property (nonatomic) CGFloat titleBorderWidth;
 
-
 /*!
  *  Set the color of title border
+ *
  *  @discussion UIColor
  *  By default, it is not set
  */
-@property (nonatomic) UIColor *titleBorderColor;
+@property (nonatomic) UIColor *_Nullable titleBorderColor;
 
 /*!
  *  Set the radius of the corner for all boxes
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -174,60 +176,63 @@
 
 /*!
  *  Set the background color of all titles
+ *
  *  @discussion UIColor
  *  By default, it is whiteColor
  */
-@property (nonatomic) UIColor *titleBackgroundColor;
+@property (nonatomic) UIColor *_Nullable titleBackgroundColor;
 
 /*!
  *  Set the number of lines of all titles
+ *
  *  @discussion UIColor
  *  By default, it is 0
  */
 @property (nonatomic) CGFloat titleNumberOfLines;
 
-
 /*!
  *  Set the NSLineBreakMode of all titles
+ *
  *  @discussion NSLineBreakMode
  *  By default, it is NSLineBreakByWordWrapping 
  */
 @property (nonatomic) NSLineBreakMode titleLineBreakMode;
 
-
 /*!
  *  Set the title text alignment
+ *
  *  @discussion NSTextAlignment
  *  By default, it is NSTextAlignmentLeft
  */
 @property (nonatomic) NSTextAlignment titleTextAlignment;
 
-
 /*!
  *  Set the attributes that will be passed to NSAttributedString init which will create the text that will be display for title
+ *
  *  @discussion NSDictionary
  *  By default, it is nil
  */
-@property (nonatomic) NSDictionary *titleAttributes;
-
+@property (nonatomic) NSDictionary *_Nullable titleAttributes;
 
 /*!
  *  Set title text color
+ *
  *  @discussion UIColor
  *  By default, it is iOS default
  */
-@property (nonatomic) UIColor *titleTextColor;
-
+@property (nonatomic) UIColor *_Nullable titleTextColor;
 
 /*!
  *  Set font of the title
+ *
  *  @discussion UIFont
  *  By default, it is iOS default
  */
-@property (nonatomic) UIFont *titleFont;
+@property (nonatomic) UIFont *_Nullable titleFont;
 
 /*!
  *  Set the trailing between the title container and the box
+ *
  *  @discussion CGFloat
  *  By default, it is 10.0
  */
@@ -235,6 +240,7 @@
 
 /*!
  *  Set the leading between the title container and the box
+ *
  *  @discussion CGFloat
  *  By default, it is 10.0
  */
@@ -242,6 +248,7 @@
 
 /*!
  *  Set the top between the title container and the box
+ *
  *  @discussion CGFloat
  *  By default, it is 30.0
  */
@@ -249,13 +256,15 @@
 
 /*!
  *  Set the shadow color of all titles
+ *
  *  @discussion UIColor
  *  By default, it is not set
  */
-@property (nonatomic) UIColor *titleShadowColor;
+@property (nonatomic) UIColor *_Nullable titleShadowColor;
 
 /*!
  *  Set the shadow opacity of all titles
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -263,6 +272,7 @@
 
 /*!
  *  Set the corner radius of all titles
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -270,6 +280,7 @@
 
 /*!
  *  Set the shadow offset  of all titles
+ *
  *  @discussion CGSize
  *  By default, it is not set
  */
@@ -277,6 +288,7 @@
 
 /*!
  *  Set the bool that will tell if a border bottom must be displayed under all titles in box
+ *
  *  @discussion bool
  *  By default, it is NO
  */
@@ -284,21 +296,15 @@
 
 /*!
  *  Set the border color of all border bottom that are displayed under all titles in box
+ *
  *  @discussion UIColor
  *  By default, it is not set
  */
-@property (nonatomic) UIColor *titleBorderBottomColor;
-
-
-
-
-/*!
- *  #Syling options for TextView :#
- */
-
+@property (nonatomic) UIColor *_Nullable titleBorderBottomColor;
 
 /*!
  *  Set the trailing between the textview and the box
+ *
  *  @discussion CGFloat
  *  By default, it is 10.0
  */
@@ -306,6 +312,7 @@
 
 /*!
  *  Set the leading between the textview and the box
+ *
  *  @discussion CGFloat
  *  By default, it is 10.0
  */
@@ -313,13 +320,15 @@
 
 /*!
  *  Set the top between the textview and the box
+ *
  *  @discussion CGFloat
  *  By default, it is 10.0
  */
 @property (nonatomic) CGFloat textViewTop;
 
 /*!
- *  Set the textview content offset 
+ *  Set the textview content offset
+ *
  *  @discussion CGPoint
  *  By default, it is not set
  */
@@ -327,6 +336,7 @@
 
 /*!
  *  Set the textview content edge inset
+ *
  *  @discussion UIEdgeInsets
  *  By default, it is not set
  */
@@ -334,6 +344,7 @@
 
 /*!
  *  Set the border width for textview
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -341,41 +352,31 @@
 
 /*!
  *  Set the color of textview Border
+ *
  *  @discussion UIColor
  *  By default, it is not set
  */
-@property (nonatomic) UIColor *textViewBorderColor;
+@property (nonatomic) UIColor *_Nullable textViewBorderColor;
 
 /*!
  *  Set the radius of the corner for all textview
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
 @property (nonatomic) CGFloat textViewCornerRadius;
 
-
 /*!
  *  Set the background color of textview
+ *
  *  @discussion UIColor
  *  By default, it is whiteColor
  */
-@property (nonatomic) UIColor *textViewBackgroundColor;
-
-/*!
- *   textview text color and font can be modified both in html set in content of the In App Content payload received by the SDK or another possibility is to apply them with UIAppearance class for specific class
- *   for example :
- *    [[UITextView appearanceWhenContainedIn:[SMInAppContentHTMLViewController class], nil] setFont:[UIFont fontWithName:@"Marker Felt" size:10]];
- *    [[UITextView appearanceWhenContainedIn:[SMInAppContentHTMLViewController class], nil] setTextColor:[UIColor redColor]];
- */
-
-
-/*!
- *  #Syling options for Links :#
- */
-
+@property (nonatomic) UIColor *_Nullable textViewBackgroundColor;
 
 /*!
  *  Set position of the links, this can be Left, Right, or Center
+ *
  *  @discussion SMContentAlignment
  *  By default, it is kSMAlignLeft
  */
@@ -383,27 +384,31 @@
 
 /*!
  *  Set the constant margin between links and edge of box (depends also of the linksAlignment property: if linksAligment is kSMAlignLeft than this property will only be applied for Leading margin, if linksAlignment is kSMAlignRight than this property is applied to trailing margin, if linksAlignment is kSMAlignCenter than this property is applied both for leading and trailing)
+ *
  *  @discussion CGFloat
  *  By default, it is 10
  */
 @property (nonatomic) CGFloat linksMargin;
 
 /*!
- *  Set the constant between links top and bottom of textview
+ * Set the constant between links top and bottom of textview
+ *
  * @discussion CGFloat
  * By default  it is 10
  */
 @property (nonatomic) CGFloat linksTop;
 
 /*!
- *  Set the constant between links bottom and bottom of box
+ * Set the constant between links bottom and bottom of box
+ *
  * @discussion CGFloat
  * By default  it is 10
  */
 @property (nonatomic) CGFloat linksBottom;
 
 /*!
- *  Set the constant between links margin - useful when there is two links that will be displayed
+ * Set the constant between links margin - useful when there is two links that will be displayed
+ *
  * @discussion CGFloat
  * By default  it is 10
  */
@@ -411,6 +416,7 @@
 
 /*!
  *  Set the border width for links
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -418,13 +424,15 @@
 
 /*!
  *  Set the color of link  Border
+ *
  *  @discussion UIColor
  *  By default, it is not set
  */
-@property (nonatomic) UIColor *linkBorderColor;
+@property (nonatomic) UIColor *_Nullable linkBorderColor;
 
 /*!
  *  Set the corner radius for links
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -433,14 +441,15 @@
 
 /*!
  *  Set the shadow color of all links
+ *
  *  @discussion UIColor
  *  By default, it is not set
  */
-@property (nonatomic) UIColor *linkShadowColor;
-
+@property (nonatomic) UIColor *_Nullable linkShadowColor;
 
 /*!
  *  Set the shadow opacity of all links
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -448,6 +457,7 @@
 
 /*!
  *  Set the shadow radius of all links
+ *
  *  @discussion CGFloat
  *  By default, it is not set
  */
@@ -455,6 +465,7 @@
 
 /*!
  *  Set the shadow offset of all links
+ *
  *  @discussion CGSize
  *  By default, it is not set
  */
@@ -462,38 +473,39 @@
 
 /*!
  *  Set the background color of link
+ *
  *  @discussion UIColor
  *  By default, it is whiteColor
  */
-@property (nonatomic) UIColor *linkBackgroundColor;
+@property (nonatomic) UIColor *_Nullable linkBackgroundColor;
 
 /*!
  *  Set the text color in link
+ *
  *  @discussion UIColor
  *  By default, it is whiteColor
- */@property (nonatomic) UIColor *linkTextColor;
+ */@property (nonatomic) UIColor *_Nullable linkTextColor;
 
 /*!
  *  Set the font of links
+ *
  *  @discussion UIFont
  *  By default, it is iOS default
  */
-@property (nonatomic) UIFont *linkFont;
+@property (nonatomic) UIFont *_Nullable linkFont;
 
 /*!
  *  Set the link content edge inset
+ *
  *  @discussion UIEdgeInsets
  *  By default, it is not set
  */
 @property (nonatomic) UIEdgeInsets linkContentEdgeInsets;
 
-
-
-
 /*!
  * @abstract SMInAppContentStyleOptions constructor
  * @return SMInAppContentStyleOptions
  */
-+ (instancetype) defaultStylingOptions;
++ (instancetype _Nonnull) defaultStylingOptions;
 
 @end

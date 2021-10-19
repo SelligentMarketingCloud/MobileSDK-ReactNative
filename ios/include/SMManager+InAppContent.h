@@ -13,16 +13,14 @@
 
 @class SMInAppContentViewController;
 
-
 /*!
- *  #Introduction :#
  *  In-Application-Content (IAC) is an optional service which will retrieve messages from the back-end each time the application enters foregrounds at specific frequencies and if connection is available.
  *
  *  Once new messages were retrieved, the library notifies the application about it.
  *
- *  Each IAC is is from a specific type [SMInAppContentType] and is also linked to a category defined by yourself
+ *  Each IAC is is from a specific type (SMInAppContentType) and is also linked to a category defined by yourself
  *
- *  #Implementation :#
+ *  ##Implementation
  *  In a nutshell, activate the IAC-service is a one step process:
  *
  *  *  Create an SMManagerSettingIAC instance and inject it in SMManagerSetting with [SMManagerSetting configureInAppContentServiceWithSetting:]
@@ -32,7 +30,7 @@
  *  This notification will provide you with the number of IAC's by category.
  *  Please be aware that it’s the unique application’s chance to capture and store that information.
  *
- *  #Displaying IAC :#
+ *  ##Displaying IAC
  *
  *  * With the SDK view controllers:
  *
@@ -64,7 +62,7 @@
  *
  * ` -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  * {
- *   if([segue.identifier isEqualToString:@"YourSegue"]){
+ *   if ([segue.identifier isEqualToString:@"YourSegue"]) {
  *       _sminappcontentviewcontroller = segue.destinationViewController;
  *       [self.sminappcontentviewcontroller setCategory:@"anycategory"];
  *   }
@@ -78,7 +76,7 @@
  *
  *  If you decide to use this way of interacting with IAC it is important that you keep in mind that you will be responsible of the display of the content and you will have to call to setInAppContentAsSeen: whenever an InAppContent is showed to the user and to executeLinkAction:InAppContent: whenever user interact with an action link of the in app content.
  *
- *  #Fetching modes :#
+ *  ##Fetching modes
  *  IAC may be retrieved from two different modes corresponding to the application's state:
  *
  *  * Foreground-fetch -- When the application is in foreground.
@@ -90,13 +88,13 @@
  *
  *  Following documentation explains how to activate each mode:
  *
- *  #Fetching IAC in foreground :#
+ *  ##Fetching IAC in foreground
  *  In order to retrieve IAC while the application is running, make sure to do the folllowing:
  *
  *  - Create and configure an SMManagerSettingIAC instance accordingly.
  *  - Provide the created SMManagerSettingIAC instance to SMManager before starting the library
  *
- *  #Fetching IAC in background :#
+ *  ##Fetching IAC in background
  *  Initially, this mode has been added as a complementary-option to the foreground-mode.
  *  However, it can be used as a single-fetch-mode if fits best your application's need.
  *
@@ -108,12 +106,9 @@
  *  - Provide the created SMManagerSettingIAC instance to SMManager before starting the library.
  *  - In the application's target, enable the following: Capabilities > Background Modes > Background Fetch
  *  - Implement performFetchWithCompletionHandler: in UIApplication's delegate (under delegate method application:performFetchWithCompletionHandler:)
- *
- *  #SMManager+InAppContent :#
  */
 
 @interface SMManager (InAppContent)
-
 
 /*!
  * Call when SDK has already provided you with a SMInAppContentViewController (of any type : SMInAppContentHTMLViewController , SMInAppContentImageViewController or SMInAppContentURLViewController) and you want to display it in a UIContainerView defined anywhere in your app.
@@ -121,9 +116,9 @@
  * @param smViewController a SMInAppContentViewController
  * @param containerView the UIContainerView in which In App Content will be displayed
  * @param parentViewController the parent UIViewController of your UIContainerView
+ * @see SMInAppContentViewController
  */
--(void) showSMController: (SMInAppContentViewController*)smViewController InContainerView:(UIView*)containerView OfParentViewController:(UIViewController*)parentViewController;
-
+- (void) showSMController:(SMInAppContentViewController*_Nullable)smViewController InContainerView:(UIView*_Nullable)containerView OfParentViewController:(UIViewController*_Nullable)parentViewController;
 
 /*!
   * @abstract This will return an array of In App Contents
@@ -131,8 +126,9 @@
   * @param category NSString the category for which you want your In App Contents
   * @param type An SMInAppContentType - Url, Html or image
   * @return returns an NSArray of SMInAppContentMessage
+  * @see SMInAppContentType
   */
-- (NSArray*) getInAppContentsForCategory:(NSString*)category Type:(SMInAppContentType)type;
+- (NSArray*_Nonnull) getInAppContentsForCategory:(NSString*_Nullable)category Type:(SMInAppContentType)type;
 
 /*!
   * @abstract This will return an array of In App Contents
@@ -141,25 +137,27 @@
   * @param type An SMInAppContentType - Url, Html or image
   * @param max An int
   * @return returns an NSArray of SMInAppContentMessage
+  * @see SMInAppContentType
   */
-- (NSArray*) getInAppContentsForCategory:(NSString*)category Type:(SMInAppContentType)type Max:(int)max;
+- (NSArray*_Nonnull) getInAppContentsForCategory:(NSString*_Nullable)category Type:(SMInAppContentType)type Max:(int)max;
 
 /*!
   * @abstract This method will mark an IAC as viewed, save it in the cache and send the Open event to the server
   * @discussion If the display mode is set to 0 (display once), the IAC will be discarded from the cache and will not be provided to you anymore with getInAppContentsForCategory:Type: or getInAppContentsForCategory:Type:Max:
   * @param inAppContent an SMInAppContentMessage object
-  */
-- (void) setInAppContentAsSeen:(SMInAppContentMessage*)inAppContent;
-
+  * @see SMInAppContentMessage
+ */
+- (void) setInAppContentAsSeen:(SMInAppContentMessage*_Nullable)inAppContent;
 
 /*!
   * @abstract This method must be called whenever a user has clicked on a link that you  manage to display
   * @discussion This will allow the sdk to inform the services that a link has been clicked and to process the action associated with the link
   * @param link a SMLink object
   * @param inAppContent a SMInAppContentMessage object
+  * @see SMLink
+  * @see SMInAppContentMessage
   */
-- (void) executeLinkAction:(SMLink*)link InAppContent:(SMInAppContentMessage*)inAppContent;
-
+- (void) executeLinkAction:(SMLink*_Nullable)link InAppContent:(SMInAppContentMessage*_Nullable)inAppContent;
 
 /**
  *  This will allow the SDK to fetch the IAC when the OS will allow so.
@@ -167,7 +165,6 @@
  *  @param completionHandler The block-completion to be processed. Provided by the delegate call
  *  @warning Make sure to enable background-fetch in the application's capabilities
  */
-- (void)performIACFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
-
+- (void) performIACFetchWithCompletionHandler:(void (^_Nullable)(UIBackgroundFetchResult))completionHandler;
 
 @end

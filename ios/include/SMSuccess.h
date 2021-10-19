@@ -8,12 +8,9 @@
 
 #import "SMMessage.h"
 
-
 /*!
- *  @discussion This class is used to return a successfull action
- *  #SMSuccess:#
+ *  This class is used to return a successfull action
  */
 @interface SMSuccess : SMMessage
-
 
 @end

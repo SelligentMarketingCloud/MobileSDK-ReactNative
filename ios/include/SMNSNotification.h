@@ -6,7 +6,7 @@
 /**
  *  NSString representing a notification name you can listen to.
  *  An NSNotification with this name is broadcasted when the user interacts with a remote-notification
- *  Usefull to retrieve user's actions on a received remote-notification, developers may listen to kSMNotification_Event_ButtonClicked from NSNotificationCenter.
+ *  Useful to retrieve user's actions on a received remote-notification, developers may listen to kSMNotification_Event_ButtonClicked from NSNotificationCenter.
  */
 extern NSString* kSMNotification_Event_ButtonClicked;
 
@@ -21,7 +21,7 @@ extern NSString* kSMNotification_Event_WillDisplayNotification;
 /**
  *  NSString representing a notification name you can listen to.
  *  An NSNotification with this name is broadcasted shortly before Dismissing the current remote-notification
- *  Primary-application may use this notification to resume any paused work. (see kSMNotification_Event_WillDisplayNotification)
+ *  Primary-application may use this notification to resume any paused work (see kSMNotification_Event_WillDisplayNotification).
  */
 extern NSString* kSMNotification_Event_WillDismissNotification;
 

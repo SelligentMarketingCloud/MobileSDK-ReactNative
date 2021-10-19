@@ -7,37 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
 #import "SMNotificationButtonType.h"
 
-
-
 /**
- *  #SMLink :#
+ *
  */
 @interface SMLink : NSObject
 
 /*!
  *  NSString instance providing the id of the button
  */
-@property (nonatomic, strong) NSString     * idButtonData;
+@property (readonly, nonatomic, strong) NSString *_Nullable idButtonData;
 
 /*!
  *  NSString instance providing the label of the button
  */
-@property (nonatomic, strong) NSString     * label;
+@property (readonly, nonatomic, strong) NSString *_Nullable label;
 
 /*!
  *  NSString instance providing the value of the button
  */
-@property (nonatomic, strong) NSString     * value;
+@property (readonly, nonatomic, strong) NSString *_Nullable value;
 
 /*!
  *  The type (SMNotificationButtonType) of action that the button will execute.
- *  @see SMNotificationButtonType for more information about each type
+ *  
+ *  @see SMNotificationButtonType 
  */
-@property (nonatomic) SMNotificationButtonType type;
-
+@property (readonly, nonatomic) SMNotificationButtonType type;
 
 @end

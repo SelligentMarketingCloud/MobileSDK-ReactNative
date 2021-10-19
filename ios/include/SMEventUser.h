@@ -9,7 +9,6 @@
 #import "SMEvent.h"
 
 /*!
- *  @inherits SMEvent
  *  @discussion Class representing all User-eventing
  *  Instances of this class should not be directly created.
  *  Please use children classes instead.

@@ -4,22 +4,22 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 
 ## Supported platforms
 
-* Android
-* iOS
+- Android
+- iOS
 
 > _**Important:** Since version 2.4.0 of this module we require your app to use the Android Gradle Plugin version 4.1.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native._
 
 ## ToC
 
-* [Installation](#installation)
-  * [Android Specific Installation](#android-specific-installation)
-  * [iOS Specific Installation](#ios-specific-installation)
-* [Using the API](#using-the-api)
-* [API Reference](#api-reference)
-  * [Methods](#methods)
-  * [Android Only/Specific Methods](#android-onlyspecific-methods)
-  * [iOS Only/Specific Methods](#ios-onlyspecific-methods)
-  * [Constants](#constants)
+- [Installation](#installation)
+  - [Android Specific Installation](#android-specific-installation)
+  - [iOS Specific Installation](#ios-specific-installation)
+- [Using the API](#using-the-api)
+- [API Reference](#api-reference)
+  - [Methods](#methods)
+  - [Android Only/Specific Methods](#android-onlyspecific-methods)
+  - [iOS Only/Specific Methods](#ios-onlyspecific-methods)
+  - [Constants](#constants)
 
 ## Installation
 
@@ -33,10 +33,10 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 
    ```json
    {
-       "url": "someMobilePushUrl",
-       "clientId": "someClientId",
-       "privateKey": "somePrivateKey",
-       "fullyQualifiedNotificationActivityClassName": "com.some.project.MainActivity"
+     "url": "someMobilePushUrl",
+     "clientId": "someClientId",
+     "privateKey": "somePrivateKey",
+     "fullyQualifiedNotificationActivityClassName": "com.some.project.MainActivity"
    }
    ```
 
@@ -44,27 +44,27 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 
 **Detailed overview:**
 
-| Property                                    | Type                                                                                          | Required | Platform     |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------- | -------- | ------------ |
-| url                                         | string                                                                                        | Yes      | Both         |
-| clientId                                    | string                                                                                        | Yes      | Both         |
-| privateKey                                  | string                                                                                        | Yes      | Both         |
-| clearCacheIntervalValue                     | enum [Selligent.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)                   | No       | Both         |
-| configureLocationServices                   | boolean                                                                                       | No       | Both         |
-| inAppMessageRefreshType                     | enum [Selligent.InAppMessageRefreshType](#selligentinappmessagerefreshtype)                   | No       | Both         |
-| addInAppMessageFromPushToInAppMessageList   | boolean                                                                                       | No       | Both         |
-| appGroupId                                  | string                                                                                        | No       | iOS Only     |
-| shouldClearBadge                            | boolean                                                                                       | No       | iOS Only     |
-| shouldDisplayRemoteNotification             | boolean                                                                                       | No       | iOS Only     |
-| shouldPerformBackgroundFetch                | boolean                                                                                       | No       | iOS Only     |
-| doNotListenToThePush                        | boolean                                                                                       | No       | Android Only |
-| doNotFetchTheToken                          | boolean                                                                                       | No       | Android Only |
-| loadCacheAsynchronously                     | boolean                                                                                       | No       | Android Only |
-| fullyQualifiedNotificationActivityClassName | string                                                                                        | No       | Android Only |
-| remoteMessageDisplayType                    | enum [Selligent.AndroidRemoteMessagesDisplayType](#selligentAndroidRemoteMessagesDisplayType) | No       | Android Only |
-| notificationIconColor                       | string                                                                                        | No       | Android Only |
+| Property                                    | Type                                                                            | Required | Platform     |
+| ------------------------------------------- | ------------------------------------------------------------------------------- | -------- | ------------ |
+| url                                         | string                                                                          | Yes      | Both         |
+| clientId                                    | string                                                                          | Yes      | Both         |
+| privateKey                                  | string                                                                          | Yes      | Both         |
+| clearCacheIntervalValue                     | enum [Selligent.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)     | No       | Both         |
+| configureLocationServices                   | boolean                                                                         | No       | Both         |
+| inAppMessageRefreshType                     | enum [Selligent.InAppMessageRefreshType](#selligentinappmessagerefreshtype)     | No       | Both         |
+| addInAppMessageFromPushToInAppMessageList   | boolean                                                                         | No       | Both         |
+| remoteMessageDisplayType                    | enum [Selligent.RemoteMessagesDisplayType](#selligentremotemessagesdisplaytype) | No       | Both         |
+| appGroupId                                  | string                                                                          | No       | iOS Only     |
+| shouldClearBadge                            | boolean                                                                         | No       | iOS Only     |
+| shouldDisplayRemoteNotification             | boolean                                                                         | No       | iOS Only     |
+| shouldPerformBackgroundFetch                | boolean                                                                         | No       | iOS Only     |
+| doNotListenToThePush                        | boolean                                                                         | No       | Android Only |
+| doNotFetchTheToken                          | boolean                                                                         | No       | Android Only |
+| loadCacheAsynchronously                     | boolean                                                                         | No       | Android Only |
+| fullyQualifiedNotificationActivityClassName | string                                                                          | No       | Android Only |
+| notificationIconColor                       | string                                                                          | No       | Android Only |
 
-   ​
+​
 
 ### Android Specific Installation
 
@@ -135,7 +135,7 @@ This module provides an API for the usage of the Selligent SDK in React Native.
             ...
             @Override
             protected List<ReactPackage> getPackages() {
-          
+
                 List<ReactPackage> packages = new PackageList(this).getPackages();
                 // Add the following:
                 packages.add(new RNSelligentPackage());
@@ -225,7 +225,6 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 
 </details>
 
-
 #### Change default push notification icons
 
 Add the following properties to the `selligent.json` file:
@@ -236,7 +235,6 @@ Add the following properties to the `selligent.json` file:
 ```
 
 > _Note: only parse the name of the icon, without the path. The icon should reside in the res/drawable folder of the Android project, as explained in [Android's official guide](https://developer.android.com/guide/topics/resources/drawable-resource#BitmapFile)._
-
 
 ### iOS Specific installation
 
@@ -257,17 +255,9 @@ Add the following properties to the `selligent.json` file:
 
 4. Add Selligent to `Header Search Paths` in `Build Settings` of your target:
 
-    ```
-    $(SRCROOT)/../node_modules/@selligent-marketing-cloud/selligent-react-native/ios/
-    ```
-
-
-
-4. Add Selligent to `Header Search Paths` in `Build Settings` of your target:
-
-    ```
-    $(SRCROOT)/../node_modules/@selligent-marketing-cloud/selligent-react-native/ios/
-    ```
+   ```
+   $(SRCROOT)/../node_modules/@selligent-marketing-cloud/selligent-react-native/ios/
+   ```
 
 5. Create a `Podfile` (if there isn't one already) in the `/ios` folder and add the following:
 
@@ -307,13 +297,11 @@ Add the following properties to the `selligent.json` file:
 
 </details>
 
-
-
 #### Push notifications
 
 1. For push notifications you need to delegate some of the `AppDelegate.m` methods to the SDK:
 
-   ````objective-c
+   ```objective-c
    #import "AppDelegate.h"
    #import <React/RCTBundleURLProvider.h>
    #import <React/RCTRootView.h>
@@ -374,9 +362,9 @@ Add the following properties to the `selligent.json` file:
    #endif
 
    @end
-   ````
+   ```
 
-2. Follow section [**Create an APNS Key**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#apns_key), of the native documentation.  
+2. Follow section [**Create an APNS Key**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#apns_key), of the native documentation.
 
 3. If you want rich push notifications, follow section 6.9 **Notification Extensions** as well.  
    Make sure you add your `appGroupId` to the `selligent.json`.
@@ -387,9 +375,11 @@ Add the following properties to the `selligent.json` file:
 For geolocation services, follow section [**Geolocation**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#geolocation), of the native documentation. You also need to configure several permissions described [**here**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#permission-for-geolocation).
 
 #### Deeplinking
+
 You can catch the deeplinks 2 ways:
 
 1. Native in AppDelegate.m, add the following (example code that logs the URL)
+
 ```
 -(BOOL)application:(UIApplication*) application openURL:(NSURL*) url sourceApplication:(NSString*) sourceApplication annotation:(id) annotation
 {
@@ -407,13 +397,13 @@ You can catch the deeplinks 2 ways:
    1. Add the `Button` import statement:
 
       ```javascript
-      import {Platform, StyleSheet, Text, View, Button} from 'react-native'; // Add Button import
+      import { Platform, StyleSheet, Text, View, Button } from "react-native"; // Add Button import
       ```
 
    2. Add the `Selligent` import statement:
 
       ```javascript
-      import Selligent from '@selligent-marketing-cloud/selligent-react-native' // Add Selligent import
+      import Selligent from "@selligent-marketing-cloud/selligent-react-native"; // Add Selligent import
       ```
 
    3. Add a function to call the `Selligent.getVersionLib` function:
@@ -451,139 +441,142 @@ You can catch the deeplinks 2 ways:
    5. Your `App.js` file should look something like this:
 
       ```javascript
-      import React, {Component} from 'react';
-      import {Platform, StyleSheet, Text, View, Button} from 'react-native'; // Add Button import
-      import Selligent from '@selligent-marketing-cloud/selligent-react-native' // Add Selligent import
+      import React, { Component } from "react";
+      import { Platform, StyleSheet, Text, View, Button } from "react-native"; // Add Button import
+      import Selligent from "@selligent-marketing-cloud/selligent-react-native"; // Add Selligent import
 
       const instructions = Platform.select({
-          ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-          android:
-              'Double tap R on your keyboard to reload,\n' +
-              'Shake or press menu button for dev menu',
+        ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
+        android:
+          "Double tap R on your keyboard to reload,\n" +
+          "Shake or press menu button for dev menu",
       });
 
       type Props = {};
       export default class App extends Component<Props> {
+        // Add example function
+        _getVersionLib() {
+          Selligent.getVersionLib((versionLib) => {
+            alert(versionLib);
+          });
+        }
 
-          // Add example function
-          _getVersionLib() {
-              Selligent.getVersionLib((versionLib) => {
-                  alert(versionLib);
-              })
-          }
-
-          render() {
-              return (
-                  <View style={styles.container}>
-                      <Text style={styles.welcome}>Welcome to React Native!</Text>
-                      <Text style={styles.instructions}>To get started, edit App.js</Text>
-                      <Text style={styles.instructions}>{instructions}</Text>
-                      // Add button
-                      <Button
-                        onPress={this._getVersionLib}
-                        title='getVersionLib'
-                      />
-                  </View>
-              );
-          }
+        render() {
+          return (
+            <View style={styles.container}>
+              <Text style={styles.welcome}>Welcome to React Native!</Text>
+              <Text style={styles.instructions}>
+                To get started, edit App.js
+              </Text>
+              <Text style={styles.instructions}>{instructions}</Text>
+              // Add button
+              <Button onPress={this._getVersionLib} title="getVersionLib" />
+            </View>
+          );
+        }
       }
 
       const styles = StyleSheet.create({
-          container: {
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#F5FCFF',
-          },
-          welcome: {
-              fontSize: 20,
-              textAlign: 'center',
-              margin: 10,
-          },
-          instructions: {
-              textAlign: 'center',
-              color: '#333333',
-              marginBottom: 5,
-          },
+        container: {
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#F5FCFF",
+        },
+        welcome: {
+          fontSize: 20,
+          textAlign: "center",
+          margin: 10,
+        },
+        instructions: {
+          textAlign: "center",
+          color: "#333333",
+          marginBottom: 5,
+        },
       });
       ```
 
 ## API Reference
 
-* [Methods](#methods)
-  * [Selligent.getVersionLib(successCallback)](#selligentgetversionlibsuccesscallback)
-    * [getVersionLib example](#getversionlib-example)
-  * [Selligent.enableGeolocation(successCallback, errorCallback, enabled)](#selligentenablegeolocationsuccesscallback-errorcallback-enabled)
-    * [enableGeolocation example](#enablegeolocation-example)
-  * [Selligent.isGeolocationEnabled(successCallback)](#selligentisgeolocationenabledsuccesscallback)
-    * [isGeolocationEnabled example](#isgeolocationenabled-example)
-  * [Selligent.getDeviceId(successCallback)](#selligentgetdeviceidsuccesscallback)
-    * [getDeviceId example](#getdeviceid-example)
-  * [Selligent.enableNotifications(successCallback, errorCallback, enabled)](#selligentenablenotificationssuccesscallback-errorcallback-enabled)
-    * [enableNotifications example](#enablenotifications-example)
-  * [Selligent.displayLastReceivedRemotePushNotification(successCallback)](#selligentdisplaylastreceivedremotepushnotificationsuccesscallback)
-    * [displayLastReceivedRemotePushNotification example](#displaylastreceivedremotepushnotification-example)
-  * [Selligent.getLastRemotePushNotification(successCallback)](#selligentgetlastremotepushnotificationsuccesscallback)
-    * [getLastRemotePushNotification Example](#getlastremotepushnotification-example)
-  * [Selligent.enableInAppMessages(successCallback, errorCallback, enabled)](#selligentenableinappmessagessuccesscallback-errorcallback-enabled)
-    * [enableInAppMessages example](#enableinappmessages-example)
-  * [Selligent.getInAppMessages(successCallback)](#selligentgetinappmessagessuccesscallback)
-    * [getInAppMessages example](#getinappmessages-example)
-  * [Selligent.setInAppMessageAsSeen(successCallback, errorCallback, messageId)](#selligentsetinappmessageasseensuccesscallback-errorcallback-messageid)
-    * [setInAppMessageAsSeen example](#setinappmessageasseen-example)
-  * [Selligent.executeButtonAction(successCallback, errorCallback, buttonId, messageId)](#selligentexecutebuttonactionsuccesscallback-errorcallback-buttonid-messageid)
-    * [executeButtonAction example](#executeButtonAction-example)
-  * [Selligent.sendEvent(successCallback, errorCallback, event)](#selligentsendeventsuccesscallback-errorcallback-event)
-    * [sendEvent example](#sendevent-example)
-  * [Selligent.subscribeToEvents(successCallback, errorCallback, eventCallback)](#selligentsubscribetoeventssuccesscallback-errorcallback-eventcallback)
-    * [subscribeToEvents example](#subscribetoevents-example)
+- [Methods](#methods)
 
-* [Android Only/Specific Methods](#android-onlyspecific-methods)
-  * [Selligent.subscribeToEvent(eventCallback, eventName)](#selligentsubscribetoeventeventcallback-eventname)
-    * [subscribeToEvent example](#subscribetoevent-example)
-  * [Selligent.areInAppMessagesEnabled(successCallback)](#selligentareinappmessagesenabledsuccesscallback)
-    * [areInAppMessagesEnabled example](#areinappmessagesenabled-example)
-  * [Selligent.enableAndroidLogging(successCallback, errorCallback, enabled)](#selligentenableandroidloggingsuccesscallback-errorcallback-enabled)
-    * [enableAndroidLogging example](#enableandroidlogging-example)
-  * [Selligent.displayMessage(successCallback, errorCallback, messageId)](#selligentdisplaymessagesuccesscallback-errorcallback-messageid)
-    * [displayMessage example](#displaymessage-example)
-  * [Selligent.areNotificationsEnabled(successCallback)](#selligentarenotificationsenabledsuccesscallback)
-    * [areNotificationsEnabled example](#arenotificationsenabled-example)
-  * [Selligent.setNotificationSmallIcon(successCallback, errorCallback, iconName)](#selligentsetnotificationsmalliconsuccesscallback-errorcallback-iconname)
-    * [setNotificationSmallIcon example](#setnotificationsmallicon-example)
-  * [Selligent.setNotificationLargeIcon(successCallback, errorCallback, iconName)](#selligentsetnotificationlargeiconsuccesscallback-errorcallback-iconname)
-    * [setNotificationLargeIcon example](#setnotificationlargeicon-example)
-  * [Selligent.setNotificationIconColor(successCallback, errorCallback, color)](#selligentsetnotificationiconcolorsuccesscallback-errorcallback-color)
-    * [setNotificationIconColor example](#setnotificationiconcolor-example)
-  * [Selligent.getGCMToken(successCallback)](#selligentgetgcmtokensuccesscallback)
-    * [getGCMToken Example](#getgcmtoken-example)
-  * [Selligent.getRemoteMessagesDisplayType(successCallback, errorCallback)](#selligentgetremotemessagesdisplaytypesuccesscallback-errorcallback)
-    * [getRemoteMessagesDisplayType Example](#getremotemessagesdisplaytype-example)
-  * [Selligent.setFirebaseToken(successCallback, errorCallback, token)](#selligentsetfirebasetokensuccesscallback--errorcallback--token)
-    * [setFirebaseToken Example](#setFirebaseToken-example)
+  - [Selligent.getVersionLib(successCallback)](#selligentgetversionlibsuccesscallback)
+    - [getVersionLib example](#getversionlib-example)
+  - [Selligent.enableGeolocation(successCallback, errorCallback, enabled)](#selligentenablegeolocationsuccesscallback-errorcallback-enabled)
+    - [enableGeolocation example](#enablegeolocation-example)
+  - [Selligent.isGeolocationEnabled(successCallback)](#selligentisgeolocationenabledsuccesscallback)
+    - [isGeolocationEnabled example](#isgeolocationenabled-example)
+  - [Selligent.getDeviceId(successCallback)](#selligentgetdeviceidsuccesscallback)
+    - [getDeviceId example](#getdeviceid-example)
+  - [Selligent.enableNotifications(successCallback, errorCallback, enabled)](#selligentenablenotificationssuccesscallback-errorcallback-enabled)
+    - [enableNotifications example](#enablenotifications-example)
+  - [Selligent.displayLastReceivedRemotePushNotification(successCallback)](#selligentdisplaylastreceivedremotepushnotificationsuccesscallback)
+    - [displayLastReceivedRemotePushNotification example](#displaylastreceivedremotepushnotification-example)
+  - [Selligent.getLastRemotePushNotification(successCallback)](#selligentgetlastremotepushnotificationsuccesscallback)
+    - [getLastRemotePushNotification Example](#getlastremotepushnotification-example)
+  - [Selligent.enableInAppMessages(successCallback, errorCallback, enabled)](#selligentenableinappmessagessuccesscallback-errorcallback-enabled)
+    - [enableInAppMessages example](#enableinappmessages-example)
+  - [Selligent.getInAppMessages(successCallback)](#selligentgetinappmessagessuccesscallback)
+    - [getInAppMessages example](#getinappmessages-example)
+  - [Selligent.setInAppMessageAsSeen(successCallback, errorCallback, messageId)](#selligentsetinappmessageasseensuccesscallback-errorcallback-messageid)
+    - [setInAppMessageAsSeen example](#setinappmessageasseen-example)
+  - [Selligent.executeButtonAction(successCallback, errorCallback, buttonId, messageId)](#selligentexecutebuttonactionsuccesscallback-errorcallback-buttonid-messageid)
+    - [executeButtonAction example](#executeButtonAction-example)
+  - [Selligent.sendEvent(successCallback, errorCallback, event)](#selligentsendeventsuccesscallback-errorcallback-event)
+    - [sendEvent example](#sendevent-example)
+  - [Selligent.subscribeToEvents(successCallback, errorCallback, eventCallback)](#selligentsubscribetoeventssuccesscallback-errorcallback-eventcallback)
+    - [subscribeToEvents example](#subscribetoevents-example)
 
-* [iOS Only/Specific Methods](#ios-onlyspecific-methods)
-  * [Selligent.enableiOSLogging(successCallback, errorCallback, logLevels)](#selligentenableiosloggingsuccesscallback-errorcallback-loglevels)
-    * [enableiOSLogging example](#enableioslogging-example)
-  * [Selligent.displayNotification(successCallback, errorCallback, notificationId)](#selligentdisplaynotificationsuccesscallback-errorcallback-notificationid)
-    * [displayNotification Example](#displaynotification-example)
-  * [Selligent.registerRemoteNotificationFetchCompletionHandler(successCallback, errorCallback)](#selligentregisterremotenotificationfetchcompletionhandlersuccesscallback-errorcallback)
-    * [registerRemoteNotificationFetchCompletionHandler example](#registerremotenotificationfetchcompletionhandler-example)
-  * [Selligent.forceRemoteNotificationBackgroundFetchResult(successCallback, errorCallback, iOSBackgroundFetchResult)](#selligentforceremotenotificationbackgroundfetchresultsuccesscallback-errorcallback-iosbackgroundfetchresult)
-    * [forceRemoteNotificationBackgroundFetchResult example](#forceremotenotificationbackgroundfetchresult-example)
+- [Android Only/Specific Methods](#android-onlyspecific-methods)
 
-* [Constants](#constants)
-  * [SelligentConstants.ClearCacheIntervalValue](#selligentconstantsclearcacheintervalvalue)
-  * [SelligentConstants.InAppMessageType](#selligentconstantsinappmessagetype)
-  * [SelligentConstants.InAppMessageRefreshType](#selligentconstantsinappmessagerefreshtype)
-  * [SelligentConstants.AndroidRemoteMessagesDisplayType](#selligentconstantsandroidremotemessagesdisplaytype)
-  * [SelligentConstants.iOSLogLevel](#selligentconstantsiosloglevel)
-  * [SelligentConstants.iOSBackgroundFetchResult](#selligentconstantsiosbackgroundfetchresult)
-  * [SelligentConstants.iOSLocationAuthorisationStatus](#selligentconstantsioslocationauthorisationstatus)
-  * [SelligentConstants.iOSLocationAuthorisationType](#selligentconstantsioslocationauthorisationtype)
-  * [SelligentConstants.EventType](#selligentconstantseventtype)
-  * [SelligentConstants.iOSNotificationButtonType](#selligentconstantsiosnotificationbuttontype)
-  * [SelligentConstants.BroadcastEventType](#selligentconstantsbroadcasteventtype)
+  - [Selligent.subscribeToEvent(eventCallback, eventName)](#selligentsubscribetoeventeventcallback-eventname)
+    - [subscribeToEvent example](#subscribetoevent-example)
+  - [Selligent.areInAppMessagesEnabled(successCallback)](#selligentareinappmessagesenabledsuccesscallback)
+    - [areInAppMessagesEnabled example](#areinappmessagesenabled-example)
+  - [Selligent.enableAndroidLogging(successCallback, errorCallback, enabled)](#selligentenableandroidloggingsuccesscallback-errorcallback-enabled)
+    - [enableAndroidLogging example](#enableandroidlogging-example)
+  - [Selligent.displayMessage(successCallback, errorCallback, messageId)](#selligentdisplaymessagesuccesscallback-errorcallback-messageid)
+    - [displayMessage example](#displaymessage-example)
+  - [Selligent.areNotificationsEnabled(successCallback)](#selligentarenotificationsenabledsuccesscallback)
+    - [areNotificationsEnabled example](#arenotificationsenabled-example)
+  - [Selligent.setNotificationSmallIcon(successCallback, errorCallback, iconName)](#selligentsetnotificationsmalliconsuccesscallback-errorcallback-iconname)
+    - [setNotificationSmallIcon example](#setnotificationsmallicon-example)
+  - [Selligent.setNotificationLargeIcon(successCallback, errorCallback, iconName)](#selligentsetnotificationlargeiconsuccesscallback-errorcallback-iconname)
+    - [setNotificationLargeIcon example](#setnotificationlargeicon-example)
+  - [Selligent.setNotificationIconColor(successCallback, errorCallback, color)](#selligentsetnotificationiconcolorsuccesscallback-errorcallback-color)
+    - [setNotificationIconColor example](#setnotificationiconcolor-example)
+  - [Selligent.getGCMToken(successCallback)](#selligentgetgcmtokensuccesscallback)
+    - [getGCMToken Example](#getgcmtoken-example)
+  - [Selligent.getRemoteMessagesDisplayType(successCallback, errorCallback)](#selligentgetremotemessagesdisplaytypesuccesscallback-errorcallback)
+    - [getRemoteMessagesDisplayType Example](#getremotemessagesdisplaytype-example)
+  - [Selligent.setFirebaseToken(successCallback, errorCallback, token)](#selligentsetfirebasetokensuccesscallback--errorcallback--token)
+    - [setFirebaseToken Example](#setFirebaseToken-example)
+
+- [iOS Only/Specific Methods](#ios-onlyspecific-methods)
+
+  - [Selligent.enableiOSLogging(successCallback, errorCallback, logLevels)](#selligentenableiosloggingsuccesscallback-errorcallback-loglevels)
+    - [enableiOSLogging example](#enableioslogging-example)
+  - [Selligent.displayNotification(successCallback, errorCallback, notificationId)](#selligentdisplaynotificationsuccesscallback-errorcallback-notificationid)
+    - [displayNotification Example](#displaynotification-example)
+  - [Selligent.registerForProvisionalRemoteNotification(successCallback)](#selligentregisterforprovisionalremotenotificationsuccesscallback)
+    - [registerForProvisionalRemoteNotification example](#registerForProvisionalRemoteNotification-example)
+  - [Selligent.registerRemoteNotificationFetchCompletionHandler(successCallback, errorCallback)](#selligentregisterremotenotificationfetchcompletionhandlersuccesscallback-errorcallback)
+    - [registerRemoteNotificationFetchCompletionHandler example](#registerremotenotificationfetchcompletionhandler-example)
+  - [Selligent.forceRemoteNotificationBackgroundFetchResult(successCallback, errorCallback, iOSBackgroundFetchResult)](#selligentforceremotenotificationbackgroundfetchresultsuccesscallback-errorcallback-iosbackgroundfetchresult)
+    - [forceRemoteNotificationBackgroundFetchResult example](#forceremotenotificationbackgroundfetchresult-example)
+
+- [Constants](#constants)
+  - [SelligentConstants.ClearCacheIntervalValue](#selligentconstantsclearcacheintervalvalue)
+  - [SelligentConstants.InAppMessageType](#selligentconstantsinappmessagetype)
+  - [SelligentConstants.InAppMessageRefreshType](#selligentconstantsinappmessagerefreshtype)
+  - [SelligentConstants.RemoteMessagesDisplayType](#selligentconstantsremotemessagesdisplaytype)
+  - [SelligentConstants.iOSLogLevel](#selligentconstantsiosloglevel)
+  - [SelligentConstants.iOSBackgroundFetchResult](#selligentconstantsiosbackgroundfetchresult)
+  - [SelligentConstants.iOSLocationAuthorisationStatus](#selligentconstantsioslocationauthorisationstatus)
+  - [SelligentConstants.iOSLocationAuthorisationType](#selligentconstantsioslocationauthorisationtype)
+  - [SelligentConstants.EventType](#selligentconstantseventtype)
+  - [SelligentConstants.iOSNotificationButtonType](#selligentconstantsiosnotificationbuttontype)
+  - [SelligentConstants.BroadcastEventType](#selligentconstantsbroadcasteventtype)
 
 ### Methods
 
@@ -596,17 +589,15 @@ The response of the success callback is a string containing the version of the S
 ##### getVersionLib example
 
 ```javascript
-Selligent.getVersionLib(
-    (versionLib) => { // success callback
-        alert(versionLib);
-    }
-);
+Selligent.getVersionLib((versionLib) => {
+  // success callback
+  alert(versionLib);
+});
 ```
 
 <div align="right">
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
-
 
 #### Selligent.enableGeolocation(successCallback, errorCallback, enabled)
 
@@ -661,11 +652,10 @@ The response of the success callback is a string containing the device id.
 ##### getDeviceId example
 
 ```javascript
-Selligent.getDeviceId(
-    (deviceId) => { // success callback
-        alert(deviceId);
-    }
-);
+Selligent.getDeviceId((deviceId) => {
+  // success callback
+  alert(deviceId);
+});
 ```
 
 <div align="right">
@@ -791,7 +781,7 @@ The response of the success callback is an array of objects which contain the in
 **Detailed overview:**
 
 | Property       | Type                                                                            | Description                                                | Platform |
-| -------------- | ------------------------------------------------------------------------------- | -----------------------------------------------------------| -------- |
+| -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------- | -------- |
 | id             | string                                                                          | Id of the in app message                                   | Both     |
 | title          | string                                                                          | Title of the in app message                                | Both     |
 | body           | string                                                                          | Body of the in app message                                 | Both     |
@@ -799,7 +789,7 @@ The response of the success callback is an array of objects which contain the in
 | creationDate   | number                                                                          | Creation date of the in app message in unix time           | Both     |
 | expirationDate | number                                                                          | Expiration date of the in app message in unix time         | Both     |
 | receptionDate  | number                                                                          | Reception date of the in app message in unix time          | Both     |
-| hasBeenSeen    | boolean                                                                         | Indication if the in app message is seen                   | Both     | 
+| hasBeenSeen    | boolean                                                                         | Indication if the in app message is seen                   | Both     |
 | buttons        | array of objects                                                                | Contains the buttons that are linked to the in app message | Both     |
 
 <br />
@@ -897,12 +887,12 @@ The method accepts an `event` object which requires certain properties, dependin
 | data        | object                                | Yes if event type is custom, optional if specific | Both     | N/A           |
 | shouldCache | boolean                               | No                                                | iOS Only | true          |
 
-The `type` property is used to define the event as *custom* or *specific* event, using the [EventType](#selligenteventtype) constants.
+The `type` property is used to define the event as _custom_ or _specific_ event, using the [EventType](#selligenteventtype) constants.
 
 To define it as a custom event, one should use the `SelligentConstants.EventType.CUSTOM` constant. All other event types can be used to define the event as something specific.
 
-When an event is a *specific* event type, the `event` object requires an `email` property containing a string, and has an optional property `data` which is an object that can contain other information.
-When an event is a *custom* event type, the `event` object requires a `data` property containing an object which contains other information, and ignores the `email` property.
+When an event is a _specific_ event type, the `event` object requires an `email` property containing a string, and has an optional property `data` which is an object that can contain other information.
+When an event is a _custom_ event type, the `event` object requires a `data` property containing an object which contains other information, and ignores the `email` property.
 
 **iOS specific:**
 
@@ -1015,7 +1005,7 @@ In case of a broadcast event type _ReceivedRemoteNotification_ the detailed over
 | pushId   | string | The id of the remote push notification     |
 | name     | string | The name attached to the push notification |
 
-In case of a broadcast event type _WillDisplayNotification_ or _WillDismissNotification_ the `data` prop is  `null`.
+In case of a broadcast event type _WillDisplayNotification_ or _WillDismissNotification_ the `data` prop is `null`.
 
 **Android specific:**
 
@@ -1157,6 +1147,7 @@ Selligent.areNotificationsEnabled(
 Set the small icon of a notification on Android.
 
 The method accepts an `iconName` parameter which is a string containing the name of the small icon. When the application is closed it will default back to the icons specified in `selligent.json`.
+
 > _Note: only parse the name of the icon, without the path. The icon should reside in the res/drawable folder of the Android project, as explained in [Android's official guide](https://developer.android.com/guide/topics/resources/drawable-resource#BitmapFile)._
 
 ##### setNotificationSmallIcon example
@@ -1182,6 +1173,7 @@ Selligent.setNotificationSmallIcon(
 Set the large icon of a notification on Android.
 
 The method accepts an `iconName` parameter which is a string containing the name of the large icon. When the application is closed it will default back to the icons specified in `selligent.json`.
+
 > _Note: only parse the name of the icon, without the path. The icon should reside in the res/drawable folder of the Android project, as explained in [Android's official guide](https://developer.android.com/guide/topics/resources/drawable-resource#BitmapFile)._
 
 ##### setNotificationLargeIcon example
@@ -1352,6 +1344,24 @@ Selligent.displayNotification(
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
+#### Selligent.registerForProvisionalRemoteNotification(successCallback)
+
+You can decide to first ask for the Provisional push authorization (which will provide a valid push token but will not show any prompt to the user) if you want to contact users that did not decide about the Push permission yet (you can call `enableNotifications` later and it will still display the push permission prompt to the user).
+
+##### registerForProvisionalRemoteNotification example
+
+```javascript
+Selligent.registerForProvisionalRemoteNotification(
+    () => { // success callback
+        ...
+    }
+);
+```
+
+<div align="right">
+    <b><a href="#api-reference">back to API ToC</a></b>
+</div>
+
 #### Selligent.registerRemoteNotificationFetchCompletionHandler(successCallback, errorCallback)
 
 Register a completion handler for successfully fetching remote notifications.
@@ -1422,16 +1432,16 @@ _Note: `ClearCacheIntervalValue.Android.DAY` is only used on Android and can not
 
 Defines the type of the in-app messages.
 
-| Name     | Type   | Value | Description                    |
-| -------- | ------ | ----- | ------------------------------ |
-| UNKNOWN  | number | -2    | In App message of unknown type |
-| HIDDEN   | number | -1    | In App message of hidden type  |
-| ALERT    | number | 0     |In App message of alert type    |
-| HTML     | number | 1     |In App message of html type     |
-| URL      | number | 2     |In App message of url type      |
-| IMAGE    | number | 3     |In App message of image type    |
-| MAP      | number | 4     |In App message of map type      |
-| PASSBOOK | number | 5     |In App message of passbook type |
+| Name     | Type   | Value | Description                     |
+| -------- | ------ | ----- | ------------------------------- |
+| UNKNOWN  | number | -2    | In App message of unknown type  |
+| HIDDEN   | number | -1    | In App message of hidden type   |
+| ALERT    | number | 0     | In App message of alert type    |
+| HTML     | number | 1     | In App message of html type     |
+| URL      | number | 2     | In App message of url type      |
+| IMAGE    | number | 3     | In App message of image type    |
+| MAP      | number | 4     | In App message of map type      |
+| PASSBOOK | number | 5     | In App message of passbook type |
 
 <div align="right">
     <b><a href="#api-reference">back to API ToC</a></b>
@@ -1454,7 +1464,7 @@ _Note: `InAppMessageRefreshType.Android.MINUTE` is only used on Android and can 
     <b><a href="#api-reference">back to API ToC</a></b>
 </div>
 
-#### SelligentConstants.AndroidRemoteMessagesDisplayType
+#### SelligentConstants.RemoteMessagesDisplayType
 
 Defines if and how remote messages can be displayed on Android.
 

@@ -108,7 +108,7 @@ RCT_EXPORT_MODULE(RNSelligent)
     [[SMManager sharedInstance] willPresentNotification:notification withCompletionHandler:completionHandler];
 }
 
-+ (void)didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler {
++ (void)didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(UNNotificationContentExtensionResponseOption options))completionHandler {
     [[SMManager sharedInstance] didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
 }
 
@@ -226,6 +226,12 @@ RCT_EXPORT_METHOD(enableNotifications:(BOOL)enable) {
         [[SMManager sharedInstance] registerForRemoteNotification];
     } else {
         [[SMManager sharedInstance] unregisterForRemoteNotification];
+    }
+}
+
+RCT_EXPORT_METHOD(registerForProvisionalRemoteNotification) {
+    if (@available(iOS 12.0, *)) {
+        [[SMManager sharedInstance] registerForProvisionalRemoteNotification];
     }
 }
 

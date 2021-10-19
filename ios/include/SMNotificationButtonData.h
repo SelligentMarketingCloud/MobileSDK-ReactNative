@@ -10,16 +10,11 @@
 
 #import "SMLink.h"
 
-
-
-
 /*!
- *  @brief SMNotificationButtonData
- *  @discussion This class is used to wrap informations about a notification button.
+ *  This class is used to wrap informations about a notification button.
  *
  *  Additional information provided in [SMManager](SMManager)
  */
 @interface SMNotificationButtonData : SMLink
-
 
 @end

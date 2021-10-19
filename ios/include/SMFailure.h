@@ -9,14 +9,9 @@
 #import "SMMessage.h"
 
 /*!
- *  @discussion This class is used to return any error
- *  #SMFailure:#
+ *  This class is used to return any error
  */
 @interface SMFailure : SMMessage
-
-
-
-
 
 @end
 

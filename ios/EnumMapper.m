@@ -4,6 +4,7 @@
     NSDictionary *_logLevelEnumMapping;
     NSDictionary *_clearCacheIntervalEnumMapping;
     NSDictionary *_inAppRefreshTypeEnumMapping;
+    NSDictionary *_remoteMessageDisplayTypeEnumMapping;
     NSDictionary *_locationAuthorisationStatusMapping;
     NSDictionary *_locationAuthorisationTypeMapping;
     NSDictionary *_backgroundFetchResult;
@@ -43,6 +44,11 @@
                                          @(iamrtHour) : @(kSMIA_RefreshType_Hourly),
                                          @(iamryDay ) : @(kSMIA_RefreshType_Daily),
                                          };
+        _remoteMessageDisplayTypeEnumMapping = @{
+            @(rmdtAutomatic) : @(kSMRemoteMessageDisplayType_Automatic),
+            @(rmdtNone) : @(kSMRemoteMessageDisplayType_None),
+            @(rmdtNotification) : @(kSMRemoteMessageDisplayType_Notification),
+        };
         _backgroundFetchResult = @{
                                    @(bfrNewData) : @(UIBackgroundFetchResultNewData),
                                    @(bfrNoData) : @(UIBackgroundFetchResultNoData),
@@ -89,6 +95,10 @@
 
 - (InAppMessageRefreshType)inAppMessageRefreshTypeForSMInAppRefreshType:(SMInAppRefreshType)smInAppRefreshType {
     return (InAppMessageRefreshType) ((NSNumber *)[_inAppRefreshTypeEnumMapping allKeysForObject:@(smInAppRefreshType)].firstObject).integerValue;
+}
+
+-(SMRemoteMessageDisplayType)smRemoteMessageDisplayTypeForRemoteMessageDisplayType:(RemoteMessageDisplayType)remoteMessageDisplayType {
+    return (SMRemoteMessageDisplayType) ((NSNumber *)_remoteMessageDisplayTypeEnumMapping[@(remoteMessageDisplayType)]).integerValue;
 }
 
 - (UIBackgroundFetchResult)uiBackgroundFetchResultForBackgroundFetchResult:(BackgroundFetchResult)backgroundFetchResult {

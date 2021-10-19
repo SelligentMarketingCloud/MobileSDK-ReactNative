@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSNumber *shouldDisplayRemoteNotification;
 @property (nonatomic, strong) NSNumber *configureLocationServices;
 @property (nonatomic, strong) NSNumber *clearCacheIntervalValue;
+@property (nonatomic, strong) NSNumber *remoteMessageDisplayType;
 @property (nonatomic, strong) InAppMessageSettings *inAppMessageSettings;
 
 @end
@@ -30,6 +31,7 @@
     clientSettings.shouldDisplayRemoteNotification = dictionary[@"shouldDisplayRemoteNotification"];
     clientSettings.configureLocationServices = dictionary[@"configureLocationServices"];
     clientSettings.clearCacheIntervalValue = dictionary[@"clearCacheIntervalValue"];
+    clientSettings.remoteMessageDisplayType = dictionary[@"remoteMessageDisplayType"];
     clientSettings.inAppMessageSettings = [InAppMessageSettings fromDictionary:dictionary];
     return clientSettings;
 }

@@ -1,5 +1,5 @@
 //
-//  SellNotificationMessage.h
+//  SMInAppMessage.h
 //  MobileSDK
 //
 //  Created by Gilbert Schakal on 19/05/15.
@@ -10,34 +10,42 @@
 #import "SMBaseMessage.h"
 #import "SMInAppMessageType.h"
 
-/*!
- *
- *  #SMInAppMessage :#
- */
 @interface SMInAppMessage : SMBaseMessage
 
 /*!
- *  NSString instance providing the title of the message
+ *  NSString instance providing the title of the inapp-notification
  */
-@property (nonatomic) NSString     *title;
-/*!
- *  NSString instance providing the content of the message
- */
-@property (nonatomic) NSString     *body;
+@property (readonly, nonatomic) NSString *_Nullable title;
 
 /*!
- *  NSArray of SMNotificationAnnotationData  objects for map In App message
+ *  NSString instance providing the content of the inapp-notification
  */
-@property (nonatomic) NSArray *arrayMapAnnotations;
+@property (readonly, nonatomic) NSString *_Nullable body;
 
 /*!
- *  NSArray of SMLink objects
+ *  NSArray of SMNotificationAnnotationData  objects for map inapp-notification
  */
-@property (nonatomic) NSArray *arrayIAMLinks;
+@property (readonly, nonatomic) NSArray *_Nullable arrayMapAnnotations;
 
 /*!
- *  SMInAppMessageType instance providing the in app message  type
+ *  NSArray of SMLink objects from the inapp-notification
  */
-@property (nonatomic) SMInAppMessageType  iamType;
+@property (readonly, nonatomic) NSArray *_Nullable arrayIAMLinks;
+
+/*!
+ *  SMInAppMessageType instance providing the in inapp-notification type
+ *  @see SMInAppMessageType
+ */
+@property (readonly, nonatomic) SMInAppMessageType iamType;
+
+/*!
+ *  NSString instance providing the title of the remote-notification
+ */
+@property (readonly, nonatomic) NSString *_Nullable apsTitle;
+
+/*!
+ *  NSString instance providing the body of the remote-notification
+ */
+@property (readonly, nonatomic) NSString *_Nullable apsBody;
 
 @end

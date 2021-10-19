@@ -6,9 +6,8 @@
 //  Copyright © 2016 Selligent. All rights reserved.
 //
 
-
 /*!
- *  #SMInAppContentType :#
+ *  
  */
 typedef NS_OPTIONS (NSInteger, SMInAppContentType) {
     

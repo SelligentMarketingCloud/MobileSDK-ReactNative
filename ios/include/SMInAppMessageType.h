@@ -6,11 +6,7 @@
 //  Copyright © 2020 Selligent. All rights reserved.
 //
 
-/*!
- *  #SMInAppMessageType :#
- */
-typedef NS_ENUM (NSInteger, SMInAppMessageType){
-    
+typedef NS_ENUM (NSInteger, SMInAppMessageType) {
     /*!
      *  In App message of unknown type.
      */

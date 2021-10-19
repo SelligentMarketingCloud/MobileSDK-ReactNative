@@ -7,7 +7,7 @@
 //
 
 /*!
- *  #SMInAppRefreshType :#
+ * 
  */
 typedef NS_ENUM(NSInteger, SMInAppRefreshType) {
     /*!

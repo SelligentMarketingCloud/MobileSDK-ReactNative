@@ -7,7 +7,7 @@
 //
 
 /**
- *  #SMContentAlignment :#
+ *
  */
 typedef NS_ENUM(NSInteger, SMContentAlignment) {
     /*!
@@ -25,4 +25,3 @@ typedef NS_ENUM(NSInteger, SMContentAlignment) {
      */
     kSMAlignCenter
 };
-

@@ -13,6 +13,7 @@
 @property (nonatomic, strong, readonly) NSNumber *shouldDisplayRemoteNotification;
 @property (nonatomic, strong, readonly) NSNumber *configureLocationServices;
 @property (nonatomic, strong, readonly) NSNumber *clearCacheIntervalValue;
+@property (nonatomic, strong, readonly) NSNumber *remoteMessageDisplayType;
 @property (nonatomic, strong, readonly) InAppMessageSettings *inAppMessageSettings;
 
 @end

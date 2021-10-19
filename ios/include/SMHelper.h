@@ -1,11 +1,13 @@
 //
-//  SMHelper.h
+//  SMHelper+Location.h
 //  MobileSDK
 //
-//  Created by Samy Ziat on 29/09/15.
-//  Copyright (c) 2015 Selligent. All rights reserved.
+//  Created by Marc Biosca on 6/29/21.
+//  Copyright © 2021 Selligent. All rights reserved.
 //
 
+#import "SMManager+Location.h"
+#import "SMManagerSetting+Location.h"
 
 #import "SMManagerHelper.h"
 
@@ -13,12 +15,11 @@
 #import "SMLink.h"
 #import "SMNotificationButtonData.h"
 #import "SMNotificationAnnotationData.h"
+#import "SMNotificationMessage.h"
 
 #import "SMManagerSetting.h"
 #import "SMManagerSettingIAM.h"
 #import "SMManagerSettingIAC.h"
-
-#import "SMManager+Location.h"
 
 #import "SMManager+DataTransaction.h"
 #import "SMManager+RemoteNotification.h"
@@ -29,8 +30,11 @@
 #import "SMManager+SMEvent.h"
 #import "SMManager+Log.h"
 #import "SMManager+StyleOptions.h"
+#import "SMManager+ViewController.h"
+#import "SMManager+SMLink.h"
 
 #import "SMManagerInAppMessageDelegate.h"
+#import "SMManagerUniversalLinksDelegate.h"
 
 #import "SMInAppContentImageViewController.h"
 #import "SMInAppContentURLViewController.h"

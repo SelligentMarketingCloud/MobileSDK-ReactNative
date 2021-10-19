@@ -1,4 +1,4 @@
-import {Platform} from 'react-native'
+import { Platform } from 'react-native'
 
 /**
  * @module SelligentConstants
@@ -36,7 +36,7 @@ var SelligentConstants = {
 	 * @description
 	 * Defines the in-app messages type.
 	 */
-	 InAppMessageType: {
+	InAppMessageType: {
 		UNKNOWN: -2,
 		HIDDEN: -1,
 		ALERT: 0,
@@ -45,6 +45,18 @@ var SelligentConstants = {
 		IMAGE: 3,
 		MAP: 4,
 		PASSBOOK: 5,
+	},
+	/**
+	 * @description
+	 * Defines if and how remote messages can be displayed.
+	 */
+	RemoteMessagesDisplayType: {
+		/** Display remote messages automatically */
+		AUTOMATIC: 20,
+		/** Don't display remote messages */
+		NONE: 21,
+		/** Display remote messages as notification */
+		NOTIFICATION: 22
 	},
 	/**
 	 * @description

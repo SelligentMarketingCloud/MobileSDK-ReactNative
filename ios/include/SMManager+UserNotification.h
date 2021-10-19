@@ -8,6 +8,9 @@
 
 #import "SMManager+RemoteNotification.h"
 #import <UserNotifications/UserNotifications.h>
+#import <UserNotificationsUI/UserNotificationsUI.h>
+
+@class SMNotificationMessage;
 
 /**
  *  In addition to the implementation of category SMManager(RemoteNotification), this category will supply a support of iOS 10 and usage of UserNotifications framework
@@ -16,10 +19,10 @@
  *
  *  If you build against iOS 10+ and you use UserNotifications framework we then recommend you to implement those 2 methods of UNUserNotificationCenterDelegate in your appdelegate:
  *
- *      - SMManager didReceiveNotificationResponse:
- *      - SMManager didReceiveNotificationResponse:withCompletionHandler:
- *      - SMManager willPresentNotification:
- *      - SMManager willPresentNotification:withCompletionHandler:
+ *      - didReceiveNotificationResponse:
+ *      - didReceiveNotificationResponse:withCompletionHandler:
+ *      - willPresentNotification:
+ *      - willPresentNotification:withCompletionHandler:
  *
  *  Register your appdelegate to the UNUserNotificationCenter by adding the following two lines in the didFinishLaunchingWithOptions delegate.
  *
@@ -34,19 +37,17 @@
  *
  *      Init extensions (to be used for each extensions that will be added to your project):
  *
- *          - SMManager startExtensionWithSetting:
+ *          - startExtensionWithSetting:
  *
  *      Notification content extension :
  *
- *          - SMManager didReceiveNotification:
+ *          - didReceiveNotification:
  *
  *      Notification service extension :
  *
- *          - SMManager didReceiveNotificationRequest:
- *          - SMManager didReceiveNotificationRequest:withContentHandler:
- *          - SMManager serviceExtensionTimeWillExpire
- *
- *  #SMManager+UserNotifications :#
+ *          - didReceiveNotificationRequest:
+ *          - didReceiveNotificationRequest:withContentHandler:
+ *          - serviceExtensionTimeWillExpire
  *
  */
 @interface SMManager (UserNotification)
@@ -55,20 +56,19 @@
  *  Mandatory API when used inside App in AppDelegate (but is optional for Notification Content Extension), when building against iOS 10+ and using UserNotifications framework, to be included in userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler.
  *  Handle and display remote notification.
  *
- *  @param response A UNNotificationResponse that contains information about the notification and the interaction the user has done with it. Provided by the delegate call
+ *  @param response An UNNotificationResponse that contains information about the notification and the interaction the user has done with it. Provided by the delegate call
  *  @discussion This method is mandatory when used in AppDelegate but is optional when implementing Notification content extension. When used in Notification Content Extension it  provides to the sdk the ability to process the action that should be triggered without opening the app (in this case don't forget to call the completionhandler with the desired UNNotificationContentExtensionResponseOption
  */
-- (void)didReceiveNotificationResponse:(UNNotificationResponse*_Nonnull)response;
-
+- (void) didReceiveNotificationResponse:(UNNotificationResponse*_Nonnull)response;
 
 /*!
  *  Mandatory API, when building against iOS 10+ and using UserNotifications framework, to be included in userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler
  *  Handle and display remote notification.
  *
- *  @param response A UNNotificationResponse that contains information about the notification and the interaction the user has done with it. Provided by the delegate call
- *  @param completionHandler A completion that will be called.
+ *  @param response An UNNotificationResponse that contains information about the notification and the interaction the user has done with it. Provided by the delegate call
+ *  @param completionHandler A completion that will be called with the option UNNotificationContentExtensionResponseOptionDismiss
  */
-- (void)didReceiveNotificationResponse:(UNNotificationResponse *_Nonnull)response withCompletionHandler:(void (^_Nullable)(void))completionHandler;
+- (void) didReceiveNotificationResponse:(UNNotificationResponse *_Nonnull)response withCompletionHandler:(void (^_Nullable)(UNNotificationContentExtensionResponseOption option))completionHandler;
 
 /*!
  *  Mandatory API, when building against iOS 10+ and using UserNotifications framework, to be included in userNotificationCenter:willPresentNotification:withCompletionHandler
@@ -83,31 +83,32 @@
  *
  *  @param notification A UNNotification that contains information about the notification.
  */
-- (void)willPresentNotification:(UNNotification*_Nonnull)notification;
+- (void) willPresentNotification:(UNNotification*_Nonnull)notification;
 
 /*!
  *  Mandatory API, when building against iOS 10+ and using UserNotifications framework, to be included in userNotificationCenter:willPresentNotification:withCompletionHandler
- *  Handle the remote notification when app is in foreground and call the completionHandler(UNNotificationPresentationOptionAlert) by default.
+ *  Handle the remote notification when app is in foreground and call the completionHandler(UNNotificationPresentationOptionAlert) by default (or UNNotificationPresentationOptionBanner | UNNotificationPresentationOptionList for iOS 14+).
  *
  *  This allows the SDK to inform the services that the Selligent push has been received.
  *
  *  You don't need to call the completion handler in the delegate anymore.
  *
- *  @param notification A UNNotification that contains information about the notification.
- *  @param completionHandler A Completion handler that will be called with UNNotificationPresentationOptionAlert by default.
+ *  @param notification An UNNotification that contains information about the notification.
+ *  @param completionHandler A Completion handler that will be called with a specific UNNotificationPresentationOption depending on the SMForegroundDisplayType value specified when starting the SDK.
+ *  @see SMManagerSetting
  */
-- (void)willPresentNotification:(UNNotification*_Nonnull)notification withCompletionHandler:(void (^_Nullable)(UNNotificationPresentationOptions options))completionHandler;
-
+- (void) willPresentNotification:(UNNotification*_Nonnull)notification withCompletionHandler:(void (^_Nullable)(UNNotificationPresentationOptions options))completionHandler;
 
 /*!
  *  Mandatory method which allows sdk initialisation when building against iOS 10+ and using Notification Extensions .
  *  To be included in didReceiveNotification: when implementing Notification content extension and/or in didReceiveNotificationRequest:withContentHandler: when implementing Notification service extension
  *
  *  @param setting  mandatory SMManagerSetting instance to start-up the library - this setting mus tbe initialised with only url, clienID and privateKet provided by selligent
- *  @see  SMManagerSetting
+ *  @see SMManagerSetting
  *  @discussion This method is mandatory in order to start / initialise the library and should be called in in didReceiveNotification: when implementing Notification content extension and/or in didReceiveNotificationRequest:withContentHandler: when implementing Notification service extension
+ *  @see SMManagerSetting
  */
-- (void)startExtensionWithSetting:(SMManagerSetting*_Nonnull)setting;
+- (void) startExtensionWithSetting:(SMManagerSetting*_Nonnull)setting;
 
 /*!
  *  Optional API, when building against iOS 10+ and using a Notification Content Extension target, to be included in NotificationViewController didReceiveNotification:
@@ -119,8 +120,7 @@
  *
  *  @param notification A UNNotification that contains information about the notification.
  */
-- (void)didReceiveNotification:(UNNotification*_Nonnull)notification;
-
+- (void) didReceiveNotification:(UNNotification*_Nonnull)notification;
 
 /*!
  *  Optional API, when building against iOS 10+ and using a Notification Service Extension target, to be included in NotificationService didReceiveNotificationRequest:withContentHandler:
@@ -128,11 +128,11 @@
  *
  *  This allows the SDK to decrypt the payload before displaying it to the user if you have activated the encryption of push.
  *
- *  @param request A UNNotificationRequest that contains the original notification request.
+ *  @param request An UNNotificationRequest that contains the original notification request.
  *  @return UNMutableNotificationContent the updated content of the payload.
  *  @discussion you can use this method if you have decided to trigger the block to execute with the modified content by yourself otherwise if you want the sdk to manage all steps please use SMManager didReceiveNotificationRequest:withContentHandler:
  */
-- (UNMutableNotificationContent*_Nullable)didReceiveNotificationRequest:(UNNotificationRequest*_Nonnull)request;
+- (UNMutableNotificationContent*_Nullable) didReceiveNotificationRequest:(UNNotificationRequest*_Nonnull)request;
 
 /*!
  *  Optional API, when building against iOS 10+ and using a Notification Service Extension target, to be included in NotificationService didReceiveNotificationRequest:withContentHandler:
@@ -140,16 +140,28 @@
  *
  *  This allows the SDK to decrypt the payload before displaying it to the user if you have activated the encryption of push.
  *
- *  @param request A UNNotificationRequest that contains the original notification request.
+ *  @param request An UNNotificationRequest that contains the original notification request.
  *  @param contentHandler The block to execute with the modified content
  *  @discussion you can use this method if you want the sdk to manage the display of the notification after teh decryption has been processed
  */
-- (void)didReceiveNotificationRequest:(UNNotificationRequest*_Nonnull)request withContentHandler:(void (^_Nullable)(UNNotificationContent*_Nonnull))contentHandler;
+- (void) didReceiveNotificationRequest:(UNNotificationRequest*_Nonnull)request withContentHandler:(void (^_Nullable)(UNNotificationContent*_Nonnull))contentHandler;
 
 /*!
  *  Optional API, when building against iOS 10+ and using a Notification Service Extension target, to be included in NotificationService serviceExtensionTimeWillExpire
  *  Tells the sdk that the extension is about to be terminated.
  *  @discussion this method is to be implemented only if you have implemented SMManager didReceiveNotificationRequest:withContentHandler:
  */
-- (void)serviceExtensionTimeWillExpire;
+- (void) serviceExtensionTimeWillExpire;
+
+/**
+ *  Optional API, retrieves the SMNotificationMessage object from a given userInfo
+ *
+ *  @param userInfo An NSDictionary
+ *  @return SMNotificationMessage instance containing the information extracted from the given userInfo.
+ *  @discussion This is a convinient method to get the SMNotificationMessage from an incoming remote-notification.
+ *  It can be used for custom purposes when receiving a remote-notification in foreground for iOS 10+.
+ *  @see SMNotificationMessage
+ */
+- (SMNotificationMessage*_Nullable) retrieveNotificationMessage:(NSDictionary*_Nullable)userInfo;
+
 @end

@@ -6,10 +6,8 @@
 //  Copyright (c) 2015 Selligent. All rights reserved.
 //
 
-
 /**
  *  Enumeration used to define how often the SDK's cache should automaticaly clear itself
- *  #SMClearCache :#
  */
 typedef NS_ENUM(NSInteger, SMClearCache) {
     /**

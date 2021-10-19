@@ -12,10 +12,10 @@
  *  @typedef type of block that will be triggered when an event has been succesfully sent
  *  @param success a SMSuccess object
  */
-typedef void(^SMCompletionBlockSuccess)(SMSuccess *success);
+typedef void(^SMCompletionBlockSuccess)(SMSuccess *_Nullable success);
 
 /**
  *  @typedef type of block that will be triggered when an event has failed to be sent
  *  @param failure a SMFailure failure
  */
-typedef void(^SMCompletionBlockFailure)(SMFailure *failure);
+typedef void(^SMCompletionBlockFailure)(SMFailure *_Nullable failure);

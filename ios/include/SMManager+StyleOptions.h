@@ -13,27 +13,24 @@
 /*!
  *  Allows you to customise the appearance of all the In App Content containers
  *
- *  #Implementation :#
+ *  ##Implementation
  *      * First create a SMInAppContentStyleOptions object instance
  *      * load it with loadStyleOptions:
- *
- *  #SMManager+StyleOptions :#
  */
-
 
 @interface SMManager (StyleOptions)
 
-
 /*!
  * This will allow you to load your custom SMInAppContentStyleOptions object
+ *
  * @param options a SMInAppContentStyleOptions object
+ * @see SMInAppContentStyleOptions
  */
--(void)loadStyleOptions:(SMInAppContentStyleOptions*)options;
-
+- (void) loadStyleOptions:(SMInAppContentStyleOptions*_Nullable)options;
 
 /*!
  * Reset style options to default one
  */
--(void) resetStyleOptions;
+- (void) resetStyleOptions;
 
 @end

@@ -17,7 +17,6 @@
 @class WKNavigationDelegate;
 
 /*!
- *  #Introduction :#
  *  In-Application-Message (IAM) is an optional service which will **automatically** retrieve messages from the back-end at specific frequencies.
  *  Once new messages were retrieved, the library notifies the application about it.
  *  Then, the application may display any IAM as a usual notification.
@@ -27,7 +26,7 @@
  *  Remote-push-notificaitons are almost live messages that are pushed to devices.
  *  While IAM are non-live-messages that the SDK fetch at specific intervals according to provided fetch-mode.
  *
- *  #Implementation :#
+ *  ##Implementation:
  *  In a nutshell, activate the IAM-service is a two steps process:
  *
  *  *   First, create an SMManagerSettingIAM instance and inject it in SMManagerSetting with [SMManagerSetting configureInAppMessageServiceWithSetting:]
@@ -41,7 +40,7 @@
  *  This notification will provide you with the IAM's unique ID.
  *  Please be aware that it’s the unique application’s chance to capture and store that information.
  *
- *  #Displaying IAM :#
+ *  ##Displaying IAM
  *
  *  As IAM and remote-notification share the same format, they are both displayed using the same APIs.
  *  Please read the documentation in SMManager(RemoteNotification) to know how to display any kind of notification.
@@ -51,7 +50,7 @@
  *  Once a SMInAppMessage has been displayed and has been seen by the user you need to call setInAppMessageAsSeen: to inform Selligent that the In App message has been opened
  *  In case there is links in the In App Message and in case one of the link is triggered by user please call executeLinkAction:: to process teh action related to the link and inform Selligent that the link has been clicked
  *
- *  #Fetching modes :#
+ *  ##Fetching modes
  *  IAM may be retrieved from two different modes corresponding to the application's state:
  *
  *  * Foreground-fetch -- When the application is in foreground.
@@ -63,14 +62,14 @@
  *
  *  Following documentation explains how to activate each mode:
  *
- *  #Fetching IAM in foreground :#
+ *  ##Fetching IAM in foreground
  *  In order to retrieve IAM while the application is running, make sure to do the folllowing:
  *
  *  - Create and configure an SMManagerSettingIAM instance accordingly.
  *  - Provide the created SMManagerSettingIAM instance to SMManager before starting the library
  *  - Enable In App message by calling enableInAppMessage: when your application needs it.
  *
- *  #Fetching IAM in background :#
+ *  ##Fetching IAM in background
  *  Initially, this mode has been added as a complementary-option to the foreground-mode.
  *  However, it can be used as a single-fetch-mode if fits best your application's need.
  *  
@@ -83,8 +82,6 @@
  *  - In the application's target, enable the following: Capabilities > Background Modes > Background Fetch
  *  - Implement performFetchWithCompletionHandler: in UIApplicaiton's delegate (under delegate method application:performFetchWithCompletionHandler:)
  *  - Enable In App message by calling enableInAppMessage: when your application needs it.
- *
- *  #SMManager+InAppMessage :#
  */
 @interface SMManager (InAppMessage)
 
@@ -99,9 +96,7 @@
  *  *   Configure correctly the IAM-service via [configureInAppMessageServiceWithSetting:]([SMManagerSetting configureInAppMessageServiceWithSetting:])
  *
  */
-- (void)enableInAppMessage:(BOOL)shouldEnable;
-
-
+- (void) enableInAppMessage:(BOOL)shouldEnable;
 
 /**
  *  This will allow the SDK to fetch the IAM when the OS will allow so.
@@ -109,63 +104,69 @@
  *  @param completionHandler The block-completion to be processed. Provided by the delegate call
  *  @warning Make sure to enable background-fetch in the application's capabilities
  */
-- (void)performIAMFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+- (void) performIAMFetchWithCompletionHandler:(void (^_Nullable)(UIBackgroundFetchResult))completionHandler;
 
 /*!
  * @abstract This will return an array of In App Messages
  * @discussion All the valid IAM will be retrieved even if they were already provided to the device
  * @return returns an NSArray of SMInAppMessage
  */
-- (NSArray*) getInAppMessages;
+- (NSArray*_Nonnull) getInAppMessages;
 
 /*!
  * @abstract This method will mark an IAM as viewed, send the Open event to the server and update  SMInAppMessage object in cache with isViewed property set to  true
  * @discussion The message will  still be provided to the device with the flag isViewed set to true
  * @param inAppMessage an SMInAppMessage object
+ * @see SMInAppMessage
  */
-- (void) setInAppMessageAsSeen:(SMInAppMessage*)inAppMessage;
+- (void) setInAppMessageAsSeen:(SMInAppMessage*_Nullable)inAppMessage;
 
 /*!
  * @abstract This method will mark an IAM as unseen
  * @discussion The message will be  provided to the device with the flag isViewed set to false
  * @param inAppMessage an SMInAppMessage object
+ * @see SMInAppMessage
  */
-- (void) setInAppMessageAsUnseen:(SMInAppMessage*)inAppMessage;
+- (void) setInAppMessageAsUnseen:(SMInAppMessage*_Nullable)inAppMessage;
 
 /*!
  * @abstract This method will mark an IAM as deleted
  * @discussion The message will be not be provided again to the device once deleted
  * @param inAppMessage an SMInAppMessage object
+ * @see SMInAppMessage
  */
-- (void) setInAppMessageAsDeleted:(SMInAppMessage*)inAppMessage;
+- (void) setInAppMessageAsDeleted:(SMInAppMessage*_Nullable)inAppMessage;
 
 /*!
  * @abstract This method must be called whenever a user has clicked on a link that you  manage to display
  * @discussion This will allow the sdk to inform the services that a link has been clicked and to process the action associated with the link
  * @param link a SMLink object
  * @param inAppMessage  a SMInAppMessage object
+ * @see SMLink
+ * @see SMInAppMessage
  */
-- (void) executeLinkAction:(SMLink*)link InAppMessage:(SMInAppMessage*)inAppMessage;
+- (void) executeLinkAction:(SMLink*_Nullable)link InAppMessage:(SMInAppMessage*_Nullable)inAppMessage;
 
 /**
  *  @abstract This method will allow you to provide an instance of a class to the sdk . This class will implement the WKNavigationDelegate methods
  *  In this case when the sdk displays an In App Message in a WKWebView you will  for example be able to process the linked click on the app side by implementing  decidePolicyForNavigationAction on the provided class
  *  @param delegate  an object implementing WKNavigationDelegate methods
  */
-- (void) inAppMessageWKNavigationDelegate:(id <WKNavigationDelegate>) delegate;
-
+- (void) inAppMessageWKNavigationDelegate:(id <WKNavigationDelegate>_Nullable) delegate;
 
 /*!
  * @abstract This method must be called whenever a user has clicked on a link that you  manage to display
  * @discussion This will allow the sdk to inform the services that a link has been clicked and to process the action associated with the link
  */
-- (void)removeViewController;
+- (void) removeViewController;
 
 /**
  *  Used to let the app display the inapp message linked to a remote notification
  *  @abstract this setting will allow you to  manage on app side the display of the inapp message linked to a push remote notification
  *  In order to display it in your side the delegate object should implement [SMManagerInAppMessageDelegate displayInAppMessage:] method it will provide tha app with a SMInAppMessage object
  *  @param delegate  an object implementing SMManagerInAppMessageDelegate  methods
+ *  @see SMManagerInAppMessageDelegate
  */
-- (void) inAppMessageDelegate:(id <SMManagerInAppMessageDelegate>) delegate;
+- (void) inAppMessageDelegate:(id <SMManagerInAppMessageDelegate>_Nullable) delegate;
+
 @end

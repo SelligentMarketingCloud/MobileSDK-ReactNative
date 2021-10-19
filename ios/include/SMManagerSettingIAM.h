@@ -15,19 +15,15 @@
  */
 @interface SMManagerSettingIAM : NSObject
 
-
-
-
 /**
  *  Constructor to be used in order to create the SMManagerSettingIAM instance
+ *
  *  @discussion use this constructor to enable background-mode only. 
  *  The OS will refresh automaticly the IAM based on how often the user interacts with the application
  *  @warning If background-fetch is not enabled in Application's Capabilities, the IAM-service will not start.
  *  See SMManager(InAppMessage) for additional information.
  */
-+ (instancetype)settingWithBackgroundFetchOnly;
-
-
++ (instancetype _Nonnull) settingWithBackgroundFetchOnly;
 
 /**
  *  Constructor to be used in order to create the SMManagerSettingIAM instance
@@ -35,24 +31,19 @@
  *  @param refreshType The type of refresh to consider when the application is in foreground
  *  @discussion Use this constructor should you want to perform periodic refresh when the application is in foreground-state only.
  *  For enabling backgroundState, use settingWithRefreshType:ShouldPerformBackgroundFetch: instead
+ *  @see SMInAppRefreshType
  */
-+ (instancetype)settingWithRefreshType:(SMInAppRefreshType)refreshType;
-
-
-
++ (instancetype _Nonnull) settingWithRefreshType:(SMInAppRefreshType)refreshType;
 
 /**
  *  Constructor to be used in order to create the SMManagerSettingIAM instance
  *
- *  @param refreshType                  The type of refresh to consider when the application is in foreground
+ *  @param refreshType The type of refresh to consider when the application is in foreground
  *  @param shouldPerformBackgroundFetch If set to TRUE, it will activate UIApplication-BackGround-Fetch-mode automaticly
  *  @discussion This constructor provides you with more control on foreground / background fetch.
  *  Should you want to restrict to only one fetch-mode, feel free to use other constructors.
+ *  @see SMInAppRefreshType
  */
-+ (instancetype)settingWithRefreshType:(SMInAppRefreshType)refreshType ShouldPerformBackgroundFetch:(BOOL)shouldPerformBackgroundFetch;
-
-
-
-
++ (instancetype _Nonnull) settingWithRefreshType:(SMInAppRefreshType)refreshType ShouldPerformBackgroundFetch:(BOOL)shouldPerformBackgroundFetch;
 
 @end

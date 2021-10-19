@@ -9,7 +9,7 @@
 /*!
  *  Enumeration type for the log granularity
  */
-typedef NS_OPTIONS(NSInteger, SMLogLevel){
+typedef NS_OPTIONS(NSInteger, SMLogLevel) {
     /*!
      *  No log printed at all.
      *  This is the suggested log-level for release.

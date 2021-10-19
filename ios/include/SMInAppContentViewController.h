@@ -13,17 +13,15 @@
 
 @class SMInAppContentMessage;
 
-
 /*!
- *  parent class for SMInAppContentURLViewController, SMInAppContentHTMLViewController, SMInAppContentImageViewController
- *  #SMInAppContentViewController :#
+ *  Parent class for SMInAppContentURLViewController, SMInAppContentHTMLViewController, SMInAppContentImageViewController
  */
 @interface SMInAppContentViewController : UIViewController
 
 /*!
  *  NSString containing the category of the SMInAppContentViewController
  */
-@property (nonatomic,strong) NSString* category;
+@property (nonatomic,strong) NSString*_Nullable category;
 
 /*!
  * bool set with true when the SMInAppContentViewController is empty

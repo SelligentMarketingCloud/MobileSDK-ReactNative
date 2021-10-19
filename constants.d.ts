@@ -25,6 +25,12 @@ export namespace InAppMessageType {
   const PASSBOOK: 5;
 }
 
+export namespace RemoteMessagesDisplayType {
+  const AUTOMATIC = 20;
+  const NONE = 21;
+  const NOTIFICATION = 22;
+}
+
 export namespace AndroidRemoteMessagesDisplayType {
   const AUTOMATIC = 20;
   const NONE = 21;
