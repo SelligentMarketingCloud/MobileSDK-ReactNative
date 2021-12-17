@@ -1,6 +1,6 @@
 //
 //  SMInAppMessageType.h
-//  SelligentMobileLib
+//  MobileSDK
 //
 //  Created by Gilbert Schakal on 24/9/2020.
 //  Copyright © 2020 Selligent. All rights reserved.

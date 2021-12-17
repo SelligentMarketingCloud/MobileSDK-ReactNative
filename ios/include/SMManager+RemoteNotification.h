@@ -153,7 +153,7 @@
  *  At this stage, only the very last remote-notification can be recovered, previous ones are automaticly overriden.
  *  To learn more about this API, please read documentation in [SMManagerSetting](SMManagerSetting), more particularly [SMManagerSetting shouldDisplayRemoteNotification]
  */
-- (NSDictionary*_Nullable)retrieveLastRemotePushNotification;
+- (NSDictionary*_Nullable) retrieveLastRemotePushNotification;
 
 /**
  *  Tells to the SDK that a certain SMNotificationMessage object has been seen.

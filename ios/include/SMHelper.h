@@ -1,13 +1,10 @@
 //
-//  SMHelper+Location.h
+//  SMHelper.h
 //  MobileSDK
 //
-//  Created by Marc Biosca on 6/29/21.
-//  Copyright © 2021 Selligent. All rights reserved.
+//  Created by Samy Ziat on 29/09/15.
+//  Copyright (c) 2015 Selligent. All rights reserved.
 //
-
-#import "SMManager+Location.h"
-#import "SMManagerSetting+Location.h"
 
 #import "SMManagerHelper.h"
 

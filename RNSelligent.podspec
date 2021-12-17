@@ -12,17 +12,16 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage     = "https://github.com/SelligentMarketingCloud/MobileSDK-ReactNative"
   s.license      = "MIT"
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "11.0"
   s.source       = { :git => "https://github.com/SelligentMarketingCloud/MobileSDK-ReactNative.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m}"
   s.requires_arc = true
 
-  s.vendored_libraries = "ios/libSelligentMobile2.7.a"
-  s.libraries = "SelligentMobile2.7"
+  s.vendored_libraries = "ios/libSelligentMobile.a"
+  s.libraries = "SelligentMobile"
 
   s.dependency "React"
-  s.dependency 'PlotPlugin'
 end
 
   

@@ -142,7 +142,7 @@
  *
  *  @param request An UNNotificationRequest that contains the original notification request.
  *  @param contentHandler The block to execute with the modified content
- *  @discussion you can use this method if you want the sdk to manage the display of the notification after teh decryption has been processed
+ *  @discussion you can use this method if you want the sdk to manage the display of the notification after the decryption has been processed
  */
 - (void) didReceiveNotificationRequest:(UNNotificationRequest*_Nonnull)request withContentHandler:(void (^_Nullable)(UNNotificationContent*_Nonnull))contentHandler;
 

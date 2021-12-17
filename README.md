@@ -9,6 +9,13 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 
 > _**Important:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 4.2.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native._
 
+This module uses the native Selligent SDKs:
+
+| SDK                                                                     | Version |
+| ----------------------------------------------------------------------- | ------- |
+| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 3.8.0   |
+| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 2.7.1   |
+
 ## ToC
 
 - [Installation](#installation)
@@ -50,7 +57,6 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 | clientId                                    | string                                                                          | Yes      | Both         |
 | privateKey                                  | string                                                                          | Yes      | Both         |
 | clearCacheIntervalValue                     | enum [Selligent.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)     | No       | Both         |
-| configureLocationServices                   | boolean                                                                         | No       | Both         |
 | inAppMessageRefreshType                     | enum [Selligent.InAppMessageRefreshType](#selligentinappmessagerefreshtype)     | No       | Both         |
 | addInAppMessageFromPushToInAppMessageList   | boolean                                                                         | No       | Both         |
 | remoteMessageDisplayType                    | enum [Selligent.RemoteMessagesDisplayType](#selligentremotemessagesdisplaytype) | No       | Both         |
@@ -67,6 +73,45 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 ​
 
 ### Android Specific Installation
+
+> ### **Atention for Huawei developers!**
+>
+> In order to use this module on Huawei devices (without Goggle Play services), you should add the following dependencies in the `build.gradle` files of the Android project in your React Native project:
+>
+> In your Android project's root `build.gradle` file:
+>
+> ```gradle
+>
+> buildscript {
+>  repositories {
+>   maven { url 'https://developer.huawei.com/repo/' }
+>  }
+>  dependencies {
+>   classpath: 'com.huawei.agconnect.agcp:1.6.0.300'
+>  }
+> }
+>
+> allProjects: {
+>   repositories: {
+>     maven: { url 'https://developer.huawei.com/repo/' }
+>   }
+> }
+>
+> ```
+>
+> In your app module's `build.gradle` file:
+>
+> ```gradle
+>
+> apply plugin 'com.huawei.agconnect'
+>
+> dependencies {
+>   api 'com.huawei.hms:base:6.2.0.300'
+>   api 'com.huawei.hms:push:6.1.0.300'
+>   api 'com.huawei.hms:maps:6.2.0.301'
+> }
+>
+> ```
 
 <details>
 <summary>Without autolinking (RN 0.59 and below)</summary>
@@ -98,11 +143,6 @@ This module provides an API for the usage of the Selligent SDK in React Native.
            // Add the following:
            flatDir {
                dirs "$rootDir/../node_modules/@selligent-marketing-cloud/selligent-react-native/android/libs"
-           }
-
-           // Add the following:
-           maven {
-               url 'https://maven-repo.plotprojects.com'
            }
        }
    }
@@ -186,11 +226,6 @@ This module provides an API for the usage of the Selligent SDK in React Native.
            // Add the following:
            flatDir {
                dirs "$rootDir/../node_modules/@selligent-marketing-cloud/selligent-react-native/android/libs"
-           }
-
-           // Add the following:
-           maven {
-               url 'https://maven-repo.plotprojects.com'
            }
        }
    }
@@ -370,10 +405,6 @@ Add the following properties to the `selligent.json` file:
    Make sure you add your `appGroupId` to the `selligent.json`.
    > **IMPORTANT!** make sure your `appGroupId` has the following structure or it will not work: `group.{MAIN_APP_BUNDLE_ID}`
 
-#### Geolocation
-
-For geolocation services, follow section [**Geolocation**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#geolocation), of the native documentation. You also need to configure several permissions described [**here**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#permission-for-geolocation).
-
 #### Deeplinking
 
 You can catch the deeplinks 2 ways:
@@ -502,10 +533,6 @@ You can catch the deeplinks 2 ways:
 
   - [Selligent.getVersionLib(successCallback)](#selligentgetversionlibsuccesscallback)
     - [getVersionLib example](#getversionlib-example)
-  - [Selligent.enableGeolocation(successCallback, errorCallback, enabled)](#selligentenablegeolocationsuccesscallback-errorcallback-enabled)
-    - [enableGeolocation example](#enablegeolocation-example)
-  - [Selligent.isGeolocationEnabled(successCallback)](#selligentisgeolocationenabledsuccesscallback)
-    - [isGeolocationEnabled example](#isgeolocationenabled-example)
   - [Selligent.getDeviceId(successCallback)](#selligentgetdeviceidsuccesscallback)
     - [getDeviceId example](#getdeviceid-example)
   - [Selligent.enableNotifications(successCallback, errorCallback, enabled)](#selligentenablenotificationssuccesscallback-errorcallback-enabled)
@@ -572,8 +599,6 @@ You can catch the deeplinks 2 ways:
   - [SelligentConstants.RemoteMessagesDisplayType](#selligentconstantsremotemessagesdisplaytype)
   - [SelligentConstants.iOSLogLevel](#selligentconstantsiosloglevel)
   - [SelligentConstants.iOSBackgroundFetchResult](#selligentconstantsiosbackgroundfetchresult)
-  - [SelligentConstants.iOSLocationAuthorisationStatus](#selligentconstantsioslocationauthorisationstatus)
-  - [SelligentConstants.iOSLocationAuthorisationType](#selligentconstantsioslocationauthorisationtype)
   - [SelligentConstants.EventType](#selligentconstantseventtype)
   - [SelligentConstants.iOSNotificationButtonType](#selligentconstantsiosnotificationbuttontype)
   - [SelligentConstants.BroadcastEventType](#selligentconstantsbroadcasteventtype)
@@ -593,50 +618,6 @@ Selligent.getVersionLib((versionLib) => {
   // success callback
   alert(versionLib);
 });
-```
-
-<div align="right">
-    <b><a href="#api-reference">back to API ToC</a></b>
-</div>
-
-#### Selligent.enableGeolocation(successCallback, errorCallback, enabled)
-
-Enable or disable geolocation services.
-
-The `enabled` parameter is a required boolean to enable or disable geolocation services.
-
-##### enableGeolocation example
-
-```javascript
-Selligent.enableGeolocation(
-    (response) => { // success callback
-        ...
-    },
-    (error) => { // error callback
-        ...
-    },
-    true
-);
-```
-
-<div align="right">
-    <b><a href="#api-reference">back to API ToC</a></b>
-</div>
-
-#### Selligent.isGeolocationEnabled(successCallback)
-
-Check if geolocation services are enabled or disabled.
-
-The response of the success callback is a boolean stating geolocation services are enabled or disabled.
-
-##### isGeolocationEnabled example
-
-```javascript
-Selligent.isGeolocationEnabled(
-    (response) => { // success callback
-        ...
-    }
-);
 ```
 
 <div align="right">
@@ -1505,34 +1486,6 @@ Description of the possible results of a background fetch on iOS.
 | NEW_DATA | number | 60    | Background fetch resulted in new data    |
 | NO_DATA  | number | 61    | Background fetch resulted in no new data |
 | FAILED   | number | 62    | Background fetch failed                  |
-
-<div align="right">
-    <b><a href="#api-reference">back to API ToC</a></b>
-</div>
-
-#### SelligentConstants.iOSLocationAuthorisationStatus
-
-Description of the possible status of use of location services on a device.
-
-| Name           | Type   | Value | Description                                     |
-| -------------- | ------ | ----- | ----------------------------------------------- |
-| UNKNOWN        | number | 70    | Status of use of location services is unknown   |
-| REFUSED        | number | 71    | Use of location services is refused             |
-| GRANTED_IN_USE | number | 72    | Use of location services is granted when in use |
-| GRANTED_ALWAYS | number | 72    | Use of location services is always granted      |
-
-<div align="right">
-    <b><a href="#api-reference">back to API ToC</a></b>
-</div>
-
-#### SelligentConstants.iOSLocationAuthorisationType
-
-Defines the level of request for the authorisation of usage of location services on a device.
-
-| Name   | Type   | Value | Description                                               |
-| ------ | ------ | ----- | --------------------------------------------------------- |
-| IN_USE | number | 80    | Request authorisation when location services are in use   |
-| ALWAYS | number | 81    | Always request the authorisation of the location services |
 
 <div align="right">
     <b><a href="#api-reference">back to API ToC</a></b>

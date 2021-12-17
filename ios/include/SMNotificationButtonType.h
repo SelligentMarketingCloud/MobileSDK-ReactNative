@@ -88,15 +88,3 @@ typedef NS_ENUM(NSInteger, SMNotificationButtonType) {
      */
     kSMNotificationButtonType_DeepLink                    = 13
 };
-
-
-
-
-
-
-
-
-
-
-
-

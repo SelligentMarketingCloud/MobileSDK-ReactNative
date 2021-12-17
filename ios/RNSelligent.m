@@ -3,7 +3,6 @@
 #import "SMNSNotification.h"
 #import "SMManager+DataTransaction.h"
 #import "SMManagerSetting+ClientSettings.h"
-#import "SMManager+Location.h"
 #import "SMManager+Log.h"
 #import "SMManager+SMEvent.h"
 #import "SMManager+RemoteNotification.h"
@@ -189,11 +188,6 @@ RCT_EXPORT_METHOD(applyLogLevel:(NSArray<NSNumber *> *)logLevels) {
     [[SMManager sharedInstance] applyLogLevel:(SMLogLevel) requestedBitShiftedLogLevel];
 }
 
-RCT_EXPORT_METHOD(isGeolocationEnabled:(RCTResponseSenderBlock)callback) {
-    BOOL enabled = [[SMManager sharedInstance] isGeoLocationEnabled];
-    callback(@[@(enabled), [NSNull null]]);
-}
-
 RCT_EXPORT_METHOD(sendEvent:(NSDictionary *)data successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
     Event *event = [Event fromDictionary:data];
     SMEvent *smEvent = [event smEventWithBlockSuccess:^(SMSuccess *success) {
@@ -202,14 +196,6 @@ RCT_EXPORT_METHOD(sendEvent:(NSDictionary *)data successCallback:(RCTResponseSen
         errorCallback(@[failure.messageSM, [NSNull null]]);
     }];
     [[SMManager sharedInstance] sendSMEvent:smEvent];
-}
-
-RCT_EXPORT_METHOD(enableGeolocation:(BOOL)enable) {
-    if (enable) {
-        [[SMManager sharedInstance] enableGeoLocation];
-    } else {
-        [[SMManager sharedInstance] disableGeoLocation];
-    }
 }
 
 RCT_EXPORT_METHOD(forceRemoteNotificationBackgroundFetchResult:(nonnull NSNumber *)remoteNotificationBackgroundFetchResult) {

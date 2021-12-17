@@ -33,5 +33,4 @@
  */
 + (instancetype _Nonnull) viewControllerForCategory:(NSString*_Nullable)category AndOptions:(SMInAppContentStyleOptions*_Nullable)options;
 
-
 @end

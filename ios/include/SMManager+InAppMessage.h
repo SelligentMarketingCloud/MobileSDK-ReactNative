@@ -48,7 +48,7 @@
  *  Since sdk v 2.5 you have the possibility to store the In App Message on your side and process them the way you want
  *  In order to do that, once you are notified that In App Messages are available you can call getInAppMessages to receive a NSArray of SMInAppMessage
  *  Once a SMInAppMessage has been displayed and has been seen by the user you need to call setInAppMessageAsSeen: to inform Selligent that the In App message has been opened
- *  In case there is links in the In App Message and in case one of the link is triggered by user please call executeLinkAction:: to process teh action related to the link and inform Selligent that the link has been clicked
+ *  In case there is links in the In App Message and in case one of the link is triggered by user please call executeLinkAction:: to process the action related to the link and inform Selligent that the link has been clicked
  *
  *  ##Fetching modes
  *  IAM may be retrieved from two different modes corresponding to the application's state:

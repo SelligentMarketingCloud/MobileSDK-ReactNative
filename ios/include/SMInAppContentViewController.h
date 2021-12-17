@@ -28,5 +28,4 @@
  */
 @property (nonatomic) bool isEmpty;
 
-
 @end

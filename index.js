@@ -98,37 +98,6 @@ export default Object.assign(
 			return
 		},
 
-		// Location
-
-		/**
-		 * Enable/disable geolocation.
-		 *  
-		 * @param {function} successCallback Callback function on success.
-		 * @param {function} errorCallback Callback function on error.
-		 * @param {boolean} enabled Boolean to enable or disable geolocation.
-		 */
-		enableGeolocation: function (successCallback, errorCallback, enabled) {
-			// check if required options are valid
-			if (!SelligentHelpers.typeMatches(enabled, 'boolean')) {
-				errorCallback(SelligentHelpers.wrongArgumentError('Expected a boolean.'))
-				return
-			}
-
-			// continue if options are valid
-			successCallback(SelligentHelpers.SUCCESS)
-			RNSelligent.enableGeolocation(enabled)
-			return
-		},
-
-		/**
-		 * Check if geolocation is enabled or disabled.
-		 *  
-		 * @param {function} successCallback Callback function on success.
-		 */
-		isGeolocationEnabled: function (successCallback) {
-			RNSelligent.isGeolocationEnabled(successCallback)
-			return
-		},
 		// Event
 
 		/**

@@ -10,7 +10,6 @@ class SMSettingsFactory {
         smSettings.ClientId = settings.getClientId();
         smSettings.PrivateKey = settings.getPrivateKey();
         smSettings.GoogleApplicationId = settings.getGoogleApplicationId();
-        smSettings.ConfigureGeolocation = settings.getConfigureLocationServices();
         smSettings.AddInAppMessageFromPushToInAppMessageList = settings.getAddInAppMessageFromPushToInAppMessageList();
         smSettings.DoNotFetchTheToken = settings.getDoNotFetchTheToken();
         smSettings.DoNotListenToThePush = settings.getDoNotListenToThePush();

@@ -53,18 +53,6 @@ export namespace iOSBackgroundFetchResult {
   const FAILED = 62;
 }
 
-export namespace iOSLocationAuthorisationStatus {
-  const UNKNOWN = 70;
-  const REFUSED = 71;
-  const GRANTED_IN_USE = 72;
-  const GRANTED_ALWAYS = 73;
-}
-
-export namespace iOSLocationAuthorisationType {
-  const IN_USE = 80;
-  const ALWAYS = 81;
-}
-
 export namespace EventType {
   const USER_REGISTER = 90;
   const USER_UNREGISTER = 91;

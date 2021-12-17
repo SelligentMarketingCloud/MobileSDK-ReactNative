@@ -2,8 +2,6 @@
 #import "LogLevel.h"
 #import "InAppMessageRefreshType.h"
 #import "RemoteMessageDisplayType.h"
-#import "LocationAuthorisationStatus.h"
-#import "LocationAuthorisationType.h"
 #import "ClearCacheInterval.h"
 #import "SMLog.h"
 #import "SMClearCache.h"

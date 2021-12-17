@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60A5C5B5261747570002B0A2 /* libSelligentMobile2.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5C5B4261747570002B0A2 /* libSelligentMobile2.5.2.a */; };
+		60698C70276254340003E3AD /* libSelligentMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60698C6F276254340003E3AD /* libSelligentMobile.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNSelligent.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNSelligent.m */; };
 		E5002D3320F5002A00F68509 /* ClientSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3120F5002A00F68509 /* ClientSettings.m */; };
 		E5002D3620F5004200F68509 /* SMManagerSetting+ClientSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E5002D3520F5004200F68509 /* SMManagerSetting+ClientSettings.m */; };
@@ -32,7 +32,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNSelligent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSelligent.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		60A5C5B4261747570002B0A2 /* libSelligentMobile2.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSelligentMobile2.5.2.a; sourceTree = "<group>"; };
+		60698C6F276254340003E3AD /* libSelligentMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSelligentMobile.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNSelligent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSelligent.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNSelligent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSelligent.m; sourceTree = "<group>"; };
 		E5002D3120F5002A00F68509 /* ClientSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSettings.m; sourceTree = "<group>"; };
@@ -48,8 +48,6 @@
 		E5002D3F20F5015A00F68509 /* EnumMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumMapper.h; sourceTree = "<group>"; };
 		E5002D4020F5015A00F68509 /* EnumMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnumMapper.m; sourceTree = "<group>"; };
 		E5002D4220F5018200F68509 /* InAppMessageRefreshType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InAppMessageRefreshType.h; sourceTree = "<group>"; };
-		E5002D4320F5019500F68509 /* LocationAuthorisationStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationAuthorisationStatus.h; sourceTree = "<group>"; };
-		E5002D4420F5019500F68509 /* LocationAuthorisationType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationAuthorisationType.h; sourceTree = "<group>"; };
 		E5002D4520F501A400F68509 /* ClearCacheInterval.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClearCacheInterval.h; sourceTree = "<group>"; };
 		E5002D4620F501A400F68509 /* NotificationButtonType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationButtonType.h; sourceTree = "<group>"; };
 		E5002D4720F501B000F68509 /* BackgroundFetchResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundFetchResult.h; sourceTree = "<group>"; };
@@ -99,9 +97,7 @@
 		E58A8CD320F32CB4005EA433 /* SMContentAlignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMContentAlignment.h; sourceTree = "<group>"; };
 		E58A8CD420F32CB4005EA433 /* SMHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHelper.h; sourceTree = "<group>"; };
 		E58A8CD520F32CB4005EA433 /* SMInAppContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInAppContentViewController.h; sourceTree = "<group>"; };
-		E58A8CD620F32CB4005EA433 /* SMLocationAuthorisationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLocationAuthorisationType.h; sourceTree = "<group>"; };
 		E58A8CD720F32CB4005EA433 /* SMInAppContentImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInAppContentImageViewController.h; sourceTree = "<group>"; };
-		E58A8CD820F32CB4005EA433 /* SMManager+Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMManager+Location.h"; sourceTree = "<group>"; };
 		E58A8CD920F32CB4005EA433 /* SMEventUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEventUser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60A5C5B5261747570002B0A2 /* libSelligentMobile2.5.2.a in Frameworks */,
+				60698C70276254340003E3AD /* libSelligentMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +124,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				60A5C5B4261747570002B0A2 /* libSelligentMobile2.5.2.a */,
+				60698C6F276254340003E3AD /* libSelligentMobile.a */,
 				E58A8CAC20F32CB4005EA433 /* include */,
 				E5002D3720F500C200F68509 /* SelligentLogger.h */,
 				E5002D3820F500C200F68509 /* SelligentLogger.m */,
@@ -149,8 +145,6 @@
 				E5002D4720F501B000F68509 /* BackgroundFetchResult.h */,
 				E5002D4520F501A400F68509 /* ClearCacheInterval.h */,
 				E5002D4620F501A400F68509 /* NotificationButtonType.h */,
-				E5002D4320F5019500F68509 /* LocationAuthorisationStatus.h */,
-				E5002D4420F5019500F68509 /* LocationAuthorisationType.h */,
 				E5002D4220F5018200F68509 /* InAppMessageRefreshType.h */,
 				E51D94E820FF88DB00069B07 /* EventType.h */,
 				E5002D3F20F5015A00F68509 /* EnumMapper.h */,
@@ -203,9 +197,7 @@
 				E58A8CD320F32CB4005EA433 /* SMContentAlignment.h */,
 				E58A8CD420F32CB4005EA433 /* SMHelper.h */,
 				E58A8CD520F32CB4005EA433 /* SMInAppContentViewController.h */,
-				E58A8CD620F32CB4005EA433 /* SMLocationAuthorisationType.h */,
 				E58A8CD720F32CB4005EA433 /* SMInAppContentImageViewController.h */,
-				E58A8CD820F32CB4005EA433 /* SMManager+Location.h */,
 				E58A8CD920F32CB4005EA433 /* SMEventUser.h */,
 			);
 			path = include;

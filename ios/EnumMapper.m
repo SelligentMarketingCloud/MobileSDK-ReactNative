@@ -5,8 +5,6 @@
     NSDictionary *_clearCacheIntervalEnumMapping;
     NSDictionary *_inAppRefreshTypeEnumMapping;
     NSDictionary *_remoteMessageDisplayTypeEnumMapping;
-    NSDictionary *_locationAuthorisationStatusMapping;
-    NSDictionary *_locationAuthorisationTypeMapping;
     NSDictionary *_backgroundFetchResult;
     NSDictionary *_notificationButtonTypeMapping;
 }
