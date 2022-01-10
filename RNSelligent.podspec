@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage     = "https://github.com/SelligentMarketingCloud/MobileSDK-ReactNative"
   s.license      = "MIT"
-  s.platform     = :ios, "11.0"
+  s.platform     = :ios, "10.0"
   s.source       = { :git => "https://github.com/SelligentMarketingCloud/MobileSDK-ReactNative.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m}"
