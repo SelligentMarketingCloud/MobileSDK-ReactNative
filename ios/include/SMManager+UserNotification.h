@@ -103,9 +103,9 @@
  *  Mandatory method which allows sdk initialisation when building against iOS 10+ and using Notification Extensions .
  *  To be included in didReceiveNotification: when implementing Notification content extension and/or in didReceiveNotificationRequest:withContentHandler: when implementing Notification service extension
  *
- *  @param setting  mandatory SMManagerSetting instance to start-up the library - this setting mus tbe initialised with only url, clienID and privateKet provided by selligent
+ *  @param setting  mandatory SMManagerSetting instance to start-up the library - this setting mus tbe initialized with only url, clienID and privateKet provided by selligent
  *  @see SMManagerSetting
- *  @discussion This method is mandatory in order to start / initialise the library and should be called in in didReceiveNotification: when implementing Notification content extension and/or in didReceiveNotificationRequest:withContentHandler: when implementing Notification service extension
+ *  @discussion This method is mandatory in order to start / initialize the library and should be called in in didReceiveNotification: when implementing Notification content extension and/or in didReceiveNotificationRequest:withContentHandler: when implementing Notification service extension
  *  @see SMManagerSetting
  */
 - (void) startExtensionWithSetting:(SMManagerSetting*_Nonnull)setting;

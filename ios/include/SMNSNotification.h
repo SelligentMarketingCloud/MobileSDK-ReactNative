@@ -1,8 +1,3 @@
-
-
-
-
-
 /**
  *  NSString representing a notification name you can listen to.
  *  An NSNotification with this name is broadcasted when the user interacts with a remote-notification
@@ -35,15 +30,15 @@ extern NSString* kSMNotification_Event_DidReceiveRemoteNotification;
 
 /**
  *  NSString representing a notification name you can listen to.
- *  An NSNotification with this name is broadcasted shortly after receiving InApp messages
- *  Primary-application may use this notification to manage the received InApp messages
+ *  An NSNotification with this name is broadcasted shortly after receiving in-app messages
+ *  Primary-application may use this notification to manage the received in-app messages
  */
 extern NSString* kSMNotification_Event_DidReceiveInAppMessage;
 
 /**
  *  NSString representing a notification name you can listen to.
- *  An NSNotification with this name is broadcasted shortly after receiving InApp content
- *  Primary-application may use this notification to manage the received InApp content
+ *  An NSNotification with this name is broadcasted shortly after receiving in-app content
+ *  Primary-application may use this notification to manage the received in-app content
  */
 extern NSString* kSMNotification_Event_DidReceiveInAppContent;
 
@@ -60,7 +55,6 @@ extern NSString* kSMNotification_Event_DidReceiveDeviceId;
  *  Use the key kSMNotification_Data_ButtonData to retrive the object SMNotificationButtonData from the NSNotification-name kSMNotification_Event_ButtonClicked.
  */
 extern NSString* kSMNotification_Data_ButtonData;
-
 
 /**
  *  NSString representing a key to retrieve an object inside NSNotification

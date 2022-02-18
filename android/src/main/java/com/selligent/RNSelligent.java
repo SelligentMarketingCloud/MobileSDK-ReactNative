@@ -250,6 +250,21 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     }
 
     @ReactMethod
+    public void enableGeolocation(Boolean enable) {
+        if (enable) {
+            smManager.enableGeolocation();
+        } else {
+            smManager.disableGeolocation();
+        }
+    }
+
+    @ReactMethod
+    public void isGeolocationEnabled(Callback successCallback) {
+        final Boolean isGeolocationEnabled = smManager.isGeolocationEnabled();
+        successCallback.invoke(isGeolocationEnabled);
+    }
+
+    @ReactMethod
     public void sendEvent(ReadableMap eventMap, final Callback successCallback, final Callback errorCallback) {
         final Event event = Event.fromHashMap(eventMap.toHashMap());
         final SMEvent smEvent = SMEventFactory.getSMEvent(event, new SMCallback() {

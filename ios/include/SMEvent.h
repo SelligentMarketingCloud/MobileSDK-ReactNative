@@ -34,7 +34,7 @@
 + (instancetype _Nonnull) eventWithDictionary:(NSDictionary* _Nullable)dict;
 
 /*!
- *  Allow to initialise a success block and/or a failure block that will be triggered after an event is sent to the platform
+ *  Allow to initialize a success block and/or a failure block that will be triggered after an event is sent to the platform
  *
  *  @param blockSuccess An SMCompletionBlockSuccess block that will be triggered if the send to the platform is successfull
  *  @param blockFailure An SMCompletionBlockFailure block that will be triggered if the send to the platform has failed

@@ -46,7 +46,7 @@
  *  @param launchOptions NSDictionary instance indicating the reason the app was launched (if any). This dictionary is provided by application:didFinishLaunchingWithOptions
  *  @param setting  mandatory SMManagerSetting instance to start-up the library
  *  @see SMManagerSetting
- *  @discussion This method is mandatory in order to start / initialise the library and should be called in application:didFinishLaunchingWithOptions:
+ *  @discussion This method is mandatory in order to start / initialize the library and should be called in application:didFinishLaunchingWithOptions:
  */
 - (void) startWithLaunchOptions:(NSDictionary* _Nullable)launchOptions Setting:(SMManagerSetting* _Null_unspecified)setting;
 

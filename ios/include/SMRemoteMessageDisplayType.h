@@ -16,7 +16,7 @@ typedef NS_ENUM (NSInteger, SMRemoteMessageDisplayType) {
     kSMRemoteMessageDisplayType_Unknown = 0,
     
     /*!
-     *  No Push nor in-app notifications will be displayed.
+     *  No Push nor in-app messages will be displayed.
      */
     kSMRemoteMessageDisplayType_None = 1,
     
@@ -26,7 +26,7 @@ typedef NS_ENUM (NSInteger, SMRemoteMessageDisplayType) {
     kSMRemoteMessageDisplayType_Notification = 2,
     
     /*!
-     *  An in-app notification will be displayed (when there is an in-app notification available within the remote-notification payload).
+     *  An in-app message will be displayed (when there is an in-app message available within the remote-notification payload).
      */
     kSMRemoteMessageDisplayType_Automatic = 3
 };

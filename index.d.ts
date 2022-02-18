@@ -11,6 +11,12 @@ export function executeButtonAction(
   buttonId: string,
   messageId: string
 ): void;
+export function enableGeolocation(
+  successCallback: Function,
+  errorCallback: Function,
+  enabled: boolean
+): void;
+export function isGeolocationEnabled(successCallback: Function): void;
 export function sendEvent(
   successCallback: Function,
   errorCallback: Function,

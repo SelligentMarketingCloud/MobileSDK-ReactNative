@@ -10,13 +10,13 @@
 #import "SMInAppMessage.h"
 
 /**
- *  This protocol will help you intercept the inapp messages and allow you to display them your own way or store them somewhere to be shown later.
+ *  This protocol will help you intercept the in-app messages and allow you to display them your own way or store them somewhere to be shown later.
  */
 @protocol SMManagerInAppMessageDelegate <NSObject>
 @optional
 
 /*!
- * @abstract Invoked when an inapp message linked to a remote notification is received by sdk.
+ * @abstract Invoked when an in-app message linked to a remote notification is received by sdk.
  * @param inAppMessage The inAppMessage object containing all necessary datas for you to display content of the message
  */
 - (void) displayInAppMessage:(SMInAppMessage*_Nonnull)inAppMessage;

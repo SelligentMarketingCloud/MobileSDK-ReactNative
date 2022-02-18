@@ -104,6 +104,30 @@ var SelligentConstants = {
 	},
 	/**
 	 * @description
+	 * Description of the possible status of use of location services on a device.
+	 */
+	 iOSLocationAuthorisationStatus: {
+		/** Status of use of location services is unknown */
+		UNKNOWN: 70,
+		/** Use of location services is refused */
+		REFUSED: 71,
+		/** Use of location services is granted when in use */
+		GRANTED_IN_USE: 72,
+		/** Use of location services is always granted */
+		GRANTED_ALWAYS: 73
+	},
+	/**
+	 * @description
+	 * Defines the level of request for the authorisation of usage of location services on a device.
+	 */
+	iOSLocationAuthorisationType: {
+		/** Request authorisation when in location services are in use */
+		IN_USE: 80,
+		/** Always request the authorisation of the location services */
+		ALWAYS: 81
+	},
+	/**
+	 * @description
 	 * Defines the type of an event.
 	 */
 	EventType: {

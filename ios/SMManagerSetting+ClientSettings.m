@@ -1,4 +1,5 @@
 #import "SMManagerSetting+ClientSettings.h"
+#import "SMManagerSetting+Location.h"
 #import "SMManagerSettingIAM.h"
 #import "ClientSettings.h"
 #import "EnumMapper.h"
@@ -33,6 +34,10 @@
     NSNumber *shouldClearBadgeAsNumber = clientSettings.shouldClearBadge;
     if(shouldClearBadgeAsNumber) {
         settings.shouldClearBadge = shouldClearBadgeAsNumber.boolValue;
+    }
+
+     if(clientSettings.configureLocationServices.boolValue) {
+        [settings configureLocationService];
     }
     
     NSNumber *shouldDisplayRemoteNotificationAsNumber = clientSettings.shouldDisplayRemoteNotification;

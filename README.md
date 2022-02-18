@@ -13,8 +13,8 @@ This module uses the native Selligent SDKs:
 
 | SDK                                                                     | Version |
 | ----------------------------------------------------------------------- | ------- |
-| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 3.8.0   |
-| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 2.7.1   |
+| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 3.8.1   |
+| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 2.7.2   |
 
 ## ToC
 
@@ -57,6 +57,7 @@ This module uses the native Selligent SDKs:
 | clientId                                    | string                                                                          | Yes      | Both         |
 | privateKey                                  | string                                                                          | Yes      | Both         |
 | clearCacheIntervalValue                     | enum [Selligent.ClearCacheIntervalValue](#selligentclearcacheintervalvalue)     | No       | Both         |
+| configureLocationServices                   | boolean                                                                         | No       | Both         |
 | inAppMessageRefreshType                     | enum [Selligent.InAppMessageRefreshType](#selligentinappmessagerefreshtype)     | No       | Both         |
 | addInAppMessageFromPushToInAppMessageList   | boolean                                                                         | No       | Both         |
 | remoteMessageDisplayType                    | enum [Selligent.RemoteMessagesDisplayType](#selligentremotemessagesdisplaytype) | No       | Both         |
@@ -87,13 +88,13 @@ This module uses the native Selligent SDKs:
 >   maven { url 'https://developer.huawei.com/repo/' }
 >  }
 >  dependencies {
->   classpath: 'com.huawei.agconnect:agcp:1.6.0.300'
+>   classpath 'com.huawei.agconnect:agcp:1.6.0.300'
 >  }
 > }
 >
 > allProjects: {
 >   repositories: {
->     maven: { url 'https://developer.huawei.com/repo/' }
+>     maven { url 'https://developer.huawei.com/repo/' }
 >   }
 > }
 >
@@ -103,7 +104,7 @@ This module uses the native Selligent SDKs:
 >
 > ```gradle
 >
-> apply plugin 'com.huawei.agconnect'
+> apply plugin: 'com.huawei.agconnect'
 >
 > dependencies {
 >   api 'com.huawei.hms:base:6.2.0.300'
@@ -125,13 +126,17 @@ This module uses the native Selligent SDKs:
    project(':selligent-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@selligent-marketing-cloud/selligent-react-native/android')
    ```
 
-3. Add the following in the `android/build.gradle` file:
+3. Add the following in the `android/build.gradle` file, and make sure the the the Gradle version in `android/gradle/wrapper/gradle-wrapper.properties` is >= 6.7.1:
 
    ```groovy
+   // android/build.gradle
+
    buildscript {
        ...
        dependencies {
            ...
+           // Make sure your Gradle plugin version is >= 4.2.0
+           classpath("com.android.tools.build:gradle:4.2.0")
            // Add the following:
            classpath 'com.google.gms:google-services:4.3.3'
        }
@@ -144,8 +149,20 @@ This module uses the native Selligent SDKs:
            flatDir {
                dirs "$rootDir/../node_modules/@selligent-marketing-cloud/selligent-react-native/android/libs"
            }
+
+           // Add the following:
+           maven {
+               url 'https://maven-repo.plotprojects.com'
+           }
        }
    }
+   ```
+
+   ```groovy
+   // android/gradle/wrapper/gradle-wrapper.properties
+    ...
+    distributionUrl=https\://services.gradle.org/distributions/gradle-6.7.1-all.zip
+    ...
    ```
 
 4. Add the following in the `android/app/build.gradle` file:
@@ -208,13 +225,17 @@ This module uses the native Selligent SDKs:
    project(':selligent-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@selligent-marketing-cloud/selligent-react-native/android')
    ```
 
-3. Add the following in the `android/build.gradle` file:
+3. Add the following in the `android/build.gradle` file, and make sure the the the Gradle version in `android/gradle/wrapper/gradle-wrapper.properties` is >= 6.7.1:
 
    ```groovy
+   // android/build.gradle 
+
    buildscript {
        ...
        dependencies {
            ...
+           // Make sure your Gradle plugin version is >= 4.2.0
+           classpath("com.android.tools.build:gradle:4.2.0")
            // Add the following:
            classpath 'com.google.gms:google-services:4.3.3'
        }
@@ -227,8 +248,20 @@ This module uses the native Selligent SDKs:
            flatDir {
                dirs "$rootDir/../node_modules/@selligent-marketing-cloud/selligent-react-native/android/libs"
            }
+
+           // Add the following:
+           maven {
+               url 'https://maven-repo.plotprojects.com'
+           }
        }
    }
+   ```
+
+   ```groovy
+   // android/gradle/wrapper/gradle-wrapper.properties
+    ...
+    distributionUrl=https\://services.gradle.org/distributions/gradle-6.7.1-all.zip
+    ...
    ```
 
 4. Add the following in the `android/app/build.gradle` file:
@@ -405,6 +438,10 @@ Add the following properties to the `selligent.json` file:
    Make sure you add your `appGroupId` to the `selligent.json`.
    > **IMPORTANT!** make sure your `appGroupId` has the following structure or it will not work: `group.{MAIN_APP_BUNDLE_ID}`
 
+ #### Geolocation
+
+For geolocation services, follow section [**Geolocation**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#geolocation), of the native documentation. You also need to configure several permissions described [**here**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#permission-for-geolocation).
+
 #### Deeplinking
 
 You can catch the deeplinks 2 ways:
@@ -533,6 +570,10 @@ You can catch the deeplinks 2 ways:
 
   - [Selligent.getVersionLib(successCallback)](#selligentgetversionlibsuccesscallback)
     - [getVersionLib example](#getversionlib-example)
+  - [Selligent.enableGeolocation(successCallback, errorCallback, enabled)](#selligentenablegeolocationsuccesscallback-errorcallback-enabled)
+    - [enableGeolocation example](#enablegeolocation-example)
+  - [Selligent.isGeolocationEnabled(successCallback)](#selligentisgeolocationenabledsuccesscallback)
+    - [isGeolocationEnabled example](#isgeolocationenabled-example)
   - [Selligent.getDeviceId(successCallback)](#selligentgetdeviceidsuccesscallback)
     - [getDeviceId example](#getdeviceid-example)
   - [Selligent.enableNotifications(successCallback, errorCallback, enabled)](#selligentenablenotificationssuccesscallback-errorcallback-enabled)
@@ -599,6 +640,8 @@ You can catch the deeplinks 2 ways:
   - [SelligentConstants.RemoteMessagesDisplayType](#selligentconstantsremotemessagesdisplaytype)
   - [SelligentConstants.iOSLogLevel](#selligentconstantsiosloglevel)
   - [SelligentConstants.iOSBackgroundFetchResult](#selligentconstantsiosbackgroundfetchresult)
+  - [SelligentConstants.iOSLocationAuthorisationStatus](#selligentconstantsioslocationauthorisationstatus)
+  - [SelligentConstants.iOSLocationAuthorisationType](#selligentconstantsioslocationauthorisationtype)
   - [SelligentConstants.EventType](#selligentconstantseventtype)
   - [SelligentConstants.iOSNotificationButtonType](#selligentconstantsiosnotificationbuttontype)
   - [SelligentConstants.BroadcastEventType](#selligentconstantsbroadcasteventtype)
@@ -618,6 +661,50 @@ Selligent.getVersionLib((versionLib) => {
   // success callback
   alert(versionLib);
 });
+```
+
+<div align="right">
+    <b><a href="#api-reference">back to API ToC</a></b>
+</div>
+
+#### Selligent.enableGeolocation(successCallback, errorCallback, enabled)
+
+Enable or disable geolocation services.
+
+The `enabled` parameter is a required boolean to enable or disable geolocation services.
+
+##### enableGeolocation example
+
+```javascript
+Selligent.enableGeolocation(
+    (response) => { // success callback
+        ...
+    },
+    (error) => { // error callback
+        ...
+    },
+    true
+);
+```
+
+<div align="right">
+    <b><a href="#api-reference">back to API ToC</a></b>
+</div>
+
+#### Selligent.isGeolocationEnabled(successCallback)
+
+Check if geolocation services are enabled or disabled.
+
+The response of the success callback is a boolean stating geolocation services are enabled or disabled.
+
+##### isGeolocationEnabled example
+
+```javascript
+Selligent.isGeolocationEnabled(
+    (response) => { // success callback
+        ...
+    }
+);
 ```
 
 <div align="right">
@@ -1486,6 +1573,34 @@ Description of the possible results of a background fetch on iOS.
 | NEW_DATA | number | 60    | Background fetch resulted in new data    |
 | NO_DATA  | number | 61    | Background fetch resulted in no new data |
 | FAILED   | number | 62    | Background fetch failed                  |
+
+<div align="right">
+    <b><a href="#api-reference">back to API ToC</a></b>
+</div>
+
+#### SelligentConstants.iOSLocationAuthorisationStatus
+
+Description of the possible status of use of location services on a device.
+
+| Name           | Type   | Value | Description                                     |
+| -------------- | ------ | ----- | ----------------------------------------------- |
+| UNKNOWN        | number | 70    | Status of use of location services is unknown   |
+| REFUSED        | number | 71    | Use of location services is refused             |
+| GRANTED_IN_USE | number | 72    | Use of location services is granted when in use |
+| GRANTED_ALWAYS | number | 72    | Use of location services is always granted      |
+
+<div align="right">
+    <b><a href="#api-reference">back to API ToC</a></b>
+</div>
+
+#### SelligentConstants.iOSLocationAuthorisationType
+
+Defines the level of request for the authorisation of usage of location services on a device.
+
+| Name   | Type   | Value | Description                                               |
+| ------ | ------ | ----- | --------------------------------------------------------- |
+| IN_USE | number | 80    | Request authorisation when location services are in use   |
+| ALWAYS | number | 81    | Always request the authorisation of the location services |
 
 <div align="right">
     <b><a href="#api-reference">back to API ToC</a></b>

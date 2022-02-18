@@ -161,8 +161,8 @@
 - (void) removeViewController;
 
 /**
- *  Used to let the app display the inapp message linked to a remote notification
- *  @abstract this setting will allow you to  manage on app side the display of the inapp message linked to a push remote notification
+ *  Used to let the app display the in-app message linked to a remote notification
+ *  @abstract this setting will allow you to  manage on app side the display of the in-app message linked to a push remote notification
  *  In order to display it in your side the delegate object should implement [SMManagerInAppMessageDelegate displayInAppMessage:] method it will provide tha app with a SMInAppMessage object
  *  @param delegate  an object implementing SMManagerInAppMessageDelegate  methods
  *  @see SMManagerInAppMessageDelegate

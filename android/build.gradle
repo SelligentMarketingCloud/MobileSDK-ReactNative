@@ -10,7 +10,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 30
@@ -54,6 +54,7 @@ dependencies {
 
     implementation 'com.facebook.react:react-native:+'
     implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.plotprojects:plot-android:3.13.1'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.google.firebase:firebase-messaging:21.0.0'
     implementation 'androidx.work:work-runtime:2.4.0'
@@ -92,7 +93,7 @@ afterEvaluate { project ->
     }
 
     task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {
-        classifier = 'javadoc'
+        archiveClassifier = 'javadoc'
         from androidJavadoc.destinationDir
     }
 
@@ -109,17 +110,12 @@ afterEvaluate { project ->
         }
     }
 
-    artifacts {
-        archives androidSourcesJar
-        archives androidJavadocJar
-    }
-
-    task installArchives(type: Upload) {
-        configuration = configurations.archives
-        repositories.mavenDeployer {
-            repository url: "file://${projectDir}/../android/maven"
-
-            configureReactNativePom pom
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                artifact androidSourcesJar
+                artifact androidJavadocJar
+            }
         }
     }
 }
