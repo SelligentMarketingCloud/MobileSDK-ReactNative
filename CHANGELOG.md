@@ -2,10 +2,10 @@
 
 ## [2.9.0] - 20 May 2022
 
-## Added
+### Added
 - Add possibility to set the app's notification channel's ID, name and description on `Android` via `notificationChannelId`, `notificationChannelName`, and `notificationChannelDescription` settings keys in `selligent.json`.
 
-## Changed
+### Changed
 - Add version 3.9.0 of the Android SDK to `android/libs`
 - Add version 2.7.4 of the iOS SDK static library to `/ios`
 - Change used native SDK version numbers to `3.9.0` and `2.7.4` for Android and iOS respectively in README
