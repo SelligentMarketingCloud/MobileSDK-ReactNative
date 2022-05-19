@@ -120,7 +120,20 @@
  *
  *  @param notification A UNNotification that contains information about the notification.
  */
-- (void) didReceiveNotification:(UNNotification*_Nonnull)notification;
+- (void) didReceiveNotification:(UNNotification*_Nonnull)notification __deprecated_msg("Method deprecated. Use `didReceiveNotification:withContext:`");
+
+/*!
+ *  Optional API, when building against iOS 10+ and using a Notification Content Extension target, to be included in NotificationViewController didReceiveNotification:
+ *  Handle the push action buttons that may be present in the selligent notification payload
+ *
+ *  This allows the SDK to display the action buttons in the push notification outside of the app.
+ *
+ *  The category that must be added to Info.plist of the Notification Content Extension target is mandatory and must be SELLIGENT_BUTTON.
+ *
+ *  @param notification A UNNotification that contains information about the notification.
+ *  @param context A NSExtensionContext that contains the context information of the extension.
+ */
+- (void) didReceiveNotification:(UNNotification*_Nonnull)notification withContext:(NSExtensionContext*_Nullable)context;
 
 /*!
  *  Optional API, when building against iOS 10+ and using a Notification Service Extension target, to be included in NotificationService didReceiveNotificationRequest:withContentHandler:

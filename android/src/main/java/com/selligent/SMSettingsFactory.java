@@ -15,6 +15,9 @@ class SMSettingsFactory {
         smSettings.DoNotFetchTheToken = settings.getDoNotFetchTheToken();
         smSettings.DoNotListenToThePush = settings.getDoNotListenToThePush();
         smSettings.LoadCacheAsynchronously = settings.getLoadCacheAsynchronously();
+        smSettings.NotificationChannelId = settings.getNotificationChannelId();
+        smSettings.NotificationChannelName = settings.getNotificationChannelName();
+        smSettings.NotificationChannelDescription = settings.getNotificationChannelDescription();
 
         final ClearCacheIntervalValue clearCacheIntervalValue = settings.getClearCacheIntervalValue();
         if (clearCacheIntervalValue != null) {

@@ -21,6 +21,9 @@ class Settings {
     private ClearCacheIntervalValue clearCacheIntervalValue;
     private InAppMessageRefreshType inAppMessageRefreshType;
     private RemoteMessageDisplayType remoteMessageDisplayType;
+    private String notificationChannelId = "SMChannel001";
+    private String notificationChannelName = "SMDefaultChannel";
+    private String notificationChannelDescription = "";
 
     private Settings() { }
 
@@ -80,6 +83,18 @@ class Settings {
         return remoteMessageDisplayType;
     }
 
+    public String getNotificationChannelId() {
+        return notificationChannelId;
+    }
+
+    public String getNotificationChannelName() {
+        return notificationChannelName;
+    }
+
+    public String getNotificationChannelDescription() {
+        return notificationChannelDescription;
+    }
+
     public static Settings fromHashMap(HashMap<String, Object> settingsHashMap) {
         final Settings settings = new Settings();
 
@@ -121,6 +136,15 @@ class Settings {
 
         if (settingsHashMap.containsKey("loadCacheAsynchronously")) {
             settings.loadCacheAsynchronously = (Boolean) settingsHashMap.get("loadCacheAsynchronously");
+        }
+        if (settingsHashMap.containsKey("notificationChannelId")) {
+            settings.notificationChannelId = (String) settingsHashMap.get("notificationChannelId");
+        }
+        if (settingsHashMap.containsKey("notificationChannelName")) {
+            settings.notificationChannelName = (String) settingsHashMap.get("notificationChannelName");
+        }
+        if (settingsHashMap.containsKey("notificationChannelDescription")) {
+            settings.notificationChannelDescription = (String) settingsHashMap.get("notificationChannelDescription");
         }
 
         final Double clearCacheIndex = (Double) settingsHashMap.get("clearCacheIntervalValue");

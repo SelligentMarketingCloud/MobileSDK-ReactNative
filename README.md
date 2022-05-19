@@ -13,8 +13,8 @@ This module uses the native Selligent SDKs:
 
 | SDK                                                                     | Version |
 | ----------------------------------------------------------------------- | ------- |
-| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 3.8.1   |
-| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 2.7.2   |
+| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 3.9.0   |
+| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 2.7.4   |
 
 ## ToC
 
@@ -70,6 +70,9 @@ This module uses the native Selligent SDKs:
 | loadCacheAsynchronously                     | boolean                                                                         | No       | Android Only |
 | fullyQualifiedNotificationActivityClassName | string                                                                          | No       | Android Only |
 | notificationIconColor                       | string                                                                          | No       | Android Only |
+| notificationChannelId                       | string                                                                          | No       | Android Only |
+| notificationChannelName                     | string                                                                          | No       | Android Only |
+| notificationChannelDescription              | string                                                                          | No       | Android Only |
 
 ​
 
