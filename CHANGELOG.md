@@ -4,6 +4,7 @@
 
 ### Added
 - Add possibility to set the app's notification channel's ID, name and description on `Android` via `notificationChannelId`, `notificationChannelName`, and `notificationChannelDescription` settings keys in `selligent.json`.
+- Add comment to README about rich push notification method invocation deprecation on iOS.
 
 ### Changed
 - Add version 3.9.0 of the Android SDK to `android/libs`

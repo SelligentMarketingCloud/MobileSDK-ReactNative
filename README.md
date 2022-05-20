@@ -441,6 +441,8 @@ Add the following properties to the `selligent.json` file:
    Make sure you add your `appGroupId` to the `selligent.json`.
    > **IMPORTANT!** make sure your `appGroupId` has the following structure or it will not work: `group.{MAIN_APP_BUNDLE_ID}`
 
+   > **IMPORTAND** Since v2.9.0, `-(void)didReceiveNotification:(UNNotification *)notification` of `SMManager+RemoteNotification` has become deprecated. You will need to invoke `-(void)didReceiveNotification:(UNNotification *)notification withContext` instead. Consult [**the iOS documentation**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#start-the-sdk-from-inside-the-extension-1) for more details.
+
  #### Geolocation
 
 For geolocation services, follow section [**Geolocation**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#geolocation), of the native documentation. You also need to configure several permissions described [**here**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#permission-for-geolocation).
