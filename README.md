@@ -7,14 +7,16 @@ This module provides an API for the usage of the Selligent SDK in React Native.
 - Android
 - iOS
 
-> _**Important:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 4.2.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native._
+> _**IMPORTANT:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 4.2.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native._
+
+> _**IMPORTANT** Since version 2.10.0 of this module, we support React Native v0.70, but NOT REACT NATIVE'S NEW ARCHITECTURE! The following library contains React native modules, that are tailored to and can only be used in React Native's legacy architecture, that will be deprecated in the future when the new architecture will be stable._
 
 This module uses the native Selligent SDKs:
 
 | SDK                                                                     | Version |
 | ----------------------------------------------------------------------- | ------- |
-| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 3.9.0   |
-| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 2.7.4   |
+| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 3.10.1  |
+| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 2.7.7   |
 
 ## ToC
 
@@ -300,7 +302,7 @@ This module uses the native Selligent SDKs:
 
 Add the following properties to the `selligent.json` file:
 
-```
+```json
     "notificationSmallIcon": "ic_notification",
     "notificationLargeIcon": "ic_notification"
 ```
@@ -332,16 +334,18 @@ Add the following properties to the `selligent.json` file:
 
 5. Create a `Podfile` (if there isn't one already) in the `/ios` folder and add the following:
 
+> **IMPORTANT:** Since v2.7.5 of the iOS SDK, the minimum PlotPlugin version is 3.5.0!
+
    ```ruby
    target 'REPLACEWITHYOURTARGETNAME'
-   pod 'PlotPlugin', '3.3.2'
+   pod 'PlotPlugin', '3.5.0'
    ```
 
 6. Execute `pod install` in the `/ios` folder
 
 7. From now on open the `.xcworkspace` file to make changes in Xcode
 
-8. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.m`
+8. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.mm`
 
    ```objective-c
    #import <RNSelligent.h>
@@ -359,9 +363,9 @@ Add the following properties to the `selligent.json` file:
 
 2. Execute `pod install` in the `/ios` folder
 
-3. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.m`
+3. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.mm`
 
-   ```objective-c
+   ```objc
    #import <RNSelligent.h>
    [RNSelligent configureWithLaunchOptions:launchOptions];
    ```
@@ -370,12 +374,15 @@ Add the following properties to the `selligent.json` file:
 
 #### Push notifications
 
-1. For push notifications you need to delegate some of the `AppDelegate.m` methods to the SDK:
+1. For push notifications you need to delegate some of the `AppDelegate.mm` methods to the SDK:
 
-   ```objective-c
+   ```objc
    #import "AppDelegate.h"
    #import <React/RCTBundleURLProvider.h>
    #import <React/RCTRootView.h>
+   
+   #import <React/RCTAppSetupUtils.h>
+
    #import <RNSelligent.h>
 
    #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
@@ -441,7 +448,105 @@ Add the following properties to the `selligent.json` file:
    Make sure you add your `appGroupId` to the `selligent.json`.
    > **IMPORTANT!** make sure your `appGroupId` has the following structure or it will not work: `group.{MAIN_APP_BUNDLE_ID}`
 
-   > **IMPORTAND** Since v2.9.0, `-(void)didReceiveNotification:(UNNotification *)notification` of `SMManager+RemoteNotification` has become deprecated. You will need to invoke `-(void)didReceiveNotification:(UNNotification *)notification withContext` instead. Consult [**the iOS documentation**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#start-the-sdk-from-inside-the-extension-1) for more details.
+   > **IMPORTANT!** Since v2.9.0, `-(void)didReceiveNotification:(UNNotification *)notification` of `SMManager+RemoteNotification` has become deprecated. You will need to invoke `-(void)didReceiveNotification:(UNNotification *)notification withContext` instead. Consult [**the iOS documentation**](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#start-the-sdk-from-inside-the-extension-1) for more details.
+
+4.  Starting from iOS 13, Apple split up the application lifecycle logic between `AppDelegate` and `SceneDelegate`.  
+    This was done in order to enable multi-window support that was introduced in iPad-OS. The `AppDelegate` is responsible for application lifecycle handling and setup of services, while `SceneDelegate` is responsible for updating the UI (windows and scenes).
+    
+    However, this split in responsibilites has given rise to issues with Sellgent's default push notification behavior __since iOS 15__, which shows an alert containing the notification's content, or its associated in-app content. Starting from iOS 15, you should add a separate `SceneDelegate`, that you connect to your `AppDelegate`, which handles the UI updating logic:
+    
+     ``` objc
+    // SceneDelegate.h
+
+    #ifndef SceneDelegate_h
+    #define SceneDelegate_h
+
+    #import <UIKit/UIKit.h>
+    #import <React/RCTBridgeDelegate.h>
+
+    @interface SceneDelegate : UIResponder <UIWindowSceneDelegate, RCTBridgeDelegate>
+    @end
+
+    #endif /* SceneDelegate_h */
+    ```
+
+    ``` objc
+    // SceneDelegate.mm
+
+    #import "SceneDelegate.h"
+
+    #import <React/RCTBridge.h>
+    #import <React/RCTBundleURLProvider.h>
+    #import <React/RCTRootView.h>
+
+    #import <React/RCTAppSetupUtils.h>
+
+    @implementation SceneDelegate
+
+    #if defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
+
+    @synthesize window = _window;
+
+    - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions API_AVAILABLE(ios(13.0)){
+        RCTAppSetupPrepareApp([ UIApplication sharedApplication]);
+        // ...
+        // other react native setup code
+        // ...
+    }
+
+
+    - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
+    {
+    #if DEBUG
+    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+    #else
+    return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+    #endif
+    }
+
+    #endif
+
+    @end
+    
+    ```
+
+    ``` objc
+    // AppDelegate.mm
+    // Other imports...
+    #import "SceneDelegate.h"
+
+    @implementation AppDelegate
+
+    #if defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0
+    - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options  API_AVAILABLE(ios(13.0)){
+    UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
+    configuration.delegateClass = SceneDelegate.class;
+  
+    return configuration;
+    }
+    #endif
+
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions: (NSDictionary *)launchOptions {
+    [self _prepareForPushNotifications];
+    [RNSelligent configureWithLaunchOptions:launchOptions];
+    //
+
+    if (@available(iOS 13.0, *)) {
+        return YES;
+    }
+     // ...
+    //react native setup code
+    // ...
+  
+    return YES;
+    }
+
+
+    // Other AppDelegate methods, as defined above...
+
+    @end
+
+    ```
 
  #### Geolocation
 
@@ -451,7 +556,7 @@ For geolocation services, follow section [**Geolocation**](https://github.com/Se
 
 You can catch the deeplinks 2 ways:
 
-1. Native in AppDelegate.m, add the following (example code that logs the URL)
+1. Native in AppDelegate.mm, add the following (example code that logs the URL)
 
 ```
 -(BOOL)application:(UIApplication*) application openURL:(NSURL*) url sourceApplication:(NSString*) sourceApplication annotation:(id) annotation

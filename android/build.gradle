@@ -1,3 +1,8 @@
+import com.android.build.api.variant.BuildConfigField
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
 buildscript {
     repositories {
         google()
@@ -5,20 +10,31 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.2.2'
     }
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+def buildTypeAttr = Attribute.of("com.android.build.api.attributes.BuildTypeAttr", String)
+
+dependencies.attributesSchema {
+    // registers this attribute to the attributes schema
+    attribute(buildTypeAttr)
+}
+
+configurations {
+    implementation {
+        attributes {
+            attribute(buildTypeAttr, "release")
+        }
+    }
+}
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 32
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 32
         ndkVersion = "21.4.7075529"
         versionCode 1
         versionName "1.0"
@@ -34,7 +50,7 @@ androidComponents {
         def selligentSettings = loadSelligentSettings(variant)
         if (selligentSettings != null) {
             try {
-                variant.addBuildConfigField("SELLIGENT_SETTINGS", "\"" + selligentSettings + "\"", "Selligent settings")
+                variant.buildConfigFields.put("SELLIGENT_SETTINGS", new BuildConfigField("String", "\"" + selligentSettings + "\"", "Selligent settings"))
             } catch (MissingMethodException ignored) {
                 throw new Exception("Selligent requires Android Gradle plugin version 4.2.0 or higher.")
             }
@@ -55,32 +71,11 @@ dependencies {
     implementation 'com.facebook.react:react-native:+'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.plotprojects:plot-android:3.13.1'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.google.firebase:firebase-messaging:21.0.0'
-    implementation 'androidx.work:work-runtime:2.4.0'
+    implementation 'androidx.work:work-runtime:2.7.1'
     implementation 'androidx.concurrent:concurrent-futures:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-}
-
-def configureReactNativePom(def pom) {
-    def packageJson = new groovy.json.JsonSlurper().parseText(file('../package.json').text)
-
-    pom.project {
-        name packageJson.title
-        artifactId packageJson.name
-        version = packageJson.version
-        group = "com.selligent"
-        description packageJson.description
-        url packageJson.repository.baseUrl
-
-        licenses {
-            license {
-                name packageJson.license
-                url packageJson.repository.baseUrl + '/blob/master/' + packageJson.licenseFilename
-                distribution 'repo'
-            }
-        }
-    }
 }
 
 afterEvaluate { project ->
@@ -88,7 +83,8 @@ afterEvaluate { project ->
     task androidJavadoc(type: Javadoc) {
         source = android.sourceSets.main.java.srcDirs
         classpath += files(android.bootClasspath)
-        classpath += files(project.getConfigurations().getByName('compile').asList())
+        project.getConfigurations().getByName('implementation').setCanBeResolved(true)
+        classpath += files(project.getConfigurations().getByName('implementation').asList())
         include '**/*.java'
     }
 

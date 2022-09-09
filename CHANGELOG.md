@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.10.0] - 12 September 2022
+
+### Added
+- Add section on application lifecycle management split between `AppDelegate` and `SceneDelegate` with regards to Selligent push notification handling on iOS 15+ in README
+- Add a couple of markdown code language identifiers for syntax highlightinh in README
+- Add disclaimer concerning this module's incompatibility with React Native's new architecture in README
+- Add disclaimer plot project's minimum version upgrade to `3.5.0` for `iOS` in README
+
+### Changed
+- Add version 3.10.1 of the Android SDK to `android/libs`
+- Add version 2.7.7 of the iOS SDK static library to `/ios`
+- Change development dependency versions of  `react` and `react-native` to `18.1.0` and  `^0.70.0`, respectively
+- Upgrade the `compileSdkVersion` and `targetSdkVersion` to `32` in `android/build.gradle`
+- Upgrade the Android Gradle Plugin version to `7.2.2`
+- Upgrade the `om.google.code.gson:gson` and `androidx.work:work-runtime` dependencies to `2.8.9` and `2.7.1` respectively in `android/build.gradle`
+- Change used native SDK version numbers to `3.10.1` and `2.7.7` for Android and iOS respectively in README
+
+### Fixed
+- Fix typos in README
+
 ## [2.9.0] - 20 May 2022
 
 ### Added
