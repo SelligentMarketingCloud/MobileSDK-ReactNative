@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.0.0] - 7 December 2022
+
+### Changed
+- Add version 4.0.1 of the Android SDK to `android/libs`
+- Remove everything to do with `googleApplicationId` from Android, as this setting was completely removed from Selligent's SDK
+- On Android, use an SMNotificationButton's button action's `getValue()` method to get the action value, in accordance with Selligent's new API
+- Change development dependency version of `react-native` to `^0.70.6`
+
 ## [2.10.0] - 12 September 2022
 
 ### Added

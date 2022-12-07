@@ -15,7 +15,7 @@ This module uses the native Selligent SDKs:
 
 | SDK                                                                     | Version |
 | ----------------------------------------------------------------------- | ------- |
-| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 3.10.1  |
+| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 4.0.1  |
 | [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 2.7.7   |
 
 ## ToC

@@ -17,7 +17,7 @@ class ButtonBroadcastEventDataParser implements BroadcastEventDataParser {
         resultingMap.putInt("type", button.type);
         resultingMap.putString("value", button.value);
         resultingMap.putString("label", button.label);
-        resultingMap.putInt("action", button.action);
+        resultingMap.putInt("action", button.action.getValue());
         if (button.data != null) {
             final WritableMap buttonData = new WritableNativeMap();
             for(String dataKey : button.data.keySet()) {

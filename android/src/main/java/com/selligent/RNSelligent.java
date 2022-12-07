@@ -187,7 +187,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                             buttonMap.putString("id", button.id);
                             buttonMap.putString("value", button.value);
                             buttonMap.putString("label", button.label);
-                            buttonMap.putInt("action", button.action);
+                            buttonMap.putInt("action", button.action.getValue());
                             buttonMap.putInt("type", button.type);
 
                             buttonsArray.pushMap(buttonMap);

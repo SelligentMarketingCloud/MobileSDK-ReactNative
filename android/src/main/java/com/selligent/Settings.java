@@ -8,7 +8,6 @@ class Settings {
     private String url;
     private String clientId;
     private String privateKey;
-    private String googleApplicationId;
     private String activityName;
     private String notificationSmallIcon;
     private String notificationLargeIcon;
@@ -37,10 +36,6 @@ class Settings {
 
     public String getPrivateKey() {
         return privateKey;
-    }
-
-    public String getGoogleApplicationId() {
-        return googleApplicationId;
     }
 
     public String getActivityName() {
@@ -101,9 +96,6 @@ class Settings {
         settings.url = (String) settingsHashMap.get("url");
         settings.clientId = (String) settingsHashMap.get("clientId");
         settings.privateKey = (String) settingsHashMap.get("privateKey");
-        if (settingsHashMap.containsKey("googleApplicationId")) {
-            settings.googleApplicationId = (String) settingsHashMap.get("googleApplicationId");
-        }
         if (settingsHashMap.containsKey("configureLocationServices")) {
             settings.configureLocationServices = (Boolean) settingsHashMap.get("configureLocationServices");
 
