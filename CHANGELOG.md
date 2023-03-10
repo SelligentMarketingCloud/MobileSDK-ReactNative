@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.0] - 10 March 2023
+
+### Changed
+- Add version 4.0.1 of the Android SDK to `android/libs`
+- Change development dependency versions of `react` `react-native` to `18.2.0` and `^0.71.3`, respectively
+- Upgrade the `compileSdkVersion` and `targetSdkVersion` to `33` in `android/build.gradle`
+- Upgrade the Android Gradle Plugin version to `7.3.1`
+
 ## [3.0.0] - 7 December 2022
 
 ### Changed
