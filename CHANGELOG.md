@@ -4,7 +4,7 @@
   - Update to native iOS SDK 3.4.0 and Android SDK 4.1.0
   - (iOS) Add support for InApp Message style templates to further customize their appearance
   - (iOS) Add support for intercepting universal link executions when coming from a Push/IAM
-  - (iOS) Fix issue with deeplink/inapp from a push when the app is killed ([see more](documentation/#deeplinking))
+  - (iOS) Fix issue with deeplink/inapp from a push when the app is killed ([see more](documentation/#deep-linking))
   - (iOS) Rebuild wrapper in swift and provide as .xcframework
   - (Android) Fix how the build variants and flavors were treated to correctly load the `selligent.json` file(s)
   - (Android) Replace broadcasts by observers
