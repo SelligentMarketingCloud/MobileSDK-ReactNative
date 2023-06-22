@@ -10,14 +10,20 @@ import com.selligent.sdk.SMNotificationButton;
 class ButtonBroadcastEventDataParser implements BroadcastEventDataParser {
     @Override
     public WritableMap parse(Intent intent) {
+        SMNotificationButton button = (SMNotificationButton)intent.getSerializableExtra(SMManager.BROADCAST_DATA_BUTTON);
+
+        return wrap(button);
+    }
+
+    public WritableMap wrap(SMNotificationButton button)
+    {
         final WritableMap resultingMap = new WritableNativeMap();
 
-        SMNotificationButton button = (SMNotificationButton)intent.getSerializableExtra(SMManager.BROADCAST_DATA_BUTTON);
         resultingMap.putString("id", button.id);
-        resultingMap.putInt("type", button.type);
+        resultingMap.putInt("type", ButtonAction.valueOf(button.action).getValue());
         resultingMap.putString("value", button.value);
         resultingMap.putString("label", button.label);
-        resultingMap.putInt("action", button.action.getValue());
+
         if (button.data != null) {
             final WritableMap buttonData = new WritableNativeMap();
             for(String dataKey : button.data.keySet()) {

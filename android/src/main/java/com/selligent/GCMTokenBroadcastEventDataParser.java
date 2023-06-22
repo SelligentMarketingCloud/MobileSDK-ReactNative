@@ -9,9 +9,14 @@ import com.selligent.sdk.SMManager;
 class GCMTokenBroadcastEventDataParser implements BroadcastEventDataParser {
     @Override
     public WritableMap parse(Intent intent) {
+        final String token = intent.getStringExtra(SMManager.BROADCAST_DATA_GCM_TOKEN);
+
+        return wrap(token);
+    }
+
+    public WritableMap wrap(String token) {
         final WritableMap resultingMap = new WritableNativeMap();
 
-        final String token = intent.getStringExtra(SMManager.BROADCAST_DATA_GCM_TOKEN);
         resultingMap.putString("token", token);
 
         return resultingMap;

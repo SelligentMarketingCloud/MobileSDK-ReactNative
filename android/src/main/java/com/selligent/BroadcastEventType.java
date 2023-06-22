@@ -7,7 +7,10 @@ enum BroadcastEventType {
     ReceivedInAppMessage("ReceivedInAppMessage", SMManager.BROADCAST_EVENT_RECEIVED_IN_APP_MESSAGE),
     WillDisplayNotification("WillDisplayNotification", SMManager.BROADCAST_EVENT_WILL_DISPLAY_NOTIFICATION),
     WillDismissNotification("WillDismissNotification", SMManager.BROADCAST_EVENT_WILL_DISMISS_NOTIFICATION),
-    ReceivedGCMToken("ReceivedGCMToken", SMManager.BROADCAST_EVENT_RECEIVED_GCM_TOKEN);
+    ReceivedGCMToken("ReceivedGCMToken", SMManager.BROADCAST_EVENT_RECEIVED_GCM_TOKEN),
+    ReceivedNotification("ReceivedRemoteNotification", null),
+    ReceivedDeviceId("ReceivedDeviceId", null),
+    TriggeredCustomEvent("TriggeredCustomEvent", null);
 
     private String broadcastEventType;
     private String smBroadcastEventType;

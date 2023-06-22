@@ -1,0 +1,4 @@
+framework module RNSelligentMobileSDK {
+  header "RNSelligentMobileSDK-Swift.h"
+  requires objc
+}

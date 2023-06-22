@@ -9,7 +9,6 @@ class SMSettingsFactory {
         smSettings.WebServiceUrl = settings.getUrl();
         smSettings.ClientId = settings.getClientId();
         smSettings.PrivateKey = settings.getPrivateKey();
-        smSettings.ConfigureGeolocation = settings.getConfigureLocationServices();
         smSettings.AddInAppMessageFromPushToInAppMessageList = settings.getAddInAppMessageFromPushToInAppMessageList();
         smSettings.DoNotFetchTheToken = settings.getDoNotFetchTheToken();
         smSettings.DoNotListenToThePush = settings.getDoNotListenToThePush();

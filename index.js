@@ -1,8 +1,9 @@
-import { NativeModules, Platform } from 'react-native'
+import { NativeEventEmitter, NativeModules, Platform } from 'react-native'
 import SelligentConstants from './constants'
 import SelligentHelpers from './helpers'
 
 const { RNSelligent } = NativeModules
+export const RNSEventEmitter = new NativeEventEmitter(RNSelligent)
 
 // Check if Native version of Selligent found
 SelligentHelpers.isNativeSelligentFound(RNSelligent)
@@ -11,7 +12,7 @@ SelligentHelpers.isNativeSelligentFound(RNSelligent)
 // export default RNSelligent;
 
 // platform specific code
-var platformSpecificMethods = {}
+let platformSpecificMethods = {};
 
 if (Platform.OS === 'android') {
 	platformSpecificMethods = require('./index.android.js').default
@@ -27,30 +28,27 @@ export default Object.assign(
 		// Basic SMManager
 
 		/**
-		 * Returns the version of the underlying Selligent SDK.
+		 * Returns the version of the underlying Selligent native SDK.
 		 * 
 		 * @param {function} successCallback Callback function on success.
 		 */
 		getVersionLib: function (successCallback) {
 			RNSelligent.getVersionLib(successCallback)
-			return
 		},
-		// DataTransaction
 
 		// InAppMessage
 
 		/**
-		 * Get in app messages.
+		 * Gets all known (and not deleted/expired) in app messages.
 		 *  
 		 * @param {function} successCallback Callback function on success.
 		 */
 		getInAppMessages: function (successCallback) {
 			RNSelligent.getInAppMessages(successCallback)
-			return
 		},
 
 		/**
-		 * Set in app message as seen
+		 * Sets an in app message as seen
 		 *  
 		 * @param {function} successCallback Callback function on success.
 		 * @param {function} errorCallback Callback function on error.
@@ -69,7 +67,50 @@ export default Object.assign(
 			}
 
 			RNSelligent.setInAppMessageAsSeen(messageId, _successCallback, errorCallback)
-			return
+		},
+
+		/**
+		 * Sets an in app message as unseen
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {string} messageId Message id to identify the message which has been unseen.
+		 */
+		setInAppMessageAsUnseen: function (successCallback, errorCallback, messageId) {
+			// check if required options are valid
+			if (!SelligentHelpers.typeMatches(messageId, 'string')) {
+				errorCallback(SelligentHelpers.wrongArgumentError('Expected a string.'))
+				return
+			}
+
+			// continue if options are valid
+			const _successCallback = () => {
+				successCallback(SelligentHelpers.SUCCESS)
+			}
+
+			RNSelligent.setInAppMessageAsUnseen(messageId, _successCallback, errorCallback)
+		},
+		
+		/**
+		 * Sets an in app message as deleted
+		 *  
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {string} messageId Message id to identify the message which has been deleted.
+		 */
+		setInAppMessageAsDeleted: function (successCallback, errorCallback, messageId) {
+			// check if required options are valid
+			if (!SelligentHelpers.typeMatches(messageId, 'string')) {
+				errorCallback(SelligentHelpers.wrongArgumentError('Expected a string.'))
+				return
+			}
+
+			// continue if options are valid
+			const _successCallback = () => {
+				successCallback(SelligentHelpers.SUCCESS)
+			}
+
+			RNSelligent.setInAppMessageAsDeleted(messageId, _successCallback, errorCallback)
 		},
 
 		/**
@@ -77,7 +118,7 @@ export default Object.assign(
 		 *  
 		 * @param {function} successCallback Callback function on success.
 		 * @param {function} errorCallback Callback function on error.
-		 * @param {string} buttonId Button id to identify the message.
+		 * @param {string} buttonId Button id to identify the button.
 		 * @param {string} messageId Message id to identify the message.
 		 */
 		executeButtonAction: function (successCallback, errorCallback, buttonId, messageId) {
@@ -85,7 +126,7 @@ export default Object.assign(
 				errorCallback(SelligentHelpers.wrongArgumentError('Expected buttonId to be a string.'))
 				return
 			}
-			if (!SelligentHelpers.typeMatches(messageId, 'string')) {
+			else if (!SelligentHelpers.typeMatches(messageId, 'string')) {
 				errorCallback(SelligentHelpers.wrongArgumentError('Expected messageId to be a string.'))
 				return
 			}
@@ -95,39 +136,43 @@ export default Object.assign(
 			}
 
 			RNSelligent.executeButtonAction(buttonId, messageId, _successCallback, errorCallback)
-			return
 		},
 
-		// Location
-
 		/**
-		 * Enable/disable geolocation.
-		 *  
+		 * Displays an inapp message given its id, (optionally with a specific templateId to use custom styles).
+		 * @deprecated Use displayMessage instead.
+		 * 
 		 * @param {function} successCallback Callback function on success.
 		 * @param {function} errorCallback Callback function on error.
-		 * @param {boolean} enabled Boolean to enable or disable geolocation.
+		 * @param {string} notificationId Id of the notification.
+		 * @param {string} templateId Id of the template from where to get the styles.
 		 */
-		 enableGeolocation: function (successCallback, errorCallback, enabled) {
-			// check if required options are valid
-			if (!SelligentHelpers.typeMatches(enabled, 'boolean')) {
-				errorCallback(SelligentHelpers.wrongArgumentError('Expected a boolean.'))
+		displayNotification: function (successCallback, errorCallback, notificationId, templateId) {
+			this.displayMessage(successCallback, errorCallback, notificationId, templateId)
+		},
+
+		/**
+		 * Displays an inapp message given its id, (optionally with a specific templateId to use custom styles for iOS).
+		 * 
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {string} messageId Id of the message.
+		 * @param {string} templateId Id of the template from where to get the styles (iOS only).
+		 */
+		displayMessage: function (successCallback, errorCallback, messageId, templateId) {
+			if (!SelligentHelpers.typeMatches(messageId, 'string') || messageId.length === 0) {
+				errorCallback(SelligentHelpers.wrongArgumentError('Expected a string (not empty) messageId.'))
 				return
 			}
 
-			// continue if options are valid
 			successCallback(SelligentHelpers.SUCCESS)
-			RNSelligent.enableGeolocation(enabled)
-			return
-		},
 
-		/**
-		 * Check if geolocation is enabled or disabled.
-		 *  
-		 * @param {function} successCallback Callback function on success.
-		 */
-		isGeolocationEnabled: function (successCallback) {
-			RNSelligent.isGeolocationEnabled(successCallback)
-			return
+			if (Platform.OS === 'ios') {
+				RNSelligent.displayNotification(messageId, templateId)
+			}
+			else if (Platform.OS === 'android') {
+				RNSelligent.displayMessage(messageId)
+			}
 		},
 
 		// Event
@@ -159,11 +204,10 @@ export default Object.assign(
 				if (event.hasOwnProperty('email')) {
 					console.warn("Email prop is not used with \"custom\" event type and will be ignored.");
 				}
-			} else {
-				if (!SelligentHelpers.hasRequiredParameterAndMatchesType(event, 'email', 'string')) {
-					errorCallback(SelligentHelpers.wrongArgumentError('Expected an object with the key "email".'))
-					return
-				}
+			} 
+			else if (!SelligentHelpers.hasRequiredParameterAndMatchesType(event, 'email', 'string')) {
+				errorCallback(SelligentHelpers.wrongArgumentError('Expected an object with the key "email".'))
+				return
 			}
 
 			if (!SelligentHelpers.hasOptionalParameterAndMatchesType(event, 'shouldCache', 'boolean')) {
@@ -173,7 +217,6 @@ export default Object.assign(
 
 			// continue if options are valid
 			RNSelligent.sendEvent(event, successCallback, errorCallback)
-			return
 		},
 		// Device Id
 		/**
@@ -183,7 +226,6 @@ export default Object.assign(
 		 */
 		 getDeviceId: function (successCallback) {
 			RNSelligent.getDeviceId(successCallback)
-			return
 		},
 
 		// Remote Notifications
@@ -205,18 +247,24 @@ export default Object.assign(
 			// continue if options are valid
 			successCallback(SelligentHelpers.SUCCESS)
 			RNSelligent.enableNotifications(enabled)
-			return
 		},
 
 		/**
-		 * Display the last received remote push notification
+		 * Displays the last received remote push notification content (optionally, on iOS, with a specific templateId to use custom styles).
 		 *  
 		 * @param {function} successCallback Callback function on success.
+		 * @param {string} templateId Id of the template from where to get the styles.
 		 */
-		displayLastReceivedRemotePushNotification: function (successCallback) {
+		displayLastReceivedRemotePushNotification: function (successCallback, templateId) {
 			successCallback(SelligentHelpers.SUCCESS)
-			RNSelligent.displayLastReceivedRemotePushNotification()
-			return
+			RNSelligent.displayLastReceivedRemotePushNotification(templateId)
+		},
+
+		/**
+		 * Displays the last received remote push notification (if any).
+		 */
+		displayLastReceivedNotification: function() {
+			RNSelligent.displayLastReceivedNotification()
 		},
 
 		/**
@@ -226,7 +274,67 @@ export default Object.assign(
 		 */
 		getLastRemotePushNotification: function (successCallback) {
 			RNSelligent.getLastRemotePushNotification(successCallback)
-			return
+		},
+
+		/**
+		 * Subscribe to events.
+		 *
+		 * @param {function} successCallback Callback function on success.
+		 * @param {function} errorCallback Callback function on error.
+		 * @param {function} eventCallback Callback function on event.
+		 * @param {array} customEvents Array of custom events to subscribe to.
+		 */
+		subscribeToEvents: function (successCallback, errorCallback, eventCallback, customEvents = []) {
+			if (customEvents !== undefined) {
+				if (!SelligentHelpers.typeMatches(customEvents, 'array')) {
+					errorCallback(SelligentHelpers.createTypeErrorMessage('customEvents', customEvents, 'array'))
+					return
+				}
+
+				// check if values are all strings
+				const arrayLength = customEvents.length;
+				for (let i = 0; i < arrayLength; i++) {
+					if (!SelligentHelpers.typeMatches(customEvents[i], 'string')) {
+						errorCallback(SelligentHelpers.wrongArgumentError('Expected an array of strings.'))
+						return
+					}
+				}
+			}
+
+			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.BUTTON_CLICKED, eventCallback);
+			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_IN_APP_MESSAGE, eventCallback);
+			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISPLAY_NOTIFICATION, eventCallback);
+			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISMISS_NOTIFICATION, eventCallback);
+			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_DEVICE_ID, eventCallback);
+			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_REMOTE_NOTIFICATION, eventCallback);
+			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.TRIGGERED_CUSTOM_EVENT, eventCallback);
+
+			if (Platform.OS === "ios") {
+				RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.UNIVERSAL_LINK_EXECUTED, eventCallback);
+			}
+			else if (Platform.OS === "android") {
+				RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_GCM_TOKEN, eventCallback);
+			}
+			
+			successCallback(SelligentHelpers.SUCCESS)
+			RNSelligent.subscribeToEvents(customEvents)
+		},
+
+		/**
+		 * Subscribe to event.
+		 *
+		 * @param {function} eventCallback Callback function on event.
+		 * @param {string} eventName Name of the custom event to subscribe to.
+		 */
+		subscribeToEvent: function (eventCallback, eventName) {
+			if (Object.values(SelligentConstants.BroadcastEventType).includes(eventName)) {
+				RNSEventEmitter.addListener(eventName, eventCallback)
+			}
+			else {
+				RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.TRIGGERED_CUSTOM_EVENT, eventCallback)
+			}
+
+			RNSelligent.subscribeToEvents([eventName])
 		}
 	},
 	{ ...platformSpecificMethods }

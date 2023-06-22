@@ -1,0 +1,2603 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "RNSelligentEventHandlerProtocol",
+        "printedName": "RNSelligentEventHandlerProtocol",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "sendBroadcastEvent",
+            "printedName": "sendBroadcastEvent(name:type:data:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.AnyHashable : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.AnyHashable : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AnyHashable",
+                        "printedName": "Swift.AnyHashable",
+                        "usr": "s:s11AnyHashableV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@RNSelligentMobileSDK@objc(pl)RNSelligentEventHandlerProtocol(im)sendBroadcastEventWithName:type:data:",
+            "mangledName": "$s20RNSelligentMobileSDK0A20EventHandlerProtocolP013sendBroadcastD04name4type4dataySS_SSSDys11AnyHashableVypGSgtF",
+            "moduleName": "RNSelligentMobileSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : RNSelligentMobileSDK.RNSelligentEventHandlerProtocol>",
+            "sugared_genericSig": "<Self where Self : RNSelligentMobileSDK.RNSelligentEventHandlerProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "c:@M@RNSelligentMobileSDK@objc(pl)RNSelligentEventHandlerProtocol",
+        "mangledName": "$s20RNSelligentMobileSDK0A20EventHandlerProtocolP",
+        "moduleName": "RNSelligentMobileSDK",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "RNSelligent",
+        "printedName": "RNSelligent",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "eventDelegate",
+            "printedName": "eventDelegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RNSelligentEventHandlerProtocol",
+                    "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
+                    "usr": "c:@M@RNSelligentMobileSDK@objc(pl)RNSelligentEventHandlerProtocol"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@RNSelligentMobileSDK@objc(cs)RNSelligent(cpy)eventDelegate",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C13eventDelegateAA0A20EventHandlerProtocol_pSgvpZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RNSelligentEventHandlerProtocol",
+                        "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
+                        "usr": "c:@M@RNSelligentMobileSDK@objc(pl)RNSelligentEventHandlerProtocol"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)eventDelegate",
+                "mangledName": "$s20RNSelligentMobileSDK0A0C13eventDelegateAA0A20EventHandlerProtocol_pSgvgZ",
+                "moduleName": "RNSelligentMobileSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RNSelligentEventHandlerProtocol",
+                        "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
+                        "usr": "c:@M@RNSelligentMobileSDK@objc(pl)RNSelligentEventHandlerProtocol"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)setEventDelegate:",
+                "mangledName": "$s20RNSelligentMobileSDK0A0C13eventDelegateAA0A20EventHandlerProtocol_pSgvsZ",
+                "moduleName": "RNSelligentMobileSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20RNSelligentMobileSDK0A0C13eventDelegateAA0A20EventHandlerProtocol_pSgvMZ",
+                "mangledName": "$s20RNSelligentMobileSDK0A0C13eventDelegateAA0A20EventHandlerProtocol_pSgvMZ",
+                "moduleName": "RNSelligentMobileSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "configureWithLaunchOptions",
+            "printedName": "configureWithLaunchOptions(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.AnyHashable : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AnyHashable",
+                    "printedName": "Swift.AnyHashable",
+                    "usr": "s:s11AnyHashableV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)configureWithLaunchOptions:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C26configureWithLaunchOptionsyySDys11AnyHashableVypGFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "RNSelligent",
+                "printedName": "RNSelligentMobileSDK.RNSelligent",
+                "usr": "c:@M@RNSelligentMobileSDK@objc(cs)RNSelligent"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@RNSelligentMobileSDK@objc(cs)RNSelligent(im)init",
+            "mangledName": "$s20RNSelligentMobileSDK0A0CACycfc",
+            "moduleName": "RNSelligentMobileSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "getVersionLib",
+            "printedName": "getVersionLib()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)getVersionLib",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C13getVersionLibSSyFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getDeviceId",
+            "printedName": "getDeviceId()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)getDeviceId",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C11getDeviceIdSSyFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setInAppMessageStylingTemplates",
+            "printedName": "setInAppMessageStylingTemplates(_:defaultTemplateId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[RNSelligentMobileSDK.InAppMessageStylingTemplate]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "InAppMessageStylingTemplate",
+                    "printedName": "RNSelligentMobileSDK.InAppMessageStylingTemplate",
+                    "usr": "c:@M@RNSelligentMobileSDK@objc(cs)InAppMessageStylingTemplate"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)setInAppMessageStylingTemplates:defaultTemplateId:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C31setInAppMessageStylingTemplates_17defaultTemplateIdySayAA0efghK0CG_SSSgtFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "executePushAction",
+            "printedName": "executePushAction()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)executePushAction",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C17executePushActionyyFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "applyLogLevel",
+            "printedName": "applyLogLevel(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.Int]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)applyLogLevel:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C13applyLogLevelyySaySiGFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "enable",
+            "printedName": "enable(inAppMessages:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)enableInAppMessages:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C6enable13inAppMessagesySb_tFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "objc_name": "enableInAppMessages:",
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getInAppMessages",
+            "printedName": "getInAppMessages()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Swift.AnyHashable : Any]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.AnyHashable : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AnyHashable",
+                        "printedName": "Swift.AnyHashable",
+                        "usr": "s:s11AnyHashableV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)getInAppMessages",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C16getInAppMessagesSaySDys11AnyHashableVypGGyFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setInAppMessageAsSeen",
+            "printedName": "setInAppMessageAsSeen(_:seen:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)setInAppMessageAsSeen:seen:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C21setInAppMessageAsSeen_4seenSSSgSS_SbtFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setInAppMessageAsDeleted",
+            "printedName": "setInAppMessageAsDeleted(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)setInAppMessageAsDeleted:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C24setInAppMessageAsDeletedySSSgSSFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "executeButtonAction",
+            "printedName": "executeButtonAction(_:messageId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)executeButtonAction:messageId:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C19executeButtonAction_9messageIdSSSgSS_SStFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "displayNotification",
+            "printedName": "displayNotification(_:templateId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)displayNotification:templateId:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C19displayNotification_10templateIdySS_SSSgtFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "enableNotifications",
+            "printedName": "enableNotifications(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)enableNotifications:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C19enableNotificationsyySbFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "registerForProvisionalRemoteNotification",
+            "printedName": "registerForProvisionalRemoteNotification()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)registerForProvisionalRemoteNotification",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C40registerForProvisionalRemoteNotificationyyFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "displayLastReceivedRemotePushNotification",
+            "printedName": "displayLastReceivedRemotePushNotification(withTemplateId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)displayLastReceivedRemotePushNotificationWithTemplateId:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C41displayLastReceivedRemotePushNotification14withTemplateIdySSSg_tFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "objc_name": "displayLastReceivedRemotePushNotificationWithTemplateId:",
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getLastRemotePushNotification",
+            "printedName": "getLastRemotePushNotification()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.AnyHashable : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.AnyHashable : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AnyHashable",
+                        "printedName": "Swift.AnyHashable",
+                        "usr": "s:s11AnyHashableV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)getLastRemotePushNotification",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C29getLastRemotePushNotificationSDys11AnyHashableVypGSgyFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "displayLastReceivedNotification",
+            "printedName": "displayLastReceivedNotification()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)displayLastReceivedNotification",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C31displayLastReceivedNotificationyyFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sendEvent",
+            "printedName": "sendEvent(_:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.AnyHashable : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AnyHashable",
+                    "printedName": "Swift.AnyHashable",
+                    "usr": "s:s11AnyHashableV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool, Swift.String) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.Bool, Swift.String)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)sendEvent:completion:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C9sendEvent_10completionySDys11AnyHashableVypG_ySb_SStctFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "subscribeToEvents",
+            "printedName": "subscribeToEvents(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)subscribeToEvents:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C17subscribeToEventsyySaySSGFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didRegisterForRemoteNotifications",
+            "printedName": "didRegisterForRemoteNotifications(withDeviceToken:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)didRegisterForRemoteNotificationsWithDeviceToken:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C33didRegisterForRemoteNotifications15withDeviceTokeny10Foundation4DataV_tFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "objc_name": "didRegisterForRemoteNotificationsWithDeviceToken:",
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didFailToRegisterForRemoteNotificationsWithError",
+            "printedName": "didFailToRegisterForRemoteNotificationsWithError(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Error",
+                "printedName": "Swift.Error",
+                "usr": "s:s5ErrorP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)didFailToRegisterForRemoteNotificationsWithError:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C48didFailToRegisterForRemoteNotificationsWithErroryys0L0_pFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didReceiveRemoteNotification",
+            "printedName": "didReceiveRemoteNotification(_:fetchCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.AnyHashable : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AnyHashable",
+                    "printedName": "Swift.AnyHashable",
+                    "usr": "s:s11AnyHashableV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((UIKit.UIBackgroundFetchResult) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UIKit.UIBackgroundFetchResult) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIBackgroundFetchResult",
+                        "printedName": "UIKit.UIBackgroundFetchResult",
+                        "usr": "c:@E@UIBackgroundFetchResult"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)didReceiveRemoteNotification:fetchCompletionHandler:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C28didReceiveRemoteNotification_22fetchCompletionHandlerySDys11AnyHashableVypG_ySo23UIBackgroundFetchResultVcSgtFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "willPresentNotification",
+            "printedName": "willPresentNotification(_:withCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotification",
+                "printedName": "UserNotifications.UNNotification",
+                "usr": "c:objc(cs)UNNotification"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((UserNotifications.UNNotificationPresentationOptions) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UserNotifications.UNNotificationPresentationOptions) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UNNotificationPresentationOptions",
+                        "printedName": "UserNotifications.UNNotificationPresentationOptions",
+                        "usr": "c:@E@UNNotificationPresentationOptions"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)willPresentNotification:withCompletionHandler:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C23willPresentNotification_21withCompletionHandlerySo14UNNotificationC_ySo0J19PresentationOptionsVcSgtFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "willPresentNotification",
+            "printedName": "willPresentNotification(_:templateId:withCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotification",
+                "printedName": "UserNotifications.UNNotification",
+                "usr": "c:objc(cs)UNNotification"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((UserNotifications.UNNotificationPresentationOptions) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UserNotifications.UNNotificationPresentationOptions) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UNNotificationPresentationOptions",
+                        "printedName": "UserNotifications.UNNotificationPresentationOptions",
+                        "usr": "c:@E@UNNotificationPresentationOptions"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)willPresentNotification:templateId:withCompletionHandler:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C23willPresentNotification_10templateId21withCompletionHandlerySo14UNNotificationC_SSSgySo0L19PresentationOptionsVcSgtFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didReceiveNotificationResponse",
+            "printedName": "didReceiveNotificationResponse(_:withCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotificationResponse",
+                "printedName": "UserNotifications.UNNotificationResponse",
+                "usr": "c:objc(cs)UNNotificationResponse"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)didReceiveNotificationResponse:withCompletionHandler:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C30didReceiveNotificationResponse_21withCompletionHandlerySo014UNNotificationG0C_yycSgtFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didReceiveNotificationResponse",
+            "printedName": "didReceiveNotificationResponse(_:templateId:withCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotificationResponse",
+                "printedName": "UserNotifications.UNNotificationResponse",
+                "usr": "c:objc(cs)UNNotificationResponse"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)didReceiveNotificationResponse:templateId:withCompletionHandler:",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C30didReceiveNotificationResponse_10templateId21withCompletionHandlerySo014UNNotificationG0C_SSSgyycSgtFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@RNSelligentMobileSDK@objc(cs)RNSelligent",
+        "mangledName": "$s20RNSelligentMobileSDK0A0C",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "InAppMessageStylingTemplate",
+        "printedName": "InAppMessageStylingTemplate",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(templateId:styleOptions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "InAppMessageStylingTemplate",
+                "printedName": "RNSelligentMobileSDK.InAppMessageStylingTemplate",
+                "usr": "c:@M@RNSelligentMobileSDK@objc(cs)InAppMessageStylingTemplate"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SMInAppMessageStyleOptions",
+                "printedName": "SelligentMobileSDK.SMInAppMessageStyleOptions",
+                "usr": "c:@M@SelligentMobileSDK@objc(cs)SMInAppMessageStyleOptions"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@RNSelligentMobileSDK@objc(cs)InAppMessageStylingTemplate(im)initWithTemplateId:styleOptions:",
+            "mangledName": "$s20RNSelligentMobileSDK27InAppMessageStylingTemplateC10templateId12styleOptionsACSS_09SelligentbC004SMInef5StyleL0Ctcfc",
+            "moduleName": "RNSelligentMobileSDK",
+            "objc_name": "initWithTemplateId:styleOptions:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "InAppMessageStylingTemplate",
+                "printedName": "RNSelligentMobileSDK.InAppMessageStylingTemplate",
+                "usr": "c:@M@RNSelligentMobileSDK@objc(cs)InAppMessageStylingTemplate"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@RNSelligentMobileSDK@objc(cs)InAppMessageStylingTemplate(im)init",
+            "mangledName": "$s20RNSelligentMobileSDK27InAppMessageStylingTemplateCACycfc",
+            "moduleName": "RNSelligentMobileSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@RNSelligentMobileSDK@objc(cs)InAppMessageStylingTemplate",
+        "mangledName": "$s20RNSelligentMobileSDK27InAppMessageStylingTemplateC",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SMManager",
+        "printedName": "SMManager",
+        "declKind": "Class",
+        "usr": "c:@M@SelligentMobileSDK@objc(cs)SMManager",
+        "mangledName": "$s18SelligentMobileSDK9SMManagerC",
+        "moduleName": "SelligentMobileSDK",
+        "declAttributes": [
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "hasMissingDesignatedInitializers": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 173,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 194,
+      "length": 3,
+      "value": "101"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 213,
+      "length": 3,
+      "value": "102"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 233,
+      "length": 3,
+      "value": "103"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 252,
+      "length": 3,
+      "value": "104"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 275,
+      "length": 3,
+      "value": "105"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 298,
+      "length": 3,
+      "value": "106"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 329,
+      "length": 3,
+      "value": "107"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 353,
+      "length": 3,
+      "value": "111"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 377,
+      "length": 3,
+      "value": "112"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 399,
+      "length": 3,
+      "value": "113"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 173,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 194,
+      "length": 3,
+      "value": "101"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 213,
+      "length": 3,
+      "value": "102"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 233,
+      "length": 3,
+      "value": "103"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 252,
+      "length": 3,
+      "value": "104"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 275,
+      "length": 3,
+      "value": "105"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 298,
+      "length": 3,
+      "value": "106"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 329,
+      "length": 3,
+      "value": "107"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 353,
+      "length": 3,
+      "value": "111"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 377,
+      "length": 3,
+      "value": "112"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 399,
+      "length": 3,
+      "value": "113"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 173,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 194,
+      "length": 3,
+      "value": "101"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 213,
+      "length": 3,
+      "value": "102"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 233,
+      "length": 3,
+      "value": "103"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 252,
+      "length": 3,
+      "value": "104"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 275,
+      "length": 3,
+      "value": "105"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 298,
+      "length": 3,
+      "value": "106"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 329,
+      "length": 3,
+      "value": "107"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 353,
+      "length": 3,
+      "value": "111"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 377,
+      "length": 3,
+      "value": "112"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 399,
+      "length": 3,
+      "value": "113"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 166,
+      "length": 2,
+      "value": "50"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 185,
+      "length": 2,
+      "value": "51"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 207,
+      "length": 2,
+      "value": "52"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 227,
+      "length": 2,
+      "value": "53"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 250,
+      "length": 2,
+      "value": "54"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 268,
+      "length": 2,
+      "value": "56"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 166,
+      "length": 2,
+      "value": "50"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 185,
+      "length": 2,
+      "value": "51"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 207,
+      "length": 2,
+      "value": "52"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 227,
+      "length": 2,
+      "value": "53"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 250,
+      "length": 2,
+      "value": "54"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 268,
+      "length": 2,
+      "value": "56"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 166,
+      "length": 2,
+      "value": "50"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 185,
+      "length": 2,
+      "value": "51"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 207,
+      "length": 2,
+      "value": "52"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 227,
+      "length": 2,
+      "value": "53"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 250,
+      "length": 2,
+      "value": "54"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 268,
+      "length": 2,
+      "value": "56"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 207,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 228,
+      "length": 2,
+      "value": "11"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 247,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 265,
+      "length": 2,
+      "value": "13"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 207,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 228,
+      "length": 2,
+      "value": "11"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 247,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 265,
+      "length": 2,
+      "value": "13"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 207,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 228,
+      "length": 2,
+      "value": "11"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 247,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 265,
+      "length": 2,
+      "value": "13"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/RNSelligent+IAM.swift",
+      "kind": "BooleanLiteral",
+      "offset": 551,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 183,
+      "length": 2,
+      "value": "90"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 208,
+      "length": 2,
+      "value": "91"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 228,
+      "length": 2,
+      "value": "92"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 249,
+      "length": 2,
+      "value": "93"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 270,
+      "length": 2,
+      "value": "94"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 183,
+      "length": 2,
+      "value": "90"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 208,
+      "length": 2,
+      "value": "91"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 228,
+      "length": 2,
+      "value": "92"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 249,
+      "length": 2,
+      "value": "93"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 270,
+      "length": 2,
+      "value": "94"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 183,
+      "length": 2,
+      "value": "90"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 208,
+      "length": 2,
+      "value": "91"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 228,
+      "length": 2,
+      "value": "92"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 249,
+      "length": 2,
+      "value": "93"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 270,
+      "length": 2,
+      "value": "94"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 214,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 233,
+      "length": 2,
+      "value": "21"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 260,
+      "length": 2,
+      "value": "22"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 214,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 233,
+      "length": 2,
+      "value": "21"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 260,
+      "length": 2,
+      "value": "22"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 214,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 233,
+      "length": 2,
+      "value": "21"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 260,
+      "length": 2,
+      "value": "22"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 197,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 215,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 232,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 250,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 269,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 290,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 197,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 215,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 232,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 250,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 269,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 290,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 197,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 215,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 232,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 250,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 269,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
+      "kind": "IntegerLiteral",
+      "offset": 290,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
+      "kind": "BooleanLiteral",
+      "offset": 393,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
+      "kind": "BooleanLiteral",
+      "offset": 434,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
+      "kind": "Dictionary",
+      "offset": 955,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/InAppMessageStylingTemplate.swift",
+      "kind": "StringLiteral",
+      "offset": 165,
+      "length": 27,
+      "value": "\"RNSelligentMobileSDK.InAppMessageStylingTemplate\""
+    }
+  ]
+}

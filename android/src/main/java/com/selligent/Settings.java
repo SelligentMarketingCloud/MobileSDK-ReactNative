@@ -16,7 +16,6 @@ class Settings {
     private Boolean doNotFetchTheToken = false;
     private Boolean doNotListenToThePush = false;
     private Boolean loadCacheAsynchronously = false;
-    private Boolean configureLocationServices = false;
     private ClearCacheIntervalValue clearCacheIntervalValue;
     private InAppMessageRefreshType inAppMessageRefreshType;
     private RemoteMessageDisplayType remoteMessageDisplayType;
@@ -52,10 +51,6 @@ class Settings {
 
     public String getNotificationIconColor() {
         return notificationIconColor;
-    }
-
-    public Boolean getConfigureLocationServices() {
-        return configureLocationServices;
     }
 
     public Boolean getDoNotListenToThePush() { return doNotListenToThePush; }
@@ -96,10 +91,6 @@ class Settings {
         settings.url = (String) settingsHashMap.get("url");
         settings.clientId = (String) settingsHashMap.get("clientId");
         settings.privateKey = (String) settingsHashMap.get("privateKey");
-        if (settingsHashMap.containsKey("configureLocationServices")) {
-            settings.configureLocationServices = (Boolean) settingsHashMap.get("configureLocationServices");
-
-        }
         settings.activityName = (String) settingsHashMap.get("fullyQualifiedNotificationActivityClassName");
 
         if (settingsHashMap.containsKey("notificationSmallIcon")) {

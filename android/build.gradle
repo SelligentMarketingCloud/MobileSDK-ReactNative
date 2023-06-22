@@ -1,7 +1,7 @@
 import com.android.build.api.variant.BuildConfigField
+import java.util.regex.*
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
 
 buildscript {
     repositories {
@@ -10,22 +10,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.1'
-    }
-}
-
-def buildTypeAttr = Attribute.of("com.android.build.api.attributes.BuildTypeAttr", String)
-
-dependencies.attributesSchema {
-    // registers this attribute to the attributes schema
-    attribute(buildTypeAttr)
-}
-
-configurations {
-    implementation {
-        attributes {
-            attribute(buildTypeAttr, "release")
-        }
+        classpath 'com.android.tools.build:gradle:4.2.2'
     }
 }
 
@@ -35,23 +20,18 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 33
-        ndkVersion = "23.1.7779620"
-        versionCode 1
-        versionName "1.0"
-    }
-
-    lintOptions {
-        abortOnError false
     }
 }
 
 androidComponents {
     onVariants(selector(), { variant ->
         def selligentSettings = loadSelligentSettings(variant)
+
         if (selligentSettings != null) {
             try {
                 variant.buildConfigFields.put("SELLIGENT_SETTINGS", new BuildConfigField("String", "\"" + selligentSettings + "\"", "Selligent settings"))
-            } catch (MissingMethodException ignored) {
+            }
+            catch (Exception ignored) {
                 throw new Exception("Selligent requires Android Gradle plugin version 4.2.0 or higher.")
             }
         }
@@ -59,88 +39,75 @@ androidComponents {
 }
 
 repositories {
+    mavenCentral()
     maven {
         url "$projectDir/../node_modules/react-native/android"
     }
-    mavenCentral()
+    google()
 }
 
 dependencies {
-    implementation(name: 'sdk-release', ext: 'aar')
-
-    implementation 'com.facebook.react:react-native:+'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.plotprojects:plot-android:3.13.1'
-    implementation 'com.google.code.gson:gson:2.8.9'
-    implementation 'com.google.firebase:firebase-messaging:21.0.0'
-    implementation 'androidx.work:work-runtime:2.7.1'
+    api ('com.facebook.react:react-native:+') {
+        exclude group:'com.facebook.fbjni'
+        exclude group:'com.facebook.yoga'
+    }
+    implementation 'com.selligent.sdk:selligent_mobile_sdk:4.1.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.google.firebase:firebase-messaging:23.0.8'
+    implementation 'androidx.work:work-runtime:2.8.1'
     implementation 'androidx.concurrent:concurrent-futures:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-}
-
-afterEvaluate { project ->
-
-    task androidJavadoc(type: Javadoc) {
-        source = android.sourceSets.main.java.srcDirs
-        classpath += files(android.bootClasspath)
-        project.getConfigurations().getByName('implementation').setCanBeResolved(true)
-        classpath += files(project.getConfigurations().getByName('implementation').asList())
-        include '**/*.java'
-    }
-
-    task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {
-        archiveClassifier = 'javadoc'
-        from androidJavadoc.destinationDir
-    }
-
-    task androidSourcesJar(type: Jar) {
-        classifier = 'sources'
-        from android.sourceSets.main.java.srcDirs
-        include '**/*.java'
-    }
-
-    android.libraryVariants.all { variant ->
-        def name = variant.name.capitalize()
-        task "jar${name}"(type: Jar, dependsOn: variant.javaCompileProvider.get()) {
-            from variant.javaCompileProvider.get().destinationDir
-        }
-    }
-
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                artifact androidSourcesJar
-                artifact androidJavadocJar
-            }
-        }
-    }
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
 }
 
 def loadSelligentSettings(variant) {
-    println(variant.flavorName)
-
+    def currentFlavor = getCurrentFlavor()
     def defaultSelligentFileName = "selligent.json"
     File defaultFile = new File("$project.rootDir/../$defaultSelligentFileName")
 
+    if (currentFlavor !== "") {
+        defaultFile = new File("$project.rootDir/../$currentFlavor/$defaultSelligentFileName")
+    }
+
     def variantSelligentFileName = "selligent.${variant.getName()}.json"
-    File variantFile = new File("$project.rootDir/../$variantSelligentFileName");
+    File variantFile = new File("$project.rootDir/../$variantSelligentFileName")
 
     def resultingSettings = null
+
     if (variantFile.exists()) {
         println("Reading Selligent properties for variant ${variant.getName()} using $variantSelligentFileName")
         resultingSettings = ""
+
         variantFile.eachLine { String line ->
             resultingSettings += line.replace("\"", "\\\"").replaceAll("\\s", "")
         }
-    } else if (defaultFile.exists()) {
-        println("Reading Selligent properties from default $defaultSelligentFileName (no variant specific $variantSelligentFileName was found)")
+    }
+    else if (defaultFile.exists()) {
+        println("Reading Selligent properties from default ${defaultFile.name} (no variant specific $variantSelligentFileName was found)")
         resultingSettings = ""
+
         defaultFile.eachLine { String line ->
             resultingSettings += line.replace("\"", "\\\"").replaceAll("\\s", "")
         }
-    } else {
+    }
+    else {
         throw new InvalidUserDataException("The selligent.json file could not be found. Please make sure you provide this file in the root of this project.")
     }
 
     return resultingSettings
+}
+
+def getCurrentFlavor() {
+    Gradle gradle = getGradle()
+    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+    Pattern pattern = Pattern.compile("(install|assemble)(\\w+)(Release|Debug)")
+    Matcher matcher = pattern.matcher(tskReqStr)
+
+    if (matcher.find()) {
+        return matcher.group(2).toLowerCase()
+    }
+    else {
+        return ""
+    }
 }

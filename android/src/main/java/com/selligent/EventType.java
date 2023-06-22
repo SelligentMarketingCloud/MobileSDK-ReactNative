@@ -7,7 +7,7 @@ enum EventType {
     UserLogout(93),
     Custom(94);
 
-    private Integer index;
+    private int index;
 
     EventType(Integer index) {
         this.index = index;

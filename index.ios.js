@@ -1,10 +1,9 @@
 // iOS specific methods
-import { NativeEventEmitter, NativeModules } from 'react-native'
+import { NativeModules } from 'react-native'
 import SelligentConstants from './constants'
 import SelligentHelpers from './helpers'
 
 const { RNSelligent } = NativeModules
-const RNSEventEmitter = new NativeEventEmitter(RNSelligent)
 
 export default {
 	// Basic SMManager
@@ -16,17 +15,30 @@ export default {
 	 *  
 	 * @param {function} successCallback Callback function on success.
 	 * @param {function} errorCallback Callback function on error.
-	 * @param {boolean} enabled Boolean to enable/disable in-app messages.
+	 * @param {boolean | number} enabled Boolean to enable/disable in-app messages.
 	 */
 	enableInAppMessages: function (successCallback, errorCallback, enabled) {
-		if (!SelligentHelpers.typeMatches(enabled, 'boolean')) {
-			errorCallback(SelligentHelpers.wrongArgumentError('Expected a boolean.'))
+		if (!SelligentHelpers.typeMatches(enabled, 'number') && !SelligentHelpers.typeMatches(enabled, 'boolean')) {
+			errorCallback(SelligentHelpers.wrongArgumentError('Expected a boolean or a number.'))
 			return
 		}
 
+		let result;
+
+		if (typeof enabled === 'boolean'){
+			result = enabled
+		}
+		else {
+			if (!Object.values(SelligentConstants.InAppMessageRefreshType).includes(enabled)) {
+				errorCallback(SelligentHelpers.wrongArgumentError('Value should be one from InAppMessageRefreshType'))
+				return
+			}
+
+			result = enabled !== SelligentConstants.InAppMessageRefreshType.NONE;
+		}
+
 		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.enableInAppMessages(enabled)
-		return
+		RNSelligent.enableInAppMessages(result)
 	},
 	// Log
 
@@ -44,8 +56,8 @@ export default {
 		}
 
 		// check if values are all numbers and iOS Loglevels
-		var arrayLength = logLevels.length
-		for (var i = 0; i < arrayLength; i++) {
+		const arrayLength = logLevels.length;
+		for (let i = 0; i < arrayLength; i++) {
 
 			if (!SelligentHelpers.typeMatches(logLevels[i], 'number')) {
 				errorCallback(SelligentHelpers.wrongArgumentError('Expected a number.'))
@@ -60,57 +72,8 @@ export default {
 
 		successCallback(SelligentHelpers.SUCCESS)
 		RNSelligent.applyLogLevel(logLevels)
-		return
 	},
 	// Remote Notification
-
-	/**
-	 * Display notification by id on iOS.
-	 * 
-	 * @param {function} successCallback Callback function on success.
-	 * @param {function} errorCallback Callback function on error.
-	 * @param {string} notificationId Id of the notification.
-	 */
-	displayNotification: function (successCallback, errorCallback, notificationId) {
-		if (!SelligentHelpers.typeMatches(notificationId, 'string') || notificationId.length === 0) {
-			errorCallback(SelligentHelpers.wrongArgumentError('Expected a string (not empty).'))
-			return
-		}
-
-		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.displayNotification(notificationId)
-		return
-	},
-
-	/**
-	 * Register a completion handler for successfully fetching remote notifications.
-	 * 
-	 * @param {function} successCallback Completion handler.
-	 * @param {function} eventCallback Callback function on event.
-	 */
-	registerRemoteNotificationFetchCompletionHandler: function (successCallback, eventCallback) {
-		RNSEventEmitter.addListener(SelligentConstants.RemoteNotification.FETCHED_REMOTE_NOTIFICATION, eventCallback);
-		successCallback(SelligentHelpers.SUCCESS)
-		return
-	},
-
-	/**
-	 * Force the result of a remote notification fetch to be a specific value.
-	 * 
-	 * @param {function} successCallback Callback function on success.
-	 * @param {function} errorCallback Callback function on error.
-	 * @param {iOSBackgroundFetchResult} iOSBackgroundFetchResult Type of result to force, when fetching remote notifications.
-	 */
-	forceRemoteNotificationBackgroundFetchResult: function (successCallback, errorCallback, iOSBackgroundFetchResult) {
-		if (!SelligentHelpers.typeMatches(iOSBackgroundFetchResult, 'number') || !SelligentHelpers.constantIsValid(SelligentConstants.iOSBackgroundFetchResult, iOSBackgroundFetchResult)) {
-			errorCallback(SelligentHelpers.wrongArgumentError('Expected a value of Selligent constant enum "iOSBackgroundFetchResult".'))
-			return
-		}
-
-		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.forceRemoteNotificationBackgroundFetchResult(iOSBackgroundFetchResult)
-		return
-	},
 
 	/**
 	 * Register for Provisional Push Notifications.
@@ -120,26 +83,12 @@ export default {
 	registerForProvisionalRemoteNotification: function (successCallback) {
 		successCallback(SelligentHelpers.SUCCESS)
 		RNSelligent.registerForProvisionalRemoteNotification()
-		return
 	},
 
-	// Broadcasts Events
-
 	/**
-	 * Subscribe to events.
-	 * 
-	 * @param {function} successCallback Callback function on success.
-	 * @param {function} errorCallback Callback function on error.
-	 * @param {function} eventCallback Callback function on event.
+	 * Tells the Selligent SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature
 	 */
-	subscribeToEvents: function (successCallback, errorCallback, eventCallback) {
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_IN_APP_MESSAGE, eventCallback);
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISPLAY_NOTIFICATION, eventCallback);
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISMISS_NOTIFICATION, eventCallback);
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_REMOTE_NOTIFICATION, eventCallback);
-
-		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.subscribeToEvents()
-		return
+	executePushAction: function () {
+		RNSelligent.executePushAction()
 	}
 }

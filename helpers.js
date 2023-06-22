@@ -1,6 +1,4 @@
-import {Platform} from 'react-native'
-
-var SelligentHelpers = {};
+const SelligentHelpers = {};
 
 // ARGUMENTS SUCCESS MESSAGES
 SelligentHelpers.SUCCESS = "Action successful";
@@ -65,15 +63,16 @@ SelligentHelpers.wrongArgumentError = function (message) {
 }
 
 SelligentHelpers.constantIsValid = function (constants, constantToVerify) {
-	var occursInConstants = false,
+	let occursInConstants = false,
 		occursInAndroidSubConstants = false,
 		occursInIOSSubConstants = false;
 
-	Object.keys(constants).map(function (constant) {
-		if (constants[constant] == constantToVerify) {
+	Object.keys(constants).forEach(function (constant) {
+		if (constants[constant] === constantToVerify) {
 			occursInConstants = true;
 		}
 	});
+
 	return occursInConstants || occursInAndroidSubConstants || occursInIOSSubConstants;
 };
 

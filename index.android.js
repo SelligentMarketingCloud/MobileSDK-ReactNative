@@ -1,10 +1,9 @@
 // Android specific methods
-import { NativeEventEmitter, NativeModules } from 'react-native'
+import { NativeModules } from 'react-native'
 import SelligentConstants from './constants'
 import SelligentHelpers from './helpers'
 
 const { RNSelligent } = NativeModules
-const RNSEventEmitter = new NativeEventEmitter(RNSelligent)
 
 export default {
 	// Basic SMManager
@@ -18,17 +17,20 @@ export default {
 	 *
 	 * @param {function} successCallback Callback function on success.
 	 * @param {function} errorCallback Callback function on error.
-	 * @param {(boolean|InAppMessageRefreshType)} options Boolean to enable/disable in-app messages or an enum InAppMessageRefreshType to enable and set which in-app messages should be enabled.
+	 * @param {(boolean|InAppMessageRefreshType)} enabled Boolean to enable/disable in-app messages or an enum InAppMessageRefreshType to enable and set which in-app messages should be enabled.
 	 */
 	enableInAppMessages: function (successCallback, errorCallback, enabled) {
 		if (!SelligentHelpers.typeMatches(enabled, 'number') && !SelligentHelpers.typeMatches(enabled, 'boolean')) {
 			errorCallback(SelligentHelpers.wrongArgumentError('Expected a boolean or a number.'))
 			return
 		}
+		else if (SelligentHelpers.typeMatches(enabled, 'number') && !Object.values(SelligentConstants.InAppMessageRefreshType).includes(enabled)) {
+			errorCallback(SelligentHelpers.wrongArgumentError('Value should be one from InAppMessageRefreshType'))
+			return
+		}
 
 		successCallback(SelligentHelpers.SUCCESS)
 		RNSelligent.enableInAppMessages({ enabled })
-		return
 	},
 
 	/**
@@ -40,31 +42,13 @@ export default {
 		return RNSelligent.areInAppMessagesEnabled(successCallback)
 	},
 
-	/**
-	 * Display message on Android.
-	 *
-	 * @param {function} successCallback Callback function on success.
-	 * @param {function} errorCallback Callback function on error.
-	 * @param {string} messageId Id of the message.
-	 */
-	displayMessage: function (successCallback, errorCallback, messageId) {
-		if (!SelligentHelpers.typeMatches(messageId, 'string')) {
-			errorCallback(SelligentHelpers.wrongArgumentError('Expected a string.'))
-			return
-		}
-
-		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.displayMessage(messageId)
-		return
-	},
-
 	// Log
 	/**
 	 * Enable logging messages on Android.
 	 *
 	 * @param {function} successCallback Callback function on success.
 	 * @param {function} errorCallback Callback function on error.
-	 * @param {boolean} shouldEnableLoggingMessages Boolean to enable/disable logging messages on Android.
+	 * @param {boolean} enabled Boolean to enable/disable logging messages on Android.
 	 */
 	enableAndroidLogging: function (successCallback, errorCallback, enabled) {
 		if (!SelligentHelpers.typeMatches(enabled, 'boolean')) {
@@ -74,7 +58,6 @@ export default {
 
 		successCallback(SelligentHelpers.SUCCESS)
 		RNSelligent.setDebug(enabled)
-		return
 	},
 	// Remote Notification
 
@@ -85,7 +68,6 @@ export default {
 	 */
 	areNotificationsEnabled: function (successCallback) {
 		RNSelligent.areNotificationsEnabled(successCallback)
-		return
 	},
 
 	/**
@@ -103,7 +85,6 @@ export default {
 
 		successCallback(SelligentHelpers.SUCCESS)
 		RNSelligent.setNotificationSmallIcon(iconName)
-		return
 	},
 
 	/**
@@ -121,7 +102,6 @@ export default {
 
 		successCallback(SelligentHelpers.SUCCESS)
 		RNSelligent.setNotificationLargeIcon(iconName)
-		return
 	},
 
 	/**
@@ -142,7 +122,6 @@ export default {
 		}
 
 		RNSelligent.setNotificationIconColor(color, _successCallback, errorCallback)
-		return
 	},
 
 	/**
@@ -163,7 +142,6 @@ export default {
 		}
 
 		RNSelligent.setNotificationActivity(activityName, _successCallback, errorCallback)
-		return
 	},
 
 	/**
@@ -173,69 +151,17 @@ export default {
 	 */
 	getGCMToken: function (successCallback) {
 		RNSelligent.getGCMToken(successCallback)
-		return
 	},
 
 	/**
 	 * Get remote messages display type.
 	 *
 	 * @param {function} successCallback Callback function on success.
-	 * @param {function} errorCallback Callback function on error.
 	 */
 	getRemoteMessagesDisplayType: function (successCallback) {
 		RNSelligent.getRemoteMessagesDisplayType(successCallback)
-		return
 	},
-	// Broadcasts Events
-
-	/**
-	 * Subscribe to events.
-	 *
-	 * @param {function} successCallback Callback function on success.
-	 * @param {function} errorCallback Callback function on error.
-	 * @param {function} eventCallback Callback function on event.
-	 * @param {array} customEvents Array of custom events to subscribe to.
-	 */
-	subscribeToEvents: function (successCallback, errorCallback, eventCallback, customEvents = []) {
-
-		if (customEvents !== undefined) {
-			if (!SelligentHelpers.typeMatches(customEvents, 'array')) {
-				errorCallback(SelligentHelpers.createTypeErrorMessage('customEvents', customEvents, 'array'))
-				return
-			}
-
-			// check if values are all strings
-			var arrayLength = customEvents.length
-			for (var i = 0; i < arrayLength; i++) {
-				if (!SelligentHelpers.typeMatches(customEvents[i], 'string')) {
-					errorCallback(SelligentHelpers.wrongArgumentError('Expected an array of strings.'))
-					return
-				}
-			}
-		}
-
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.BUTTON_CLICKED, eventCallback);
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_IN_APP_MESSAGE, eventCallback);
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISPLAY_NOTIFICATION, eventCallback);
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.WILL_DISMISS_NOTIFICATION, eventCallback);
-		RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_GCM_TOKEN, eventCallback);
-
-		successCallback(SelligentHelpers.SUCCESS)
-		RNSelligent.subscribeToEvents(customEvents)
-		return
-	},
-
-	/**
-	 * Subscribe to event.
-	 *
-	 * @param {function} eventCallback Callback function on event.
-	 * @param {string} eventName Name of the event to subscribe to.
-	 */
-	subscribeToEvent: function (eventCallback, eventName) {
-		RNSEventEmitter.addListener(eventName, eventCallback);
-		return
-	},
-
+	
 	/**
 	 * Set the firebase (GCM) token
 	 *
@@ -251,6 +177,5 @@ export default {
 
 		successCallback(SelligentHelpers.SUCCESS)
 		RNSelligent.setFirebaseToken(token)
-		return
 	},
 }
