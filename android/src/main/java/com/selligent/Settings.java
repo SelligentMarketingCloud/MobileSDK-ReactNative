@@ -1,7 +1,7 @@
 package com.selligent;
 
 
-import java.util.HashMap;
+import java.util.Map;
 
 class Settings {
 
@@ -85,7 +85,7 @@ class Settings {
         return notificationChannelDescription;
     }
 
-    public static Settings fromHashMap(HashMap<String, Object> settingsHashMap) {
+    public static Settings fromHashMap(Map<String, Object> settingsHashMap) {
         final Settings settings = new Settings();
 
         settings.url = (String) settingsHashMap.get("url");

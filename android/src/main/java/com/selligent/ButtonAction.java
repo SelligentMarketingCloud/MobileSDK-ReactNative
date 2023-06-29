@@ -43,8 +43,9 @@ public enum ButtonAction
         return deeplink;
       case 113:
         return simple;
+      default:
+        return unknown;
     }
-    return unknown;
   }
 
   public static ButtonAction valueOf(SMLinkAction linkAction)

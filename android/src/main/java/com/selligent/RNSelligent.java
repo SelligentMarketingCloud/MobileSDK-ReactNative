@@ -34,28 +34,45 @@ import com.selligent.sdk.SMCallback;
 import com.selligent.sdk.SMEvent;
 import com.selligent.sdk.SMForegroundGcmBroadcastReceiver;
 import com.selligent.sdk.SMInAppMessage;
-import com.selligent.sdk.SMInAppMessageReturn;
 import com.selligent.sdk.SMInAppRefreshType;
 import com.selligent.sdk.SMManager;
 import com.selligent.sdk.SMNotificationButton;
 import com.selligent.sdk.SMNotificationMessage;
+import com.selligent.sdk.SMObserverManager;
 import com.selligent.sdk.SMRemoteMessageDisplayType;
 import com.selligent.sdk.SMSettings;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RNSelligent extends ReactContextBaseJavaModule implements LifecycleEventListener, ActivityEventListener {
 
+    private static final String RN_SELLIGENT_NAME = "RNSelligent";
     private final ReactApplicationContext reactContext;
     private final SMManager smManager;
-    private EventReceiver eventReceiver;
-    private SMForegroundGcmBroadcastReceiver receiver;
+    EventReceiver eventReceiver;
+    SMForegroundGcmBroadcastReceiver receiver;
     private static SMInAppRefreshType inAppMessageRefreshType;
 
     public static final String REACT_CLASS = "SelligentReactNative"; // for logging purposes
 
-    private boolean areObserverStarted = false;
+    boolean areObserverStarted = false;
+
+    //region getter
+    static SMManager getSMManager()
+    {
+        return SMManager.getInstance();
+    }
+
+    static String getSelligentSettings()
+    {
+        return BuildConfig.SELLIGENT_SETTINGS;
+    }
+
+    static Class<? extends Activity> getActivityClass(String notificationActivityName) throws Exception
+    {
+        return (Class<? extends Activity>) Class.forName(notificationActivityName);
+    }
+    //endregion
 
 
     public RNSelligent(ReactApplicationContext reactContext) {
@@ -63,27 +80,27 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
         this.reactContext = reactContext;
         reactContext.addLifecycleEventListener(this);
         reactContext.addActivityEventListener(this);
-        this.smManager = SMManager.getInstance();
+        this.smManager = getSMManager();
     }
 
     @Override
     public String getName() {
-        return "RNSelligent";
+        return RN_SELLIGENT_NAME;
     }
 
     public static void configure(Application application) {
         try {
             final HashMap<String, Object> settingsHashMap = new Gson().fromJson(
-                    BuildConfig.SELLIGENT_SETTINGS, new TypeToken<HashMap<String, Object>>() {}.getType()
+                    getSelligentSettings(), new TypeToken<HashMap<String, Object>>() {}.getType()
             );
             final Settings settings = Settings.fromHashMap(settingsHashMap);
             final SMSettings smSettings = SMSettingsFactory.getSMSettings(settings);
             final String notificationActivityName = settings.getActivityName();
 
-            SMManager.NOTIFICATION_ACTIVITY = (Class<? extends Activity>) Class.forName(notificationActivityName);
+            SMManager.NOTIFICATION_ACTIVITY = getActivityClass(notificationActivityName);
             inAppMessageRefreshType = settings.getInAppMessageRefreshType().getSmInAppRefreshType();
 
-            final SMManager smManager = SMManager.getInstance();
+            final SMManager smManager = getSMManager();
             SMManager.DEBUG = BuildConfig.BUILD_TYPE.equals("debug");
             smManager.start(smSettings, application);
 
@@ -108,12 +125,12 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                     final int color = Color.parseColor(settings.getNotificationIconColor());
                     smManager.setNotificationIconColor(color);
                 } catch (IllegalArgumentException e) {
-                    Log.e("RNSelligent", "notificationIconColor must be a color hex string.");
+                    Log.e(RN_SELLIGENT_NAME, "notificationIconColor must be a color hex string.");
                 }
             }
 
-        } catch (ClassNotFoundException e) {
-            Log.e("RNSelligent", "SMManager start failed: an error occurred while setting the NotificationActivity", e);
+        } catch (Exception e) {
+            Log.e(RN_SELLIGENT_NAME, "SMManager start failed: an error occurred while setting the NotificationActivity", e);
         }
     }
 
@@ -127,17 +144,18 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void enableInAppMessages(ReadableMap enabled) {
-        final ReadableType enabledType = enabled.getType("enabled");
+        final String enabledProperty = "enabled";
+        final ReadableType enabledType = enabled.getType(enabledProperty);
 
         if (enabledType == ReadableType.Boolean) {
-            enableInAppMessages(enabled.getBoolean("enabled"));
+            enableInAppMessages(enabled.getBoolean(enabledProperty));
         } 
         else if (enabledType == ReadableType.Number) {
-            enableInAppMessages(enabled.getInt("enabled"));
+            enableInAppMessages(enabled.getInt(enabledProperty));
         }
     }
 
-    private void enableInAppMessages(Boolean enable) {
+    private void enableInAppMessages(boolean enable) {
         if (enable) {
             smManager.enableInAppMessages(inAppMessageRefreshType);
         } else {
@@ -146,8 +164,8 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     }
 
     private void enableInAppMessages(Integer inAppMessageRefreshTypeIndex) {
-        final InAppMessageRefreshType inAppMessageRefreshType = InAppMessageRefreshType.valueOf(inAppMessageRefreshTypeIndex);
-        final SMInAppRefreshType smInAppRefreshType = inAppMessageRefreshType.getSmInAppRefreshType();
+        final InAppMessageRefreshType refreshType = InAppMessageRefreshType.valueOf(inAppMessageRefreshTypeIndex);
+        final SMInAppRefreshType smInAppRefreshType = refreshType.getSmInAppRefreshType();
 
         smManager.enableInAppMessages(smInAppRefreshType);
     }
@@ -169,47 +187,44 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void getInAppMessages(final Callback successCallback) {
-        smManager.getInAppMessages(new SMInAppMessageReturn() {
-            @Override
-            public void onRetrieve(ArrayList<SMInAppMessage> inAppMessages) {
-                WritableArray resultingMessagesArray = new WritableNativeArray();
+        smManager.getInAppMessages(inAppMessages -> {
+            WritableArray resultingMessagesArray = new WritableNativeArray();
 
-                for (SMInAppMessage message : inAppMessages) {
-                    WritableMap messageMap = new WritableNativeMap();
+            for (SMInAppMessage message : inAppMessages) {
+                WritableMap messageMap = new WritableNativeMap();
 
-                    messageMap.putString("id", message.id);
-                    messageMap.putString("title", message.title);
-                    messageMap.putString("body", message.getBody());
-                    messageMap.putDouble("creationDate", message.getCreationDate());
-                    messageMap.putDouble("expirationDate", message.getExpirationDate());
-                    messageMap.putDouble("receptionDate", message.getReceptionDate());
-                    messageMap.putBoolean("hasBeenSeen", message.hasBeenSeen());
-                    messageMap.putDouble("type", message.getType().getValue());
+                messageMap.putString("id", message.id);
+                messageMap.putString("title", message.title);
+                messageMap.putString("body", message.getBody());
+                messageMap.putDouble("creationDate", message.getCreationDate());
+                messageMap.putDouble("expirationDate", message.getExpirationDate());
+                messageMap.putDouble("receptionDate", message.getReceptionDate());
+                messageMap.putBoolean("hasBeenSeen", message.hasBeenSeen());
+                messageMap.putDouble("type", message.getType().getValue());
 
-                    WritableArray buttonsArray = new WritableNativeArray();
+                WritableArray buttonsArray = new WritableNativeArray();
 
-                    SMNotificationButton buttons[] = message.getButtons();
+                SMNotificationButton[] buttons = message.getButtons();
 
-                    if(buttons != null) {
-                        for(SMNotificationButton button : buttons) {
-                            WritableMap buttonMap = new WritableNativeMap();
+                if(buttons != null) {
+                    for(SMNotificationButton button : buttons) {
+                        WritableMap buttonMap = new WritableNativeMap();
 
-                            buttonMap.putString("id", button.id);
-                            buttonMap.putString("value", button.value);
-                            buttonMap.putString("label", button.label);
-                            buttonMap.putInt("type", button.type);
+                        buttonMap.putString("id", button.id);
+                        buttonMap.putString("value", button.value);
+                        buttonMap.putString("label", button.label);
+                        buttonMap.putInt("type", button.type);
 
-                            buttonsArray.pushMap(buttonMap);
-                        }
+                        buttonsArray.pushMap(buttonMap);
                     }
-
-                    messageMap.putArray("buttons", buttonsArray);
-
-                    resultingMessagesArray.pushMap(messageMap);
                 }
 
-                successCallback.invoke(resultingMessagesArray);
+                messageMap.putArray("buttons", buttonsArray);
+
+                resultingMessagesArray.pushMap(messageMap);
             }
+
+            successCallback.invoke(resultingMessagesArray);
         });
     }
 
@@ -268,24 +283,28 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void executeButtonAction(final String buttonId, final String messageId, final Callback successCallback, final Callback errorCallback) {
-        smManager.getInAppMessages(new SMInAppMessageReturn() {
-            @Override
-            public void onRetrieve(ArrayList<SMInAppMessage> inAppMessages) {
-                for(SMInAppMessage message : inAppMessages) {
-                    if(message.id.equals(messageId)) {
-                        for(SMNotificationButton button : message.getButtons()) {
-                            if(button.id.equals(buttonId)) {
+        smManager.getInAppMessages(inAppMessages -> {
+            for(SMInAppMessage message : inAppMessages) {
+                if(message.id.equals(messageId))
+                {
+                    SMNotificationButton[] buttons = message.getButtons();
+                    if (buttons != null)
+                    {
+                        for (SMNotificationButton button : message.getButtons())
+                        {
+                            if (button.id.equals(buttonId))
+                            {
                                 smManager.executeButtonAction(reactContext, button, message);
                                 successCallback.invoke();
                                 return;
                             }
                         }
-                        errorCallback.invoke("buttonId does not exist in message.");
-                        return;
                     }
+                    errorCallback.invoke("buttonId does not exist in message.");
+                    return;
                 }
-                errorCallback.invoke(String.format("No message with id %s found", messageId));
             }
+            errorCallback.invoke(String.format("No message with id %s found", messageId));
         });
     }
 
@@ -320,7 +339,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void enableNotifications(Boolean enable) {
-        if (enable) {
+        if (Boolean.TRUE.equals(enable)) {
             smManager.enableNotifications();
         } else {
             smManager.disableNotifications();
@@ -437,7 +456,8 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                 thisActivity.runOnUiThread(() -> {
                     if (!areObserverStarted)
                     {
-                        Log.d("RNSelligent", "Instantiating the observers on the UI thread");
+                        Log.d(RN_SELLIGENT_NAME, "Instantiating the observers on the UI thread");
+                        SMObserverManager observerManager = smManager.getObserverManager();
 
                         // Token received
                         final Observer<String> tokenObserver = token -> {
@@ -446,7 +466,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                             final WritableMap data = broadcastEventDataParser.wrap(token);
                             rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
                         };
-                        SMManager.getInstance().getObserverManager().observeToken(thisActivity, tokenObserver);
+                        observerManager.observeToken(thisActivity, tokenObserver);
 
                         // Device id received
                         final Observer<String> deviceIdObserver = deviceId -> {
@@ -455,7 +475,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                             final WritableMap data = broadcastEventDataParser.wrap(deviceId);
                             rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
                         };
-                        SMManager.getInstance().getObserverManager().observeDeviceId(thisActivity, deviceIdObserver);
+                        observerManager.observeDeviceId(thisActivity, deviceIdObserver);
 
                         // InApp messages received
                         final Observer<SMInAppMessage[]> inAppMessageObserver = inAppMessages -> {
@@ -467,7 +487,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                                 rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
                             }
                         };
-                        SMManager.getInstance().getObserverManager().observeInAppMessages(thisActivity, inAppMessageObserver);
+                        observerManager.observeInAppMessages(thisActivity, inAppMessageObserver);
 
                         // Button clicked
                         final Observer<SMNotificationButton> clickedButtonObserver = button -> {
@@ -479,21 +499,21 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                                 rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
                             }
                         };
-                        SMManager.getInstance().getObserverManager().observeClickedButton(thisActivity, clickedButtonObserver);
+                        observerManager.observeClickedButton(thisActivity, clickedButtonObserver);
 
                         // Message dismissed
                         final Observer<Void> dismissedMessageObserver = object -> {
                             String eventName = BroadcastEventType.WillDismissNotification.getBroadcastEventType();
                             rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, null));
                         };
-                        SMManager.getInstance().getObserverManager().observeDismissedMessage(thisActivity, dismissedMessageObserver);
+                        observerManager.observeDismissedMessage(thisActivity, dismissedMessageObserver);
 
                         // Message displayed
                         final Observer<Void> displayedMessageObserver = object -> {
                             String eventName = BroadcastEventType.WillDisplayNotification.getBroadcastEventType();
                             rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, null));
                         };
-                        SMManager.getInstance().getObserverManager().observeDisplayedMessage(thisActivity, displayedMessageObserver);
+                        observerManager.observeDisplayedMessage(thisActivity, displayedMessageObserver);
 
                         // Push received
                         final Observer<SMNotificationMessage> pushReceivedObserver = notificationMessage -> {
@@ -505,19 +525,17 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                                 rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
                             }
                         };
-                        SMManager.getInstance().getObserverManager().observePushReceived(thisActivity, pushReceivedObserver);
+                        observerManager.observePushReceived(thisActivity, pushReceivedObserver);
 
                         // Custom events
-                        final Observer<String> customEventObserver = event -> {
-                            rctDeviceEventEmitter.emit(BroadcastEventType.TriggeredCustomEvent.getBroadcastEventType(), getBroadcastData(event, null));
-                        };
-                        SMManager.getInstance().getObserverManager().observeEvent(thisActivity, customEventObserver);
+                        final Observer<String> customEventObserver = event -> rctDeviceEventEmitter.emit(BroadcastEventType.TriggeredCustomEvent.getBroadcastEventType(), getBroadcastData(event, null));
+                        observerManager.observeEvent(thisActivity, customEventObserver);
 
                         areObserverStarted = true;
                     }
                     else
                     {
-                        Log.d("RNSelligent", "Observers already instantiated");
+                        Log.d(RN_SELLIGENT_NAME, "Observers already instantiated");
                     }
                 });
             }
@@ -601,5 +619,4 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) { }
-
 }

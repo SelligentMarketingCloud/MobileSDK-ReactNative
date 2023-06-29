@@ -33,15 +33,6 @@ export default {
 		RNSelligent.enableInAppMessages({ enabled })
 	},
 
-	/**
-	 * To check if in app messages are enabled on Android.
-	 *
-	 * @param {function} successCallback Callback function on success.
-	 */
-	areInAppMessagesEnabled: function (successCallback) {
-		return RNSelligent.areInAppMessagesEnabled(successCallback)
-	},
-
 	// Log
 	/**
 	 * Enable logging messages on Android.

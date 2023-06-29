@@ -1,10 +1,16 @@
 # Changelog
 
+- __3.2.7__
+  - Update to native iOS SDK 3.5.1 and Android SDK 4.2.0
+  - (iOS) Add `executePushAction` fix to `Selligent.displayNotification` and `Selligent.displayLastReceivedRemotePushNotification` so they are executed when the react UI is ready (and splash screen dismissed, if any)
+  - (iOS) Fix auto enabling of InApp Messages on first run (when configured in `selligent.json`) if not explicitly enabled/disabled by the app
+  - `Selligent.areInAppMessagesEnabled` is now available both in iOS and Android
+  
 - __3.2.6__
   - Update to native iOS SDK 3.4.0 and Android SDK 4.1.0
   - (iOS) Add support for InApp Message style templates to further customize their appearance
   - (iOS) Add support for intercepting universal link executions when coming from a Push/IAM
-  - (iOS) Fix issue with deeplink/inapp from a push when the app is killed ([see more](documentation/#deep-linking))
+  - (iOS) Fix issue with deeplink/inapp from a push when the app is killed ([see more](documentation/#deeplinking))
   - (iOS) Rebuild wrapper in swift and provide as .xcframework
   - (Android) Fix how the build variants and flavors were treated to correctly load the `selligent.json` file(s)
   - (Android) Replace broadcasts by observers

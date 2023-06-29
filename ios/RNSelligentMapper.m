@@ -44,6 +44,10 @@ RCT_EXPORT_METHOD(registerForProvisionalRemoteNotification) {
   [RNSelligent registerForProvisionalRemoteNotification];
 }
 
+RCT_EXPORT_METHOD(displayLastReceivedNotification) {
+  [RNSelligent displayLastReceivedNotification];
+}
+
 RCT_EXPORT_METHOD(displayLastReceivedRemotePushNotification:(NSString *)templateId) {
   [RNSelligent displayLastReceivedRemotePushNotificationWithTemplateId:templateId];
 }
@@ -56,6 +60,10 @@ RCT_EXPORT_METHOD(getLastRemotePushNotification:(RCTResponseSenderBlock)callback
 
 RCT_EXPORT_METHOD(enableInAppMessages:(BOOL)enabled) {
   [RNSelligent enableInAppMessages:enabled];
+}
+
+RCT_EXPORT_METHOD(areInAppMessagesEnabled:(RCTResponseSenderBlock)callback) {
+  callback(@[@([RNSelligent areInAppMessagesEnabled]), [NSNull null]]);
 }
 
 RCT_EXPORT_METHOD(getInAppMessages:(RCTResponseSenderBlock)callback) {
@@ -125,10 +133,6 @@ RCT_EXPORT_METHOD(sendEvent:(NSDictionary *)data successCallback:(RCTResponseSen
 
 RCT_EXPORT_METHOD(subscribeToEvents:(NSArray<NSString *> *)events) {
   [RNSelligent subscribeToEvents:events];
-}
-
-RCT_EXPORT_METHOD(displayLastReceivedNotification) {
-  [RNSelligent displayLastReceivedNotification];
 }
 
 - (void) sendBroadcastEventWithName:(NSString * _Nonnull)name type:(NSString * _Nonnull)type data:(NSDictionary * _Nullable)data {

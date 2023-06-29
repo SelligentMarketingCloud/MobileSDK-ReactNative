@@ -11,6 +11,7 @@ import com.selligent.sdk.SMEventUserUnregister;
 import java.util.Hashtable;
 
 class SMEventFactory {
+    private SMEventFactory(){}
 
     public static SMEvent getSMEvent(Event event, SMCallback callback) {
         final EventType type = event.getType();
@@ -27,7 +28,7 @@ class SMEventFactory {
             case UserLogout:
                 return new SMEventUserLogout(email, data, callback);
             case Custom:
-                return new SMEvent(data, callback);
+                return new SMEvent(null, data, callback);
             default:
                 throw new IllegalArgumentException("SMManager sendEvent failed: you provided an invalid EventType");
         }

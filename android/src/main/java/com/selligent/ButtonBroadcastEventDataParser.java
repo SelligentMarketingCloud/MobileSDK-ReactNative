@@ -10,7 +10,15 @@ import com.selligent.sdk.SMNotificationButton;
 class ButtonBroadcastEventDataParser implements BroadcastEventDataParser {
     @Override
     public WritableMap parse(Intent intent) {
-        SMNotificationButton button = (SMNotificationButton)intent.getSerializableExtra(SMManager.BROADCAST_DATA_BUTTON);
+        SMNotificationButton button;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU)
+        {
+            button = intent.getSerializableExtra(SMManager.BROADCAST_DATA_BUTTON, SMNotificationButton.class);
+        }
+        else
+        {
+            button = (SMNotificationButton)intent.getSerializableExtra(SMManager.BROADCAST_DATA_BUTTON);
+        }
 
         return wrap(button);
     }

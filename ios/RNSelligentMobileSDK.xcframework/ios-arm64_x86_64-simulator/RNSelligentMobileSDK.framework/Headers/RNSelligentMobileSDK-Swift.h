@@ -285,6 +285,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <RNSelligentEventHa
 
 
 
+
 @interface RNSelligent (SWIFT_EXTENSION(RNSelligentMobileSDK))
 + (void)enableNotifications:(BOOL)enable;
 + (void)registerForProvisionalRemoteNotification;
@@ -303,6 +304,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <RNSelligentEventHa
 @end
 
 
+
 @interface RNSelligent (SWIFT_EXTENSION(RNSelligentMobileSDK))
 + (void)enableInAppMessages:(BOOL)inAppMessages;
 + (NSArray<NSDictionary *> * _Nonnull)getInAppMessages SWIFT_WARN_UNUSED_RESULT;
@@ -310,8 +312,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <RNSelligentEventHa
 + (NSString * _Nullable)setInAppMessageAsDeleted:(NSString * _Nonnull)messageId SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nullable)executeButtonAction:(NSString * _Nonnull)buttonId messageId:(NSString * _Nonnull)messageId SWIFT_WARN_UNUSED_RESULT;
 + (void)displayNotification:(NSString * _Nonnull)notificationId templateId:(NSString * _Nullable)templateId;
++ (BOOL)areInAppMessagesEnabled SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 @class NSData;
 @class UNNotification;
@@ -631,6 +633,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <RNSelligentEventHa
 
 
 
+
 @interface RNSelligent (SWIFT_EXTENSION(RNSelligentMobileSDK))
 + (void)enableNotifications:(BOOL)enable;
 + (void)registerForProvisionalRemoteNotification;
@@ -649,6 +652,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <RNSelligentEventHa
 @end
 
 
+
 @interface RNSelligent (SWIFT_EXTENSION(RNSelligentMobileSDK))
 + (void)enableInAppMessages:(BOOL)inAppMessages;
 + (NSArray<NSDictionary *> * _Nonnull)getInAppMessages SWIFT_WARN_UNUSED_RESULT;
@@ -656,8 +660,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <RNSelligentEventHa
 + (NSString * _Nullable)setInAppMessageAsDeleted:(NSString * _Nonnull)messageId SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nullable)executeButtonAction:(NSString * _Nonnull)buttonId messageId:(NSString * _Nonnull)messageId SWIFT_WARN_UNUSED_RESULT;
 + (void)displayNotification:(NSString * _Nonnull)notificationId templateId:(NSString * _Nullable)templateId;
++ (BOOL)areInAppMessagesEnabled SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 @class NSData;
 @class UNNotification;

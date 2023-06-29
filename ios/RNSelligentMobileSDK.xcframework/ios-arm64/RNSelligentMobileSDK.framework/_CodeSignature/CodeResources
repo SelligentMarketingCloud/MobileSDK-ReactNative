@@ -6,19 +6,19 @@
 	<dict>
 		<key>Headers/RNSelligentMobileSDK-Swift.h</key>
 		<data>
-		wU1egIresy4fbEudUZzJyBch+Tw=
+		7RiydpsND88mN76lM1oGkgYigDY=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ACfbjSxzkBRGt8mThogoY6fVJ40=
+		mygtH/CnceCUCv4sZeGeh5/VrHk=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		tc8MJ55RjFe9vo6UhhUvhZ1PpqE=
+		tPU8nHOecWQOxf/p35EioHJYuNc=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		kmLJP1V8UvFfJx8XwigrW2WO6EU=
+		YBZ138hJql7uAUmh/Dc25ubA3NI=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		kmLJP1V8UvFfJx8XwigrW2WO6EU=
+		YBZ138hJql7uAUmh/Dc25ubA3NI=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		HBfd1HYFMjZtdR8zUy5vUBCSHiI=
+		+LxNBI5ErFE+Puu3WwxfcgLk5EY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,21 +43,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uMLTkkzOBCCLkg67MZR0HYOxt+gQHKHGMyVwpDmcA3c=
+			neJiryfhqBHrJ8NOIguWA97k07RsVFiFLVlcTne6Gng=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7943n7fiHc3svhqLh3An+v3KLqbpBQIgQuPdd+6fX3Y=
+			BO8MV53M1YmapVCBDWuj0IksNHVQy7o5MKDlKbUj+IQ=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XxGo1V42W7lJV49nctPbCvHqCqA6kNGQ03UUzfzv4AQ=
+			3RHHbmFQ1+0rhR4iKmTgqNcI9RnYGntjb/Zw+Csulic=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -71,14 +71,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XxGo1V42W7lJV49nctPbCvHqCqA6kNGQ03UUzfzv4AQ=
+			3RHHbmFQ1+0rhR4iKmTgqNcI9RnYGntjb/Zw+Csulic=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EcYudGcjgLuI0tPDFhHdfgWnHxjqAKzfnsDru3R1t50=
+			nFOIXiAwwQMe7nUBbUGWMVeOa7ZnJUpu5it0X6DK/jo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

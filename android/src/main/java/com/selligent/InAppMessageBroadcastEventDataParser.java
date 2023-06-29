@@ -12,7 +12,15 @@ import com.selligent.sdk.SMManager;
 class InAppMessageBroadcastEventDataParser implements BroadcastEventDataParser {
     @Override
     public WritableMap parse(Intent intent) {
-        SMInAppMessage[] messages = (SMInAppMessage[])intent.getSerializableExtra(SMManager.BROADCAST_DATA_IN_APP_MESSAGES);
+        SMInAppMessage[] messages;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU)
+        {
+            messages = intent.getSerializableExtra(SMManager.BROADCAST_DATA_IN_APP_MESSAGES, SMInAppMessage[].class);
+        }
+        else
+        {
+            messages = (SMInAppMessage[])intent.getSerializableExtra(SMManager.BROADCAST_DATA_IN_APP_MESSAGES);
+        }
 
         return wrap(messages);
     }

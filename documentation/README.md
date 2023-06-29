@@ -231,7 +231,7 @@ This is because the JS layer is loaded **after** the native iOS SDK executes the
     if (Platform.OS === 'ios') {
          /* Tells the Selligent SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature.
             If you are having problems with deeplinks or 'Push + InApp Message' where the splash screen gets stuck or the push action not visible,
-            make sure you control when the splash screen is dismissed and call this method afterwards (if the dismiss is async, call this method once the async process is completely finished)
+            make sure you control when the splash screen is dismissed (i.e https://docs.expo.dev/versions/latest/sdk/splash-screen/) and call this method afterwards (if the dismiss is async, call this method once the async process is completely finished)
         */
         Selligent.executePushAction()
     }

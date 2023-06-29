@@ -2,6 +2,7 @@ package com.selligent;
 
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 
 class Event {
 
@@ -35,9 +36,8 @@ class Event {
         if (eventHashMap.containsKey("data")) {
             final HashMap<String, String> dataHashMap = (HashMap<String, String>) eventHashMap.get("data");
             data = new Hashtable<>();
-            for (String key : dataHashMap.keySet()) {
-                final String value = dataHashMap.get(key);
-                data.put(key, value);
+            for (Map.Entry<String, String> entry : dataHashMap.entrySet()) {
+                data.put(entry.getKey(), entry.getValue());
             }
         }
 

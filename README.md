@@ -7,8 +7,8 @@ This module uses the native Selligent SDKs:
 
 | SDK                                                                     | Version |
 | ----------------------------------------------------------------------- | ------- |
-| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 4.1.0  |
-| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 3.4.0   |
+| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 4.2.0  |
+| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 3.5.1   |
 
 
 > **IMPORTANT:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 4.2.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native.
@@ -91,7 +91,7 @@ This module uses the native Selligent SDKs:
    project(':selligent-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@selligent-marketing-cloud/selligent-react-native/android')
    ```
 
-3. Add the following in the `android/build.gradle` file, and make sure the the the Gradle version in `android/gradle/wrapper/gradle-wrapper.properties` is >= 6.7.1:
+3. Add the following in the `android/build.gradle` file, and make sure that the Gradle version in `android/gradle/wrapper/gradle-wrapper.properties` is >= 6.7.1:
 
    ```groovy
    // android/build.gradle
@@ -159,34 +159,20 @@ This module uses the native Selligent SDKs:
 
 1. Create a Google application following the section **Creating a Google application** of the **Android - Using the SDK** pdf, and place the `google-services.json` file in the `./android/app` folder.
 
-2. Add the following lines at the end of the `android/settings.gradle` file:
-
-   ```groovy
-   include ':selligent-react-native'
-   project(':selligent-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@selligent-marketing-cloud/selligent-react-native/android')
-   ```
-
-3. Add the following in the `android/build.gradle` file, and make sure the the the Gradle version in `android/gradle/wrapper/gradle-wrapper.properties` is >= 6.7.1:
+2. Add the following in the `android/build.gradle` file, and make sure that the Gradle version in `android/gradle/wrapper/gradle-wrapper.properties` is >= 6.7.1:
 
    ```groovy
    // android/build.gradle 
 
    buildscript {
        dependencies {
-           // Make sure your Gradle plugin version is >= 4.2.0
-           classpath("com.android.tools.build:gradle:4.2.0")
            // Add the following:
            classpath 'com.google.gms:google-services:4.3.3'
        }
    }
    ```
 
-   ```groovy
-    // android/gradle/wrapper/gradle-wrapper.properties
-    distributionUrl=https\://services.gradle.org/distributions/gradle-6.7.1-all.zip
-   ```
-
-4. Add the following in the `android/app/build.gradle` file:
+4. Add the following in the `android/app/build.gradle` file (at the bottom):
 
    ```groovy
    // Add the following:
@@ -195,22 +181,21 @@ This module uses the native Selligent SDKs:
 
 5. Add the following in the `android/app/src/../MainApplication.java` file:
 
-   ```java
-   // Add the following import statements:
-   import com.selligent.RNSelligent;
-   import com.selligent.RNSelligentPackage;
+    ```java
+    // Add the following import statements:
+    import com.selligent.RNSelligent;
+    import com.selligent.RNSelligentPackage;
 
-   public class MainApplication extends Application implements ReactApplication {
-       @Override
-       public void onCreate() {
-           super.onCreate();
+    public class MainApplication extends Application implements ReactApplication {
+        @Override
+        public void onCreate() {
+            super.onCreate();
 
-           // Add the following:
-           RNSelligent.configure(this);
-       }
-   }
-   ```
-
+            // Add the following:
+            RNSelligent.configure(this);
+        }
+    }
+    ```
 </details>
 
 ### iOS Specific installation
@@ -224,7 +209,7 @@ This module uses the native Selligent SDKs:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
-3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.4.0"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
+3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.5.1"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
 
 4. Execute `pod install` in the `/ios` folder
 

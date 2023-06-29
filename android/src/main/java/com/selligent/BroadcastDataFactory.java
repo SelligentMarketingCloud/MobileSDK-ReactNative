@@ -10,12 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 class BroadcastDataFactory {
+    private BroadcastDataFactory(){}
 
-    private static Map<String, BroadcastEventDataParser> broadcastDataParserMap = new HashMap<String, BroadcastEventDataParser>() {{
-        put(SMManager.BROADCAST_EVENT_RECEIVED_IN_APP_MESSAGE, new InAppMessageBroadcastEventDataParser());
-        put(SMManager.BROADCAST_EVENT_BUTTON_CLICKED, new ButtonBroadcastEventDataParser());
-        put(SMManager.BROADCAST_EVENT_RECEIVED_GCM_TOKEN, new GCMTokenBroadcastEventDataParser());
-    }};
+    private static Map<String, BroadcastEventDataParser> getBroadcastDataParserMap()
+    {
+        HashMap<String, BroadcastEventDataParser> parser = new HashMap<>();
+
+        parser.put(SMManager.BROADCAST_EVENT_RECEIVED_IN_APP_MESSAGE, new InAppMessageBroadcastEventDataParser());
+        parser.put(SMManager.BROADCAST_EVENT_BUTTON_CLICKED, new ButtonBroadcastEventDataParser());
+        parser.put(SMManager.BROADCAST_EVENT_RECEIVED_GCM_TOKEN, new GCMTokenBroadcastEventDataParser());
+
+        return parser;
+    }
 
     public static WritableMap getBroadcastData(String smBroadcastEventType, Intent intent) {
         final WritableMap broadcastData = new WritableNativeMap();
@@ -27,7 +33,7 @@ class BroadcastDataFactory {
         }
         broadcastData.putString("broadcastEventType", resultingBroadcastEventType);
 
-        final BroadcastEventDataParser broadcastEventDataParser = broadcastDataParserMap.get(smBroadcastEventType);
+        final BroadcastEventDataParser broadcastEventDataParser = getBroadcastDataParserMap().get(smBroadcastEventType);
 
         if (broadcastEventDataParser != null) {
             final WritableMap resultingData = broadcastEventDataParser.parse(intent);

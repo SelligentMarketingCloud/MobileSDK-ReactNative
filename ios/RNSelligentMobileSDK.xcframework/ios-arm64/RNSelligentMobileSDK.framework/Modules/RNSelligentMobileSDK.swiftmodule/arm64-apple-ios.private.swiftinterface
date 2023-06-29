@@ -23,6 +23,7 @@ extension RNSelligentMobileSDK.RNSelligent {
   @objc public static func setInAppMessageAsDeleted(_ messageId: Swift.String) -> Swift.String?
   @objc public static func executeButtonAction(_ buttonId: Swift.String, messageId: Swift.String) -> Swift.String?
   @objc public static func displayNotification(_ notificationId: Swift.String, templateId: Swift.String?)
+  @objc public static func areInAppMessagesEnabled() -> Swift.Bool
 }
 @objc public protocol RNSelligentEventHandlerProtocol {
   @objc func sendBroadcastEvent(name: Swift.String, type: Swift.String, data: [Swift.AnyHashable : Any]?)

@@ -1,8 +1,6 @@
 import com.android.build.api.variant.BuildConfigField
 import java.util.regex.*
 
-apply plugin: 'com.android.library'
-
 buildscript {
     repositories {
         google()
@@ -13,6 +11,9 @@ buildscript {
         classpath 'com.android.tools.build:gradle:4.2.2'
     }
 }
+
+apply plugin: 'com.android.library'
+
 
 android {
     compileSdkVersion 33
@@ -44,6 +45,7 @@ repositories {
         url "$projectDir/../node_modules/react-native/android"
     }
     google()
+    maven { url 'https://developer.huawei.com/repo/' }
 }
 
 dependencies {
@@ -51,7 +53,7 @@ dependencies {
         exclude group:'com.facebook.fbjni'
         exclude group:'com.facebook.yoga'
     }
-    implementation 'com.selligent.sdk:selligent_mobile_sdk:4.1.0'
+    implementation 'com.selligent.sdk:selligent_mobile_sdk:4.2.0'
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'com.google.firebase:firebase-messaging:23.0.8'
     implementation 'androidx.work:work-runtime:2.8.1'

@@ -907,6 +907,30 @@
           },
           {
             "kind": "Function",
+            "name": "areInAppMessagesEnabled",
+            "printedName": "areInAppMessagesEnabled()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@RNSelligentMobileSDK@objc(cs)RNSelligent(cm)areInAppMessagesEnabled",
+            "mangledName": "$s20RNSelligentMobileSDK0A0C23areInAppMessagesEnabledSbyFZ",
+            "moduleName": "RNSelligentMobileSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "enableNotifications",
             "printedName": "enableNotifications(_:)",
             "children": [
@@ -2587,8 +2611,15 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
+      "kind": "BooleanLiteral",
+      "offset": 654,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
       "kind": "Dictionary",
-      "offset": 955,
+      "offset": 1113,
       "length": 3,
       "value": "[]"
     },

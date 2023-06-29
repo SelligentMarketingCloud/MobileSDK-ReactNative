@@ -37,6 +37,15 @@ export default Object.assign(
 		},
 
 		// InAppMessage
+		
+		/**
+		 * To check if in app messages are enabled.
+		 *
+		 * @param {function} successCallback Callback function on success.
+		 */
+		areInAppMessagesEnabled: function (successCallback) {
+			return RNSelligent.areInAppMessagesEnabled(successCallback)
+		},
 
 		/**
 		 * Gets all known (and not deleted/expired) in app messages.

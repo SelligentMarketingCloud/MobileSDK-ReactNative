@@ -1,8 +1,10 @@
 package com.selligent;
 
 import com.selligent.sdk.SMSettings;
+import com.selligent.sdk.SMFrameworkType;
 
 class SMSettingsFactory {
+    private SMSettingsFactory(){}
 
     public static SMSettings getSMSettings(Settings settings) {
         final SMSettings smSettings = new SMSettings();
@@ -16,6 +18,7 @@ class SMSettingsFactory {
         smSettings.NotificationChannelId = settings.getNotificationChannelId();
         smSettings.NotificationChannelName = settings.getNotificationChannelName();
         smSettings.NotificationChannelDescription = settings.getNotificationChannelDescription();
+        smSettings.FrameworkType = SMFrameworkType.reactNative;
 
         final ClearCacheIntervalValue clearCacheIntervalValue = settings.getClearCacheIntervalValue();
         if (clearCacheIntervalValue != null) {
