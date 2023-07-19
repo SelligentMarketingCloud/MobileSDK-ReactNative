@@ -22,6 +22,7 @@ class Settings {
     private String notificationChannelId = "SMChannel001";
     private String notificationChannelName = "SMDefaultChannel";
     private String notificationChannelDescription = "";
+    private Boolean enableAndroidLogging = false;
 
     private Settings() { }
 
@@ -85,6 +86,8 @@ class Settings {
         return notificationChannelDescription;
     }
 
+    public Boolean getEnableAndroidLogging() { return enableAndroidLogging; }
+
     public static Settings fromHashMap(Map<String, Object> settingsHashMap) {
         final Settings settings = new Settings();
 
@@ -101,7 +104,7 @@ class Settings {
             settings.notificationLargeIcon = (String) settingsHashMap.get("notificationLargeIcon");
         }
 
-        if(settingsHashMap.containsKey("notificationIconColor")) {
+        if (settingsHashMap.containsKey("notificationIconColor")) {
             settings.notificationIconColor = (String) settingsHashMap.get("notificationIconColor");
         }
 
@@ -120,24 +123,33 @@ class Settings {
         if (settingsHashMap.containsKey("loadCacheAsynchronously")) {
             settings.loadCacheAsynchronously = (Boolean) settingsHashMap.get("loadCacheAsynchronously");
         }
+
         if (settingsHashMap.containsKey("notificationChannelId")) {
             settings.notificationChannelId = (String) settingsHashMap.get("notificationChannelId");
         }
+
         if (settingsHashMap.containsKey("notificationChannelName")) {
             settings.notificationChannelName = (String) settingsHashMap.get("notificationChannelName");
         }
+
         if (settingsHashMap.containsKey("notificationChannelDescription")) {
             settings.notificationChannelDescription = (String) settingsHashMap.get("notificationChannelDescription");
+        }
+
+        if (settingsHashMap.containsKey("enableAndroidLogging")) {
+            settings.enableAndroidLogging = (Boolean) settingsHashMap.get("enableAndroidLogging");
         }
 
         final Double clearCacheIndex = (Double) settingsHashMap.get("clearCacheIntervalValue");
         if (clearCacheIndex != null) {
             settings.clearCacheIntervalValue = ClearCacheIntervalValue.valueOf(clearCacheIndex.intValue());
         }
+
         final Double inAppMsgRefreshIndex =  (Double) settingsHashMap.get("inAppMessageRefreshType");
         if (inAppMsgRefreshIndex != null) {
             settings.inAppMessageRefreshType = InAppMessageRefreshType.valueOf(inAppMsgRefreshIndex.intValue());
         }
+
         final Double remoteMsgRefreshIndex =  (Double) settingsHashMap.get("remoteMessageDisplayType");
         if (remoteMsgRefreshIndex != null) {
             settings.remoteMessageDisplayType = RemoteMessageDisplayType.valueOf(remoteMsgRefreshIndex.intValue());

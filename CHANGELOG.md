@@ -1,5 +1,15 @@
 # Changelog
 
+- __3.3.0__
+  - Update to native iOS SDK 3.6.0 and Android SDK 4.3.0
+  - (iOS) Raise minimum supported version to iOS 12
+  - (iOS) Add compatibility with xCode 15 and iOS 17
+  - (iOS) Add Privacy manifest (PrivacyInfo.xcprivacy)
+  - (iOS) Add codesigning to provided .xcframework
+  - (iOS) Add support for MacCatalyst (minimum macCatalyst version: 13 (macOS 10.15))
+  - (iOS) Add support of `enableiOSLogging` property in the `selligent.json` to be able to set the loglevel since the app launches (before the RN layer loads) ([see more](documentation/#working-with-the-selligentjson))
+  - (Android) Add support of `enableAndroidLogging` property in the `selligent.json` to be able to set the loglevel since the app launches (before the RN layer loads) ([see more](documentation/#working-with-the-selligentjson))
+
 - __3.2.7__
   - Update to native iOS SDK 3.5.1 and Android SDK 4.2.0
   - (iOS) Add `executePushAction` fix to `Selligent.displayNotification` and `Selligent.displayLastReceivedRemotePushNotification` so they are executed when the react UI is ready (and splash screen dismissed, if any)
@@ -10,7 +20,7 @@
   - Update to native iOS SDK 3.4.0 and Android SDK 4.1.0
   - (iOS) Add support for InApp Message style templates to further customize their appearance
   - (iOS) Add support for intercepting universal link executions when coming from a Push/IAM
-  - (iOS) Fix issue with deeplink/inapp from a push when the app is killed ([see more](documentation/#deeplinking))
+  - (iOS) Fix issue with deeplink/inapp from a push when the app is killed ([see more](documentation/#deep-linking))
   - (iOS) Rebuild wrapper in swift and provide as .xcframework
   - (Android) Fix how the build variants and flavors were treated to correctly load the `selligent.json` file(s)
   - (Android) Replace broadcasts by observers

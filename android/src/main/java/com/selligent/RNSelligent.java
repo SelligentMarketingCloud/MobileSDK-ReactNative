@@ -101,7 +101,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
             inAppMessageRefreshType = settings.getInAppMessageRefreshType().getSmInAppRefreshType();
 
             final SMManager smManager = getSMManager();
-            SMManager.DEBUG = BuildConfig.BUILD_TYPE.equals("debug");
+            SMManager.DEBUG = BuildConfig.BUILD_TYPE.equals("debug") || settings.getEnableAndroidLogging();
             smManager.start(smSettings, application);
 
             final Resources resources = application.getResources();
@@ -344,6 +344,10 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
         } else {
             smManager.disableNotifications();
         }
+    }
+
+    public static void enableNotifications() {
+        SMManager.getInstance().enableNotifications();
     }
 
     @ReactMethod

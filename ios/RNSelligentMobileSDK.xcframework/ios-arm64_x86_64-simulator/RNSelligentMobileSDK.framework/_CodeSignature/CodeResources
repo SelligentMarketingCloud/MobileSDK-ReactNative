@@ -14,7 +14,7 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		tPU8nHOecWQOxf/p35EioHJYuNc=
+		g3v8XX701lTHFCCruKPyauR20DY=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		PGk6UHcEC3vzBEmgq/1WPCdoqXM=
+		RfIPlJl81jag2G9ikUz8SIXddKg=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		tPU8nHOecWQOxf/p35EioHJYuNc=
+		g3v8XX701lTHFCCruKPyauR20DY=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -50,11 +50,15 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		D7voHlhn7Jf5i9cHdo361kxarao=
+		KEja2jfyG9jxh+DsOIF9xqZsQoM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		ud88UVqZgcSH0f8AbK5AbeqzEAE=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		ZajnvEs/MYRS3X4TPLAhBWi8mc4=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -70,7 +74,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BO8MV53M1YmapVCBDWuj0IksNHVQy7o5MKDlKbUj+IQ=
+			rh4M3R/kACgO2Zi9csjEiLkWQNkw0GS8MPt+mPuQANA=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -98,14 +102,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3iUB1eLIEZHGLXwbimc2pUNMrstrW8GY9vkBZUNX8CY=
+			Ixsfr52RZA2m/THgfhnPdns9GcbSGlgBGEnb3UczR6w=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BO8MV53M1YmapVCBDWuj0IksNHVQy7o5MKDlKbUj+IQ=
+			rh4M3R/kACgO2Zi9csjEiLkWQNkw0GS8MPt+mPuQANA=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -133,7 +137,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mfVQiWBdTq+AxrLVejUdDpErodOJrfk39V1pHl8D7AE=
+			2BDOc8HveybpdT4IXZETo+56hlUFRAa+kzj9mOutX9U=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -141,6 +145,13 @@
 			<key>hash2</key>
 			<data>
 			b2z1gUaLy3SjL0vgzLkqUo/VaeEmEhUS3608GLC3lg8=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dLDNcvwjwe8wLyLuJ1P2GBfNxa8P96fy0GMrUk+4rOo=
 			</data>
 		</dict>
 	</dict>

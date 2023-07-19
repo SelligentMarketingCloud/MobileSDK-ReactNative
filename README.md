@@ -2,21 +2,21 @@
 
 This module provides an API for the usage of the Selligent Mobile SDKs in React Native.
 
-# SelligentMobileSDK-ReactNative Integration
+## SelligentMobileSDK-ReactNative Integration
+
 This module uses the native Selligent SDKs:
 
 | SDK                                                                     | Version |
 | ----------------------------------------------------------------------- | ------- |
-| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 4.2.0  |
-| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 3.5.1   |
-
+| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 4.3.0   |
+| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 3.6.0   |
 
 > **IMPORTANT:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 4.2.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native.
-
 > **IMPORTANT** Since version 2.10.0 of this module, we support React Native v0.70, but NOT REACT NATIVE'S NEW ARCHITECTURE! The following library contains React native modules, that are tailored to and can only be used in React Native's legacy architecture, that will be deprecated in the future when the new architecture will be stable.
 
 ## Installation
-> Please refer to our <a href="documentation/#reactnative--using-the-sdk">SDK full documentation</a> for a step-by-step guide on how to use the SDK, after installation.
+
+> Please refer to our [SDK full documentation](documentation/#reactnative--using-the-sdk) for a step-by-step guide on how to use the SDK, after installation.
 
 1. Install the module
 
@@ -36,7 +36,7 @@ This module uses the native Selligent SDKs:
    }
    ```
 
-> Check all the options that can be used in our <a href="documentation/#selligent_json">SDK full documentation</a>
+> Check all the options that can be used in our [SDK full documentation](documentation/#working-with-the-selligentjson)
 
 ### Android Specific Installation
 
@@ -153,7 +153,7 @@ This module uses the native Selligent SDKs:
    ```
 
 </details>
-<br>
+
 <details open>
 <summary>With autolinking (RN 0.60 and above)</summary>
 
@@ -172,14 +172,14 @@ This module uses the native Selligent SDKs:
    }
    ```
 
-4. Add the following in the `android/app/build.gradle` file (at the bottom):
+3. Add the following in the `android/app/build.gradle` file (at the bottom):
 
    ```groovy
    // Add the following:
    apply plugin: 'com.google.gms.google-services'
    ```
 
-5. Add the following in the `android/app/src/../MainApplication.java` file:
+4. Add the following in the `android/app/src/../MainApplication.java` file:
 
     ```java
     // Add the following import statements:
@@ -196,6 +196,7 @@ This module uses the native Selligent SDKs:
         }
     }
     ```
+
 </details>
 
 ### iOS Specific installation
@@ -209,7 +210,7 @@ This module uses the native Selligent SDKs:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
-3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.5.1"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
+3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.6.0"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
 
 4. Execute `pod install` in the `/ios` folder
 
@@ -230,7 +231,7 @@ This module uses the native Selligent SDKs:
     ```
 
 </details>
-<br>
+
 <details open>
 <summary>With autolinking (RN 0.60 and above)</summary>
 

@@ -4,7 +4,7 @@
   },
   "name": "@selligent-marketing-cloud/selligent-react-native",
   "title": "Selligent React Native",
-  "version": "3.2.7",
+  "version": "3.3.0",
   "description": "React Native wrapper for the Selligent Marketing Cloud Android and iOS SDKs",
   "main": "index.js",
   "repository": {
@@ -38,10 +38,9 @@
     "test": "jest"
   },
   "files": [
-    "/RNSelligent.podspec",
+    "/RNSelligentMapper.podspec",
     "/*.js",
     "/*.ts",
-    "/ios/RNSelligentMobileSDK.xcframework",
     "/ios/*.h",
     "/ios/*.m",
     "/android/src/main",

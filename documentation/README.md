@@ -73,7 +73,9 @@ The following properties can be used in the `selligent.json` to further configur
 | remoteMessageDisplayType                    | [enum](#remotemessagesdisplaytype) | The behaviour when receiving a push notification with the app in foreground |
 | appGroupId                                  | string |(iOS Only) The appgroup id necessary for the correct communication between the app and the app extensions |
 | shouldClearBadge                            | boolean | (iOS Only) Whether or not, clicking a push notification should reset the badge number |
-| shouldDisplayRemoteNotification             | boolean | (iOS Only) Whether or not, the SDK should try to display the content linked to a push message (usually, inapp messages) or it will be handled customly |
+| shouldDisplayRemoteNotification             | boolean | (iOS Only) Whether or not, the SDK should try to display the content linked to a push message (usually, inapp messages) or it will be handled customly 
+| enableiOSLogging                            | [enum](#iosloglevel) | Log level used since the app launch |
+| enableAndroidLogging                        | boolean | (Android Only) Whether or not, the SDK logging will be enabled since the app launch |
 | doNotListenToThePush                        | boolean | (Android Only) Whether or not, the SDK will listen for pushs from google |
 | doNotFetchTheToken                          | boolean | (Android Only) Whether or not, the SDK will listen for push tokens from google |
 | loadCacheAsynchronously                     | boolean | (Android Only) Whether or not, the SDK load the cache asynchronously |
@@ -89,7 +91,44 @@ The following properties can be used in the `selligent.json` to further configur
 
 Follow the [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#create-an-apns-key) & [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android/tree/master/Documentation#creating-an-application) native SDKs guides in order to optin for push notifications in Apple & Google.
 
-**For iOS**, there are some extra steps you need to follow in the native part of the ReactNative project:
+**For Android**, if targeting API level 33 and above:
+1. Add this to request the push permission and let the SDK know when it is accepted, in the activity where you want to:
+```java
+import com.selligent.RNSelligent;
+
+public class MainActivity extends ReactActivity {
+  final int NOTIFICATION_PERMISSION_REQUEST_CODE = 1111;
+
+  @Override
+  public void onStart()
+  {
+    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2)
+    {
+      if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
+      {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATION_PERMISSION_REQUEST_CODE);
+      }
+    }
+    
+    super.onStart();
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+  {
+      super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+      if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE)
+      {
+          if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+          {
+              RNSelligent.enableNotifications();
+          }
+      }
+  }
+```
+
+**For iOS**:
 
 1. For push notifications you need to delegate some of the `AppDelegate.m` methods to the SDK:
 
@@ -158,14 +197,16 @@ Follow the [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/m
     ```javascript
     import Selligent from "@selligent-marketing-cloud/selligent-react-native"; // Add Selligent import
     
-    Selligent.enableNotifications(
-        (response) => { // success callback
-        },
-        (error) => { // error callback
-        },
-        true
-    )
-
+    if (Platform.OS === 'ios') {
+        Selligent.enableNotifications(
+            (response) => { // success callback
+            },
+            (error) => { // error callback
+            },
+            true
+        )
+    }
+    
     Selligent.registerForProvisionalRemoteNotification(
         () => { // success callback
         }

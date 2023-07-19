@@ -1,0 +1,60 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios13.1-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RNSelligentMobileSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import SelligentMobileSDK
+import Swift
+import UIKit
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+extension RNSelligentMobileSDK.RNSelligent {
+  @objc public static func getVersionLib() -> Swift.String
+  @objc public static func getDeviceId() -> Swift.String
+  @objc public static func setInAppMessageStylingTemplates(_ templates: [RNSelligentMobileSDK.InAppMessageStylingTemplate], defaultTemplateId: Swift.String?)
+  @objc public static func executePushAction()
+  @objc public static func applyLogLevel(_ logLevels: [Swift.Int])
+}
+extension RNSelligentMobileSDK.RNSelligent {
+  @objc public static func enable(inAppMessages: Swift.Bool)
+  @objc public static func getInAppMessages() -> [[Swift.AnyHashable : Any]]
+  @objc public static func setInAppMessageAsSeen(_ messageId: Swift.String, seen: Swift.Bool = true) -> Swift.String?
+  @objc public static func setInAppMessageAsDeleted(_ messageId: Swift.String) -> Swift.String?
+  @objc public static func executeButtonAction(_ buttonId: Swift.String, messageId: Swift.String) -> Swift.String?
+  @objc public static func displayNotification(_ notificationId: Swift.String, templateId: Swift.String?)
+  @objc public static func areInAppMessagesEnabled() -> Swift.Bool
+}
+@objc public protocol RNSelligentEventHandlerProtocol {
+  @objc func sendBroadcastEvent(name: Swift.String, type: Swift.String, data: [Swift.AnyHashable : Any]?)
+}
+extension RNSelligentMobileSDK.RNSelligent {
+  @objc public static func enableNotifications(_ enable: Swift.Bool)
+  @objc public static func registerForProvisionalRemoteNotification()
+  @objc public static func displayLastReceivedRemotePushNotification(withTemplateId: Swift.String?)
+  @objc public static func getLastRemotePushNotification() -> [Swift.AnyHashable : Any]?
+  @objc public static func displayLastReceivedNotification()
+}
+extension RNSelligentMobileSDK.RNSelligent {
+  @objc public static func sendEvent(_ data: [Swift.AnyHashable : Any], completion: @escaping ((Swift.Bool, Swift.String) -> Swift.Void))
+  @objc public static func subscribeToEvents(_ customEvents: [Swift.String])
+}
+extension RNSelligentMobileSDK.RNSelligent {
+  @objc public static func didRegisterForRemoteNotifications(withDeviceToken: Foundation.Data)
+  @objc public static func didFailToRegisterForRemoteNotificationsWithError(_ error: Swift.Error)
+  @objc public static func didReceiveRemoteNotification(_ notification: [Swift.AnyHashable : Any], fetchCompletionHandler: ((UIKit.UIBackgroundFetchResult) -> Swift.Void)?)
+  @objc public static func willPresentNotification(_ notification: UserNotifications.UNNotification, withCompletionHandler: ((UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)?)
+  @objc public static func willPresentNotification(_ notification: UserNotifications.UNNotification, templateId: Swift.String?, withCompletionHandler: ((UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)?)
+  @objc public static func didReceiveNotificationResponse(_ response: UserNotifications.UNNotificationResponse, withCompletionHandler: (() -> Swift.Void)?)
+  @objc public static func didReceiveNotificationResponse(_ response: UserNotifications.UNNotificationResponse, templateId: Swift.String?, withCompletionHandler: (() -> Swift.Void)?)
+}
+@objc @_inheritsConvenienceInitializers public class RNSelligent : ObjectiveC.NSObject {
+  @objc public static var eventDelegate: RNSelligentMobileSDK.RNSelligentEventHandlerProtocol?
+  @objc public static func configureWithLaunchOptions(_ launchOptions: [Swift.AnyHashable : Any] = [:])
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class InAppMessageStylingTemplate : ObjectiveC.NSObject {
+  @objc public init(templateId: Swift.String, styleOptions: SelligentMobileSDK.SMInAppMessageStyleOptions)
+  @objc deinit
+}

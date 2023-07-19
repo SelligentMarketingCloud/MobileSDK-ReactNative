@@ -14,7 +14,7 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		tPU8nHOecWQOxf/p35EioHJYuNc=
+		g3v8XX701lTHFCCruKPyauR20DY=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -30,11 +30,15 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		+LxNBI5ErFE+Puu3WwxfcgLk5EY=
+		+weVZgAsrb3Frv3Jj+c4UgIer10=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		ud88UVqZgcSH0f8AbK5AbeqzEAE=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		ZajnvEs/MYRS3X4TPLAhBWi8mc4=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -50,7 +54,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BO8MV53M1YmapVCBDWuj0IksNHVQy7o5MKDlKbUj+IQ=
+			rh4M3R/kACgO2Zi9csjEiLkWQNkw0GS8MPt+mPuQANA=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -78,7 +82,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nFOIXiAwwQMe7nUBbUGWMVeOa7ZnJUpu5it0X6DK/jo=
+			zc/0pjJo+33dmnRfJ6Ho3FQQN9Kh9FjaXK5lUhsbexQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -86,6 +90,13 @@
 			<key>hash2</key>
 			<data>
 			b2z1gUaLy3SjL0vgzLkqUo/VaeEmEhUS3608GLC3lg8=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dLDNcvwjwe8wLyLuJ1P2GBfNxa8P96fy0GMrUk+4rOo=
 			</data>
 		</dict>
 	</dict>
