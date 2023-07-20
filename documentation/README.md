@@ -25,6 +25,7 @@ Selligent welcomes any recommendations or suggestions regarding the manual, as i
   - [Push notifications](#push-notifications)
     - [Rich Push Notifications](#rich-push-notifications)
     - [Deep Linking](#deep-linking)
+      - [Background Modes](#background-modes)
       - [Universal Linking - iOS](#universal-linking---ios)
     - [Notification helper methods](#notification-helper-methods)
       - [Disable Selligent Push Notifications](#disable-selligent-push-notifications)
@@ -238,8 +239,8 @@ This is because the JS layer is loaded **after** the native iOS SDK executes the
 
     ```javascript
     // In DeeplinkHook.js
-    import { useEffect } from "react";
-    import { Alert, Linking } from "react-native";
+    import { useEffect } from "react"
+    import { Alert, Linking } from "react-native"
 
     const useHandleDeepLink = () => {
       useEffect(() => {
@@ -248,22 +249,22 @@ This is because the JS layer is loaded **after** the native iOS SDK executes the
                   Alert.alert('Deep Link', link || 'No link')
               }
           }).catch(err => {
-              console.warn('An error occurred', err);
-          });
+              console.warn('An error occurred', err)
+          })
 
-          const urlListener = Linking.addEventListener('url', ({url}) => Alert.alert('Deep Link', url || 'No link'));
+          const urlListener = Linking.addEventListener('url', ({url}) => Alert.alert('Deep Link', url || 'No link'))
 
-          return () => urlListener.remove();
+          return () => urlListener.remove()
       }, [])
-    };
+    }
 
-    export default useHandleDeepLink;
+    export default useHandleDeepLink
     ```
 
 3. Add a call to `Selligent.executePushAction()` in your main `App.js` file, after adding the ReactNative linking handler (and after calling `Selligent.subscribeToEvents`, if being used)
 
     ```javascript
-    import Selligent from "@selligent-marketing-cloud/selligent-react-native"; // Add Selligent import
+    import Selligent from "@selligent-marketing-cloud/selligent-react-native" // Add Selligent import
 
     const App = () => {
     // Deeplinking handling library (i.e Linking.getInitialURL() & Linking.addEventListener...)
@@ -277,6 +278,38 @@ This is because the JS layer is loaded **after** the native iOS SDK executes the
         Selligent.executePushAction()
     }
     ```
+
+#### Background Modes
+
+**For iOS**, (if your app supports Background Modes) it is possible that after the app is launched from the background (location update, background push notification...) if the next action the user performs is executing a deeplink (via safari, push notification click...) the deeplink won't do anything. This is because the communication between the native part and the RN layer is not ready yet when the deeplink is executed from the native side. To workaround this, you can catch when the app is launched from the background state and add a bit of before the `RCTLinkingManager openUrl` gets executed.
+
+```objective-c
+static BOOL launchedFromBackground = false;
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) {
+    launchedFromBackground = true;
+  }
+  
+  // Other setup code
+  
+  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  if (launchedFromBackground) {
+    launchedFromBackground = false;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+      [RCTLinkingManager application:application openURL:url options:options];
+    });
+    
+    return [super application:application openURL:url options:options];
+  }
+  
+  return [super application:application openURL:url options:options] || [RCTLinkingManager application:application openURL:url options:options];
+}
+```
 
 #### Universal Linking - iOS
 
@@ -755,7 +788,7 @@ The `data` property is an object itself containing more information specific to 
 Add the following import to work with the constants:
 
 ```javascript
-import SelligentConstants from "@selligent-marketing-cloud/selligent-react-native/constants";
+import SelligentConstants from "@selligent-marketing-cloud/selligent-react-native/constants"
 ```
 
 ### ClearCacheIntervalValue
