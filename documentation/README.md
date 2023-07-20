@@ -281,7 +281,7 @@ This is because the JS layer is loaded **after** the native iOS SDK executes the
 
 #### Background Modes
 
-**For iOS**, (if your app supports Background Modes) it is possible that after the app is launched from the background (location update, background push notification...) if the next action the user performs is executing a deeplink (via safari, push notification click...) the deeplink won't do anything. This is because the communication between the native part and the RN layer is not ready yet when the deeplink is executed from the native side. To workaround this, you can catch when the app is launched from the background state and add a bit of before the `RCTLinkingManager openUrl` gets executed.
+**For iOS**, (if your app supports Background Modes) it is possible that after the app is launched from the background (location update, background push notification...) if the next action the user performs is executing a deeplink (via safari, push notification click...) the deeplink won't do anything. This is because the communication between the native part and the RN layer is not ready yet when the deeplink is executed from the native side. To workaround this, you can catch when the app is launched from the background and add a bit of delay before the `RCTLinkingManager openUrl` gets executed.
 
 ```objective-c
 static BOOL launchedFromBackground = false;
