@@ -12,8 +12,8 @@ This module supports the following SDK and tools:
 | ------------------------------------------------------------------------------ | ------- |
 | [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.3.0   |
 | [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.6.0   |
-| ReactNative                                                                    | 0.72    |
-| Expo SDK                                                                       | 49      |
+| ReactNative                                                                    | 0.71.8  |
+| Expo SDK                                                                       | 48      |
 
 ## Installation
 
