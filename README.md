@@ -4,15 +4,16 @@ This module provides an API for the usage of the Selligent Mobile SDKs in React 
 
 ## SelligentMobileSDK-ReactNative Integration
 
-This module uses the native Selligent SDKs:
+This module supports the following SDK and tools:
 
-| SDK                                                                     | Version |
-| ----------------------------------------------------------------------- | ------- |
-| [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android) | 4.3.0   |
-| [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)         | 3.6.0   |
+> **IMPORTANT** This module doesn't currently support REACT NATIVE'S NEW ARCHITECTURE! The following library contains React native modules, that are tailored to and can only be used in React Native's legacy architecture, that will be deprecated in the future when the new architecture will be stable.
 
-> **IMPORTANT:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 4.2.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native.
-> **IMPORTANT** Since version 2.10.0 of this module, we support React Native v0.70, but NOT REACT NATIVE'S NEW ARCHITECTURE! The following library contains React native modules, that are tailored to and can only be used in React Native's legacy architecture, that will be deprecated in the future when the new architecture will be stable.
+| SDK                                                                            | Version |
+| ------------------------------------------------------------------------------ | ------- |
+| [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.3.0   |
+| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.6.0   |
+| ReactNative                                                                    | 0.72    |
+| Expo SDK                                                                       | 49      |
 
 ## Installation
 
@@ -39,6 +40,8 @@ This module uses the native Selligent SDKs:
 > Check all the options that can be used in our [SDK full documentation](documentation/#working-with-the-selligentjson)
 
 ### Android Specific Installation
+
+> **IMPORTANT:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 4.2.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native.
 
 > ### **Attention for Huawei developers!**
 >
