@@ -4,7 +4,7 @@
   },
   "name": "@selligent-marketing-cloud/selligent-react-native",
   "title": "Selligent React Native",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "React Native wrapper for the Selligent Marketing Cloud Android and iOS SDKs",
   "main": "index.js",
   "repository": {

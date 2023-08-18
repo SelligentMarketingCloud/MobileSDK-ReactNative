@@ -38,7 +38,7 @@
 		</data>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/RNSelligentMobileSDK</key>
 		<data>
-		tkBMKdeUzl9Xh01Y6k4a00evh1I=
+		XmGV4fu6OcaB+/PfnJqfX/KUp3M=
 		</data>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/RNSelligentMobileSDK</key>
 		<data>
-		DQatHv/UKoe33nrJroyqvH7iqQk=
+		1oQDh73HVZwX/uqjQuK4uuwnezo=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Resources/Info.plist</key>
 		<data>
@@ -251,11 +251,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tkBMKdeUzl9Xh01Y6k4a00evh1I=
+			XmGV4fu6OcaB+/PfnJqfX/KUp3M=
 			</data>
 			<key>hash2</key>
 			<data>
-			mKcsGcxk2O/qVTymmmymj9rEKt8oKQtCvb6HmaDMnfs=
+			JPwGRTAE9BSSTtKSUvFV7CtR6SpY/O3neTe3ZC38x2c=
 			</data>
 		</dict>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
@@ -403,11 +403,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DQatHv/UKoe33nrJroyqvH7iqQk=
+			1oQDh73HVZwX/uqjQuK4uuwnezo=
 			</data>
 			<key>hash2</key>
 			<data>
-			58Qr3odlClTuHy6Ygn4vOYkh+4mgwVthbqRhSUicopg=
+			Ez1egabNeK/ZJluNW8tXFsRrUWsvzwrMj1QBbzjIDBc=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Resources/Info.plist</key>

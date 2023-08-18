@@ -1,5 +1,8 @@
 # Changelog
 
+- __3.3.1__
+  - Update to native iOS SDK 3.6.1
+
 - __3.3.0__
   - Update to native iOS SDK 3.6.0 and Android SDK 4.3.0
   - (iOS) Raise minimum supported version to iOS 12

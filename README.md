@@ -11,7 +11,7 @@ This module supports the following SDK and tools:
 | SDK                                                                            | Version |
 | ------------------------------------------------------------------------------ | ------- |
 | [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.3.0   |
-| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.6.0   |
+| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.6.1   |
 | ReactNative                                                                    | 0.71.8  |
 | Expo SDK                                                                       | 48      |
 
@@ -213,7 +213,7 @@ This module supports the following SDK and tools:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
-3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.6.0"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
+3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.6.1"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
 
 4. Execute `pod install` in the `/ios` folder
 
