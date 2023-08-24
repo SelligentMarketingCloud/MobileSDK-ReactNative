@@ -94,45 +94,45 @@ Follow the [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/m
 
 **For Android**, if targeting API level 33 and above:
 1. Add the following line to AndroidManifest.xml:
-```xml
-<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-```
+    ```xml
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    ```
 
 2. Add this native code to request the push permission and let the SDK know when it is accepted, in the activity where you want to:
-```java
-import com.selligent.RNSelligent;
-
-public class MainActivity extends ReactActivity {
-  final int NOTIFICATION_PERMISSION_REQUEST_CODE = 1111;
-
-  @Override
-  public void onStart()
-  {
-    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2)
-    {
-      if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
-      {
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATION_PERMISSION_REQUEST_CODE);
-      }
-    }
+    ```java
+    import com.selligent.RNSelligent;
     
-    super.onStart();
-  }
-
-  @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
-  {
-      super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-      if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE)
+    public class MainActivity extends ReactActivity {
+      final int NOTIFICATION_PERMISSION_REQUEST_CODE = 1111;
+    
+      @Override
+      public void onStart()
       {
-          if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2)
+        {
+          if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
           {
-              RNSelligent.enableNotifications();
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATION_PERMISSION_REQUEST_CODE);
+          }
+        }
+        
+        super.onStart();
+      }
+    
+      @Override
+      public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+      {
+          super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    
+          if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE)
+          {
+              if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+              {
+                  RNSelligent.enableNotifications();
+              }
           }
       }
-  }
-```
+    ```
 
 **For iOS**:
 
