@@ -93,7 +93,12 @@ The following properties can be used in the `selligent.json` to further configur
 Follow the [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#create-an-apns-key) & [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android/tree/master/Documentation#creating-an-application) native SDKs guides in order to optin for push notifications in Apple & Google.
 
 **For Android**, if targeting API level 33 and above:
-1. Add this to request the push permission and let the SDK know when it is accepted, in the activity where you want to:
+1. Add the following line to AndroidManifest.xml:
+```xml
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+```
+
+2. Add this native code to request the push permission and let the SDK know when it is accepted, in the activity where you want to:
 ```java
 import com.selligent.RNSelligent;
 
