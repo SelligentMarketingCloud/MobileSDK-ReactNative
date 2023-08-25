@@ -17,7 +17,7 @@ class Settings {
     private Boolean doNotListenToThePush = false;
     private Boolean loadCacheAsynchronously = false;
     private ClearCacheIntervalValue clearCacheIntervalValue;
-    private InAppMessageRefreshType inAppMessageRefreshType;
+    private InAppMessageRefreshType inAppMessageRefreshType = InAppMessageRefreshType.NONE;
     private RemoteMessageDisplayType remoteMessageDisplayType;
     private String notificationChannelId = "SMChannel001";
     private String notificationChannelName = "SMDefaultChannel";

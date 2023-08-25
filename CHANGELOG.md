@@ -1,6 +1,9 @@
 # Changelog
 
 - __3.3.1__
+  - (Android) Fix bug where the native Android SDK would not start correctly if the `selligent.json` would not contain the `inAppMessageRefreshType` property
+
+- __3.3.1__
   - Update to native iOS SDK 3.6.1
 
 - __3.3.0__
