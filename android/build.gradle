@@ -68,7 +68,7 @@ def loadSelligentSettings(variant) {
     def defaultSelligentFileName = "selligent.json"
     File defaultFile = new File("$project.rootDir/../$defaultSelligentFileName")
 
-    if (currentFlavor !== "") {
+    if (currentFlavor != "") {
         defaultFile = new File("$project.rootDir/../$currentFlavor/$defaultSelligentFileName")
     }
 
