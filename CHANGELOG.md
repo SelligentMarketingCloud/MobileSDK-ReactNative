@@ -1,6 +1,12 @@
 # Changelog
 
-- __3.3.1__
+- __3.4.1__
+  - Update to native iOS SDK 3.7.0 and Android SDK 4.4.0
+  - Compatibility checks with Expo SDK 49, ReactNative 0.72.4 and ReactNative new architecture
+  - (Android) Update minimum Android Gradle Plugin version to 7.0.0
+  - (Android) Fix BuildConfig problem with latest Android Gradle Plugin versions
+
+- __3.3.2__
   - (Android) Fix bug where the native Android SDK would not start correctly if the `selligent.json` would not contain the `inAppMessageRefreshType` property
 
 - __3.3.1__

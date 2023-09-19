@@ -74,7 +74,7 @@ The following properties can be used in the `selligent.json` to further configur
 | remoteMessageDisplayType                    | [enum](#remotemessagesdisplaytype) | The behaviour when receiving a push notification with the app in foreground |
 | appGroupId                                  | string |(iOS Only) The appgroup id necessary for the correct communication between the app and the app extensions |
 | shouldClearBadge                            | boolean | (iOS Only) Whether or not, clicking a push notification should reset the badge number |
-| shouldDisplayRemoteNotification             | boolean | (iOS Only) Whether or not, the SDK should try to display the content linked to a push message (usually, inapp messages) or it will be handled customly 
+| shouldDisplayRemoteNotification             | boolean | (iOS Only) Whether or not, the SDK should try to display the content linked to a push message (usually, inapp messages) or it will be handled customly
 | enableiOSLogging                            | [enum](#iosloglevel) | Log level used since the app launch |
 | enableAndroidLogging                        | boolean | (Android Only) Whether or not, the SDK logging will be enabled since the app launch |
 | doNotListenToThePush                        | boolean | (Android Only) Whether or not, the SDK will listen for pushs from google |
@@ -93,12 +93,15 @@ The following properties can be used in the `selligent.json` to further configur
 Follow the [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Documentation#create-an-apns-key) & [Android](https://github.com/SelligentMarketingCloud/MobileSDK-Android/tree/master/Documentation#creating-an-application) native SDKs guides in order to optin for push notifications in Apple & Google.
 
 **For Android**, if targeting API level 33 and above:
+
 1. Add the following line to AndroidManifest.xml:
+
     ```xml
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     ```
 
 2. Add this native code to request the push permission and let the SDK know when it is accepted, in the activity where you want to:
+
     ```java
     import com.selligent.RNSelligent;
     
@@ -867,7 +870,7 @@ Defines the type of an event.
 | USER_REGISTER   | number | 90    | Used to send a register event to the server with the custom email/profile identifier of the user, with the purpose of linking the device to an user and optionally storing some data at Selligent platform side. This event will create a new user in your Selligent database, if none was found (you can use an alternate key/value field to search for the user, in the data object, since by default the `email` one will use the `MAIL` column in your Selligent database). |
 | USER_UNREGISTER | number | 91    | Used to send an unregister event to the server with the custom email/profile identifier of the user, with the purpose of keeping track of a REGISTERED flag and optionally storing some data at Selligent platform side (this event is not unlinking the user from the device (automatically), at the moment). |
 | USER_LOGIN      | number | 92    | Used to send a login event to the server with the custom email/profile identifier of the user, with the purpose of linking the device to an user and optionally storing some data at Selligent platform side. This event will **NOT** create a new user in your Selligent database, if none found. |
-| USER_LOGOUT     | number | 93    | UUsed to send a logout event to the server with the custom email/profile identifier of the user, with the purpose of keeping track of a LOGGED flag and optionally storing some data at Selligent platform side (this event is not unlinking the user from the device (automatically), at the moment). |
+| USER_LOGOUT     | number | 93    | Used to send a logout event to the server with the custom email/profile identifier of the user, with the purpose of keeping track of a LOGGED flag and optionally storing some data at Selligent platform side (this event is not unlinking the user from the device (automatically), at the moment). |
 | CUSTOM          | number | 94    | Used to send a custom event to the server, with the purpose of keeping track of storing some data at Selligent platform side. |
 
 ### NotificationButtonType

@@ -8,19 +8,23 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.0.0'
     }
 }
 
 apply plugin: 'com.android.library'
 
-
 android {
-    compileSdkVersion 33
+    namespace 'com.selligent'
+    compileSdk 33
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 33
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 }
 
@@ -33,7 +37,7 @@ androidComponents {
                 variant.buildConfigFields.put("SELLIGENT_SETTINGS", new BuildConfigField("String", "\"" + selligentSettings + "\"", "Selligent settings"))
             }
             catch (Exception ignored) {
-                throw new Exception("Selligent requires Android Gradle plugin version 4.2.0 or higher.")
+                throw new Exception("Selligent requires Android Gradle plugin version 7.0.0 or higher.")
             }
         }
     })
@@ -53,9 +57,9 @@ dependencies {
         exclude group:'com.facebook.fbjni'
         exclude group:'com.facebook.yoga'
     }
-    implementation 'com.selligent.sdk:selligent_mobile_sdk:4.3.0'
+    implementation 'com.selligent.sdk:selligent_mobile_sdk:4.4.0'
     implementation 'com.google.code.gson:gson:2.9.0'
-    implementation 'com.google.firebase:firebase-messaging:23.0.8'
+    implementation 'com.google.firebase:firebase-messaging:23.2.1'
     implementation 'androidx.work:work-runtime:2.8.1'
     implementation 'androidx.concurrent:concurrent-futures:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'

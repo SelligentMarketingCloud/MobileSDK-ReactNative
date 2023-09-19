@@ -6,14 +6,14 @@ This module provides an API for the usage of the Selligent Mobile SDKs in React 
 
 This module supports the following SDK and tools:
 
-> **IMPORTANT** This module doesn't currently support REACT NATIVE'S NEW ARCHITECTURE! The following library contains React native modules, that are tailored to and can only be used in React Native's legacy architecture, that will be deprecated in the future when the new architecture will be stable.
+> **IMPORTANT** This module isn't built using ReactNative's new architecture! It is however compatible with apps that do adopt the new architecture, as far as they are using latest ReactNative's versions.
 
 | SDK                                                                            | Version |
 | ------------------------------------------------------------------------------ | ------- |
-| [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.3.0   |
-| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.6.1   |
-| ReactNative                                                                    | 0.71.8  |
-| Expo SDK                                                                       | 48      |
+| [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.4.0   |
+| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.7.0   |
+| ReactNative                                                                    | 0.72.4  |
+| Expo SDK                                                                       | 49      |
 
 ## Installation
 
@@ -41,7 +41,7 @@ This module supports the following SDK and tools:
 
 ### Android Specific Installation
 
-> **IMPORTANT:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 4.2.0 or higher in order to build on Android. This is the default Android Gradle Plugin version since React Native version 0.64.0 but can be manually increased in older versions of React Native.
+> **IMPORTANT:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 7.0.0 or higher in order to build on Android.
 
 > ### **Attention for Huawei developers!**
 >
@@ -101,10 +101,10 @@ This module supports the following SDK and tools:
 
    buildscript {
        dependencies {
-           // Make sure your Gradle plugin version is >= 4.2.0
-           classpath("com.android.tools.build:gradle:4.2.0")
+           // Make sure your Gradle plugin version is >= 7.0.0
+           classpath("com.android.tools.build:gradle:7.0.0")
            // Add the following:
-           classpath 'com.google.gms:google-services:4.3.3'
+           classpath 'com.google.gms:google-services:4.3.15'
        }
    }
    ```
@@ -170,7 +170,7 @@ This module supports the following SDK and tools:
    buildscript {
        dependencies {
            // Add the following:
-           classpath 'com.google.gms:google-services:4.3.3'
+           classpath 'com.google.gms:google-services:4.3.15'
        }
    }
    ```
@@ -213,7 +213,7 @@ This module supports the following SDK and tools:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
-3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.6.1"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
+3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.7.0"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
 
 4. Execute `pod install` in the `/ios` folder
 
