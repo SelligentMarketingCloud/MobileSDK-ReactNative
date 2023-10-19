@@ -1,10 +1,20 @@
 # Changelog
 
+- __3.5.0__
+  - Update to native iOS SDK 3.8.0
+  - (Android) Update Android Gradle plugin to version 8.1.2
+  - (Android) Update targetSdkVersion to 34 (Android 14)
+  - (Android) Refactor of the package
+  - (Android) Add namespace in AndroidManifest to avoid issues with older RN versions
+  - (Android) Remove Huawei documentation
+  - (Android) Properly fallback to default selligent.json when flavor file not found
+  
 - __3.4.1__
   - Update to native iOS SDK 3.7.0 and Android SDK 4.4.0
   - Compatibility checks with Expo SDK 49, ReactNative 0.72.4 and ReactNative new architecture
   - (Android) Update minimum Android Gradle Plugin version to 7.0.0
   - (Android) Fix BuildConfig problem with latest Android Gradle Plugin versions
+  - (Android) Update minimum Java JDK version to 17
 
 - __3.3.2__
   - (Android) Fix bug where the native Android SDK would not start correctly if the `selligent.json` would not contain the `inAppMessageRefreshType` property

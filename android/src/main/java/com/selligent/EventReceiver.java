@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter;
+import com.selligent.rnmobilesdk.BroadcastDataFactory;
 
 
 class EventReceiver extends BroadcastReceiver {

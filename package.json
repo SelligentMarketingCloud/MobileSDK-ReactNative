@@ -4,7 +4,7 @@
   },
   "name": "@selligent-marketing-cloud/selligent-react-native",
   "title": "Selligent React Native",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "description": "React Native wrapper for the Selligent Marketing Cloud Android and iOS SDKs",
   "main": "index.js",
   "repository": {
@@ -32,10 +32,11 @@
     "metro-react-native-babel-preset": "^0.76.4",
     "react": "18.0.0",
     "react-native": "^0.69.10",
-    "ts-jest": "^29.1.0"
+    "ts-jest": "^29.1.0",
+    "jest-junit": "^16.0.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage --reporters=jest-junit"
   },
   "files": [
     "/RNSelligentMapper.podspec",
@@ -43,8 +44,10 @@
     "/*.ts",
     "/ios/*.h",
     "/ios/*.m",
+    "/android/libs",
     "/android/src/main",
     "/android/build.gradle",
+    "/android/settings.gradle",
     "/documentation/README.md"
   ]
 }

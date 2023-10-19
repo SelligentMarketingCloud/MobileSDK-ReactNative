@@ -11,7 +11,7 @@ This module supports the following SDK and tools:
 | SDK                                                                            | Version |
 | ------------------------------------------------------------------------------ | ------- |
 | [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.4.0   |
-| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.7.0   |
+| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.8.0   |
 | ReactNative                                                                    | 0.72.4  |
 | Expo SDK                                                                       | 49      |
 
@@ -42,45 +42,6 @@ This module supports the following SDK and tools:
 ### Android Specific Installation
 
 > **IMPORTANT:** Since version 2.6.0 of this module we require your app to use the Android Gradle Plugin version 7.0.0 or higher in order to build on Android.
-
-> ### **Attention for Huawei developers!**
->
-> In order to use this module on Huawei devices (without Goggle Play services), you should add the following dependencies in the `build.gradle` files of the Android project in your React Native project:
->
-> In your Android project's root `build.gradle` file:
->
-> ```gradle
->
-> buildscript {
->  repositories {
->   maven { url 'https://developer.huawei.com/repo/' }
->  }
->  dependencies {
->   classpath 'com.huawei.agconnect:agcp:1.6.0.300'
->  }
-> }
->
-> allProjects: {
->   repositories: {
->     maven { url 'https://developer.huawei.com/repo/' }
->   }
-> }
->
-> ```
->
-> In your app module's `build.gradle` file:
->
-> ```gradle
->
-> apply plugin: 'com.huawei.agconnect'
->
-> dependencies {
->   api 'com.huawei.hms:base:6.2.0.300'
->   api 'com.huawei.hms:push:6.1.0.300'
->   api 'com.huawei.hms:maps:6.2.0.301'
-> }
->
-> ```
 
 <details>
 <summary>Without autolinking (RN 0.59 and below)</summary>
@@ -213,13 +174,15 @@ This module supports the following SDK and tools:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
-3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.7.0"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
+3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.8.0"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
 
-4. Execute `pod install` in the `/ios` folder
+4. Add the RNSelligentMapper pod in your Podfile: `pod 'RNSelligentMapper', :path => '../node_modules/@selligent-marketing-cloud/selligent-react-native/RNSelligentMapper.podspec'`.
 
-5. From now on, open the `.xcworkspace` file to make changes in Xcode
+5. Execute `pod install` in the `/ios` folder
 
-6. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.mm`
+6. From now on, open the `.xcworkspace` file to make changes in Xcode
+
+7. Bootstrap the SDK in the `application:didFinishLaunchingWithOptions:` of the `AppDelegate.mm`
 
     ```objective-c
     @import RNSelligentMobileSDK;

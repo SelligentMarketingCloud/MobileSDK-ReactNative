@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0'
+        classpath 'com.android.tools.build:gradle:8.1.2'
     }
 }
 
@@ -16,15 +16,21 @@ apply plugin: 'com.android.library'
 
 android {
     namespace 'com.selligent'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
     }
 
     buildFeatures {
         buildConfig true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
     }
 }
 
@@ -37,7 +43,7 @@ androidComponents {
                 variant.buildConfigFields.put("SELLIGENT_SETTINGS", new BuildConfigField("String", "\"" + selligentSettings + "\"", "Selligent settings"))
             }
             catch (Exception ignored) {
-                throw new Exception("Selligent requires Android Gradle plugin version 7.0.0 or higher.")
+                throw new Exception("Selligent requires Android Gradle plugin version 8.1.0 or higher.")
             }
         }
     })
@@ -65,32 +71,37 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
+    implementation files("libs/RNSelligentMobileSDK.aar")
 }
 
 def loadSelligentSettings(variant) {
     def currentFlavor = getCurrentFlavor()
-    def defaultSelligentFileName = "selligent.json"
-    File defaultFile = new File("$project.rootDir/../$defaultSelligentFileName")
-
-    if (currentFlavor != "") {
-        defaultFile = new File("$project.rootDir/../$currentFlavor/$defaultSelligentFileName")
-    }
-
-    def variantSelligentFileName = "selligent.${variant.getName()}.json"
-    File variantFile = new File("$project.rootDir/../$variantSelligentFileName")
-
+    def defaultFileName = "selligent.json"
+    def variantFileName = "selligent.${variant.getName()}.json"
     def resultingSettings = null
 
+    File variantFile = new File("$project.rootDir/../$variantFileName")
+    File defaultFile = new File("$project.rootDir/../$defaultFileName")
+    File flavorFile = new File("$project.rootDir/../$currentFlavor/$defaultFileName")
+
     if (variantFile.exists()) {
-        println("Reading Selligent properties for variant ${variant.getName()} using $variantSelligentFileName")
+        println("Reading Selligent properties for variant ${variant.getName()} from $variantFile.path")
         resultingSettings = ""
 
         variantFile.eachLine { String line ->
             resultingSettings += line.replace("\"", "\\\"").replaceAll("\\s", "")
         }
     }
+    else if (currentFlavor != "" && flavorFile.exists()) {
+        println("Reading Selligent properties for flavor $currentFlavor using $flavorFile.path")
+        resultingSettings = ""
+
+        flavorFile.eachLine { String line ->
+            resultingSettings += line.replace("\"", "\\\"").replaceAll("\\s", "")
+        }
+    }
     else if (defaultFile.exists()) {
-        println("Reading Selligent properties from default ${defaultFile.name} (no variant specific $variantSelligentFileName was found)")
+        println("Reading default Selligent properties from ${defaultFile.path} (no variant specific nor flavor $defaultFileName were found)")
         resultingSettings = ""
 
         defaultFile.eachLine { String line ->
