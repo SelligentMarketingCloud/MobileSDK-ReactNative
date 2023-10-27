@@ -1,5 +1,9 @@
 # Changelog
 
+- __3.5.1__
+  - Update to native iOS SDK 3.8.1
+  - `email` property is no longer mandatory for `Selligent.sendEvent`
+
 - __3.5.0__
   - Update to native iOS SDK 3.8.0
   - (Android) Update Android Gradle plugin to version 8.1.2
@@ -73,7 +77,7 @@
   - Change development dependency version of `react-native` to `^0.70.6`
 
 - __2.10.0__
-  - Add section on application lifecycle management split between `AppDelegate` and `SceneDelegate` with regards to Selligent push notification handling on iOS 15+ in README
+  - Add section on application lifecycle management split between `AppDelegate` and `SceneDelegate` with regards to Marigold Engage push notification handling on iOS 15+ in README
   - Add a couple of markdown code language identifiers for syntax highlightinh in README
   - Add disclaimer concerning this module's incompatibility with React Native's new architecture in README
   - Add disclaimer plot project's minimum version upgrade to `3.5.0` for `iOS` in README

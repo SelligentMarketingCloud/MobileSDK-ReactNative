@@ -86,7 +86,7 @@ export default {
 	},
 
 	/**
-	 * Tells the Selligent SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature
+	 * Tells the Marigold Engage SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature
 	 */
 	executePushAction: function () {
 		RNSelligent.executePushAction()

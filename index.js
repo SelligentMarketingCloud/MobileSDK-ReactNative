@@ -5,7 +5,7 @@ import SelligentHelpers from './helpers'
 const { RNSelligent } = NativeModules
 export const RNSEventEmitter = new NativeEventEmitter(RNSelligent)
 
-// Check if Native version of Selligent found
+// Check if Native version of Marigold Engage found
 SelligentHelpers.isNativeSelligentFound(RNSelligent)
 
 // to export the android methods without syntax sugar and/or javascript manipulation, use this line:
@@ -23,12 +23,12 @@ if (Platform.OS === 'android') {
 // or export with syntax sugar and/or javascript manipulation:
 export default Object.assign(
 	{
-		// Check if the Selligent Module is loaded
+		// Check if the Marigold Engage Module is loaded
 		_selligentLoaded: Boolean(RNSelligent),
 		// Basic SMManager
 
 		/**
-		 * Returns the version of the underlying Selligent native SDK.
+		 * Returns the version of the underlying Marigold Engage native SDK.
 		 * 
 		 * @param {function} successCallback Callback function on success.
 		 */
@@ -200,26 +200,15 @@ export default Object.assign(
 				return
 			}
 
-			// check which type is send
-			// When type is `CUSTOM`
-			if (event.type === SelligentConstants.EventType.CUSTOM) {
-				// check if required options are valid
-				if (!SelligentHelpers.hasRequiredParameterAndMatchesType(event, 'data', 'object')) {
-					errorCallback(SelligentHelpers.wrongArgumentError('Expected an object with the key "data".'))
-					return
-				}
-
-				// check if required options are valid
-				if (event.hasOwnProperty('email')) {
-					console.warn("Email prop is not used with \"custom\" event type and will be ignored.");
-				}
-			} 
-			else if (!SelligentHelpers.hasRequiredParameterAndMatchesType(event, 'email', 'string')) {
-				errorCallback(SelligentHelpers.wrongArgumentError('Expected an object with the key "email".'))
+			if (!SelligentHelpers.hasOptionalParameterAndMatchesType(event, 'data', 'object')) {
+				errorCallback(SelligentHelpers.createTypeErrorMessage('data', event.data, 'object'))
 				return
 			}
-
-			if (!SelligentHelpers.hasOptionalParameterAndMatchesType(event, 'shouldCache', 'boolean')) {
+			else if (!SelligentHelpers.hasOptionalParameterAndMatchesType(event, 'email', 'string')) {
+				errorCallback(SelligentHelpers.createTypeErrorMessage('email', event.email, 'string'))
+				return
+			}
+			else if (!SelligentHelpers.hasOptionalParameterAndMatchesType(event, 'shouldCache', 'boolean')) {
 				errorCallback(SelligentHelpers.createTypeErrorMessage('shouldCache', event.shouldCache, 'boolean'))
 				return
 			}

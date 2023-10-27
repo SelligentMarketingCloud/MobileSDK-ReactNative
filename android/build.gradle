@@ -85,7 +85,7 @@ def loadSelligentSettings(variant) {
     File flavorFile = new File("$project.rootDir/../$currentFlavor/$defaultFileName")
 
     if (variantFile.exists()) {
-        println("Reading Selligent properties for variant ${variant.getName()} from $variantFile.path")
+        println("Reading Marigold Engage properties for variant ${variant.getName()} from $variantFile.path")
         resultingSettings = ""
 
         variantFile.eachLine { String line ->
@@ -93,7 +93,7 @@ def loadSelligentSettings(variant) {
         }
     }
     else if (currentFlavor != "" && flavorFile.exists()) {
-        println("Reading Selligent properties for flavor $currentFlavor using $flavorFile.path")
+        println("Reading Marigold Engage properties for flavor $currentFlavor using $flavorFile.path")
         resultingSettings = ""
 
         flavorFile.eachLine { String line ->
@@ -101,7 +101,7 @@ def loadSelligentSettings(variant) {
         }
     }
     else if (defaultFile.exists()) {
-        println("Reading default Selligent properties from ${defaultFile.path} (no variant specific nor flavor $defaultFileName were found)")
+        println("Reading default Marigold Engage properties from ${defaultFile.path} (no variant specific nor flavor $defaultFileName were found)")
         resultingSettings = ""
 
         defaultFile.eachLine { String line ->

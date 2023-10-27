@@ -1,8 +1,8 @@
-# SelligentMobileSDK-ReactNative (selligent-react-native)
+# Marigold Engage-ReactNative (selligent-react-native)
 
-This module provides an API for the usage of the Selligent Mobile SDKs in React Native.
+This module provides an API for the usage of the Marigold Engage Mobile SDKs in React Native.
 
-## SelligentMobileSDK-ReactNative Integration
+## Marigold Engage-ReactNative Integration
 
 This module supports the following SDK and tools:
 
@@ -11,7 +11,7 @@ This module supports the following SDK and tools:
 | SDK                                                                            | Version |
 | ------------------------------------------------------------------------------ | ------- |
 | [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.4.0   |
-| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.8.0   |
+| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.8.1   |
 | ReactNative                                                                    | 0.72.4  |
 | Expo SDK                                                                       | 49      |
 
@@ -174,7 +174,7 @@ This module supports the following SDK and tools:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
-3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.8.0"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
+3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.8.1"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
 
 4. Add the RNSelligentMapper pod in your Podfile: `pod 'RNSelligentMapper', :path => '../node_modules/@selligent-marketing-cloud/selligent-react-native/RNSelligentMapper.podspec'`.
 
@@ -187,7 +187,7 @@ This module supports the following SDK and tools:
     ```objective-c
     @import RNSelligentMobileSDK;
     
-    // You can alternatively specify a different file name (without the extension) from where to load the Selligent configs (defaults to 'selligent')
+    // You can alternatively specify a different file name (without the extension) from where to load the Marigold Engage configs (defaults to 'selligent')
     // if (!launchOptions) {
     //    launchOptions = [NSMutableDictionary new];
     // }

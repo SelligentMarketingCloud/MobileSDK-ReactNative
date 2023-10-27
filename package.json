@@ -1,11 +1,11 @@
 {
   "author": {
-    "name": "SelligentMarketingCloud <mobile@selligent.com>"
+    "name": "Marigold Engage <mobile@selligent.com>"
   },
   "name": "@selligent-marketing-cloud/selligent-react-native",
-  "title": "Selligent React Native",
-  "version": "3.5.0",
-  "description": "React Native wrapper for the Selligent Marketing Cloud Android and iOS SDKs",
+  "title": "Marigold Engage React Native",
+  "version": "3.5.1",
+  "description": "React Native wrapper for the Marigold Engage Android and iOS SDKs",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -36,7 +36,8 @@
     "jest-junit": "^16.0.0"
   },
   "scripts": {
-    "test": "jest --coverage --reporters=jest-junit"
+    "test": "jest --coverage --reporters=jest-junit",
+    "local-test": "jest --coverage"
   },
   "files": [
     "/RNSelligentMapper.podspec",
