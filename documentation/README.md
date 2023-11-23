@@ -66,6 +66,7 @@ The following properties can be used in the `selligent.json` to further configur
 | url                                         | string | The Marigold Engage webservice url to be used to integrate with your Marigold Engage platform |
 | clientId                                    | string | The Marigold Engage client id to be used to integrate with your Marigold Engage platform |
 | privateKey                                  | string | The Marigold Engage private key to be used to integrate with your Marigold Engage platform |
+| customInAppUi                               | boolean| When this is enabled and a "push + inapp" notification is clicked, the SDK will NOT display the inApp message and instead a `SelligentConstants.BroadcastEventType.DISPLAYING_IN_APP_MESSAGE` event will be sent |
 | delayedPushAction                           | boolean| (iOS Only) Optin for a specific push action handling (wait for React UI to be ready) when coming from a push message and having the app killed |
 | interceptSelligentUniversalLinks            | boolean| (iOS Only) Optin to customly handle the execution of universal links coming from a Push/IAM [more information](#universal-linking---ios) |
 | clearCacheIntervalValue                     | [enum](#clearcacheintervalvalue) | How much time the SDK will keep things in cache |  
@@ -482,7 +483,7 @@ The `data` property is an object itself containing more information specific to 
 
     | Property | Type   | Description        |
     | -------- | ------ | ------------------ |
-    | id       | string | Internal id of the message    |
+    | id       | string | Internal id of the message |
     | title    | string | Title of the message |
 
 ```javascript
@@ -512,7 +513,7 @@ The response of the success callback is an array of objects which contain the in
 | -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | id             | string                                                                          | Internal id of the IAM                                 |
 | title          | string                                                                          | Title of the IAM                               |
-| body           | string                                                                          | Body of the IAM                          |
+| body           | string                                                                          | Body of the IAM. For message of type `ALERT` it will be the text corresponding to the body of the Alert, for type `HTML` it will be the html code, for type `URL`, `IMAGE` and `PASSBOOK` it will be an URL.                          |
 | type           | [enum](#inappmessagetype) | Type of the IAM                                  |
 | creationDate   | number                                                                          | Creation date of the IAM in unix time            |
 | expirationDate | number                                                                          | Expiration date of the IAM in unix time         |
@@ -528,6 +529,36 @@ The `buttons` property is an array of button-objects which contain the informati
 | label    | string | Label of the button of the in app message  | Both         |
 | value    | string | Value of the button of the in app message  | Both         |
 | type     | number | Type of the button of the in app message   | Both         |
+
+- When the IAM is linked to a push notification, you can set `customInAppUi` to `true` in `selligent.json` and subscribe to `SelligentConstants.BroadcastEventType.DISPLAYING_IN_APP_MESSAGE` events through the `Selligent.subscribeToEvents`, to know when messages are about to be displayed.
+You will also need to set `addInAppMessageFromPushToInAppMessageList` to `true` in `selligent.json` to be able to retrieve the full object calling `Selligent.getInAppMessages` and do not forget to use the [IAM Helper methods](#iam-helper-methods) to properly track Open and Click interactions.
+For Android, to avoid the SDK directly displaying the IAM if the App is in foreground, do also set `remoteMessageDisplayType` to `22` (NOTIFICATION) in `selligent.json`.
+The response of the success callback is an object which contains information on the type of broadcast event and the data attached to it.
+
+| Property           | Type                                                    | Description                                                       |
+| ------------------ | ------------------------------------------------------- | ----------------------------------------------------------------- |
+| broadcastEventType | [enum](#broadcasteventtype)                             | The type of broadcast event                                       |
+| data               | object                                                  | Contains more information specific to the type of broadcast event |
+
+The `data` property is an object itself containing more information specific to the type of the broadcast event:
+
+- DISPLAYING_IN_APP_MESSAGE
+
+    | Property | Type   | Description        |
+    | -------- | ------ | ------------------ |
+    | id       | string | Internal id of the message |
+    | title    | string | Title of the message |
+
+```javascript
+Selligent.subscribeToEvents(
+    () => {}, 
+    () => {},
+    (response) => {
+      if (response?.broadcastEventType === SelligentConstants.BroadcastEventType.DISPLAYING_IN_APP_MESSAGE) {
+      }
+    }
+)
+```
 
 To display any of these messages, you can call `Selligent.displayMessage`:
 
@@ -596,7 +627,7 @@ In the other hand, you can also use the native methods `RNSelligent/willPresentN
 
 ### IAM Helper methods
 
-If you decide to display the AIM on your own (without `Selligent.displayMessage` and `Selligent.displayNotification`), listening for new messages with the `Selligent.subscribeToEvents` and/or getting the full list with `Selligent.getInAppMessages`. You will be able to build your own layout with the object provided from the mentioned functions and then you can use the helper methods described here to still push KPI statistics to the Marigold Engage platform:
+If you decide to display the IAM on your own (without `Selligent.displayMessage` and `Selligent.displayNotification`), listening for new messages with the `Selligent.subscribeToEvents` and/or getting the full list with `Selligent.getInAppMessages`. You will be able to build your own layout with the object provided from the mentioned functions and then you can use the helper methods described here to still push KPI statistics to the Marigold Engage platform:
 
 - setInAppMessageAsSeen: sets an IAM as seen and sends the corresponding `Opened` event to the Marigold Engage platform
 
@@ -905,3 +936,4 @@ Defines the type of a broadcast event.
 | RECEIVED_REMOTE_NOTIFICATION     | string | ReceivedRemoteNotification | A remote notification has been received               |
 | iOS.UNIVERSAL_LINK_EXECUTED      | string | UniversalLinkExecuted      | An universal link has been executed                   |
 | TRIGGERED_CUSTOM_EVENT           | string | TriggeredCustomEvent       | A custom event has been triggered                     |
+| DISPLAYING_IN_APP_MESSAGE        | string | DisplayingInAppMessage     | An IAM is about to be displayed (when `customInAppUi` is set to `true` in `selligent.json`) |

@@ -148,7 +148,8 @@ RCT_EXPORT_METHOD(subscribeToEvents:(NSArray<NSString *> *)events) {
         @"ReceivedRemoteNotification",
         @"ReceivedDeviceId",
         @"UniversalLinkExecuted",
-        @"TriggeredCustomEvent"
+        @"TriggeredCustomEvent",
+        @"DisplayingInAppMessage"
      ];
 }
 

@@ -10,47 +10,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		cBWX3JL6zI4txL5dbTay74+jV3I=
+		j+O2Bf70a1VpiFfNhtjESE1vHAc=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		g3v8XX701lTHFCCruKPyauR20DY=
+		0Q7lV/+E7qsmAerlbenSTCOXAHI=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		zxS1HRPuBDDVjGlV7yu0gEUbKBQ=
+		aRjO8ZvkYJ0O11O15BFqaMQaS5s=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		wlNdc24Wl792KfBPk6yN6OWG8L0=
+		SNH4N3g1RjZXNGWDie7hsOhvT40=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		zxS1HRPuBDDVjGlV7yu0gEUbKBQ=
+		aRjO8ZvkYJ0O11O15BFqaMQaS5s=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		RfIPlJl81jag2G9ikUz8SIXddKg=
+		QL+70Qym0CKnGTl+EirhWB0AZqc=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		g3v8XX701lTHFCCruKPyauR20DY=
+		0Q7lV/+E7qsmAerlbenSTCOXAHI=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		3G+ZYQCJLq+hNHrNIyTqksPiGMA=
+		maUMteMCjaDl9abrYmiO8/rqIPc=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		xYEhFf9K2ymFLMji4ijtcKfv2aw=
+		tjeEQBMyt+hVTQEY5MtrdZDNek4=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		3G+ZYQCJLq+hNHrNIyTqksPiGMA=
+		maUMteMCjaDl9abrYmiO8/rqIPc=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		KEja2jfyG9jxh+DsOIF9xqZsQoM=
+		J9NEWMagiW0Q/xnMXMAaT6IbOhM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -74,70 +74,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rh4M3R/kACgO2Zi9csjEiLkWQNkw0GS8MPt+mPuQANA=
+			d4MZXn9toKmrtPbRq/5WV9rTuw/c1zKG/nrcORh2Pt8=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vCNwJKBqnYguXBMQq23FoiwLKQfD5qOdvDTpOlU4hMM=
+			KyONxkwolGZUowgqNY7rp+MR667Y+vqlTOLP8nadftg=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			m9czQDkeocO0WUsbe+jb1Mx0WrzTn6HoluNM8WPLPy4=
+			XDJgkhb+MIM3VidgnlorR526pe5hzkT4P0OxoXLGPHE=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vCNwJKBqnYguXBMQq23FoiwLKQfD5qOdvDTpOlU4hMM=
+			KyONxkwolGZUowgqNY7rp+MR667Y+vqlTOLP8nadftg=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ixsfr52RZA2m/THgfhnPdns9GcbSGlgBGEnb3UczR6w=
+			C75QWUc8yzv1z338h7qtlYihbaZqEh2dRnLuxdkO4ng=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rh4M3R/kACgO2Zi9csjEiLkWQNkw0GS8MPt+mPuQANA=
+			d4MZXn9toKmrtPbRq/5WV9rTuw/c1zKG/nrcORh2Pt8=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p7X5jGp89p/zOE5dcJh9A9yw3Tn0J05itKlhLHpapH0=
+			9aSwatqSBSdyAelYY8ZXLv2z0dg4VomGZ/TQBVdM9xI=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YtsvcZKthr6ZZWop/9F12Po8EGhOJIGNdxHwf20R67Y=
+			O5OwkQpH3Jv20OxhYjq2YzvX+FyG8VAbTPWwKeCIG/8=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p7X5jGp89p/zOE5dcJh9A9yw3Tn0J05itKlhLHpapH0=
+			9aSwatqSBSdyAelYY8ZXLv2z0dg4VomGZ/TQBVdM9xI=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2BDOc8HveybpdT4IXZETo+56hlUFRAa+kzj9mOutX9U=
+			rZye8yfhrJsdmlMGmrbjx17/oRkbmvgwMP0C0Ipb8CU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

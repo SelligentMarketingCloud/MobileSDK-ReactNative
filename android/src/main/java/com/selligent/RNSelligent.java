@@ -31,6 +31,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.selligent.rnmobilesdk.BroadcastEventType;
+import com.selligent.rnmobilesdk.ButtonAction;
 import com.selligent.rnmobilesdk.ButtonBroadcastEventDataParser;
 import com.selligent.rnmobilesdk.DeviceIdBroadcastEventDataParser;
 import com.selligent.rnmobilesdk.Event;
@@ -64,6 +65,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     EventReceiver eventReceiver;
     SMForegroundGcmBroadcastReceiver receiver;
     private static SMInAppRefreshType inAppMessageRefreshType;
+    private static boolean inAppMessageCustomUi;
 
     public static final String REACT_CLASS = "SelligentReactNative"; // for logging purposes
 
@@ -108,9 +110,10 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
             final Settings settings = Settings.fromHashMap(settingsHashMap);
             final SMSettings smSettings = SMSettingsFactory.getSMSettings(settings);
             final String notificationActivityName = settings.getActivityName();
-
+            
             SMManager.NOTIFICATION_ACTIVITY = getActivityClass(notificationActivityName);
             inAppMessageRefreshType = settings.getInAppMessageRefreshType().getSmInAppRefreshType();
+            inAppMessageCustomUi = settings.getCustomInAppUi();
 
             final SMManager smManager = getSMManager();
             SMManager.DEBUG = BuildConfig.BUILD_TYPE.equals("debug") || settings.getEnableAndroidLogging();
@@ -225,7 +228,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
                         buttonMap.putString("id", button.id);
                         buttonMap.putString("value", button.value);
                         buttonMap.putString("label", button.label);
-                        buttonMap.putInt("type", button.type);
+                        buttonMap.putInt("type", ButtonAction.valueOf(button.action).getValue());
 
                         buttonsArray.pushMap(buttonMap);
                     }
@@ -605,9 +608,9 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
             {
                 receiver = new SMForegroundGcmBroadcastReceiver(currentActivity);
             }
-            currentActivity.registerReceiver(receiver, receiver.getIntentFilter());
 
-            smManager.checkAndDisplayMessage(currentActivity.getIntent(), currentActivity);
+            currentActivity.registerReceiver(receiver, receiver.getIntentFilter());
+            this.DisplayInAppMessage(currentActivity.getIntent(), currentActivity);
         }
     }
 
@@ -629,10 +632,26 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
         if (currentActivity != null) {
             currentActivity.setIntent(intent);
-            smManager.checkAndDisplayMessage(intent, currentActivity);
+            this.DisplayInAppMessage(intent, currentActivity);
         }
     }
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) { }
+    
+    private void DisplayInAppMessage(Intent intent, Activity currentActivity) {
+        smManager.checkAndDisplayMessage(intent, currentActivity, message -> {
+            if (!inAppMessageCustomUi) {
+                return true;
+            }
+
+            DeviceEventManagerModule.RCTDeviceEventEmitter rctDeviceEventEmitter = reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class);
+            InAppMessageBroadcastEventDataParser inAppDataParser = new InAppMessageBroadcastEventDataParser();
+            String eventName = BroadcastEventType.DisplayingInAppMessage.getBroadcastEventType();
+            WritableMap data = inAppDataParser.wrap(message);
+            rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
+
+            return false;
+        });
+    }
 }

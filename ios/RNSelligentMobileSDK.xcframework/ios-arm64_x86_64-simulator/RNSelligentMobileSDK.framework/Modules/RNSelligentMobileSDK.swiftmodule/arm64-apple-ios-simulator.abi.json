@@ -103,6 +103,16 @@
       },
       {
         "kind": "Import",
+        "name": "SelligentMobileSDK",
+        "printedName": "SelligentMobileSDK",
+        "declKind": "Import",
+        "moduleName": "RNSelligentMobileSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -2598,28 +2608,28 @@
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
       "kind": "BooleanLiteral",
-      "offset": 393,
+      "offset": 465,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
       "kind": "BooleanLiteral",
-      "offset": 434,
+      "offset": 506,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
       "kind": "BooleanLiteral",
-      "offset": 654,
+      "offset": 726,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
       "kind": "Dictionary",
-      "offset": 1113,
+      "offset": 1185,
       "length": 3,
       "value": "[]"
     },

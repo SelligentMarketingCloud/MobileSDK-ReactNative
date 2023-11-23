@@ -174,7 +174,9 @@ const SelligentConstants = {
 		/** Received an universal link execution */
 		UNIVERSAL_LINK_EXECUTED: "UniversalLinkExecuted",
 		/** A custom event has been triggered */
-		TRIGGERED_CUSTOM_EVENT: "TriggeredCustomEvent"
+		TRIGGERED_CUSTOM_EVENT: "TriggeredCustomEvent",
+		/** An IAM is about to be displayed (when `customInAppUi` is set to `true` in `selligent.json`) */
+		DISPLAYING_IN_APP_MESSAGE: "DisplayingInAppMessage"
 	},
 
 };

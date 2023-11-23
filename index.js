@@ -306,6 +306,7 @@ export default Object.assign(
 			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_DEVICE_ID, eventCallback);
 			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.RECEIVED_REMOTE_NOTIFICATION, eventCallback);
 			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.TRIGGERED_CUSTOM_EVENT, eventCallback);
+			RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.DISPLAYING_IN_APP_MESSAGE, eventCallback);
 
 			if (Platform.OS === "ios") {
 				RNSEventEmitter.addListener(SelligentConstants.BroadcastEventType.UNIVERSAL_LINK_EXECUTED, eventCallback);

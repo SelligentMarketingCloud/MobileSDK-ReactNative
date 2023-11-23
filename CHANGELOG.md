@@ -1,5 +1,10 @@
 # Changelog
 
+- __3.6.0__
+  - Update to native Android SDK 4.4.1
+  - Fix `buttons/type` property value from InApp Messages returned when using `Selligent.getInAppMessages`
+  - Add option to intercept and customly display InApp Messages linked to a push notification via `customInAppUi` boolean setting in `selligent.json` + listening to `SelligentConstants.BroadcastEventType.DISPLAYING_IN_APP_MESSAGE` event. Do note that `addInAppMessageFromPushToInAppMessageList` setting in `selligent.json` must also be enabled to properly work with `Selligent.getInAppMessages`, `Selligent.setInAppMessageAsSeen`, `Selligent.setInAppMessageAsUnseen`, `Selligent.setInAppMessageAsDeleted` and `Selligent.executeButtonAction`. For Android, to avoid the SDK directly displaying the IAM if the App is in foreground, do also set `remoteMessageDisplayType` to `22` (NOTIFICATION) in `selligent.json`.
+
 - __3.5.1__
   - Update to native iOS SDK 3.8.1
   - `email` property is no longer mandatory for `Selligent.sendEvent`

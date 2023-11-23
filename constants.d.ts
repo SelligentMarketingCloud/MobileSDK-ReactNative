@@ -74,4 +74,5 @@ export namespace BroadcastEventType {
   const RECEIVED_REMOTE_NOTIFICATION = "ReceivedRemoteNotification";
   const UNIVERSAL_LINK_EXECUTED = "UniversalLinkExecuted";
   const TRIGGERED_CUSTOM_EVENT = "TriggeredCustomEvent";
+  const DISPLAYING_IN_APP_MESSAGE = "DisplayingInAppMessage";
 }
