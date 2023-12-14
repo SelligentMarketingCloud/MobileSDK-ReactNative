@@ -1,18 +1,14 @@
-
 package com.selligent;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.res.Resources;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import android.graphics.Color;
-import android.util.Log;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Callback;
@@ -23,604 +19,259 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableType;
-import com.facebook.react.bridge.WritableArray;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.WritableNativeArray;
-import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.selligent.rnmobilesdk.BroadcastEventType;
-import com.selligent.rnmobilesdk.ButtonAction;
-import com.selligent.rnmobilesdk.ButtonBroadcastEventDataParser;
-import com.selligent.rnmobilesdk.DeviceIdBroadcastEventDataParser;
-import com.selligent.rnmobilesdk.Event;
-import com.selligent.rnmobilesdk.GCMTokenBroadcastEventDataParser;
-import com.selligent.rnmobilesdk.InAppMessageBroadcastEventDataParser;
-import com.selligent.rnmobilesdk.InAppMessageRefreshType;
-import com.selligent.rnmobilesdk.NotificationMessageBroadcastEventDataParser;
-import com.selligent.rnmobilesdk.RemoteMessageDisplayType;
-import com.selligent.rnmobilesdk.SMEventFactory;
-import com.selligent.rnmobilesdk.SMSettingsFactory;
-import com.selligent.rnmobilesdk.Settings;
-import com.selligent.sdk.SMCallback;
-import com.selligent.sdk.SMEvent;
+import com.selligent.rnmobilesdk.Manager;
 import com.selligent.sdk.SMForegroundGcmBroadcastReceiver;
-import com.selligent.sdk.SMInAppMessage;
-import com.selligent.sdk.SMInAppRefreshType;
-import com.selligent.sdk.SMManager;
-import com.selligent.sdk.SMNotificationButton;
-import com.selligent.sdk.SMNotificationMessage;
-import com.selligent.sdk.SMObserverManager;
-import com.selligent.sdk.SMRemoteMessageDisplayType;
-import com.selligent.sdk.SMSettings;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class RNSelligent extends ReactContextBaseJavaModule implements LifecycleEventListener, ActivityEventListener {
-
-    private static final String RN_SELLIGENT_NAME = "RNSelligent";
     private final ReactApplicationContext reactContext;
-    private final SMManager smManager;
+    private final Manager manager;
     EventReceiver eventReceiver;
     SMForegroundGcmBroadcastReceiver receiver;
-    private static SMInAppRefreshType inAppMessageRefreshType;
-    private static boolean inAppMessageCustomUi;
 
-    public static final String REACT_CLASS = "SelligentReactNative"; // for logging purposes
-
-    boolean areObserverStarted = false;
-
-    //region getter
-    static SMManager getSMManager()
-    {
-        return SMManager.getInstance();
+    static Manager getManager() {
+        return Manager.getInstance();
     }
 
-    static String getSelligentSettings()
-    {
+    static String getSelligentSettings() {
         return BuildConfig.SELLIGENT_SETTINGS;
     }
 
-    static Class<? extends Activity> getActivityClass(String notificationActivityName) throws Exception
-    {
-        return (Class<? extends Activity>) Class.forName(notificationActivityName);
-    }
-    //endregion
-
-
     public RNSelligent(ReactApplicationContext reactContext) {
         super(reactContext);
+
         this.reactContext = reactContext;
         reactContext.addLifecycleEventListener(this);
         reactContext.addActivityEventListener(this);
-        this.smManager = getSMManager();
+        this.manager = RNSelligent.getManager();
     }
 
+    @NonNull
     @Override
     public String getName() {
-        return RN_SELLIGENT_NAME;
+        return Manager.RN_SELLIGENT_NAME;
     }
 
     public static void configure(Application application) {
-        try {
-            final HashMap<String, Object> settingsHashMap = new Gson().fromJson(
-                    getSelligentSettings(), new TypeToken<HashMap<String, Object>>() {}.getType()
-            );
-            final Settings settings = Settings.fromHashMap(settingsHashMap);
-            final SMSettings smSettings = SMSettingsFactory.getSMSettings(settings);
-            final String notificationActivityName = settings.getActivityName();
-            
-            SMManager.NOTIFICATION_ACTIVITY = getActivityClass(notificationActivityName);
-            inAppMessageRefreshType = settings.getInAppMessageRefreshType().getSmInAppRefreshType();
-            inAppMessageCustomUi = settings.getCustomInAppUi();
-
-            final SMManager smManager = getSMManager();
-            SMManager.DEBUG = BuildConfig.BUILD_TYPE.equals("debug") || settings.getEnableAndroidLogging();
-            smManager.start(smSettings, application);
-
-            final Resources resources = application.getResources();
-
-            if (settings.getNotificationSmallIcon() != null && !settings.getNotificationSmallIcon().isEmpty()) {
-                final int smallIconResourceId = resources.getIdentifier(settings.getNotificationSmallIcon(), "drawable", application.getPackageName());
-                if(smallIconResourceId != 0) {
-                    smManager.setNotificationSmallIcon(smallIconResourceId);
-                }
-            }
-
-            if (settings.getNotificationLargeIcon() != null && !settings.getNotificationLargeIcon().isEmpty()) {
-                final int largeIconResourceId = resources.getIdentifier(settings.getNotificationLargeIcon(), "drawable", application.getPackageName());
-                if (largeIconResourceId != 0) {
-                    smManager.setNotificationLargeIcon(largeIconResourceId);
-                }
-            }
-
-            if (settings.getNotificationIconColor() != null && !settings.getNotificationIconColor().isEmpty()) {
-                try {
-                    final int color = Color.parseColor(settings.getNotificationIconColor());
-                    smManager.setNotificationIconColor(color);
-                } catch (IllegalArgumentException e) {
-                    Log.e(RN_SELLIGENT_NAME, "notificationIconColor must be a color hex string.");
-                }
-            }
-
-        } catch (Exception e) {
-            Log.e(RN_SELLIGENT_NAME, "SMManager start failed: an error occurred while setting the NotificationActivity", e);
-        }
+        RNSelligent.getManager().configure(application, RNSelligent.getSelligentSettings(), BuildConfig.BUILD_TYPE.equals("debug"));
     }
-
-    /* Our methods: */
 
     @ReactMethod
     public void getVersionLib(Callback successCallback) {
-        final String versionLib = SMManager.VERSION_LIB;
-        successCallback.invoke(versionLib);
+        successCallback.invoke(manager.getVersionLib());
     }
 
     @ReactMethod
     public void enableInAppMessages(ReadableMap enabled) {
-        final String enabledProperty = "enabled";
-        final ReadableType enabledType = enabled.getType(enabledProperty);
+        String enabledProperty = "enabled";
+        ReadableType enabledType = enabled.getType(enabledProperty);
 
         if (enabledType == ReadableType.Boolean) {
-            enableInAppMessages(enabled.getBoolean(enabledProperty));
-        } 
+            this.manager.enableInAppMessages(enabled.getBoolean(enabledProperty));
+        }
         else if (enabledType == ReadableType.Number) {
-            enableInAppMessages(enabled.getInt(enabledProperty));
+            this.manager.enableInAppMessages(enabled.getInt(enabledProperty));
         }
-    }
-
-    private void enableInAppMessages(boolean enable) {
-        if (enable) {
-            smManager.enableInAppMessages(inAppMessageRefreshType);
-        } else {
-            smManager.disableInAppMessages();
-        }
-    }
-
-    private void enableInAppMessages(Integer inAppMessageRefreshTypeIndex) {
-        final InAppMessageRefreshType refreshType = InAppMessageRefreshType.valueOf(inAppMessageRefreshTypeIndex);
-        final SMInAppRefreshType smInAppRefreshType = refreshType.getSmInAppRefreshType();
-
-        smManager.enableInAppMessages(smInAppRefreshType);
     }
 
     @ReactMethod
     public void areInAppMessagesEnabled(Callback successCallback) {
-        final Boolean areInAppMessagesEnabled = smManager.areInAppMessagesEnabled();
-        successCallback.invoke(areInAppMessagesEnabled);
+        successCallback.invoke(this.manager.areInAppMessagesEnabled());
     }
 
     @ReactMethod
     public void displayMessage(String messageId) {
-        final Activity currentActivity = getCurrentActivity();
-
-        if (currentActivity != null) {
-            smManager.displayInAppMessage(messageId, currentActivity);
-        }
+        this.manager.displayMessage(messageId, this.getCurrentActivity());
     }
 
     @ReactMethod
-    public void getInAppMessages(final Callback successCallback) {
-        smManager.getInAppMessages(inAppMessages -> {
-            WritableArray resultingMessagesArray = new WritableNativeArray();
-
-            for (SMInAppMessage message : inAppMessages) {
-                WritableMap messageMap = new WritableNativeMap();
-
-                messageMap.putString("id", message.id);
-                messageMap.putString("title", message.title);
-                messageMap.putString("body", message.getBody());
-                messageMap.putDouble("creationDate", message.getCreationDate());
-                messageMap.putDouble("expirationDate", message.getExpirationDate());
-                messageMap.putDouble("receptionDate", message.getReceptionDate());
-                messageMap.putBoolean("hasBeenSeen", message.hasBeenSeen());
-                messageMap.putDouble("type", message.getType().getValue());
-
-                WritableArray buttonsArray = new WritableNativeArray();
-
-                SMNotificationButton[] buttons = message.getButtons();
-
-                if(buttons != null) {
-                    for(SMNotificationButton button : buttons) {
-                        WritableMap buttonMap = new WritableNativeMap();
-
-                        buttonMap.putString("id", button.id);
-                        buttonMap.putString("value", button.value);
-                        buttonMap.putString("label", button.label);
-                        buttonMap.putInt("type", ButtonAction.valueOf(button.action).getValue());
-
-                        buttonsArray.pushMap(buttonMap);
-                    }
-                }
-
-                messageMap.putArray("buttons", buttonsArray);
-
-                resultingMessagesArray.pushMap(messageMap);
-            }
-
-            successCallback.invoke(resultingMessagesArray);
-        });
+    public void getInAppMessages(Callback successCallback) {
+        this.manager.getInAppMessages(list ->
+            successCallback.invoke(RNHelpers.convertListToWritableArray(list))
+        );
     }
 
     @ReactMethod
-    public void setInAppMessageAsSeen(final String messageId, final Callback successCallback, final Callback errorCallback) {
-        smManager.getInAppMessages(inAppMessages ->
-        {
-            for(SMInAppMessage message : inAppMessages)
-            {
-                if(message.id.equals(messageId))
-                {
-                    smManager.setInAppMessageAsSeen(message);
-                    successCallback.invoke();
-                    return;
-                }
-            }
-            errorCallback.invoke(String.format("No message with id %s found", messageId));
-        });
+    public void setInAppMessageAsSeen(String messageId, Callback successCallback, Callback errorCallback) {
+        this.manager.setInAppMessageAsSeen(messageId, error ->
+            processErrorStringToCallback(error, successCallback, errorCallback)
+        );
     }
 
     @ReactMethod
-    public void setInAppMessageAsUnseen(final String messageId, final Callback successCallback, final Callback errorCallback)
-    {
-        smManager.getInAppMessages(inAppMessages ->
-        {
-            for(SMInAppMessage message : inAppMessages)
-            {
-                if(message.id.equals(messageId))
-                {
-                    smManager.setInAppMessageAsUnseen(message);
-                    successCallback.invoke();
-                    return;
-                }
-            }
-            errorCallback.invoke(String.format("No message with id %s found", messageId));
-        });
+    public void setInAppMessageAsUnseen(String messageId, Callback successCallback, Callback errorCallback) {
+        this.manager.setInAppMessageAsUnseen(messageId, error ->
+            processErrorStringToCallback(error, successCallback, errorCallback)
+        );
     }
 
     @ReactMethod
-    public void setInAppMessageAsDeleted(final String messageId, final Callback successCallback, final Callback errorCallback)
-    {
-        smManager.getInAppMessages(inAppMessages ->
-        {
-            for(SMInAppMessage message : inAppMessages)
-            {
-                if(message.id.equals(messageId))
-                {
-                    smManager.deleteInAppMessage(messageId);
-                    successCallback.invoke();
-                    return;
-                }
-            }
-            errorCallback.invoke(String.format("No message with id %s found", messageId));
-        });
+    public void setInAppMessageAsDeleted(String messageId, Callback successCallback, Callback errorCallback) {
+        this.manager.setInAppMessageAsDeleted(messageId, error ->
+            processErrorStringToCallback(error, successCallback, errorCallback)
+        );
     }
 
     @ReactMethod
-    public void executeButtonAction(final String buttonId, final String messageId, final Callback successCallback, final Callback errorCallback) {
-        smManager.getInAppMessages(inAppMessages -> {
-            for(SMInAppMessage message : inAppMessages) {
-                if(message.id.equals(messageId))
-                {
-                    SMNotificationButton[] buttons = message.getButtons();
-                    if (buttons != null)
-                    {
-                        for (SMNotificationButton button : message.getButtons())
-                        {
-                            if (button.id.equals(buttonId))
-                            {
-                                smManager.executeButtonAction(reactContext, button, message);
-                                successCallback.invoke();
-                                return;
-                            }
-                        }
-                    }
-                    errorCallback.invoke("buttonId does not exist in message.");
-                    return;
-                }
-            }
-            errorCallback.invoke(String.format("No message with id %s found", messageId));
-        });
+    public void executeButtonAction(String buttonId, String messageId, Callback successCallback, Callback errorCallback) {
+        this.manager.executeButtonAction(this.reactContext, buttonId, messageId, error ->
+            processErrorStringToCallback(error, successCallback, errorCallback)
+        );
     }
 
     @ReactMethod
     public void setDebug(Boolean enable) {
-        SMManager.DEBUG = enable;
+        Manager.setDebug(enable);
     }
 
     @ReactMethod
-    public void sendEvent(ReadableMap eventMap, final Callback successCallback, final Callback errorCallback) {
-        final Event event = Event.fromHashMap(eventMap.toHashMap());
-        final SMEvent smEvent = SMEventFactory.getSMEvent(event, new SMCallback() {
-            @Override
-            public void onSuccess(String message) {
-                successCallback.invoke(message);
-            }
-
-            @Override
-            public void onError(int responseCode, Exception e) {
-                errorCallback.invoke(responseCode);
-            }
-        });
-
-        smManager.sendSMEvent(smEvent);
+    public void sendEvent(ReadableMap eventMap, Callback successCallback, Callback errorCallback) {
+        this.manager.sendEvent(eventMap.toHashMap(), successCallback::invoke, errorCallback::invoke);
     }
 
     @ReactMethod
     public void getDeviceId(Callback successCallback) {
-        final String deviceId = smManager.getDeviceId();
-        successCallback.invoke(deviceId);
+        successCallback.invoke(this.manager.getDeviceId());
     }
 
     @ReactMethod
     public void enableNotifications(Boolean enable) {
-        if (Boolean.TRUE.equals(enable)) {
-            smManager.enableNotifications();
-        } else {
-            smManager.disableNotifications();
-        }
+        this.manager.enableNotifications(enable);
     }
 
     public static void enableNotifications() {
-        SMManager.getInstance().enableNotifications();
+        RNSelligent.getManager().enableNotifications(true);
     }
 
     @ReactMethod
+    @SuppressWarnings("unused")
     public void displayLastReceivedRemotePushNotification(String templateId) {
-        final Activity currentActivity = getCurrentActivity();
-
-        if (currentActivity != null) {
-            smManager.displayLastReceivedNotificationContent(currentActivity);
-        }
+        this.manager.displayLastReceivedRemotePushNotification(this.getCurrentActivity());
     }
 
     @ReactMethod
-    public void displayLastReceivedNotification()
-    {
-        smManager.displayLastReceivedNotification();
+    public void displayLastReceivedNotification() {
+        this.manager.displayLastReceivedNotification();
     }
 
     @ReactMethod
     public void getLastRemotePushNotification(Callback successCallback) {
-        final SMNotificationMessage notification = smManager.retrieveLastReceivedNotificationContent();
-
-        WritableMap resultingNotificationMap = new WritableNativeMap();
-        
-        if (notification != null) {
-            resultingNotificationMap.putString("id", notification.getId());
-            resultingNotificationMap.putString("title", notification.getNotificationTitle());
-        }
-
-        successCallback.invoke(resultingNotificationMap);
+        successCallback.invoke(
+            RNHelpers.convertMapToWritableMap(this.manager.getLastRemotePushNotification())
+        );
     }
 
     @ReactMethod
     public void setNotificationSmallIcon(String iconName) {
-        final int resourceId = processNotificationIcon(iconName);
-        smManager.setNotificationSmallIcon(resourceId);
+        this.manager.setNotificationSmallIcon(this.reactContext, iconName);
     }
 
     @ReactMethod
     public void setNotificationLargeIcon(String iconName) {
-        final int resourceId = processNotificationIcon(iconName);
-
-        smManager.setNotificationLargeIcon(resourceId);
-    }
-
-    private int processNotificationIcon(String iconName) {
-        final Resources resources = reactContext.getResources();
-        final int resourceId = resources.getIdentifier(iconName, "drawable", reactContext.getPackageName());
-
-        if (resourceId == 0) {
-            throw new IllegalArgumentException("Could not find a drawable with the name " + iconName);
-        }
-
-        return resourceId;
+        this.manager.setNotificationLargeIcon(this.reactContext, iconName);
     }
 
     @ReactMethod
-    public void setNotificationIconColor(final String colorString, final Callback successCallback, final Callback errorCallback) {
-        try {
-            final int color = Color.parseColor(colorString);
-            smManager.setNotificationIconColor(color);
-            successCallback.invoke();
-        } catch (IllegalArgumentException e) {
-            errorCallback.invoke("color must be a color hex string.");
-        }
+    public void setNotificationIconColor(String colorString, Callback successCallback, Callback errorCallback) {
+        processErrorStringToCallback(
+            this.manager.setNotificationIconColor(colorString),
+            successCallback,
+            errorCallback
+        );
     }
 
     @ReactMethod
-    public void setNotificationActivity(final String activityName, final Callback successCallback, final Callback errorCallback) {
-        try {
-            SMManager.NOTIFICATION_ACTIVITY = (Class<? extends Activity>) Class.forName(activityName);
-            successCallback.invoke();
-        } catch (ClassNotFoundException e) {
-            errorCallback.invoke(String.format("Activity %s not found.", activityName));
-        }
+    public void setNotificationActivity(String activityName, Callback successCallback, Callback errorCallback) {
+        processErrorStringToCallback(
+            Manager.setNotificationActivity(activityName),
+            successCallback,
+            errorCallback
+        );
     }
 
     @ReactMethod
     public void getGCMToken(Callback callback) {
-        final String gcmToken = smManager.getGCMToken();
-        callback.invoke(gcmToken);
+        callback.invoke(this.manager.getGCMToken());
     }
 
     @ReactMethod
     public void getRemoteMessagesDisplayType(Callback successCallback) {
-        final SMRemoteMessageDisplayType smRemoteMessageDisplayType = smManager.getRemoteMessagesDisplayType();
-        final RemoteMessageDisplayType remoteMessageDisplayType = RemoteMessageDisplayType.valueOf(smRemoteMessageDisplayType);
-        final Integer resultingRemoteMessageDisplayTypeIndex = remoteMessageDisplayType.getIndex();
-
-        successCallback.invoke(resultingRemoteMessageDisplayTypeIndex);
+        successCallback.invoke(this.manager.getRemoteMessagesDisplayType());
     }
 
     @ReactMethod
     public void areNotificationsEnabled(Callback successCallback) {
-        final Boolean areNotificationsEnabled = smManager.areNotificationEnabled();
-
-        successCallback.invoke(areNotificationsEnabled);
+        successCallback.invoke(this.manager.areNotificationsEnabled());
     }
 
     @ReactMethod
     public void subscribeToEvents(ReadableArray customEvents) {
-        final Activity currentActivity = getCurrentActivity();
+        Activity currentActivity = this.getCurrentActivity();
 
-        if (currentActivity != null)
-        {
-            if (currentActivity instanceof AppCompatActivity)
-            {
-                AppCompatActivity thisActivity = (AppCompatActivity)currentActivity;
-                DeviceEventManagerModule.RCTDeviceEventEmitter rctDeviceEventEmitter = reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class);
+        if (currentActivity == null) { return; }
 
-                thisActivity.runOnUiThread(() -> {
-                    if (!areObserverStarted)
-                    {
-                        Log.d(RN_SELLIGENT_NAME, "Instantiating the observers on the UI thread");
-                        SMObserverManager observerManager = smManager.getObserverManager();
+        if (currentActivity instanceof AppCompatActivity) {
+            AppCompatActivity activity = (AppCompatActivity)currentActivity;
 
-                        // Token received
-                        final Observer<String> tokenObserver = token -> {
-                            String eventName = BroadcastEventType.ReceivedGCMToken.getBroadcastEventType();
-                            GCMTokenBroadcastEventDataParser broadcastEventDataParser = new GCMTokenBroadcastEventDataParser();
-                            final WritableMap data = broadcastEventDataParser.wrap(token);
-                            rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
-                        };
-                        observerManager.observeToken(thisActivity, tokenObserver);
+            activity.runOnUiThread(() ->
+                this.manager.initializeObservers(activity, this::broadcastEvent)
+            );
 
-                        // Device id received
-                        final Observer<String> deviceIdObserver = deviceId -> {
-                            String eventName = BroadcastEventType.ReceivedDeviceId.getBroadcastEventType();
-                            DeviceIdBroadcastEventDataParser broadcastEventDataParser = new DeviceIdBroadcastEventDataParser();
-                            final WritableMap data = broadcastEventDataParser.wrap(deviceId);
-                            rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
-                        };
-                        observerManager.observeDeviceId(thisActivity, deviceIdObserver);
-
-                        // InApp messages received
-                        final Observer<SMInAppMessage[]> inAppMessageObserver = inAppMessages -> {
-                            if (inAppMessages != null)
-                            {
-                                String eventName = BroadcastEventType.ReceivedInAppMessage.getBroadcastEventType();
-                                InAppMessageBroadcastEventDataParser broadcastEventDataParser = new InAppMessageBroadcastEventDataParser();
-                                final WritableMap data = broadcastEventDataParser.wrap(inAppMessages);
-                                rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
-                            }
-                        };
-                        observerManager.observeInAppMessages(thisActivity, inAppMessageObserver);
-
-                        // Button clicked
-                        final Observer<SMNotificationButton> clickedButtonObserver = button -> {
-                            if (button != null)
-                            {
-                                String eventName = BroadcastEventType.ButtonClicked.getBroadcastEventType();
-                                ButtonBroadcastEventDataParser broadcastEventDataParser = new ButtonBroadcastEventDataParser();
-                                final WritableMap data = broadcastEventDataParser.wrap(button);
-                                rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
-                            }
-                        };
-                        observerManager.observeClickedButton(thisActivity, clickedButtonObserver);
-
-                        // Message dismissed
-                        final Observer<Void> dismissedMessageObserver = object -> {
-                            String eventName = BroadcastEventType.WillDismissNotification.getBroadcastEventType();
-                            rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, null));
-                        };
-                        observerManager.observeDismissedMessage(thisActivity, dismissedMessageObserver);
-
-                        // Message displayed
-                        final Observer<Void> displayedMessageObserver = object -> {
-                            String eventName = BroadcastEventType.WillDisplayNotification.getBroadcastEventType();
-                            rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, null));
-                        };
-                        observerManager.observeDisplayedMessage(thisActivity, displayedMessageObserver);
-
-                        // Push received
-                        final Observer<SMNotificationMessage> pushReceivedObserver = notificationMessage -> {
-                            if (notificationMessage != null)
-                            {
-                                String eventName = BroadcastEventType.ReceivedNotification.getBroadcastEventType();
-                                NotificationMessageBroadcastEventDataParser broadcastEventDataParser = new NotificationMessageBroadcastEventDataParser();
-                                final WritableMap data = broadcastEventDataParser.wrap(notificationMessage);
-                                rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
-                            }
-                        };
-                        observerManager.observePushReceived(thisActivity, pushReceivedObserver);
-
-                        // Custom events
-                        final Observer<String> customEventObserver = event -> rctDeviceEventEmitter.emit(BroadcastEventType.TriggeredCustomEvent.getBroadcastEventType(), getBroadcastData(event, null));
-                        observerManager.observeEvent(thisActivity, customEventObserver);
-
-                        areObserverStarted = true;
-                    }
-                    else
-                    {
-                        Log.d(RN_SELLIGENT_NAME, "Observers already instantiated");
-                    }
-                });
-            }
-            else
-            {
-                final LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(currentActivity);
-
-                if (eventReceiver == null) {
-                    eventReceiver = new EventReceiver(reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class));
-                } else {
-                    localBroadcastManager.unregisterReceiver(eventReceiver);
-                }
-
-                final IntentFilter filter = new IntentFilter();
-                filter.addAction(SMManager.BROADCAST_EVENT_RECEIVED_IN_APP_MESSAGE);
-                filter.addAction(SMManager.BROADCAST_EVENT_WILL_DISPLAY_NOTIFICATION);
-                filter.addAction(SMManager.BROADCAST_EVENT_WILL_DISMISS_NOTIFICATION);
-                filter.addAction(SMManager.BROADCAST_EVENT_BUTTON_CLICKED);
-                filter.addAction(SMManager.BROADCAST_EVENT_RECEIVED_GCM_TOKEN);
-
-                for (int i = 0; i < customEvents.size(); i++) {
-                    filter.addAction(customEvents.getString(i));
-                }
-
-                localBroadcastManager.registerReceiver(eventReceiver, filter);
-            }
+            return;
         }
-    }
 
-    WritableMap getBroadcastData(String eventName, WritableMap data)
-    {
-        final WritableMap broadcastData = new WritableNativeMap();
+        LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(currentActivity);
 
-        broadcastData.putString("broadcastEventType", eventName);
-        broadcastData.putMap("data", data);
+        if (this.eventReceiver == null) {
+            this.eventReceiver = new EventReceiver(
+                reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class
+            ));
+        }
+        else {
+            localBroadcastManager.unregisterReceiver(this.eventReceiver);
+        }
 
-        return broadcastData;
+        localBroadcastManager.registerReceiver(
+            this.eventReceiver,
+            Manager.eventsIntentFilter(customEvents.toArrayList())
+        );
     }
 
     @ReactMethod
     public void setFirebaseToken(String token) {
-        smManager.setFirebaseToken(token);
+        this.manager.setFirebaseToken(token);
     }
 
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     @Override
     public void onHostResume() {
-        final Activity currentActivity = getCurrentActivity();
+        Activity currentActivity = this.getCurrentActivity();
 
-        if (currentActivity != null) {
-            if (receiver == null)
-            {
-                receiver = new SMForegroundGcmBroadcastReceiver(currentActivity);
-            }
+        if (currentActivity == null) { return; }
 
-            currentActivity.registerReceiver(receiver, receiver.getIntentFilter());
-            this.DisplayInAppMessage(currentActivity.getIntent(), currentActivity);
+        if (this.receiver == null) {
+            this.receiver = new SMForegroundGcmBroadcastReceiver(currentActivity);
         }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            currentActivity.registerReceiver(this.receiver, this.receiver.getIntentFilter(), Context.RECEIVER_NOT_EXPORTED);
+        }
+        else {
+            currentActivity.registerReceiver(this.receiver, this.receiver.getIntentFilter());
+        }
+
+        this.manager.checkAndDisplayMessage(currentActivity.getIntent(), currentActivity, this::broadcastEvent);
     }
 
     @Override
     public void onHostPause() {
-        final Activity currentActivity = getCurrentActivity();
+        Activity currentActivity = this.getCurrentActivity();
 
-        if (currentActivity != null) {
-            currentActivity.unregisterReceiver(receiver);
-        }
+        if (currentActivity == null) { return; }
+
+        currentActivity.unregisterReceiver(this.receiver);
     }
 
     @Override
@@ -628,30 +279,30 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @Override
     public void onNewIntent(Intent intent) {
-        final Activity currentActivity = getCurrentActivity();
+        Activity currentActivity = this.getCurrentActivity();
 
-        if (currentActivity != null) {
-            currentActivity.setIntent(intent);
-            this.DisplayInAppMessage(intent, currentActivity);
-        }
+        if (currentActivity == null) { return; }
+
+        currentActivity.setIntent(intent);
+        this.manager.checkAndDisplayMessage(intent, currentActivity, this::broadcastEvent);
     }
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) { }
-    
-    private void DisplayInAppMessage(Intent intent, Activity currentActivity) {
-        smManager.checkAndDisplayMessage(intent, currentActivity, message -> {
-            if (!inAppMessageCustomUi) {
-                return true;
-            }
 
-            DeviceEventManagerModule.RCTDeviceEventEmitter rctDeviceEventEmitter = reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class);
-            InAppMessageBroadcastEventDataParser inAppDataParser = new InAppMessageBroadcastEventDataParser();
-            String eventName = BroadcastEventType.DisplayingInAppMessage.getBroadcastEventType();
-            WritableMap data = inAppDataParser.wrap(message);
-            rctDeviceEventEmitter.emit(eventName, getBroadcastData(eventName, data));
+    private void broadcastEvent(String eventName, Map<String, Object> data) {
+        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(
+            eventName,
+            RNHelpers.convertMapToWritableMap(data)
+        );
+    }
 
-            return false;
-        });
+    private void processErrorStringToCallback(String error, Callback successCallback, Callback errorCallback) {
+        if (error == null) {
+            successCallback.invoke();
+            return;
+        }
+
+        errorCallback.invoke(error);
     }
 }

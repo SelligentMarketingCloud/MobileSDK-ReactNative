@@ -1,5 +1,9 @@
 # Changelog
 
+- __3.7.0__
+  - (Android) Refactor of the package
+  - Documentation fixs
+
 - __3.6.0__
   - Update to native Android SDK 4.4.1
   - Fix `buttons/type` property value from InApp Messages returned when using `Selligent.getInAppMessages`

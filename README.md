@@ -186,6 +186,8 @@ This module supports the following SDK and tools:
 
     ```objective-c
     @import RNSelligentMobileSDK;
+    // OR
+    // #import <RNSelligentMobileSDK/RNSelligentMobileSDK-Swift.h>
     
     // You can alternatively specify a different file name (without the extension) from where to load the Marigold Engage configs (defaults to 'selligent')
     // if (!launchOptions) {
@@ -193,6 +195,7 @@ This module supports the following SDK and tools:
     // }
     // [launchOptions setValue:@"alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
 
+    // At the end of application:didFinishLaunchingWithOptions:
     [RNSelligent configureWithLaunchOptions:launchOptions];
     ```
 
@@ -214,6 +217,12 @@ This module supports the following SDK and tools:
     // OR
     // #import <RNSelligentMobileSDK/RNSelligentMobileSDK-Swift.h>
     
+    // You can alternatively specify a different file name (without the extension) from where to load the Marigold Engage configs (defaults to 'selligent')
+    // if (!launchOptions) {
+    //    launchOptions = [NSMutableDictionary new];
+    // }
+    // [launchOptions setValue:@"alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
+
     // At the end of application:didFinishLaunchingWithOptions:
     [RNSelligent configureWithLaunchOptions:launchOptions];
     ```

@@ -3,16 +3,12 @@ package com.selligent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 
-import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter;
 import com.selligent.rnmobilesdk.BroadcastDataFactory;
 
-
 class EventReceiver extends BroadcastReceiver {
-
-    private RCTDeviceEventEmitter rctDeviceEventEmitter;
+    private final RCTDeviceEventEmitter rctDeviceEventEmitter;
 
     public EventReceiver(RCTDeviceEventEmitter rctDeviceEventEmitter) {
         this.rctDeviceEventEmitter = rctDeviceEventEmitter;
@@ -20,13 +16,13 @@ class EventReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        final String smBroadcastEventType = intent.getAction();
-        if (TextUtils.isEmpty(smBroadcastEventType)) return;
+        String smBroadcastEventType = intent.getAction();
 
-        final WritableMap broadcastData = BroadcastDataFactory.getBroadcastData(smBroadcastEventType, intent);
-        final String eventName = broadcastData.getString("broadcastEventType");
+        if (smBroadcastEventType == null || smBroadcastEventType.isEmpty()) return;
 
-        rctDeviceEventEmitter.emit(eventName, broadcastData);
+        this.rctDeviceEventEmitter.emit(
+            smBroadcastEventType,
+            BroadcastDataFactory.getBroadcastData(smBroadcastEventType, intent)
+        );
     }
-
 }

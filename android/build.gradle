@@ -55,7 +55,6 @@ repositories {
         url "$projectDir/../node_modules/react-native/android"
     }
     google()
-    maven { url 'https://developer.huawei.com/repo/' }
 }
 
 dependencies {

@@ -38,7 +38,7 @@
 		</data>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/RNSelligentMobileSDK</key>
 		<data>
-		InlvIJ2/AIx4hoYKPvpcFFwCVKw=
+		HO4sE4nLBS95FHyg4aTMj+gRFc4=
 		</data>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/RNSelligentMobileSDK</key>
 		<data>
-		Xwu2e6sHke5+BiUXrez0TAxExmA=
+		IUAyyI605C4ZIF4qI9pBWNQBVAw=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Resources/Info.plist</key>
 		<data>
@@ -150,7 +150,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/RNSelligentMobileSDK</key>
 		<data>
-		FRbm9O5IJ1PFGD8VI7FbC3oWXsc=
+		NLt3vr408lJEinpoi9HZR/kEfbw=
 		</data>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -251,11 +251,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			InlvIJ2/AIx4hoYKPvpcFFwCVKw=
+			HO4sE4nLBS95FHyg4aTMj+gRFc4=
 			</data>
 			<key>hash2</key>
 			<data>
-			UIQ0Fd2KnjPGYTASBXWruFG9+mbOZpVhraateqawsXI=
+			aiIyw840QcLZZmVOnOUO+cMZEkttbDasINP7x5otGc0=
 			</data>
 		</dict>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
@@ -403,11 +403,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Xwu2e6sHke5+BiUXrez0TAxExmA=
+			IUAyyI605C4ZIF4qI9pBWNQBVAw=
 			</data>
 			<key>hash2</key>
 			<data>
-			oUCa4w7qlewKjihgerQ46wXC48eBVaLf1J3e04KE9Gw=
+			ZaonIQ1jBI3jw+3NuNv4VAhKqH+13vuCZ4+CkfFA5zs=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Resources/Info.plist</key>
@@ -584,11 +584,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FRbm9O5IJ1PFGD8VI7FbC3oWXsc=
+			NLt3vr408lJEinpoi9HZR/kEfbw=
 			</data>
 			<key>hash2</key>
 			<data>
-			NaC/7NwImo2GF8yLU2Ie5bUP6w3WxQLu2IUyBoSdR1I=
+			7d0/yjT1wEU2GKENONDK385rrpFhar+vfCw3br/9+WY=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
