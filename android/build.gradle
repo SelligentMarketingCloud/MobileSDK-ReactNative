@@ -117,7 +117,7 @@ def loadSelligentSettings(variant) {
 def getCurrentFlavor() {
     Gradle gradle = getGradle()
     String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
-    Pattern pattern = Pattern.compile("(install|assemble)(\\w+)(Release|Debug)")
+    Pattern pattern = Pattern.compile("(install|assemble|bundle)(\\w+)(Release|Debug)")
     Matcher matcher = pattern.matcher(tskReqStr)
 
     if (matcher.find()) {
