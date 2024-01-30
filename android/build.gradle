@@ -79,9 +79,9 @@ def loadSelligentSettings(variant) {
     def variantFileName = "selligent.${variant.getName()}.json"
     def resultingSettings = null
 
-    File variantFile = new File("$project.rootDir/../$variantFileName")
-    File defaultFile = new File("$project.rootDir/../$defaultFileName")
-    File flavorFile = new File("$project.rootDir/../$currentFlavor/$defaultFileName")
+    File variantFile = getFile(variantFileName)
+    File defaultFile = getFile(defaultFileName)
+    File flavorFile = getFile("$currentFlavor/$defaultFileName")
 
     if (variantFile.exists()) {
         println("Reading Marigold Engage properties for variant ${variant.getName()} from $variantFile.path")
@@ -108,16 +108,31 @@ def loadSelligentSettings(variant) {
         }
     }
     else {
-        throw new InvalidUserDataException("The selligent.json file could not be found. Please make sure you provide this file in the root of this project.")
+        println("WARNING: No selligent.json file could be found for the given task. Disregard this message if the executing task is not building/executing the app.")
     }
 
     return resultingSettings
 }
 
+def getFile(filePath) {
+    File defaultFile = new File("$project.rootDir/../$filePath")
+    File unifiedLocationFile = new File("$project.rootDir/../selligent/$filePath")
+
+    if (defaultFile.exists()) {
+        println("selligent.json found in the root of the project")
+        return defaultFile
+    }
+    else if (unifiedLocationFile.exists()) {
+        println("selligent.json found in the unified `selligent` folder")   
+    }
+    
+    return unifiedLocationFile
+}
+
 def getCurrentFlavor() {
     Gradle gradle = getGradle()
     String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
-    Pattern pattern = Pattern.compile("(install|assemble)(\\w+)(Release|Debug)")
+    Pattern pattern = Pattern.compile("(install|assemble|bundle)(\\w+)(Release|Debug)")
     Matcher matcher = pattern.matcher(tskReqStr)
 
     if (matcher.find()) {

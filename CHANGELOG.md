@@ -1,8 +1,14 @@
 # Changelog
 
+- __3.7.1_
+  - (Android) Modified build.gradle so now the `selligent.json` file or even the variant folder(s) (i.e. `dev/selligent.json`) are also read from an unified folder `selligent` apart from the root folder of the project like before (i.e. `root/selligent/dev/selligent.json`).
+  - (Android) Fix `selligent.json` loading when using `bundle` tasks instead of `assemble`
+  - (Android) Fix problem when no default `selligent.json` existed and gradle:sync task was executed, no exception is thrown anymore and just a warning message is logged
+  - (iOS) The full path can be used as as the alternate filename like for example: `[launchOptions setValue:@"selligent/dev/selligent.json" forKey:@"RN_SELLIGENT_JSON"];` (remember to drag&drop the full folder into the xCode project and check the "copy folder references" option)
+
 - __3.7.0__
   - (Android) Refactor of the package
-  - Documentation fixs
+  - Documentation fixes
 
 - __3.6.0__
   - Update to native Android SDK 4.4.1

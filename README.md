@@ -25,7 +25,7 @@ This module supports the following SDK and tools:
    npm install @selligent-marketing-cloud/selligent-react-native --save
    ```
 
-2. Create a `selligent.json` file (name is case sensitive) in the root of the React Native project with the following content:
+2. Create a `selligent.json` file (name is case sensitive) in the root of the React Native project (you can alternatively place it inside another folder or inside a `selligent` folder which will automatically be checked by the wrapper) with the following content:
 
    ```json
    {
@@ -170,7 +170,7 @@ This module supports the following SDK and tools:
 
 1. Copy the `node_modules/@selligent-marketing-cloud/selligent-react-native/ios` folder to the **Xcode project**. Drop it under the `Libraries` Folder. This will link the module to the iOS project.
 
-2. Drag and drop the `selligent.json` you created from the root folder to the Xcode project inside the `Copy Bundle Resources` in `Build phases` of your target:
+2. Drag and drop the `selligent.json` you created (or the full folder(s) containing it) to the Xcode project inside the `Copy Bundle Resources` in `Build phases` of your target:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
@@ -194,6 +194,8 @@ This module supports the following SDK and tools:
     //    launchOptions = [NSMutableDictionary new];
     // }
     // [launchOptions setValue:@"alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
+    // [launchOptions setValue:@"selligent/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
+    // [launchOptions setValue:@"alternativeFolder/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
 
     // At the end of application:didFinishLaunchingWithOptions:
     [RNSelligent configureWithLaunchOptions:launchOptions];
@@ -204,7 +206,7 @@ This module supports the following SDK and tools:
 <details open>
 <summary>With autolinking (RN 0.60 and above)</summary>
 
-1. Drag and drop the `selligent.json` you created from the root folder to the Xcode project inside the `Copy Bundle Resources` in `Build phases` of your target:
+1. Drag and drop the `selligent.json` you created (or the full folder(s) containing it) to the Xcode project inside the `Copy Bundle Resources` in `Build phases` of your target:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
@@ -222,6 +224,8 @@ This module supports the following SDK and tools:
     //    launchOptions = [NSMutableDictionary new];
     // }
     // [launchOptions setValue:@"alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
+    // [launchOptions setValue:@"selligent/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
+    // [launchOptions setValue:@"alternativeFolder/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
 
     // At the end of application:didFinishLaunchingWithOptions:
     [RNSelligent configureWithLaunchOptions:launchOptions];
