@@ -1,5 +1,10 @@
 # Changelog
 
+- __3.8.0_
+  - (Android) Removed the aar file and replaced it by a dependency to the same package on Maven Central
+  - (Android) Updated to native Android SDK 4.5.0
+  - (Android) Updated Android Gradle plugin to version 8.2.2
+
 - __3.7.1_
   - (Android) Modified build.gradle so now the `selligent.json` file or even the variant folder(s) (i.e. `dev/selligent.json`) are also read from an unified folder `selligent` apart from the root folder of the project like before (i.e. `root/selligent/dev/selligent.json`).
   - (Android) Fix `selligent.json` loading when using `bundle` tasks instead of `assemble`

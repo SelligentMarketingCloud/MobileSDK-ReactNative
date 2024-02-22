@@ -9,8 +9,8 @@ This module supports the following SDK and tools:
 > **IMPORTANT** This module isn't built using ReactNative's new architecture! It is however compatible with apps that do adopt the new architecture, as far as they are using latest ReactNative's versions.
 
 | SDK                                                                            | Version |
-| ------------------------------------------------------------------------------ | ------- |
-| [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.4.1   |
+| ------------------------------------------------------------------------------ |---------|
+| [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.5.0   |
 | [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.8.1   |
 | ReactNative                                                                    | 0.72.4  |
 | Expo SDK                                                                       | 49      |

@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.2'
+        classpath 'com.android.tools.build:gradle:8.2.2'
     }
 }
 
@@ -25,12 +25,6 @@ android {
 
     buildFeatures {
         buildConfig true
-    }
-
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
     }
 }
 
@@ -62,15 +56,15 @@ dependencies {
         exclude group:'com.facebook.fbjni'
         exclude group:'com.facebook.yoga'
     }
-    implementation 'com.selligent.sdk:selligent_mobile_sdk:4.4.1'
-    implementation 'com.google.code.gson:gson:2.9.0'
-    implementation 'com.google.firebase:firebase-messaging:23.2.1'
-    implementation 'androidx.work:work-runtime:2.8.1'
+    implementation 'com.selligent.sdk:selligent_mobile_sdk:4.5.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.firebase:firebase-messaging:23.4.1'
+    implementation 'androidx.work:work-runtime:2.9.0'
     implementation 'androidx.concurrent:concurrent-futures:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
-    implementation files("libs/RNSelligentMobileSDK.aar")
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    implementation 'com.selligent.sdk:selligent_mobile_reactnative_sdk:3.8.0'
 }
 
 def loadSelligentSettings(variant) {
