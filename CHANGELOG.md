@@ -1,5 +1,9 @@
 # Changelog
 
+- __3.9.0_
+  - Compatibility checks with Expo SDK 50, ReactNative 0.73.4
+  - (iOS) Raise minimum deployment version to iOS 13.4
+
 - __3.8.0_
   - (Android) Removed the aar file and replaced it by a dependency to the same package on Maven Central
   - (Android) Updated to native Android SDK 4.5.0

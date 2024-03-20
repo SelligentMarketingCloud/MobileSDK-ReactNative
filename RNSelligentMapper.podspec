@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.description   = "React Native wrapper mapper for the Marigold Engage Android and iOS SDKs"
   s.homepage      = package['homepage']
   s.license       = "MIT"
-  s.platform      = :ios, "12.0"
+  s.platform      = :ios, "13.4"
   s.source        = { :git => "https://github.com/SelligentMarketingCloud/MobileSDK-ReactNative.git", :tag => "v" + s.version.to_s }
   s.swift_version = "5.0"
   

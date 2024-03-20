@@ -10,7 +10,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		X2EF6LFc8Dmk+xPSmLKn1rI9G54=
+		MnBu8yMvVs09ZKAFJVZsH6TP/G4=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -18,19 +18,19 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		jqnt/yOm5l89v7sfMU26p01lJus=
+		jvXqG4E30gNtNYk/AcK8AbhzRzQ=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		h77b1AfVnf7TQHBTWPGAyS+K5Yc=
+		cLHv9PFWP80Ps9OfH25xRlmc83I=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		jqnt/yOm5l89v7sfMU26p01lJus=
+		jvXqG4E30gNtNYk/AcK8AbhzRzQ=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		lPV7I7ybLFFKLOUXMOmn+KxL6u0=
+		29BVN4LbB0u7oXnqqdCBU0tg9oU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,28 +61,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			orMZw3x/pLj3AaTx8uQF0kQRIjbQ0hSQ9H7QSxxYhAA=
+			U7CmKGEFt/XZ8w/qE6YePr4SZREpHNouXsS5R8yY1ls=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CYBJ91Sb5cgjsdGgWiboEkr6LWe4DHRlWCo0kobIBAU=
+			qo10xlae79Mpk9tDSH6+Ns+U2DMQgcdOdpLa/rMHU1A=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			orMZw3x/pLj3AaTx8uQF0kQRIjbQ0hSQ9H7QSxxYhAA=
+			U7CmKGEFt/XZ8w/qE6YePr4SZREpHNouXsS5R8yY1ls=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1XpPKcw/hT61ADIu+CXtz12Mu5gzxYWNXIDB8wGAlyw=
+			j1CC46PUl7SuYArYXhGPpHELU8XARrIbWgg5jxTc+H0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
