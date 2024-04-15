@@ -1,5 +1,8 @@
 # Changelog
 
+- __3.9.1__
+  - Update to native iOS SDK 3.8.2
+
 - __3.9.0_
   - Compatibility checks with Expo SDK 50, ReactNative 0.73.4
   - (iOS) Raise minimum deployment version to iOS 13.4
