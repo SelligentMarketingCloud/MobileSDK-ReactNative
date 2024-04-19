@@ -1,5 +1,8 @@
 # Changelog
 
+- __3.9.2__
+  - Update to native iOS SDK 3.8.3
+
 - __3.9.1__
   - Update to native iOS SDK 3.8.2
 

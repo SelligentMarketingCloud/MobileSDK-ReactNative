@@ -11,7 +11,7 @@ This module supports the following SDK and tools:
 | SDK                                                                            | Version |
 | ------------------------------------------------------------------------------ |---------|
 | [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.5.0   |
-| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.8.2   |
+| [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.8.3   |
 | ReactNative                                                                    | 0.73.4  |
 | Expo SDK                                                                       | 50      |
 
@@ -174,7 +174,7 @@ This module supports the following SDK and tools:
 
     > Do not check the "copy if needed" option to make sure you only have to manage one selligent.json file
 
-3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.8.2"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
+3. Add the native iOS SDK dependency in your Podfile: `s.dependency "SelligentMobileSDK/Framework", "3.8.3"` or download it manually from [here](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/master/Framework) and drag and drop it into you **Xcode project**.
 
 4. Add the RNSelligentMapper pod in your Podfile: `pod 'RNSelligentMapper', :path => '../node_modules/@selligent-marketing-cloud/selligent-react-native/RNSelligentMapper.podspec'`.
 
