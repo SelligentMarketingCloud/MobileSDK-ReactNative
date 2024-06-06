@@ -49,6 +49,9 @@ final class RNHelpers {
             else if (value instanceof String) {
                 writableMap.putString(key, (String) value);
             }
+            else if (value instanceof Long) {
+                writableMap.putDouble(key, (Long) value);
+            }
             else {
                 writableMap.putNull(key);
             }

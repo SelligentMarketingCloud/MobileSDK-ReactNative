@@ -65,6 +65,7 @@ export function displayMessage(
   messageId: string,
   templateId?: string
 ): void;
+export function executePushAction(): void;
 
 // IOS
 export function enableiOSLogging(
@@ -75,7 +76,6 @@ export function enableiOSLogging(
 export function registerForProvisionalRemoteNotification(
   successCallback: Function
 ): void;
-export function executePushAction(): void;
 
 // ANDROID
 export function areInAppMessagesEnabled(successCallback: Function): any;

@@ -83,12 +83,5 @@ export default {
 	registerForProvisionalRemoteNotification: function (successCallback) {
 		successCallback(SelligentHelpers.SUCCESS)
 		RNSelligent.registerForProvisionalRemoteNotification()
-	},
-
-	/**
-	 * Tells the Marigold Engage SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature
-	 */
-	executePushAction: function () {
-		RNSelligent.executePushAction()
 	}
 }

@@ -20,9 +20,11 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.selligent.rnmobilesdk.DelayedEvent;
 import com.selligent.rnmobilesdk.Manager;
 import com.selligent.sdk.SMForegroundGcmBroadcastReceiver;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class RNSelligent extends ReactContextBaseJavaModule implements LifecycleEventListener, ActivityEventListener {
@@ -37,6 +39,11 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     static String getSelligentSettings() {
         return BuildConfig.SELLIGENT_SETTINGS;
+    }
+
+    Activity getActivity()
+    {
+        return this.getCurrentActivity();
     }
 
     public RNSelligent(ReactApplicationContext reactContext) {
@@ -116,7 +123,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void executeButtonAction(String buttonId, String messageId, Callback successCallback, Callback errorCallback) {
-        this.manager.executeButtonAction(this.reactContext, buttonId, messageId, error ->
+        this.manager.executeButtonAction(this.getCurrentActivity(), buttonId, messageId, error ->
             processErrorStringToCallback(error, successCallback, errorCallback)
         );
     }
@@ -240,6 +247,34 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     }
 
     @ReactMethod
+    public void executePushAction() {
+        this.emitDelayedEvents();
+
+        Activity currentActivity = this.getActivity();
+
+        if (currentActivity == null) { return; }
+
+        this.manager.executePushAction(currentActivity);
+    }
+
+    void emitDelayedEvents()
+    {
+        ArrayList<DelayedEvent> delayedEvents = this.manager.getStoredEvents();
+
+        if (delayedEvents.size() > 0)
+        {
+            for (DelayedEvent delayedEvent: delayedEvents)
+            {
+                this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(
+                        delayedEvent.Name,
+                        RNHelpers.convertMapToWritableMap(delayedEvent.Data)
+                );
+            }
+            delayedEvents.clear();
+        }
+    }
+
+    @ReactMethod
     public void setFirebaseToken(String token) {
         this.manager.setFirebaseToken(token);
     }
@@ -291,11 +326,19 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) { }
 
     private void broadcastEvent(String eventName, Map<String, Object> data) {
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(
-            eventName,
-            RNHelpers.convertMapToWritableMap(data)
-        );
+        if (RNSelligent.getManager().canEmitEvent())
+        {
+            this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(
+                    eventName,
+                    RNHelpers.convertMapToWritableMap(data)
+            );
+        }
+        else
+        {
+            RNSelligent.getManager().storeEvent(eventName, data);
+        }
     }
+
 
     private void processErrorStringToCallback(String error, Callback successCallback, Callback errorCallback) {
         if (error == null) {

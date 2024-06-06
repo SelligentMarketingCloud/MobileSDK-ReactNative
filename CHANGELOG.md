@@ -1,5 +1,11 @@
 # Changelog
 
+- __4.0.0__
+  - BREAKING (Android) Add `delayedPushAction` behaviour to Android. If already being used for iOS, remove any `if (Platform.OS === 'ios')` surrounding `Selligent.executePushAction()` to keep things working on Android
+  - (Android) Fix IAM date properties not properly exposing the native value
+  - (Android) Fix `selligent.executeButtonAction` not working properly
+  - Update to native iOS SDK 3.8.5
+
 - __3.9.2__
   - Update to native iOS SDK 3.8.3
 
@@ -11,12 +17,12 @@
   - (iOS) Raise minimum deployment version to iOS 13.4
 
 - __3.8.0_
-  - (Android) Removed the aar file and replaced it by a dependency to the same package on Maven Central
-  - (Android) Updated to native Android SDK 4.5.0
-  - (Android) Updated Android Gradle plugin to version 8.2.2
+  - (Android) Remove the aar file and replaced it by a dependency to the same package on Maven Central
+  - (Android) Update to native Android SDK 4.5.0
+  - (Android) Update Android Gradle plugin to version 8.2.2
 
 - __3.7.1_
-  - (Android) Modified build.gradle so now the `selligent.json` file or even the variant folder(s) (i.e. `dev/selligent.json`) are also read from an unified folder `selligent` apart from the root folder of the project like before (i.e. `root/selligent/dev/selligent.json`).
+  - (Android) Modify build.gradle so now the `selligent.json` file or even the variant folder(s) (i.e. `dev/selligent.json`) are also read from an unified folder `selligent` apart from the root folder of the project like before (i.e. `root/selligent/dev/selligent.json`).
   - (Android) Fix `selligent.json` loading when using `bundle` tasks instead of `assemble`
   - (Android) Fix problem when no default `selligent.json` existed and gradle:sync task was executed, no exception is thrown anymore and just a warning message is logged
   - (iOS) The full path can be used as as the alternate filename like for example: `[launchOptions setValue:@"selligent/dev/selligent.json" forKey:@"RN_SELLIGENT_JSON"];` (remember to drag&drop the full folder into the xCode project and check the "copy folder references" option)

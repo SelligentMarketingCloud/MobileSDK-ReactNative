@@ -67,7 +67,7 @@ The following properties can be used in the `selligent.json` to further configur
 | clientId                                    | string | The Marigold Engage client id to be used to integrate with your Marigold Engage platform |
 | privateKey                                  | string | The Marigold Engage private key to be used to integrate with your Marigold Engage platform |
 | customInAppUi                               | boolean| When this is enabled and a "push + inapp" notification is clicked, the SDK will NOT display the inApp message and instead a `SelligentConstants.BroadcastEventType.DISPLAYING_IN_APP_MESSAGE` event will be sent |
-| delayedPushAction                           | boolean| (iOS Only) Optin for a specific push action handling (wait for React UI to be ready) when coming from a push message and having the app killed |
+| delayedPushAction                           | boolean| Optin for a specific push action handling (wait for React UI to be ready) when coming from a push message and having the app killed |
 | interceptSelligentUniversalLinks            | boolean| (iOS Only) Optin to customly handle the execution of universal links coming from a Push/IAM [more information](#universal-linking---ios) |
 | clearCacheIntervalValue                     | [enum](#clearcacheintervalvalue) | How much time the SDK will keep things in cache |  
 | inAppMessageRefreshType                     | [enum](#inappmessagerefreshtype) | How often the SDK will check for new inapp messages |
@@ -230,45 +230,12 @@ Then, follow the [native iOS SDK documentation](https://github.com/SelligentMark
 
 ### Deep Linking
 
-**For iOS**, (and depending on your React version) it might be that deeplinks behind push notifications do not work when the App is killed.
-This is because the JS layer is loaded **after** the native iOS SDK executes the deeplink, so the JS event listeners are not there yet. If you want to fix this, follow the below steps (make sure to build for Release when testing this).
+Depending on your React version, it might be that deeplinks behind push notifications do not work when the App is killed.
+This is because the JS layer is loaded **after** the native SDK executes the deeplink, so the JS event listeners are not there yet. If you want to fix this, follow the below steps (make sure to build for Release when testing this).
 
 1. Add the `delayedPushAction` property in `selligent.json` file and set it to `true`
 
 2. Implement (if not there yet) a linking handler in your ReactNative codebase (i.e <https://facebook.github.io/react-native/docs/linking>)
-
-    Example:
-
-    ```objc
-    // In Appdelegate.m
-    - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-        return [RCTLinkingManager application:application openURL:url options:options];
-    }
-    ```
-
-    ```javascript
-    // In DeeplinkHook.js
-    import { useEffect } from "react"
-    import { Alert, Linking } from "react-native"
-
-    const useHandleDeepLink = () => {
-      useEffect(() => {
-          Linking.getInitialURL().then((link) => {
-              if (link) {
-                  Alert.alert('Deep Link', link || 'No link')
-              }
-          }).catch(err => {
-              console.warn('An error occurred', err)
-          })
-
-          const urlListener = Linking.addEventListener('url', ({url}) => Alert.alert('Deep Link', url || 'No link'))
-
-          return () => urlListener.remove()
-      }, [])
-    }
-
-    export default useHandleDeepLink
-    ```
 
 3. Add a call to `Selligent.executePushAction()` in your main `App.js` file, after adding the ReactNative linking handler (and after calling `Selligent.subscribeToEvents`, if being used)
 
@@ -277,15 +244,13 @@ This is because the JS layer is loaded **after** the native iOS SDK executes the
 
     const App = () => {
     // Deeplinking handling library (i.e Linking.getInitialURL() & Linking.addEventListener...)
-    useHandleDeepLink()
+    // useHandleDeepLink()
 
-    if (Platform.OS === 'ios') {
-         /* Tells the Marigold Engage SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature.
-            If you are having problems with deeplinks or 'Push + InApp Message' where the splash screen gets stuck or the push action not visible,
-            make sure you control when the splash screen is dismissed (i.e https://docs.expo.dev/versions/latest/sdk/splash-screen/) and call this method afterwards (if the dismiss is async, call this method once the async process is completely finished)
-        */
-        Selligent.executePushAction()
-    }
+    /* Tells the Marigold Engage SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature.
+    If you are having problems with deeplinks or 'Push + InApp Message' where the splash screen gets stuck or the push action not visible,
+    make sure you control when the splash screen is dismissed (i.e https://docs.expo.dev/versions/latest/sdk/splash-screen/) and call this method afterwards (if the dismiss is async, call this method once the async process is completely finished)
+    */
+    Selligent.executePushAction()
     ```
 
 #### Background Modes
