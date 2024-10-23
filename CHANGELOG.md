@@ -1,5 +1,8 @@
 # Changelog
 
+- __4.0.1__
+  - Fix bug that caused events to not be forwarded to the subscribers when the JS layer loading was slower than the native operation
+  
 - __4.0.0__
   - BREAKING (Android) Add `delayedPushAction` behaviour to Android. If already being used for iOS, remove any `if (Platform.OS === 'ios')` surrounding `Selligent.executePushAction()` to keep things working on Android
   - (Android) Fix IAM date properties not properly exposing the native value

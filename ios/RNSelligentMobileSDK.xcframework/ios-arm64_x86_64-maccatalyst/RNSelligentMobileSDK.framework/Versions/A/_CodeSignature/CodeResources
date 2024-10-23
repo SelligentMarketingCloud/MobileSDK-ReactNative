@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		xrHT/4sC2Nb89QTFSp45k8u6wXo=
+		wrdlpfgVFQq/BJT7Rq5xqomVbz4=
 		</data>
 		<key>Resources/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -19,7 +19,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kaJliflxzvzPK20HUf8YJi6ptBXHypdTr+xA+df02Kc=
+			Ts8Qi+MfN6zwco351wsoYIm5YSYwMDGpGvo+Zm7tiBI=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-macabi.abi.json</key>
@@ -33,28 +33,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fSjN8PSFEQ4Ff1HBjQUU3aanEb/9TQKSv0ses1joEyQ=
+			VTnY2FRMPhKKAQe3ra3NPRBngYKCPfoJrccRNh98Zl0=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-macabi.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5EM5QjPND5N/MMDsAO/CyY0/SKVAHMcnAzyDmJyluLk=
+			hRIazyoqf85DkU/YI2GJmUYRi+dcGlDnTt4tsT2vvKw=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-macabi.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fSjN8PSFEQ4Ff1HBjQUU3aanEb/9TQKSv0ses1joEyQ=
+			VTnY2FRMPhKKAQe3ra3NPRBngYKCPfoJrccRNh98Zl0=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-macabi.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6sPZY7Upt7KImTXz03i0wroU8UhGBFmPAJP4+8R6F0k=
+			JCWo51Gu6G6AjsQtqPFJhjvdXuMKFnvbfh6oOF4Uiwg=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
@@ -68,28 +68,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vjhozNjwQNOQwWQC97FhfRB6NqYfLqtFMSTQcwapz8k=
+			2DiIvMpEFAdedmqGOmJ8H5yvfzDFkG/1auJjSSshJUE=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-macabi.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wry9lXNfpoIg5qrmX3LwtlUB8BVHIgCPNib86jmdqdo=
+			hht5FLf9ip065IVIlU5a7ulaAPcvUW6GQgo+y4XyrJE=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-macabi.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vjhozNjwQNOQwWQC97FhfRB6NqYfLqtFMSTQcwapz8k=
+			2DiIvMpEFAdedmqGOmJ8H5yvfzDFkG/1auJjSSshJUE=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-macabi.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			coEyfzpwuUjOLzDA1Bas98v1Y45IhqB20Bhn4RCuKGU=
+			6YawwWO9jzlUzhTeq81uuKMi6qjmCn174QiwCy4aaSg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -103,7 +103,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			QlLDyYYmDr9CesW625M9R6C1V7S23XXZaVQP7uK6l7o=
+			szMeu8BJTyHm6M2duCteyf2H/JGNiVBFwiC0Mij7X4g=
 			</data>
 		</dict>
 		<key>Resources/PrivacyInfo.xcprivacy</key>

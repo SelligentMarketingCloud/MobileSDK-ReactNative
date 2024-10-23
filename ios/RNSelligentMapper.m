@@ -1,4 +1,5 @@
 #import "RNSelligentMapper.h"
+#import "CustomEvent.h"
 
 @implementation RNSelligentMapper
 
@@ -8,6 +9,8 @@ RCT_EXPORT_MODULE(RNSelligent)
   self = [super init];
   
   RNSelligent.eventDelegate = self;
+  self.pendingEvents = [NSMutableArray new];
+  [RNSelligent subscribeToEvents:@[]];
   
   return self;
 }
@@ -133,10 +136,27 @@ RCT_EXPORT_METHOD(sendEvent:(NSDictionary *)data successCallback:(RCTResponseSen
 
 RCT_EXPORT_METHOD(subscribeToEvents:(NSArray<NSString *> *)events) {
   [RNSelligent subscribeToEvents:events];
+  self.listeningEvents = true;
+  [self sendPendingEvents];
 }
 
 - (void) sendBroadcastEventWithName:(NSString * _Nonnull)name type:(NSString * _Nonnull)type data:(NSDictionary * _Nullable)data {
-  [self sendEventWithName:name body:@{@"data": data ?: [NSNull null], @"broadcastEventType": type}];
+  if (self.listeningEvents) {
+    [self sendEventWithName:name body:@{@"data": data ?: [NSNull null], @"broadcastEventType": type}];
+  }
+  else {
+    [self.pendingEvents addObject:[CustomEvent eventWithData:data AndName:name AndType:type]];
+  }
+}
+
+- (void) sendPendingEvents {
+  if (self.pendingEvents.count == 0) { return; }
+
+  for (CustomEvent* event in self.pendingEvents) {
+    [self sendEventWithName:event.name body:@{@"data": event.data ?: [NSNull null], @"broadcastEventType": event.type}];
+  }
+  
+  self.pendingEvents = [NSMutableArray new];
 }
 
 - (NSArray<NSString *> *) supportedEvents {
