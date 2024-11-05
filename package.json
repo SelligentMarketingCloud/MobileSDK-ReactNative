@@ -4,7 +4,7 @@
   },
   "name": "@selligent-marketing-cloud/selligent-react-native",
   "title": "Marigold Engage React Native",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "React Native wrapper for the Marigold Engage Android and iOS SDKs",
   "main": "index.js",
   "repository": {

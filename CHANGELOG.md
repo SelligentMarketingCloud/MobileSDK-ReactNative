@@ -1,5 +1,8 @@
 # Changelog
 
+- __4.0.2__
+  - Add missing properties `listeningEvents` and `pendingEvents`
+
 - __4.0.1__
   - Fix bug that caused events to not be forwarded to the subscribers when the JS layer loading was slower than the native operation
   

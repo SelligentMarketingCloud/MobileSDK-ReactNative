@@ -10,4 +10,7 @@
 
 @interface RNSelligentMapper : RCTEventEmitter <RCTBridgeModule, RNSelligentEventHandlerProtocol>
 
+@property (nonatomic) BOOL listeningEvents;
+@property (nonatomic) NSMutableArray * pendingEvents;
+
 @end
