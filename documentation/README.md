@@ -561,6 +561,7 @@ In the other hand, you can also use the native methods `RNSelligent/willPresentN
 // OR
 // #import <RNSelligentMobileSDK/RNSelligentMobileSDK-Swift.h>
 // #import <MapKit/MapKit.h>
+// #import <WebKit/WebKit.h>
 // #import <SelligentMobileSDK/SMHelperSwift.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

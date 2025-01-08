@@ -1,5 +1,9 @@
 # Changelog
 
+- __4.1.0__
+  - Compatibility checks with Expo SDK 52, ReactNative 0.76.5
+  - (Android) Update minSdkVersion to 23
+
 - __4.0.2__
   - Add missing properties `listeningEvents` and `pendingEvents`
 
