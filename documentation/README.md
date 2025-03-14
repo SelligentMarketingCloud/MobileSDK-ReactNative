@@ -207,20 +207,21 @@ Follow the [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/m
     ```javascript
     import Selligent from "@selligent-marketing-cloud/selligent-react-native"; // Add Marigold Engage import
     
-    if (Platform.OS === 'ios') {
-        Selligent.enableNotifications(
-            (response) => { // success callback
-            },
-            (error) => { // error callback
-            },
-            true
-        )
-    }
-    
-    Selligent.registerForProvisionalRemoteNotification(
-        () => { // success callback
-        }
-    )
+      if (Platform.OS === "ios") {
+        Selligent.registerForProvisionalRemoteNotification(() => {
+          // success callback
+        })
+      }
+
+      Selligent.enableNotifications(
+        (response) => {
+          // success callback
+        },
+        (error) => {
+          // error callback
+        },
+        true
+      )
     ```
 
 ### Rich Push Notifications
