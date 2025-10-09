@@ -410,7 +410,9 @@ Selligent.subscribeToEvents(
 
 ## In-App Messages
 
-To enable them all you need to do is to set the proper [inAppMessageRefreshType](#inappmessagerefreshtype) value in the `selligent.json`.
+In-App messages are messages retrieved periodically by the SDK.
+
+They are retrieved when the app becomes active (ie. at start, when going from background to foreground and when the orientation changes) ONLY if the last refresh is older than the value [inAppMessageRefreshType](#inappmessagerefreshtype) in the `selligent.json`.
 
 You can later call the `Selligent.enableInAppMessages` function (if you want) to further optin/optout from the functionality; this function expects an `enabled` parameter that can either be a boolean or an [enum](#inappmessagerefreshtype) value.
 
