@@ -140,7 +140,43 @@ Follow the [iOS](https://github.com/SelligentMarketingCloud/MobileSDK-iOS/tree/m
 
 **For iOS**:
 
-1. For push notifications you need to delegate some of the `AppDelegate.m` methods to the SDK:
+1. For push notifications you need to delegate some of the `AppDelegate` methods to the SDK:
+
+    Swift
+
+    ```swift
+    // Import the SDK
+    import RNSelligentMobileSDK
+
+    // Use UNUserNotificationCenterDelegate
+    @UIApplicationMain
+    public class AppDelegate: ExpoAppDelegate, UNUserNotificationCenterDelegate {
+
+    // In didFinishLaunchingWithOptions function
+    UNUserNotificationCenter.current().delegate = self
+    RNSelligent.configureWithLaunchOptions(launchOptions ?? [:])
+
+    // Notification delegates
+    override public func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+      RNSelligent.didRegisterForRemoteNotifications(withDeviceToken: deviceToken)
+      super.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+    }
+    
+    override public func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      RNSelligent.didFailToRegisterForRemoteNotificationsWithError(error)
+      super.application(application, didFailToRegisterForRemoteNotificationsWithError: error)
+    }
+    
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping(UNNotificationPresentationOptions) -> Void) {
+      RNSelligent.willPresentNotification(notification, withCompletionHandler: completionHandler)
+    }
+    
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+      RNSelligent.didReceiveNotificationResponse(response, withCompletionHandler: completionHandler)
+    }
+    ```
+
+    Objective-C
 
     ```objc
     // In AppDelegate.h
@@ -412,7 +448,7 @@ Selligent.subscribeToEvents(
 
 In-App messages are messages retrieved periodically by the SDK.
 
-They are retrieved when the app becomes active (ie. at start, when going from background to foreground and when the orientation changes) ONLY if the last refresh is older than the value [inAppMessageRefreshType](#inappmessagerefreshtype) in the `selligent.json`.
+They are retrieved when the app becomes active (ie. at startup, when going from background to foreground and when the orientation changes) ONLY if the last refresh is older than the value [inAppMessageRefreshType](#inappmessagerefreshtype) in the `selligent.json`.
 
 You can later call the `Selligent.enableInAppMessages` function (if you want) to further optin/optout from the functionality; this function expects an `enabled` parameter that can either be a boolean or an [enum](#inappmessagerefreshtype) value.
 

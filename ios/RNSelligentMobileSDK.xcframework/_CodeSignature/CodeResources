@@ -10,7 +10,7 @@
 		</data>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/Info.plist</key>
 		<data>
-		ZIRrAqANuwufoAUxu8yaFr5jE94=
+		ggWd63j/8jigjOtbOlCYzF1msJA=
 		</data>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/RNSelligentMobileSDK</key>
 		<data>
-		54vgalN7raI84PES1XQWz2nCItw=
+		+VZZVjtQ56GG5THNsy039iAqGKw=
 		</data>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
-		H67ypYO1bmc5f6x2a3vpIC3VprA=
+		hc52Q0h5hpK64D8xlhnAvFBE0H8=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Headers/RNSelligentMobileSDK-Swift.h</key>
 		<data>
@@ -86,11 +86,11 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/RNSelligentMobileSDK</key>
 		<data>
-		Syckc+Fu6RhcLdB9IU/jKIEJ1AQ=
+		kYjRG9zycqJMJ/MFrJ/ilk/WUoU=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Resources/Info.plist</key>
 		<data>
-		RPgeikTOjr0Jj2NmHiWQ1tRIxWE=
+		4Lv38+p8TlyTXqp4VEgw4Imcql0=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Resources/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -98,7 +98,7 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/_CodeSignature/CodeResources</key>
 		<data>
-		1l3mdANyZUisKKPIO4M3qnIcgRs=
+		FSHhMXNWDUOOASECJrjnM/1N1eU=
 		</data>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/Headers/RNSelligentMobileSDK-Swift.h</key>
 		<data>
@@ -106,7 +106,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/Info.plist</key>
 		<data>
-		eCFbHdUpb+VV5LDqci+c7pZeRTw=
+		IRw7W5nwJvzESXqZzQRGDZnL6xE=
 		</data>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -150,11 +150,11 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/RNSelligentMobileSDK</key>
 		<data>
-		Rj5NrOOhfdaQMzGhGUFTh7ldf3U=
+		l8QQw2+xnZhW336z5+nukSqipok=
 		</data>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
-		qgWfbiXMIW2X7K1NRaJTVo8ZWR8=
+		bh4aqQ+8rTgFY2XidLa2C8uAD+E=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -174,11 +174,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZIRrAqANuwufoAUxu8yaFr5jE94=
+			ggWd63j/8jigjOtbOlCYzF1msJA=
 			</data>
 			<key>hash2</key>
 			<data>
-			nTguFN+hUOZIA70YlMq7w3TiYfp23sEOarWDMNGMc9s=
+			BWOJDFWUOr1UKWzvWoXaY/3uGWl+m0SAaun9ASPBK/w=
 			</data>
 		</dict>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -251,22 +251,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			54vgalN7raI84PES1XQWz2nCItw=
+			+VZZVjtQ56GG5THNsy039iAqGKw=
 			</data>
 			<key>hash2</key>
 			<data>
-			6oayhkNtPDfpIs7iH9+ZIvVhesXR67hR59kbQzjV8nY=
+			pwZUORwvab9y/PXbJN+4Z5fbB31KpLTj7I5rZ1oN57Q=
 			</data>
 		</dict>
 		<key>ios-arm64/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			H67ypYO1bmc5f6x2a3vpIC3VprA=
+			hc52Q0h5hpK64D8xlhnAvFBE0H8=
 			</data>
 			<key>hash2</key>
 			<data>
-			6CUPZrAtttlkPhfXL6EmbqtnKHtl/DpzDBa2zoQPPSM=
+			9dc1UuZL8Va+kj6t28RpoZKTtW21P9TpmrC3jMJ2BLw=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Headers</key>
@@ -403,22 +403,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Syckc+Fu6RhcLdB9IU/jKIEJ1AQ=
+			kYjRG9zycqJMJ/MFrJ/ilk/WUoU=
 			</data>
 			<key>hash2</key>
 			<data>
-			LCBHuiMYyPZbbmD4TFQhPp2h0k+MPTNnK4FqOQxpRl0=
+			VsxF63Pe3Z6N5KqpzSMZeTw6qMhsME2WU1fOkpRlimI=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Resources/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RPgeikTOjr0Jj2NmHiWQ1tRIxWE=
+			4Lv38+p8TlyTXqp4VEgw4Imcql0=
 			</data>
 			<key>hash2</key>
 			<data>
-			NnurpggfQn93DyLx2mLsIQ79Odnt04W1xgfCVJfZJwc=
+			Ki7VY5okIvIszFj6Wko8XcSs8GTy5OfsIOIX0tkFTrE=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/A/Resources/PrivacyInfo.xcprivacy</key>
@@ -436,11 +436,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1l3mdANyZUisKKPIO4M3qnIcgRs=
+			FSHhMXNWDUOOASECJrjnM/1N1eU=
 			</data>
 			<key>hash2</key>
 			<data>
-			L6+AusPhaRa8SdBweePaW7Eiz6pyQBIY1xgzQbL+nC0=
+			gfT9TIKXrsoOqWy87FAwQ6Sqf/lzyx6V/gaqaCb1VD8=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/RNSelligentMobileSDK.framework/Versions/Current</key>
@@ -463,11 +463,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			eCFbHdUpb+VV5LDqci+c7pZeRTw=
+			IRw7W5nwJvzESXqZzQRGDZnL6xE=
 			</data>
 			<key>hash2</key>
 			<data>
-			jXqVmcV129qGn/bnscFKLJNNxd5xQjGGVEih4GpBn+U=
+			pMIskf1Lwqi+w3WNmoQ2GTbd++lUggmeCkSWNZq6ic4=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -584,22 +584,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Rj5NrOOhfdaQMzGhGUFTh7ldf3U=
+			l8QQw2+xnZhW336z5+nukSqipok=
 			</data>
 			<key>hash2</key>
 			<data>
-			QfMdVW4iYXHTHszr1dNQUrFfl/Dk5w2PKj6BcmaVfY4=
+			RaXRd0jQ5lLZxTzuywsZ5tLlV7NR7mgWCh6boum1A+Y=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/RNSelligentMobileSDK.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qgWfbiXMIW2X7K1NRaJTVo8ZWR8=
+			bh4aqQ+8rTgFY2XidLa2C8uAD+E=
 			</data>
 			<key>hash2</key>
 			<data>
-			SclesxERuBaFwCxQwDdie0rDL2Me2Ak189j808f3v5s=
+			ZPtEWmgtXcjlw1O+t0bzzFIqkzgQDTkke/zf+EHMwbg=
 			</data>
 		</dict>
 	</dict>
