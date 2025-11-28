@@ -225,7 +225,6 @@ This module supports the following SDK and tools:
     // }
     // [launchOptions setValue:@"alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
     // [launchOptions setValue:@"selligent/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
-    // [launchOptions setValue:@"alternativeFolder/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
 
     // At the end of application:didFinishLaunchingWithOptions:
     [RNSelligent configureWithLaunchOptions:launchOptions];
