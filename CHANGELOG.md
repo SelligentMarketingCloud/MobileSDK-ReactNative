@@ -1,5 +1,9 @@
 # Changelog
 
+- __4.3.0__
+  - (iOS) Fix in-app messages date properties format same as Android (seconds -> milliseconds, no decimals)
+  - (Android) Update native SDK 4.7.1 (IAM creation date empty bug)
+
 - __4.2.0__
   - Compatibility checks with Expo SDK 54, ReactNative 0.81.4
   - (iOS) Update native SDK 3.8.7

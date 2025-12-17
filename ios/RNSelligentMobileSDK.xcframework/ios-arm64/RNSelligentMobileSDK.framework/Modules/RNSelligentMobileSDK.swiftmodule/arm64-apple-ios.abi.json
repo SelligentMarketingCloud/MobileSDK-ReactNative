@@ -1,8 +1,8 @@
 {
   "ABIRoot": {
     "kind": "Root",
-    "name": "TopLevel",
-    "printedName": "TopLevel",
+    "name": "RNSelligentMobileSDK",
+    "printedName": "RNSelligentMobileSDK",
     "children": [
       {
         "kind": "Import",
@@ -200,6 +200,22 @@
           "AccessControl",
           "ObjC",
           "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
         ]
       },
       {
@@ -323,12 +339,12 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol?",
+                "printedName": "(any RNSelligentMobileSDK.RNSelligentEventHandlerProtocol)?",
                 "children": [
                   {
                     "kind": "TypeNominal",
                     "name": "RNSelligentEventHandlerProtocol",
-                    "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
+                    "printedName": "any RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
                     "usr": "c:@M@RNSelligentMobileSDK@objc(pl)RNSelligentEventHandlerProtocol"
                   }
                 ],
@@ -357,12 +373,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol?",
+                    "printedName": "(any RNSelligentMobileSDK.RNSelligentEventHandlerProtocol)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "RNSelligentEventHandlerProtocol",
-                        "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
+                        "printedName": "any RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
                         "usr": "c:@M@RNSelligentMobileSDK@objc(pl)RNSelligentEventHandlerProtocol"
                       }
                     ],
@@ -394,12 +410,12 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol?",
+                    "printedName": "(any RNSelligentMobileSDK.RNSelligentEventHandlerProtocol)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "RNSelligentEventHandlerProtocol",
-                        "printedName": "RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
+                        "printedName": "any RNSelligentMobileSDK.RNSelligentEventHandlerProtocol",
                         "usr": "c:@M@RNSelligentMobileSDK@objc(pl)RNSelligentEventHandlerProtocol"
                       }
                     ],
@@ -1250,7 +1266,7 @@
               {
                 "kind": "TypeNominal",
                 "name": "Error",
-                "printedName": "Swift.Error",
+                "printedName": "any Swift.Error",
                 "usr": "s:s5ErrorP"
               }
             ],
@@ -1598,6 +1614,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
@@ -1740,6 +1770,20 @@
         "conformances": [
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
@@ -1808,6 +1852,20 @@
           "ObjectiveC.NSObject"
         ],
         "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
           {
             "kind": "Conformance",
             "name": "Equatable",
@@ -1941,160 +1999,6 @@
       "value": "113"
     },
     {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 173,
-      "length": 3,
-      "value": "100"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 194,
-      "length": 3,
-      "value": "101"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 213,
-      "length": 3,
-      "value": "102"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 233,
-      "length": 3,
-      "value": "103"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 252,
-      "length": 3,
-      "value": "104"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 275,
-      "length": 3,
-      "value": "105"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 298,
-      "length": 3,
-      "value": "106"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 329,
-      "length": 3,
-      "value": "107"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 353,
-      "length": 3,
-      "value": "111"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 377,
-      "length": 3,
-      "value": "112"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 399,
-      "length": 3,
-      "value": "113"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 173,
-      "length": 3,
-      "value": "100"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 194,
-      "length": 3,
-      "value": "101"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 213,
-      "length": 3,
-      "value": "102"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 233,
-      "length": 3,
-      "value": "103"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 252,
-      "length": 3,
-      "value": "104"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 275,
-      "length": 3,
-      "value": "105"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 298,
-      "length": 3,
-      "value": "106"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 329,
-      "length": 3,
-      "value": "107"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 353,
-      "length": 3,
-      "value": "111"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 377,
-      "length": 3,
-      "value": "112"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/ButtonType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 399,
-      "length": 3,
-      "value": "113"
-    },
-    {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
       "kind": "IntegerLiteral",
       "offset": 177,
@@ -2135,146 +2039,6 @@
       "offset": 279,
       "length": 2,
       "value": "56"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 177,
-      "length": 2,
-      "value": "50"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 196,
-      "length": 2,
-      "value": "51"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 218,
-      "length": 2,
-      "value": "52"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 238,
-      "length": 2,
-      "value": "53"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 261,
-      "length": 2,
-      "value": "54"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 279,
-      "length": 2,
-      "value": "56"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 177,
-      "length": 2,
-      "value": "50"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 196,
-      "length": 2,
-      "value": "51"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 218,
-      "length": 2,
-      "value": "52"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 238,
-      "length": 2,
-      "value": "53"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 261,
-      "length": 2,
-      "value": "54"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Logging\/LogLevel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 279,
-      "length": 2,
-      "value": "56"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 207,
-      "length": 2,
-      "value": "10"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 228,
-      "length": 2,
-      "value": "11"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 247,
-      "length": 2,
-      "value": "12"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 265,
-      "length": 2,
-      "value": "13"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 207,
-      "length": 2,
-      "value": "10"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 228,
-      "length": 2,
-      "value": "11"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 247,
-      "length": 2,
-      "value": "12"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 265,
-      "length": 2,
-      "value": "13"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/InAppMessageRefreshType.swift",
@@ -2347,76 +2111,6 @@
       "value": "94"
     },
     {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 183,
-      "length": 2,
-      "value": "90"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 208,
-      "length": 2,
-      "value": "91"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 228,
-      "length": 2,
-      "value": "92"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 249,
-      "length": 2,
-      "value": "93"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 270,
-      "length": 2,
-      "value": "94"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 183,
-      "length": 2,
-      "value": "90"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 208,
-      "length": 2,
-      "value": "91"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 228,
-      "length": 2,
-      "value": "92"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 249,
-      "length": 2,
-      "value": "93"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Events\/EventType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 270,
-      "length": 2,
-      "value": "94"
-    },
-    {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
       "kind": "IntegerLiteral",
       "offset": 214,
@@ -2436,132 +2130,6 @@
       "offset": 260,
       "length": 2,
       "value": "22"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 214,
-      "length": 2,
-      "value": "20"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 233,
-      "length": 2,
-      "value": "21"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 260,
-      "length": 2,
-      "value": "22"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 214,
-      "length": 2,
-      "value": "20"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 233,
-      "length": 2,
-      "value": "21"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/RemoteMessageDisplayType.swift",
-      "kind": "IntegerLiteral",
-      "offset": 260,
-      "length": 2,
-      "value": "22"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 197,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 215,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 232,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 250,
-      "length": 1,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 269,
-      "length": 1,
-      "value": "5"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 290,
-      "length": 1,
-      "value": "6"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 197,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 215,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 232,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 250,
-      "length": 1,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 269,
-      "length": 1,
-      "value": "5"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
-      "kind": "IntegerLiteral",
-      "offset": 290,
-      "length": 1,
-      "value": "6"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Settings\/ClearCacheInterval.swift",
@@ -2632,13 +2200,6 @@
       "offset": 1185,
       "length": 3,
       "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/Manager\/InAppMessageStylingTemplate.swift",
-      "kind": "StringLiteral",
-      "offset": 165,
-      "length": 27,
-      "value": "\"RNSelligentMobileSDK.InAppMessageStylingTemplate\""
     }
   ]
 }

@@ -10,7 +10,7 @@ This module supports the following SDK and tools:
 
 | SDK                                                                            | Version |
 | ------------------------------------------------------------------------------ |---------|
-| [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.7.0   |
+| [Android SDK](https://github.com/SelligentMarketingCloud/MobileSDK-Android)    | 4.7.1   |
 | [iOS SDK](https://github.com/SelligentMarketingCloud/MobileSDK-iOS)            | 3.8.7   |
 | ReactNative                                                                    | 0.81.4  |
 | Expo SDK                                                                       | 54      |
@@ -195,7 +195,6 @@ This module supports the following SDK and tools:
     // }
     // [launchOptions setValue:@"alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
     // [launchOptions setValue:@"selligent/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
-    // [launchOptions setValue:@"alternativeFolder/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
 
     // At the end of application:didFinishLaunchingWithOptions:
     [RNSelligent configureWithLaunchOptions:launchOptions];
@@ -225,6 +224,7 @@ This module supports the following SDK and tools:
     // }
     // [launchOptions setValue:@"alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
     // [launchOptions setValue:@"selligent/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
+    // [launchOptions setValue:@"alternativeFolder/alternativeFileName" forKey:@"RN_SELLIGENT_JSON"];
 
     // At the end of application:didFinishLaunchingWithOptions:
     [RNSelligent configureWithLaunchOptions:launchOptions];
