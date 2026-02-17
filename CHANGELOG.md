@@ -1,5 +1,8 @@
 # Changelog
 
+- __4.3.1__
+  - (Android) Add robustness to avoid potential crashes
+  
 - __4.3.0__
   - (iOS) Fix in-app messages date properties format same as Android (seconds -> milliseconds, no decimals)
   - (Android) Update native SDK 4.7.1 (IAM creation date empty bug)
@@ -31,16 +34,16 @@
 - __3.9.1__
   - (iOS) Update to native SDK 3.8.2
 
-- __3.9.0_
+- __3.9.0__
   - Compatibility checks with Expo SDK 50, ReactNative 0.73.4
   - (iOS) Raise minimum deployment version to iOS 13.4
 
-- __3.8.0_
+- __3.8.0__
   - (Android) Remove the aar file and replaced it by a dependency to the same package on Maven Central
   - (Android) Update to native SDK 4.5.0
   - (Android) Update Android Gradle plugin to version 8.2.2
 
-- __3.7.1_
+- __3.7.1__
   - (Android) Modify build.gradle so now the `selligent.json` file or even the variant folder(s) (i.e. `dev/selligent.json`) are also read from an unified folder `selligent` apart from the root folder of the project like before (i.e. `root/selligent/dev/selligent.json`).
   - (Android) Fix `selligent.json` loading when using `bundle` tasks instead of `assemble`
   - (Android) Fix problem when no default `selligent.json` existed and gradle:sync task was executed, no exception is thrown anymore and just a warning message is logged
@@ -135,7 +138,7 @@
   - Change development dependency version of `react-native` to `^0.70.6`
 
 - __2.10.0__
-  - (iOS) Add section on application lifecycle management split between `AppDelegate` and `SceneDelegate` with regards to Marigold Engage push notification handling on iOS 15+ in README
+  - (iOS) Add section on application lifecycle management split between `AppDelegate` and `SceneDelegate` with regards to Selligent push notification handling on iOS 15+ in README
   - (Android) Update to native SDK 3.10.1
   - (iOS) Update to native SDK 2.7.7
   - Change development dependency versions of  `react` and `react-native` to `18.1.0` and  `^0.70.0`, respectively

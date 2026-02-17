@@ -5,7 +5,7 @@ import SelligentHelpers from './helpers'
 const { RNSelligent } = NativeModules
 export const RNSEventEmitter = new NativeEventEmitter(RNSelligent)
 
-// Check if Native version of Marigold Engage found
+// Check if Native version of Selligent found
 SelligentHelpers.isNativeSelligentFound(RNSelligent)
 
 // to export the android methods without syntax sugar and/or javascript manipulation, use this line:
@@ -23,12 +23,12 @@ if (Platform.OS === 'android') {
 // or export with syntax sugar and/or javascript manipulation:
 export default Object.assign(
 	{
-		// Check if the Marigold Engage Module is loaded
+		// Check if the Selligent Module is loaded
 		_selligentLoaded: Boolean(RNSelligent),
 		// Basic SMManager
 
 		/**
-		 * Returns the version of the underlying Marigold Engage native SDK.
+		 * Returns the version of the underlying Selligent native SDK.
 		 * 
 		 * @param {function} successCallback Callback function on success.
 		 */
@@ -185,7 +185,7 @@ export default Object.assign(
 		},
 
 		/**
-		 * Tells the Marigold Engage SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature
+		 * Tells the Selligent SDK to execute the action associated to the last push clicked, when using `delayedPushAction` feature
 		 */
 		executePushAction: function () {
 			RNSelligent.executePushAction()

@@ -8,7 +8,7 @@ SelligentHelpers.WRONG_ARGUMENTS = "Insufficient/incorrect argument(s) passed to
 SelligentHelpers.MORE_INFORMATION = "For more information view the documentation of this method.";
 
 /**
- * Function to check if the Native Marigold Engage SDK is found
+ * Function to check if the Native Selligent SDK is found
  *
  * @param RNSelligent
  */

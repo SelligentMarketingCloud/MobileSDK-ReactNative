@@ -29,7 +29,6 @@ import java.util.Map;
 
 public class RNSelligent extends ReactContextBaseJavaModule implements LifecycleEventListener, ActivityEventListener {
     private final ReactApplicationContext reactContext;
-    private final Manager manager;
     EventReceiver eventReceiver;
     SMForegroundGcmBroadcastReceiver receiver;
 
@@ -52,7 +51,6 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
         this.reactContext = reactContext;
         reactContext.addLifecycleEventListener(this);
         reactContext.addActivityEventListener(this);
-        this.manager = RNSelligent.getManager();
     }
 
     @NonNull
@@ -67,7 +65,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void getVersionLib(Callback successCallback) {
-        successCallback.invoke(manager.getVersionLib());
+        successCallback.invoke(RNSelligent.getManager().getVersionLib());
     }
 
     @ReactMethod
@@ -76,54 +74,54 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
         ReadableType enabledType = enabled.getType(enabledProperty);
 
         if (enabledType == ReadableType.Boolean) {
-            this.manager.enableInAppMessages(enabled.getBoolean(enabledProperty));
+            RNSelligent.getManager().enableInAppMessages(enabled.getBoolean(enabledProperty));
         }
         else if (enabledType == ReadableType.Number) {
-            this.manager.enableInAppMessages(enabled.getInt(enabledProperty));
+            RNSelligent.getManager().enableInAppMessages(enabled.getInt(enabledProperty));
         }
     }
 
     @ReactMethod
     public void areInAppMessagesEnabled(Callback successCallback) {
-        successCallback.invoke(this.manager.areInAppMessagesEnabled());
+        successCallback.invoke(RNSelligent.getManager().areInAppMessagesEnabled());
     }
 
     @ReactMethod
     public void displayMessage(String messageId) {
-        this.manager.displayMessage(messageId, this.getCurrentActivity());
+        RNSelligent.getManager().displayMessage(messageId, this.getCurrentActivity());
     }
 
     @ReactMethod
     public void getInAppMessages(Callback successCallback) {
-        this.manager.getInAppMessages(list ->
+        RNSelligent.getManager().getInAppMessages(list ->
             successCallback.invoke(RNHelpers.convertListToWritableArray(list))
         );
     }
 
     @ReactMethod
     public void setInAppMessageAsSeen(String messageId, Callback successCallback, Callback errorCallback) {
-        this.manager.setInAppMessageAsSeen(messageId, error ->
+        RNSelligent.getManager().setInAppMessageAsSeen(messageId, error ->
             processErrorStringToCallback(error, successCallback, errorCallback)
         );
     }
 
     @ReactMethod
     public void setInAppMessageAsUnseen(String messageId, Callback successCallback, Callback errorCallback) {
-        this.manager.setInAppMessageAsUnseen(messageId, error ->
+        RNSelligent.getManager().setInAppMessageAsUnseen(messageId, error ->
             processErrorStringToCallback(error, successCallback, errorCallback)
         );
     }
 
     @ReactMethod
     public void setInAppMessageAsDeleted(String messageId, Callback successCallback, Callback errorCallback) {
-        this.manager.setInAppMessageAsDeleted(messageId, error ->
+        RNSelligent.getManager().setInAppMessageAsDeleted(messageId, error ->
             processErrorStringToCallback(error, successCallback, errorCallback)
         );
     }
 
     @ReactMethod
     public void executeButtonAction(String buttonId, String messageId, Callback successCallback, Callback errorCallback) {
-        this.manager.executeButtonAction(this.getCurrentActivity(), buttonId, messageId, error ->
+        RNSelligent.getManager().executeButtonAction(this.getCurrentActivity(), buttonId, messageId, error ->
             processErrorStringToCallback(error, successCallback, errorCallback)
         );
     }
@@ -135,17 +133,17 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void sendEvent(ReadableMap eventMap, Callback successCallback, Callback errorCallback) {
-        this.manager.sendEvent(eventMap.toHashMap(), successCallback::invoke, errorCallback::invoke);
+        RNSelligent.getManager().sendEvent(eventMap.toHashMap(), successCallback::invoke, errorCallback::invoke);
     }
 
     @ReactMethod
     public void getDeviceId(Callback successCallback) {
-        successCallback.invoke(this.manager.getDeviceId());
+        successCallback.invoke(RNSelligent.getManager().getDeviceId());
     }
 
     @ReactMethod
     public void enableNotifications(Boolean enable) {
-        this.manager.enableNotifications(enable);
+        RNSelligent.getManager().enableNotifications(enable);
     }
 
     public static void enableNotifications() {
@@ -155,35 +153,35 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     @ReactMethod
     @SuppressWarnings("unused")
     public void displayLastReceivedRemotePushNotification(String templateId) {
-        this.manager.displayLastReceivedRemotePushNotification(this.getCurrentActivity());
+        RNSelligent.getManager().displayLastReceivedRemotePushNotification(this.getCurrentActivity());
     }
 
     @ReactMethod
     public void displayLastReceivedNotification() {
-        this.manager.displayLastReceivedNotification();
+        RNSelligent.getManager().displayLastReceivedNotification();
     }
 
     @ReactMethod
     public void getLastRemotePushNotification(Callback successCallback) {
         successCallback.invoke(
-            RNHelpers.convertMapToWritableMap(this.manager.getLastRemotePushNotification())
+            RNHelpers.convertMapToWritableMap(RNSelligent.getManager().getLastRemotePushNotification())
         );
     }
 
     @ReactMethod
     public void setNotificationSmallIcon(String iconName) {
-        this.manager.setNotificationSmallIcon(this.reactContext, iconName);
+        RNSelligent.getManager().setNotificationSmallIcon(this.reactContext, iconName);
     }
 
     @ReactMethod
     public void setNotificationLargeIcon(String iconName) {
-        this.manager.setNotificationLargeIcon(this.reactContext, iconName);
+        RNSelligent.getManager().setNotificationLargeIcon(this.reactContext, iconName);
     }
 
     @ReactMethod
     public void setNotificationIconColor(String colorString, Callback successCallback, Callback errorCallback) {
         processErrorStringToCallback(
-            this.manager.setNotificationIconColor(colorString),
+            RNSelligent.getManager().setNotificationIconColor(colorString),
             successCallback,
             errorCallback
         );
@@ -200,17 +198,17 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void getGCMToken(Callback callback) {
-        callback.invoke(this.manager.getGCMToken());
+        callback.invoke(RNSelligent.getManager().getGCMToken());
     }
 
     @ReactMethod
     public void getRemoteMessagesDisplayType(Callback successCallback) {
-        successCallback.invoke(this.manager.getRemoteMessagesDisplayType());
+        successCallback.invoke(RNSelligent.getManager().getRemoteMessagesDisplayType());
     }
 
     @ReactMethod
     public void areNotificationsEnabled(Callback successCallback) {
-        successCallback.invoke(this.manager.areNotificationsEnabled());
+        successCallback.invoke(RNSelligent.getManager().areNotificationsEnabled());
     }
 
     @ReactMethod
@@ -223,7 +221,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
             AppCompatActivity activity = (AppCompatActivity)currentActivity;
 
             activity.runOnUiThread(() ->
-                this.manager.initializeObservers(activity, this::broadcastEvent)
+                RNSelligent.getManager().initializeObservers(activity, this::broadcastEvent)
             );
 
             return;
@@ -254,12 +252,12 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
         if (currentActivity == null) { return; }
 
-        this.manager.executePushAction(currentActivity);
+        RNSelligent.getManager().executePushAction(currentActivity);
     }
 
     void emitDelayedEvents()
     {
-        ArrayList<DelayedEvent> delayedEvents = this.manager.getStoredEvents();
+        ArrayList<DelayedEvent> delayedEvents = RNSelligent.getManager().getStoredEvents();
 
         if (delayedEvents.size() > 0)
         {
@@ -276,7 +274,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
 
     @ReactMethod
     public void setFirebaseToken(String token) {
-        this.manager.setFirebaseToken(token);
+        RNSelligent.getManager().setFirebaseToken(token);
     }
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
@@ -297,7 +295,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
             currentActivity.registerReceiver(this.receiver, this.receiver.getIntentFilter());
         }
 
-        this.manager.checkAndDisplayMessage(currentActivity.getIntent(), currentActivity, this::broadcastEvent);
+        RNSelligent.getManager().checkAndDisplayMessage(currentActivity.getIntent(), currentActivity, this::broadcastEvent);
     }
 
     @Override
@@ -319,7 +317,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
         if (currentActivity == null) { return; }
 
         currentActivity.setIntent(intent);
-        this.manager.checkAndDisplayMessage(intent, currentActivity, this::broadcastEvent);
+        RNSelligent.getManager().checkAndDisplayMessage(intent, currentActivity, this::broadcastEvent);
     }
 
     @Override

@@ -1,11 +1,11 @@
 {
   "author": {
-    "name": "Marigold Engage <mobile@selligent.com>"
+    "name": "Selligent by Zeta <mobile@selligent.com>"
   },
   "name": "@selligent-marketing-cloud/selligent-react-native",
-  "title": "Marigold Engage React Native",
-  "version": "4.3.0",
-  "description": "React Native wrapper for the Marigold Engage Android and iOS SDKs",
+  "title": "Selligent by Zeta React Native",
+  "version": "4.3.1",
+  "description": "React Native wrapper for the Selligent by Zeta Android and iOS SDKs",
   "main": "index.js",
   "repository": {
     "type": "git",

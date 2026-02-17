@@ -64,7 +64,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
-    implementation 'com.selligent.sdk:selligent_mobile_reactnative_sdk:3.9.0'
+    implementation 'com.selligent.sdk:selligent_mobile_reactnative_sdk:3.9.1'
 }
 
 def loadSelligentSettings(variant) {
@@ -78,7 +78,7 @@ def loadSelligentSettings(variant) {
     File flavorFile = getFile("$currentFlavor/$defaultFileName")
 
     if (variantFile.exists()) {
-        println("Reading Marigold Engage properties for variant ${variant.getName()} from $variantFile.path")
+        println("Reading Selligent by Zeta properties for variant ${variant.getName()} from $variantFile.path")
         resultingSettings = ""
 
         variantFile.eachLine { String line ->
@@ -86,7 +86,7 @@ def loadSelligentSettings(variant) {
         }
     }
     else if (currentFlavor != "" && flavorFile.exists()) {
-        println("Reading Marigold Engage properties for flavor $currentFlavor using $flavorFile.path")
+        println("Reading Selligent by Zeta properties for flavor $currentFlavor using $flavorFile.path")
         resultingSettings = ""
 
         flavorFile.eachLine { String line ->
@@ -94,7 +94,7 @@ def loadSelligentSettings(variant) {
         }
     }
     else if (defaultFile.exists()) {
-        println("Reading default Marigold Engage properties from ${defaultFile.path} (no variant specific nor flavor $defaultFileName were found)")
+        println("Reading default Selligent by Zeta properties from ${defaultFile.path} (no variant specific nor flavor $defaultFileName were found)")
         resultingSettings = ""
 
         defaultFile.eachLine { String line ->

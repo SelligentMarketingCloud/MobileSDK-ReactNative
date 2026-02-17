@@ -1,8 +1,8 @@
-# Marigold Engage-ReactNative (selligent-react-native)
+# Selligent by Zeta-ReactNative (selligent-react-native)
 
-This module provides an API for the usage of the Marigold Engage Mobile SDKs in React Native.
+This module provides an API for the usage of the Selligent Mobile SDKs in React Native.
 
-## Marigold Engage-ReactNative Integration
+## Selligent by Zeta-ReactNative Integration
 
 This module supports the following SDK and tools:
 
@@ -189,7 +189,7 @@ This module supports the following SDK and tools:
     // OR
     // #import <RNSelligentMobileSDK/RNSelligentMobileSDK-Swift.h>
     
-    // You can alternatively specify a different file name (without the extension) from where to load the Marigold Engage configs (defaults to 'selligent')
+    // You can alternatively specify a different file name (without the extension) from where to load the Selligent configs (defaults to 'selligent')
     // if (!launchOptions) {
     //    launchOptions = [NSMutableDictionary new];
     // }
@@ -218,7 +218,7 @@ This module supports the following SDK and tools:
     // OR
     // #import <RNSelligentMobileSDK/RNSelligentMobileSDK-Swift.h>
     
-    // You can alternatively specify a different file name (without the extension) from where to load the Marigold Engage configs (defaults to 'selligent')
+    // You can alternatively specify a different file name (without the extension) from where to load the Selligent configs (defaults to 'selligent')
     // if (!launchOptions) {
     //    launchOptions = [NSMutableDictionary new];
     // }

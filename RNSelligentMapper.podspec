@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors       = package['author']
   s.version       = package["version"]
   s.summary       = package["description"]
-  s.description   = "React Native wrapper mapper for the Marigold Engage Android and iOS SDKs"
+  s.description   = "React Native wrapper mapper for the Selligent by Zeta Android and iOS SDKs"
   s.homepage      = package['homepage']
   s.license       = "MIT"
   s.platform      = :ios, "13.4"
