@@ -16,11 +16,11 @@ apply plugin: 'com.android.library'
 
 android {
     namespace 'com.selligent'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         minSdkVersion 23
-        targetSdkVersion 34
+        targetSdkVersion 36
     }
 
     buildFeatures {

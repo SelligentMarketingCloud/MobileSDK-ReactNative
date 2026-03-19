@@ -1,5 +1,10 @@
 # Changelog
 
+- __4.3.2__
+  - (Android) Add robustness to avoid potential crashes
+  - (Android) Raise target and compile sdk to 36
+  - (iOS) Add robustness to avoid potentially passing null error messages in the event callbacks
+
 - __4.3.1__
   - (Android) Add robustness to avoid potential crashes
   

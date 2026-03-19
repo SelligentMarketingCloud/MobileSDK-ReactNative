@@ -4,7 +4,7 @@
   },
   "name": "@selligent-marketing-cloud/selligent-react-native",
   "title": "Selligent by Zeta React Native",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "React Native wrapper for the Selligent by Zeta Android and iOS SDKs",
   "main": "index.js",
   "repository": {

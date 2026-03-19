@@ -126,11 +126,11 @@ RCT_EXPORT_METHOD(displayNotification:(NSString *)notificationId templateId:(NSS
 RCT_EXPORT_METHOD(sendEvent:(NSDictionary *)data successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
   [RNSelligent sendEvent:data completion:^(BOOL status, NSString *message) {
     if (status) {
-      successCallback(@[message, [NSNull null]]);
+      successCallback(@[message ?: @"", [NSNull null]]);
       return;
     }
     
-    errorCallback(@[message, [NSNull null]]);
+    errorCallback(@[message ?: @"Unknown error", [NSNull null]]);
   }];
 }
 

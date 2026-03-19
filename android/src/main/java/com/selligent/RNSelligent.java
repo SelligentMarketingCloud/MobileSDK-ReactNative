@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -295,6 +296,12 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
             currentActivity.registerReceiver(this.receiver, this.receiver.getIntentFilter());
         }
 
+        if (RNSelligent.getManager() == null)
+        {
+            Log.d(Manager.RN_SELLIGENT_NAME, "onHostResume: RNSelligent.getManager is null.");
+            return;
+        }
+
         RNSelligent.getManager().checkAndDisplayMessage(currentActivity.getIntent(), currentActivity, this::broadcastEvent);
     }
 
@@ -302,7 +309,7 @@ public class RNSelligent extends ReactContextBaseJavaModule implements Lifecycle
     public void onHostPause() {
         Activity currentActivity = this.getCurrentActivity();
 
-        if (currentActivity == null) { return; }
+        if (currentActivity == null || this.receiver == null) { return; }
 
         currentActivity.unregisterReceiver(this.receiver);
     }
