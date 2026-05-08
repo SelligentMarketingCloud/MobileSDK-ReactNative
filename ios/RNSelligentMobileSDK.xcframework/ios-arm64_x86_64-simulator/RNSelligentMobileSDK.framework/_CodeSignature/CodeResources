@@ -14,7 +14,7 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		HOpXkfHsXkm6qP5mxJvQjOiDudQ=
+		bdNStsI0ufoPuuPEii15OeQJJDI=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		hWRVFYAp4YyhIyDdLmlPENdSyXc=
+		jAXG7masZEn80ILdfdizNC2vDsc=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		HOpXkfHsXkm6qP5mxJvQjOiDudQ=
+		bdNStsI0ufoPuuPEii15OeQJJDI=
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		cFBuRFtXL4RNSBau1KZeJ30SI3E=
+		5M1trGhPmN74nnepG3poOXyGMt4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -74,7 +74,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kcBNX8dte3xPBeG+yfxy60ctA853w2KnBG4047H8y8w=
+			sCgzrqaHkoY/c6LjKvoWwg/nO8CNZPr4hjK9oHFgijs=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -102,14 +102,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KH7F5oUu728yixARp421WuleyIn3XAjezIcmpKpjIiw=
+			AvIT0xAtlnNOec3vZZChojpMlbJJt3285SSAZWtJPDM=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kcBNX8dte3xPBeG+yfxy60ctA853w2KnBG4047H8y8w=
+			sCgzrqaHkoY/c6LjKvoWwg/nO8CNZPr4hjK9oHFgijs=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -137,7 +137,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PuVLkat+PnZ/UNwO21vUUSAv0m6LrXrFPkf3/Jae5u0=
+			jKcmoDSPhcvE3wJDi2k0Wa3zP8NU2TIDnirdCgOJH/Y=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

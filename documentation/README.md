@@ -66,12 +66,13 @@ The following properties can be used in the `selligent.json` to further configur
 | url                                         | string | The Selligent webservice url to be used to integrate with your Selligent platform |
 | clientId                                    | string | The Selligent client id to be used to integrate with your Selligent platform |
 | privateKey                                  | string | The Selligent private key to be used to integrate with your Selligent platform |
-| customInAppUi                               | boolean| When this is enabled and a "push + inapp" notification is clicked, the SDK will NOT display the inApp message and instead a `SelligentConstants.BroadcastEventType.DISPLAYING_IN_APP_MESSAGE` event will be sent |
-| delayedPushAction                           | boolean| Optin for a specific push action handling (wait for React UI to be ready) when coming from a push message and having the app killed |
-| interceptSelligentUniversalLinks            | boolean| (iOS Only) Optin to customly handle the execution of universal links coming from a Push/IAM [more information](#universal-linking---ios) |
+| newArchitecture                             | boolean | Forces the wrapper to act a bit differently for better ReactNative New Architecture compatibility |
+| customInAppUi                               | boolean | When this is enabled and a "push + inapp" notification is clicked, the SDK will NOT display the inApp message and instead a `SelligentConstants.BroadcastEventType.DISPLAYING_IN_APP_MESSAGE` event will be sent |
+| delayedPushAction                           | boolean | Optin for a specific push action handling (wait for React UI to be ready) when coming from a push message and having the app killed |
+| interceptSelligentUniversalLinks            | boolean | (iOS Only) Optin to customly handle the execution of universal links coming from a Push/IAM [more information](#universal-linking---ios) |
 | clearCacheIntervalValue                     | [enum](#clearcacheintervalvalue) | How much time the SDK will keep things in cache |  
 | inAppMessageRefreshType                     | [enum](#inappmessagerefreshtype) | How often the SDK will check for new inapp messages |
-| addInAppMessageFromPushToInAppMessageList   | boolean| Adds inapp messages that are linked to push notifications in the internal inapp message list that can be later [retrieved](#display-iam) |
+| addInAppMessageFromPushToInAppMessageList   | boolean | Adds inapp messages that are linked to push notifications in the internal inapp message list that can be later [retrieved](#display-iam) |
 | remoteMessageDisplayType                    | [enum](#remotemessagesdisplaytype) | The behaviour when receiving a push notification with the app in foreground |
 | appGroupId                                  | string |(iOS Only) The appgroup id necessary for the correct communication between the app and the app extensions |
 | shouldClearBadge                            | boolean | (iOS Only) Whether or not, clicking a push notification should reset the badge number |

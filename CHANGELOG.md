@@ -1,5 +1,13 @@
 # Changelog
 
+- __4.4.1__
+  - Add "newArchitecture" setting in selligent.json for better ReactNative New Architecture compatibility
+  - (Android) Add "newArchitecture" change for "sendEvent" and "getInAppMessages" functions, callbacks return on main thread
+  - (Android) Update native SDK 4.8.0 (clicking a push in background was recreating the Activity)
+  - (Android) Update Android Gradle plugin to version 9.2.0
+  - (Android) Raise target and compile sdk to 37
+  - (iOS) Add "newArchitecture" change for "sendEvent" function, callback returns on main thread
+
 - __4.3.2__
   - (Android) Add robustness to avoid potential crashes
   - (Android) Raise target and compile sdk to 36

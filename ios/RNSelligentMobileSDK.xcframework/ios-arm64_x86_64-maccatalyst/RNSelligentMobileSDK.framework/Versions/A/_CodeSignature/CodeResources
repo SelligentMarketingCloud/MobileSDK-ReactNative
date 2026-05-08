@@ -26,7 +26,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kcBNX8dte3xPBeG+yfxy60ctA853w2KnBG4047H8y8w=
+			sCgzrqaHkoY/c6LjKvoWwg/nO8CNZPr4hjK9oHFgijs=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
@@ -54,14 +54,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Nn6Bo1uBUSTzgzMQggPo1szx5Sev7jCfpZA/LjhaoRc=
+			Y5fJ4VSLA4IeQL6llyuavkxINno09lHfTk/04MOxvnM=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kcBNX8dte3xPBeG+yfxy60ctA853w2KnBG4047H8y8w=
+			sCgzrqaHkoY/c6LjKvoWwg/nO8CNZPr4hjK9oHFgijs=
 			</data>
 		</dict>
 		<key>Modules/RNSelligentMobileSDK.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
@@ -89,7 +89,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tJ5s02FGbCbdzMIphHhSH1RsBhKCmgcV5U8vTlIvcFo=
+			R0Fw+GsRmEvidyRh/SxHx2yHTr2kYz9z79VWcLlHYCA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

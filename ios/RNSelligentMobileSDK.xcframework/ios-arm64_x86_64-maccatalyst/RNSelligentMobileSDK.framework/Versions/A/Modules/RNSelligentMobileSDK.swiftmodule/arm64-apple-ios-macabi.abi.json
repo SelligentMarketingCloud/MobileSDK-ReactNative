@@ -2190,14 +2190,21 @@
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
       "kind": "BooleanLiteral",
-      "offset": 726,
+      "offset": 545,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
+      "kind": "BooleanLiteral",
+      "offset": 765,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/1\/s\/source\/ios\/sdk\/source\/RNSelligent.swift",
       "kind": "Dictionary",
-      "offset": 1185,
+      "offset": 1224,
       "length": 3,
       "value": "[]"
     }
